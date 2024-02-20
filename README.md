@@ -7,6 +7,7 @@ This project aims to program a game based on pre-existing rules. The goal is to 
 The game follows a set of rules that dictate the gameplay mechanics and objectives. These rules ensure fair competition and provide a framework for players to strategize and make decisions.
 
 https://seaofstars.fandom.com/wiki/Wheels
+https://progameguides.com/sea-of-stars/sea-of-stars-wheels-guide-how-to-play-all-rewards/
 
 ## Features
 

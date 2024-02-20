@@ -1,13 +1,13 @@
 # Wheels game rules
 
-## Overview
+## Gameplay
+### Overview
 
-Wheels is a duel game where two players compete to bring the opponent's health to zero. 
-Each player has to choose two heroes from a pool of six, and each character has a unique set of abilities.
-Those abilities can be used to attack the opponent, heal the player, or apply status effects.
-To unlock the abilities, the player has to spin five wheels and match some symbols. On a turn the player can roll the wheels up to three times and save the symbols they want to keep. At the end of the turn the player can use the symbols to unlock the abilities of the heroes or to protect themselves from the opponent's attacks with a Bulwark.
+The goal in Wheels is to reduce your enemy’s HP (called the “Crown”) to zero before they can. You can protect your HP with a wall called a Bulwark. Bulwarks cap at 5 damage resistance/levels. Even if the damage goes over the Bulwark’s resistance level, the attack will not reach the Crown until it’s fully down. 
+Some heroes are an exception to the rule.
 
-## Game assets 
+For a hero to act, their rod must be fully down.
+
 ### Heroes
 
 | Hero  |         | Figurine |       | Description                                        |
