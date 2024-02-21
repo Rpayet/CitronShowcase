@@ -8,11 +8,13 @@ export default function GameProvider({ children }) {
         rank : '',
         diamond : {
             hero: {},
+            hero_rank: 'bronze',
             rod: 0,
             exp: 0,
         },
         square: {
             hero: {},
+            hero_rank: 'bronze',
             rod: 0,
             exp: 0,
         },
@@ -24,11 +26,13 @@ export default function GameProvider({ children }) {
         rank : '',
         diamond : {
             hero: {},
+            hero_rank: 'bronze',
             rod: 0,
             exp: 0,
         },
         square: {
             hero: {},
+            hero_rank: 'bronze',
             rod: 0,
             exp: 0,
         },
