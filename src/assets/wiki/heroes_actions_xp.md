@@ -4,9 +4,9 @@
 
 1) Choose a rank for himself (copper, bronze, silver, gold, diamond, platinum)
 2) Choose a first hero to display on Square basement.
-    - This action settle the values of {player[x].square.rod}
+    - This action settle the values of {player[x].square.rod} with the value of {hero.energy_to_act.[current_hero_rank]}
 3) Choose a second hero to display on Diamond basement.
-    - This action settle the values of {player[x].diamond.rod}
+    - This action settle the values of {player[x].diamond.rod} with the value of {hero.energy_to_act.[current_hero_rank]}
 4) When each player has chosen his heroes, the game can start.
 
 ## During game
