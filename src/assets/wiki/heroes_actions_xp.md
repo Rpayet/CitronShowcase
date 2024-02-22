@@ -22,3 +22,5 @@
     - Case 1 : the hero level up and this upgrade automatically the {player[x].[square || diamond].hero_rank} and reset the {player[x].[square || diamond].exp} to 0.
 
     - Case 2 : the hero is at top hero_rank, substract 2 points to {player[y].crown} and reset the {player[x].[square || diamond].exp} to 0.
+
+
