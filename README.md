@@ -2,6 +2,9 @@
 
 This project aims to program a game based on pre-existing rules. The goal is to create an interactive and entertaining gaming experience for players.
 
+It's a side-project realise on my free time, to improve my skills in programming and to have fun.
+Still on development, the game is not yet available to play.
+
 ## Rules
 
 The game follows a set of rules that dictate the gameplay mechanics and objectives. These rules ensure fair competition and provide a framework for players to strategize and make decisions.
