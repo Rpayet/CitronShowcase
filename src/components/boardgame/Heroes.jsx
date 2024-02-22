@@ -1,32 +1,31 @@
 import { useState } from "react";
+import { GiDefensiveWall, GiBroadsword  } from "react-icons/gi";
 
-export default function Heroes({ hero }) {
+export default function Heroes({ hero, player }) {
 
     const [crown, setCrown] = useState(hero.crown.bronze);
     const [bulwark, setBulwark] = useState(hero.bulwark.bronze);
-    const [rod, setRod] = useState();
+    const [rod, setRod] = useState(2);
     const [energy_to_act, setEnergy_to_act] = useState(hero.energy_to_act.bronze);
-    const [exp, setExp] = useState(0);
+    const [exp, setExp] = useState(player.diamond.exp);
 
   return (
     <div id='Heroes' className={hero.name}>
-        <h1 classNmae=''>{hero.name}</h1>
+        <h1 className='title'>{hero.name}</h1>
         <div className=''>
-            <img src="" alt="" />
-            <p className='exp'>{exp}/6</p>
+            <p className='exp'>xp</p>
+            <meter min='0' max='6' value={exp}></meter>
         </div>
         <div className=''>
             <div>
-                <img src="" alt="Crown atk" />
-                <p>{crown}</p>
+                <p><GiBroadsword /> {crown}</p>
             </div>
             <div>
-                <img src="" alt="Bulwark atk" />
-                <p>{bulwark}</p>
+                <p><GiDefensiveWall /> {bulwark}</p>
             </div>
         </div>
         <div className='rod'>
-            <p>{rod}/({energy_to_act})</p>
+            <meter min='0' max={energy_to_act} value={rod} />
         </div>
     </div>
   );

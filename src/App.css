@@ -1,3 +1,32 @@
-
+@charset "UTF-8";
+#Heroes {
+  /* Styliser le fond de la jauge pour WebKit/Blink */
+  /* Styliser la valeur de la jauge quand elle est optimale pour WebKit/Blink */
+  /* Styliser la valeur de la jauge pour Gecko */
+}
+#Heroes meter {
+  /* Taille de la jauge */
+  width: 200px;
+  height: 40px;
+  /* Retirer l'apparence par défaut */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  /* Bordure et arrondi */
+  border: 1px solid #000;
+  border-radius: 10px;
+  background: #fff;
+}
+#Heroes meter::-webkit-meter-bar {
+  background: #eee;
+}
+#Heroes meter::-webkit-meter-optimum-value {
+  background: #b4e6e9;
+  border-radius: 10px;
+}
+#Heroes meter::-moz-meter-bar {
+  background: #b4e6e9;
+  border-radius: 10px;
+}
 
 /*# sourceMappingURL=App.css.map */

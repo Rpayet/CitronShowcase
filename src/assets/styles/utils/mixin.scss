@@ -1,0 +1,31 @@
+@mixin meter {
+  meter {
+    /* Taille de la jauge */
+    width: 200px; 
+    height: 40px;
+    /* Retirer l'apparence par défaut */
+    -webkit-appearance: none;
+       -moz-appearance: none;
+            appearance: none;
+    /* Bordure et arrondi */
+    border: 1px solid #000;
+    border-radius: 10px;
+    background: #fff;
+  }
+  
+  /* Styliser le fond de la jauge pour WebKit/Blink */
+  meter::-webkit-meter-bar {
+    background: #eee;
+  }
+
+  /* Styliser la valeur de la jauge quand elle est optimale pour WebKit/Blink */
+  meter::-webkit-meter-optimum-value {
+    background: #b4e6e9;
+    border-radius: 10px;
+  }
+
+  /* Styliser la valeur de la jauge pour Gecko */
+  meter::-moz-meter-bar {
+    background: #b4e6e9;
+    border-radius: 10px;
+  }}
