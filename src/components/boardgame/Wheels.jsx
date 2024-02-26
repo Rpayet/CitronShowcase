@@ -19,19 +19,48 @@ export default function Wheels() {
             wheels.wheel4[Math.floor(Math.random() * wheels.wheel4.length)], 
             wheels.wheel5[Math.floor(Math.random() * wheels.wheel5.length)]
         ]);
-    }
+    };
 
     const [spinResult, setSpinResult] = useState([]);
 
-    console.log(spinResult);
+    const iconDisplay = (icon) => {
+        switch(icon) {
+            case 'S':
+                return <FaSquare />;
+            case 'S+':
+                return <><FaSquare />*</>;
+            case 'D':
+                return <FaDiamond />;
+            case 'D+':
+                return <><FaDiamond />*</>;
+            case 'H':
+                return <FaHammer />;
+            case 'HH':
+                return <FaHammer />;
+            case 'SS':
+                return <><FaSquare /><FaSquare /></>;
+            case 'SS+':
+                return <><FaSquare /><FaSquare />*</>;
+            case 'DD':
+                return <><FaDiamond /><FaDiamond /></>;
+            case 'DD+':
+                return <><FaDiamond /><FaDiamond />*</>;
+            case '' :
+                return null;
+            default:
+                return <FaSquare />;
+        }
+    }
 
     return (
-        <>
-            <FaDiamond />
-            <FaSquare />
-            <FaHammer />
+        <div>
+            <div>
+                {spinResult.map((icon, index) => {
+                    return <span key={index}>{iconDisplay(icon)}</span>
+                })}
+            </div>
 
             <button onClick={() => handleSpin()} type="button">Spin</button>
-        </>
+        </div>
     )
 }
