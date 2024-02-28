@@ -2,7 +2,7 @@
 
 This project aims to program a game based on pre-existing rules. The goal is to create an interactive and entertaining gaming experience for players.
 
-It's a side-project realise on my free time, to improve my skills in programming and to have fun.
+It's a side-project realise on my free time (don't have a lot...), to improve my skills in programming and to have fun.
 Still on development, the game is not yet available to play.
 
 ## Rules
