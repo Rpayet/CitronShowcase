@@ -16,7 +16,7 @@ export default function Wheels() {
             wheels.wheel1[Math.floor(Math.random() * wheels.wheel1.length)], 
             wheels.wheel2[Math.floor(Math.random() * wheels.wheel2.length)], 
             wheels.wheel3[Math.floor(Math.random() * wheels.wheel3.length)],
-            wheels.wheel4[Math.floor(Math.random() * wheels.wheel4.length)], 
+            wheels.wheel4[Math.floor(Math.random() * wheels.wheel4.length)],
             wheels.wheel5[Math.floor(Math.random() * wheels.wheel5.length)]
         ]);
     };
