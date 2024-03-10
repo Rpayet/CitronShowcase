@@ -13,18 +13,6 @@ export default function Wheels() {
         wheel5: ['s1', 'd1', 'd1', 'blank', 'blank', 's1', 'd1', 'blank'],
     };
 
-    const handleSpin = () => {
-        setSpinResult([
-            wheels.wheel1[Math.floor(Math.random() * wheels.wheel1.length)], 
-            wheels.wheel2[Math.floor(Math.random() * wheels.wheel2.length)], 
-            wheels.wheel3[Math.floor(Math.random() * wheels.wheel3.length)],
-            wheels.wheel4[Math.floor(Math.random() * wheels.wheel4.length)],
-            wheels.wheel5[Math.floor(Math.random() * wheels.wheel5.length)]
-        ]);
-    };
-
-    const [spinResult, setSpinResult] = useState([]);
-
     const iconParticularsDict = {
         's1': {x: 0, y: 0},
         's2': {x: -102.5, y: 0},
@@ -42,46 +30,30 @@ export default function Wheels() {
         'blank': {x: -307.5, y: -155},
     };
 
-    const iconDisplay = (icon) => {
-        switch(icon) {
-            case 'S':
-                return <FaSquare />;
-            case 'S+':
-                return <><FaSquare />*</>;
-            case 'D':
-                return <FaDiamond />;
-            case 'D+':
-                return <><FaDiamond />*</>;
-            case 'H':
-                return <FaHammer />;
-            case 'HH':
-                return <FaHammer />;
-            case 'SS':
-                return <><FaSquare /><FaSquare /></>;
-            case 'SS+':
-                return <><FaSquare /><FaSquare />*</>;
-            case 'DD':
-                return <><FaDiamond /><FaDiamond /></>;
-            case 'DD+':
-                return <><FaDiamond /><FaDiamond />*</>;
-            case '' :
-                return null;
-            default:
-                return <FaSquare />;
-        }
-    }
+    const handleSpin = () => {
+        setSpinResult([
+            wheels.wheel1[Math.floor(Math.random() * wheels.wheel1.length)], 
+            wheels.wheel2[Math.floor(Math.random() * wheels.wheel2.length)], 
+            wheels.wheel3[Math.floor(Math.random() * wheels.wheel3.length)],
+            wheels.wheel4[Math.floor(Math.random() * wheels.wheel4.length)],
+            wheels.wheel5[Math.floor(Math.random() * wheels.wheel5.length)]
+        ]);
+    };
+
+    const [spinResult, setSpinResult] = useState([]);
 
     return (
         <div>
+
             <div>
                 {spinResult.map((icon, index) => {
-                    return <span key={index}>{iconDisplay(icon)}</span>
+                    return (
+                        <Stage width={102.5} height={77.5} options={{ backgroundAlpha: 0 }}>
+                            <Sprite image={wheelSpriteSheet} {...iconParticularsDict[icon]} anchor={0} scale={.25} />
+                        </Stage>
+                    )
                 })}
             </div>
-
-            <Stage width={102.5} height={77.5} options={{ backgroundAlpha: 0 }}>
-                <Sprite image={wheelSpriteSheet} {...iconParticularsDict.blank} anchor={0} scale={.25} />
-            </Stage>
 
             <button onClick={() => handleSpin()} type="button">Spin</button>
         </div>
