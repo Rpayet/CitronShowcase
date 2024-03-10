@@ -1,6 +1,5 @@
-import { Container, Sprite, Stage } from "@pixi/react";
+import { Sprite, Stage } from "@pixi/react";
 import { useState } from "react";
-import { FaDiamond, FaSquare, FaHammer } from "react-icons/fa6";
 import wheelSpriteSheet from '../../assets/images/sprites/Wheels_sprite-sheet_HD.png';
 
 export default function Wheels() {
