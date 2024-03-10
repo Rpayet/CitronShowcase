@@ -1,0 +1,27 @@
+@mixin meter {
+  meter {
+    width: 200px; 
+    height: 40px;
+
+    -webkit-appearance: none;
+       -moz-appearance: none;
+            appearance: none;
+
+    border: 1px solid #000;
+    border-radius: 10px;
+    background: #fff;
+  }
+  
+  meter::-webkit-meter-bar {
+    background: #eee;
+  }
+
+  meter::-webkit-meter-optimum-value {
+    background: #b4e6e9;
+    border-radius: 10px;
+  }
+
+  meter::-moz-meter-bar {
+    background: #b4e6e9;
+    border-radius: 10px;
+  }}
