@@ -1,0 +1,14 @@
+#Boardgame {
+    .wheels-comp {
+        .wheels-row {
+            display: flex;
+
+            .wheel {
+                display: flex;
+                flex-direction: column;
+            }
+        }
+
+    }
+
+}

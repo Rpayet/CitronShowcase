@@ -1,3 +1,11 @@
+#Boardgame .wheels-comp .wheels-row {
+  display: flex;
+}
+#Boardgame .wheels-comp .wheels-row .wheel {
+  display: flex;
+  flex-direction: column;
+}
+
 #Heroes meter {
   width: 200px;
   height: 40px;

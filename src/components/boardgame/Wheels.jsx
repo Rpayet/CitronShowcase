@@ -21,12 +21,22 @@ export default function Wheels() {
         'blank': {x: -307.5, y: -155},
     };
 
+    const [spinResult, setSpinResult] = useState([]);
+    const [spinCount, setSpinCount] = useState(3);
+
     const handleSpin = () => {
         const randomSpinResult = Object.values(wheels).map(wheel => wheel[Math.floor(Math.random() * wheel.length)]);
+        // shuffle the result
+        for (let i = randomSpinResult.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [randomSpinResult[i], randomSpinResult[j]] = [randomSpinResult[j], randomSpinResult[i]];
+        }
         setSpinResult(randomSpinResult);
     };
 
-    const [spinResult, setSpinResult] = useState([]);
+    const handleSpinCount = () => {
+        setSpinCount(spinCount - 1);
+    };
 
     useEffect(() => {
         handleSpin();
@@ -36,19 +46,29 @@ export default function Wheels() {
     }, []);
 
     return (
-        <div>
+        <div className='wheels-comp'>
 
-            <div>
+            <div className='wheels-row'>
                 {spinResult.map((icon, index) => {
                     return (
-                        <Stage key={index} width={102.5} height={77.5} options={{ backgroundAlpha: 0 }}>
-                            <Sprite image={wheelSpriteSheet} {...spriteDict[icon]} anchor={0} scale={.25} />
-                        </Stage>
+                        <div key={index} className='wheel'>
+                            <Stage width={102.5} height={77.5} options={{ backgroundAlpha: 0 }}>
+                                <Sprite image={wheelSpriteSheet} {...spriteDict[icon]} anchor={0} scale={.25} />
+                            </Stage>
+                            <input type="checkbox" />
+                        </div>
                     )
                 })}
             </div>
 
-            <button onClick={() => handleSpin()} type="button">Spin</button>
+            <button 
+                type="button"
+                disabled={spinCount === 0} 
+                onClick={() => {handleSpin(); handleSpinCount();}}>
+                    Spin ({spinCount} restants)
+            </button>
+
+            <button type="button" onClick={() => setSpinCount(3)}>Reset</button>
         </div>
     )
 }

@@ -1,1 +1,1 @@
-{"version":3,"sourceRoot":"","sources":["assets/styles/utils/mixin.scss"],"names":[],"mappings":"AACE;EACE;EACA;EAEA;EACG;EACK;EAER;EACA;EACA;;AAGF;EACE;;AAGF;EACE;EACA;;AAGF;EACE;EACA","file":"App.css"}
+{"version":3,"sourceRoot":"","sources":["assets/styles/components/boardgame/boardgame.scss","assets/styles/utils/mixin.scss"],"names":[],"mappings":"AAEQ;EACI;;AAEA;EACI;EACA;;;ACNd;EACE;EACA;EAEA;EACG;EACK;EAER;EACA;EACA;;AAGF;EACE;;AAGF;EACE;EACA;;AAGF;EACE;EACA","file":"App.css"}

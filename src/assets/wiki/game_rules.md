@@ -64,12 +64,13 @@ Notes : Each of these first four wheels contains three square panels, three diam
 The fifth wheel is a special wheel that change depending on the levels of the players.
 
 - Wheel 5 : 
-    - Copper : S → D → H → Blank → Blank → S → D → Blank
-    - Bronze : S → D → H → Blank → Blank → S → D → HH
-    - Silver : S → D → H → Blank → D → SS+ → D → HH
-    - Gold : S → DD+ → H → S → D → SS+ → D → HH
-    - Diamond : S → DD+ → HH → SS → DD → SS+ → D → HH
-    - Platinum : S → DD+ → HHH → SS+ → DD+ → SS+ → D → HH
+    - Copper : s1 → d1 → h1 → blank → blank → s1 → d1 → blank
+    - Bronze : s1 → d1 → h1 → blank → blank → s1 → d1 → h2
+    - Silver : s1 → d1 → h1 → blank → d1 → sp2 → d1 → h2
+    - Gold : s1 → dp2 → h1 → s1 → d1 → sp2 → d1 → h2
+    - Diamond : s1 → dp2 → h2 → s2 → d2 → sp2 → d1 → h2
+    - Platinum : s1 → dp2 → h3 → sp2 → dp2 → sp2 → d1 → h2
+    - Obsidian : blank → blank → d3 → blank → blank → s3 → blank → blank
 
 ## Hero Rank and XP
 

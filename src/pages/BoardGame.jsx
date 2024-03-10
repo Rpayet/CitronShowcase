@@ -12,7 +12,7 @@ export default function BoardGame() {
     const heroesList = Object.values(heroes);
 
     return (
-        <div id='BoardGame'>
+        <div id='Boardgame'>
             <h1>BoardGame</h1>
             <Wheels />
         </div>
