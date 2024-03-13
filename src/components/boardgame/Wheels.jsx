@@ -1,15 +1,15 @@
+import { useEffect, useState, Suspense, useRef } from "react";
 import { Sprite, Stage } from "@pixi/react";
-import { useEffect, useState } from "react";
 import wheelSpriteSheet from '../../assets/images/sprites/Wheels_sprite-sheet_HD.png';
 
 export default function Wheels() {
 
     const wheels= {
-        1: ['s1', 'd1', 's1', 'sp1', 'd1', 'd1', 'dp2', 'd1'],
-        2: ['sp1', 'd1', 's2', 'dp1', 's1', 'd1', 'd2', 'd2'],
-        3: ['sp1', 'd1', 'dp1', 's1', 'd1', 'd2', 's2', 'd2'],
-        4: ['s1', 'd1', 'sp1', 'd1', 'd2', 's1',' dp1', 'd2'],
-        5: ['s1', 'd1', 'd1', 'blank', 'blank', 's1', 'd1', 'blank'],
+        1: ['s1', 'd1', 's1', 'sp1', 'd1', 'h1', 'dp2', 'h1'],
+        2: ['sp1', 'd1', 's2', 'dp1', 's1', 'h1', 'd2', 'h2'],
+        3: ['sp1', 'd1', 'dp1', 's1', 'd1', 'h2', 's2', 'h2'],
+        4: ['s1', 'd1', 'sp1', 'd1', 'h2', 's1',' dp1', 'h2'],
+        5: ['s1', 'd1', 'h1', 'blank', 'blank', 's1', 'd1', 'blank'],
     };
 
     const spriteDict = {
@@ -69,6 +69,20 @@ export default function Wheels() {
             </button>
 
             <button type="button" onClick={() => setSpinCount(3)}>Reset</button>
+
+            {/** todo: Convertir le code ci dessous en une série de cylindre à 8 faces avec Three Fiber */}
+            <div className='wheel-spin'>
+                {Object.values(wheels).map((wheel, index) => (
+                    <div key={index} className='wheel'>
+                        {wheel.map((icon, i) => (
+                            <Stage key={i} width={102.5} height={77.5} options={{ backgroundAlpha: 0 }}>
+                                    <Sprite image={wheelSpriteSheet} {...spriteDict[icon]} anchor={0} scale={.25} />
+                            </Stage>
+                        ))}
+                    </div>
+                ))}
+            </div>
+
         </div>
     )
 }

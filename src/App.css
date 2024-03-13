@@ -1,3 +1,11 @@
+#Boardgame .wheels-comp .wheel-spin {
+  display: flex;
+  height: 620px;
+}
+#Boardgame .wheels-comp .wheel-spin .wheel {
+  display: flex;
+  flex-direction: column;
+}
 #Boardgame .wheels-comp .wheels-row {
   display: flex;
 }
