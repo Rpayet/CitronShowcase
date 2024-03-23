@@ -14,9 +14,9 @@ export default function BoardGame() {
 
     return (
         <div id='Boardgame'>
-            <h1>BoardGame</h1>
-            <WheelFiber />
-            {/* <Wheels /> */}
+            <h1>Wheels Spinner</h1>
+            {/* <WheelFiber /> */}
+            <Wheels />
         </div>
     );
 }

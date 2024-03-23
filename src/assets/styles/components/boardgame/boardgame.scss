@@ -1,6 +1,21 @@
 #Boardgame {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
     .wheels-comp {
 
+        .wheels-trigger {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        
         .wheel-spin {
             display: flex;
             height: 620px;
