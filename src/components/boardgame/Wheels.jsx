@@ -1,47 +1,26 @@
-import { useEffect, useState, Suspense, useRef } from "react";
+import { useEffect, useState, Suspense, useRef, useContext } from "react";
 import { Sprite, Stage } from "@pixi/react";
 import wheelSpriteSheet from '../../assets/images/sprites/Wheels_sprite-sheet_HD.png';
+import { WheelContext } from "../../context/WheelContext";
 
 export default function Wheels() {
+
+    const { resetSpinResult, spinResult, setSpinResult,
+        spinCount, setSpinCount, wheels, spriteDict } = useContext(WheelContext);
     
-    // spin default state
-    const resetSpinResult = [
-        {id: 1, result: '', checked: false},
-        {id: 2, result: '', checked: false},
-        {id: 3, result: '', checked: false},
-        {id: 4, result: '', checked: false},
-        {id: 5, result: '', checked: false},
-    ];
-
-    // states
-    const [spinResult, setSpinResult] = useState(resetSpinResult);
-    const [spinCount, setSpinCount] = useState(3);
-
-    // wheels content dictionary
-    const wheels= {
-        1: ['s1', 'd1', 's1', 'sp1', 'd1', 'h1', 'dp2', 'h1'],
-        2: ['sp1', 'd1', 's2', 'dp1', 's1', 'h1', 'd2', 'h2'],
-        3: ['sp1', 'd1', 'dp1', 's1', 'd1', 'h2', 's2', 'h2'],
-        4: ['s1', 'd1', 'sp1', 'd1', 'h2', 's1',' dp1', 'h2'],
-        5: ['s1', 'd1', 'h1', 'blank', 'blank', 's1', 'd1', 'blank'],
-    };
-
-    // spritesheet position dictionary
-    const spriteDict = {
-        's1': {x: 0, y: 0}, 's2': {x: -102.5, y: 0}, 's3': {x: -205, y: 0},
-        'sp1': {x: -307.5, y: 0}, 'sp2': {x: -410, y: 0},
-        'd1': {x: 0, y: -77.5}, 'd2': {x: -102.5, y: -77.5}, 'd3': {x: -205, y: -77.5},
-        'dp1': {x: -307.5, y: -77.5}, 'dp2': {x: -410, y: -77.5},
-        'h1': {x: 0, y: -155}, 'h2': {x: -102.5, y: -155}, 'h3': {x: -205, y: -155},
-        'blank': {x: -307.5, y: -155},
-    };
-
-    const handleSpin = () => {
+    const handleWheelResult = () => {
         // block the spin if no spin count left
         if (spinCount === 0) return;
 
         // filter checked wheels
         const checkedWheels = spinResult.filter(wheel => wheel.checked);
+
+        if (checkedWheels.length === 5) {
+            // reset the spin count
+            setSpinCount(0);
+            return;
+        }
+        
         // filter unchecked wheels & randomize their result
         const uncheckedWheels = spinResult
             .filter(wheel => !wheel.checked)
@@ -76,6 +55,7 @@ export default function Wheels() {
             setSpinResult(newSpinResult);
     }
 
+    // function to handle the checkbox
     const handleCheck = (id) => {
         setSpinResult(spinResult.map(wheel => {
             if (wheel.id === id) {
@@ -90,20 +70,19 @@ export default function Wheels() {
         setSpinCount(spinCount - 1);
     };
 
-    const handleReset = () => {
-        setSpinResult(resetSpinResult);
-        setSpinCount(3);
-    };
+    // function to handle the spin logic
+    const handleSpin = () => {
+        handleSpinCount();
+        handleWheelResult();
+    }
 
     // useEffect to trigger the spin on first render & cleanup
     useEffect(() => {
-        handleSpin();
+        handleWheelResult();
         return () => {
             setSpinResult(resetSpinResult);
         }
     }, []);
-
-    console.log(spinCount > 0);
 
     return (
         <div className='wheels-comp'>
@@ -112,24 +91,22 @@ export default function Wheels() {
                 {spinResult.map((wheel) => {
                     return (
                         <div key={wheel.id} className='wheel'>
-                            <Stage width={102.5} height={77.5} options={{ backgroundAlpha: 0 }}>
+                            <Stage width={102.5} height={77.5} options={{ backgroundAlpha: 0 }} onClick={(spinCount < 3 && spinCount > 0) ? (() => {handleCheck(wheel.id)}) : null}>
                                 <Sprite image={wheelSpriteSheet} {...spriteDict[wheel.result]} anchor={0} scale={.25} />
                             </Stage>
-                            {(spinCount < 3 && spinCount > 0) && <input type="checkbox" onChange={() => {handleCheck(wheel.id)} } />}
+                            {(spinCount < 3 && spinCount > 0) && <input type="checkbox" checked={wheel.checked} onChange={() => {handleCheck(wheel.id)} } />}
                         </div>
                     )
                 })}
             </div>
 
             <div className='wheels-trigger'>
-                <button type="button" onClick={handleReset}>Reset</button>
                 <button 
                     type="button"
                     disabled={spinCount === 0} 
-                    onClick={() => {handleSpin(); handleSpinCount();}}>
-                        Spin ({spinCount} restants)
+                    onClick={() => { handleSpin() }}>
+                        Spin ({spinCount} left)
                 </button>
-
             </div>
 
             {/** todo: Convertir le code ci dessous en une série de cylindre à 8 faces avec Three Fiber */}

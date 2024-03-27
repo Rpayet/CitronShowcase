@@ -5,12 +5,23 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background-color: black;
+}
+#Boardgame h1 {
+  color: white;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+#Boardgame .wheels-comp {
+  display: flex;
+  gap: 1rem;
 }
 #Boardgame .wheels-comp .wheels-trigger {
   width: 100%;
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: start;
 }
 #Boardgame .wheels-comp .wheel-spin {
   display: flex;

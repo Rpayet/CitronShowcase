@@ -5,16 +5,25 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background-color: black;
+
+    h1 {
+        color: white;
+        font-size: 2rem;
+        margin-bottom: 1rem;
+    }
 
     .wheels-comp {
+        display: flex;
+        gap: 1rem;
 
         .wheels-trigger {
             width: 100%;
             display: flex;
+            flex-direction: column;
             justify-content: center;
-            align-items: center;
+            align-items: start;
         }
-        
         
         .wheel-spin {
             display: flex;
