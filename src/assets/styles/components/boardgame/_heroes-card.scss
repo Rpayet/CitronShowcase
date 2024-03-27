@@ -1,0 +1,59 @@
+#Hero {
+    @include meter;
+
+    width: 17rem;
+    height: 14rem;
+    padding: .5rem;
+    border: 1px solid black;
+    border-radius: .5rem;
+    display: flex;
+    gap: 1rem;
+    background-color: white;
+    
+    .hero-info {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: 1rem;
+
+        .hero-id {
+            height: 10rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid black;
+            border-radius: .5rem;
+
+            .hero-title {
+                color: black;
+            }
+        }
+        
+        .hero-spec {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1.5rem;
+    
+            .offensive, .defensive {
+                display: flex;
+                align-items: center;
+                gap: .5rem;
+                height: 1rem;
+                padding: 1rem .5rem;
+                border: 1px solid black;
+                border-radius: .5rem;
+            }
+        }
+    
+        .hero-exp {
+    
+        }
+    
+    }
+
+    .hero-rod {
+
+        transform: rotate(-90deg);}
+}

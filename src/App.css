@@ -1,3 +1,129 @@
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent;
+  box-sizing: border-box;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+#Hero {
+  width: 17rem;
+  height: 14rem;
+  padding: 0.5rem;
+  border: 1px solid black;
+  border-radius: 0.5rem;
+  display: flex;
+  gap: 1rem;
+  background-color: white;
+}
+#Hero meter {
+  width: 200px;
+  height: 40px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border: 1px solid #000;
+  border-radius: 10px;
+  background: #fff;
+}
+#Hero meter::-webkit-meter-bar {
+  background: #eee;
+}
+#Hero meter::-webkit-meter-optimum-value {
+  background: #b4e6e9;
+  border-radius: 10px;
+}
+#Hero meter::-moz-meter-bar {
+  background: #b4e6e9;
+  border-radius: 10px;
+}
+#Hero .hero-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1rem;
+}
+#Hero .hero-info .hero-id {
+  height: 10rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid black;
+  border-radius: 0.5rem;
+}
+#Hero .hero-info .hero-id .hero-title {
+  color: black;
+}
+#Hero .hero-info .hero-spec {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+}
+#Hero .hero-info .hero-spec .offensive, #Hero .hero-info .hero-spec .defensive {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  height: 1rem;
+  padding: 1rem 0.5rem;
+  border: 1px solid black;
+  border-radius: 0.5rem;
+}
+#Hero .hero-rod {
+  transform: rotate(-90deg);
+}
+
+#Wheels-spinner {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+#Wheels-spinner .wheels-trigger {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+}
+#Wheels-spinner .wheels-trigger .btn-spin-trigger {
+  width: fit-content;
+  margin: 0 auto;
+  padding: 1rem;
+  background-color: white;
+  color: black;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  font-size: 0.75rem;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+#Wheels-spinner .wheel-spin {
+  display: flex;
+  height: 620px;
+}
+#Wheels-spinner .wheel-spin .wheel {
+  display: flex;
+  flex-direction: column;
+}
+#Wheels-spinner .wheels-row {
+  display: flex;
+}
+#Wheels-spinner .wheels-row .wheel {
+  display: flex;
+  flex-direction: column;
+}
+
 #Boardgame {
   width: 100vw;
   height: 100vh;
@@ -12,53 +138,9 @@
   font-size: 2rem;
   margin-bottom: 1rem;
 }
-#Boardgame .wheels-comp {
+#Boardgame .player-board {
   display: flex;
   gap: 1rem;
-}
-#Boardgame .wheels-comp .wheels-trigger {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: start;
-}
-#Boardgame .wheels-comp .wheel-spin {
-  display: flex;
-  height: 620px;
-}
-#Boardgame .wheels-comp .wheel-spin .wheel {
-  display: flex;
-  flex-direction: column;
-}
-#Boardgame .wheels-comp .wheels-row {
-  display: flex;
-}
-#Boardgame .wheels-comp .wheels-row .wheel {
-  display: flex;
-  flex-direction: column;
-}
-
-#Heroes meter {
-  width: 200px;
-  height: 40px;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  border: 1px solid #000;
-  border-radius: 10px;
-  background: #fff;
-}
-#Heroes meter::-webkit-meter-bar {
-  background: #eee;
-}
-#Heroes meter::-webkit-meter-optimum-value {
-  background: #b4e6e9;
-  border-radius: 10px;
-}
-#Heroes meter::-moz-meter-bar {
-  background: #b4e6e9;
-  border-radius: 10px;
 }
 
 /*# sourceMappingURL=App.css.map */

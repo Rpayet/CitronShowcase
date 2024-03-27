@@ -85,7 +85,7 @@ export default function Wheels() {
     }, []);
 
     return (
-        <div className='wheels-comp'>
+        <div id='Wheels-spinner'>
 
             <div className='wheels-row'>
                 {spinResult.map((wheel) => {
@@ -103,6 +103,7 @@ export default function Wheels() {
             <div className='wheels-trigger'>
                 <button 
                     type="button"
+                    className='btn-spin-trigger'
                     disabled={spinCount === 0} 
                     onClick={() => { handleSpin() }}>
                         Spin ({spinCount} left)

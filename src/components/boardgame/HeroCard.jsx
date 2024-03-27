@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { TbUserPentagon } from "react-icons/tb";
-import { GiDefensiveWall, GiBroadsword  } from "react-icons/gi";
+import { GiDefensiveWall, GiBroadsword } from "react-icons/gi";
 
 export default function HeroCard({ hero, player }) {
 
@@ -15,17 +15,31 @@ export default function HeroCard({ hero, player }) {
         setBulwark(hero.bulwark[player.diamond.hero_rank]);
         setEnergy_to_act(hero.energy_to_act[player.diamond.hero_rank]);
     }, [player.diamond.hero_rank, hero.crown, hero.bulwark, hero.energy_to_act]);
-    
-  return (
-    <div id='Heroes' className={hero.name}>
-        <h1 className=''><TbUserPentagon /> {hero.name}</h1>
-        <meter min='0' max='6' value={exp}></meter>
-        <div className=''>
-            <p><GiBroadsword /> {crown}</p>
-            <p><GiDefensiveWall /> {bulwark}</p>
+
+    return (
+        <div id='Hero' className={hero.name}>
+            <div className='hero-info'>
+                <div className='hero-id'>
+                    <TbUserPentagon className='hero-pic'/>
+                    <h1 className='hero-title'>{hero.name}</h1>
+                    <p>{player.diamond.hero_rank}</p>
+                </div>
+                <div className='hero-spec'>
+                    <div className='offensive'>
+                        <GiBroadsword />
+                        <p>{crown}</p>
+                    </div>
+                    <div className='defensive'>
+                        <GiDefensiveWall />
+                        <p>{bulwark}</p>
+                    </div>
+                </div>
+                <meter className='hero-exp' min='0' max='6' value={exp}></meter>
+            </div>
+            <div className='hero-rod'>
+                <meter min='0' max={energy_to_act} value={rod} />
+            </div>
         </div>
-        <meter min='0' max={energy_to_act} value={rod} />
-    </div>
-  );
-  
+    );
+
 }

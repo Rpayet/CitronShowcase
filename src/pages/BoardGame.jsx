@@ -14,13 +14,16 @@ export default function BoardGame() {
     const heroesList = Object.values(heroes);
     
     return (
-        <div id=''>
-            <h1>Wheels Spinner</h1>
+        <section id='Boardgame'>
+            <h1>Player 1</h1>
             {/* <WheelFiber /> */}
-            {/* <WheelProvider>
-                <Wheels />
-            </WheelProvider> */}
-            <HeroCard hero={heroesList[1]} player={player1} />
-        </div>
+            <div className='player-board'>
+                <HeroCard hero={heroesList[0]} player={player1}/>
+                <WheelProvider>
+                    <Wheels />
+                </WheelProvider>
+                <HeroCard hero={heroesList[1]} player={player1} />
+            </div>
+        </section>
     );
 }
