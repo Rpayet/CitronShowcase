@@ -18,11 +18,11 @@ export default function BoardGame() {
             <h1>Player 1</h1>
             {/* <WheelFiber /> */}
             <div className='player-board'>
-                <HeroCard hero={heroesList[0]} player={player1}/>
+                <HeroCard base={'square'} hero={heroesList[0]} player={player1}/>
                 <WheelProvider>
                     <Wheels />
                 </WheelProvider>
-                <HeroCard hero={heroesList[1]} player={player1} />
+                <HeroCard base={'diamond'} hero={heroesList[1]} player={player1} />
             </div>
         </section>
     );

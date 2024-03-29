@@ -6,13 +6,13 @@ export default function GameProvider({ children }) {
 
     const [player1, setPlayer1] = useState({
         rank : '',
-        diamond : {
+        square: {
             hero: {},
             hero_rank: 'bronze',
             rod: 0,
             exp: 0,
         },
-        square: {
+        diamond : {
             hero: {},
             hero_rank: 'bronze',
             rod: 0,
@@ -24,13 +24,13 @@ export default function GameProvider({ children }) {
 
     const [player2, setPlayer2] = useState({
         rank : '',
-        diamond : {
+        square: {
             hero: {},
             hero_rank: 'bronze',
             rod: 0,
             exp: 0,
         },
-        square: {
+        diamond : {
             hero: {},
             hero_rank: 'bronze',
             rod: 0,
