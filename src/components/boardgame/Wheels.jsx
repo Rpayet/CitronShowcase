@@ -2,11 +2,13 @@ import { useEffect, useState, Suspense, useRef, useContext } from "react";
 import { Sprite, Stage } from "@pixi/react";
 import wheelSpriteSheet from '../../assets/images/sprites/Wheels_sprite-sheet_HD.png';
 import { WheelContext } from "../../context/WheelContext";
+import { GameContext } from "../../context/GameContext";
 
 export default function Wheels() {
 
-    const { resetSpinResult, spinResult, setSpinResult,
-        spinCount, setSpinCount, wheels, spriteDict } = useContext(WheelContext);
+    const { spinResult, setSpinResult, spinCount, setSpinCount, resetSpinResult } = useContext(GameContext);
+
+    const { wheels, spriteDict } = useContext(WheelContext);
     
     const handleWheelResult = () => {
         // block the spin if no spin count left
@@ -84,6 +86,11 @@ export default function Wheels() {
         }
     }, []);
 
+    const handleReset = () => {
+        setSpinResult(resetSpinResult);
+        setSpinCount(3);
+    }
+
     return (
         <div id='Wheels-spinner'>
 
@@ -108,6 +115,7 @@ export default function Wheels() {
                     onClick={() => { handleSpin() }}>
                         Spin ({spinCount} left)
                 </button>
+                <button type="button" className="btn-spin-trigger" onClick={handleReset}>Reset</button>
             </div>
 
             {/** todo: Convertir le code ci dessous en une série de cylindre à 8 faces avec Three Fiber */}

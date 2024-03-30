@@ -2,9 +2,7 @@ import { useContext } from 'react';
 import HeroCard from '../components/boardgame/HeroCard';
 import heroes from '../utils/_test-assets/heroes_data.json';
 import { GameContext } from '../context/GameContext';
-import HeroesList from '../components/boardgame/HeroesList';
 import Wheels from '../components/boardgame/Wheels';
-import WheelFiber from '../components/boardgame/wheels-comp/WheelFiber';
 import WheelProvider from '../context/WheelContext';
 
 export default function BoardGame() {
@@ -16,7 +14,6 @@ export default function BoardGame() {
     return (
         <section id='Boardgame'>
             <h1>Player 1</h1>
-            {/* <WheelFiber /> */}
             <div className='player-board'>
                 <HeroCard base={'square'} hero={heroesList[0]} player={player1}/>
                 <WheelProvider>

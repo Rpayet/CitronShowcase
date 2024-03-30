@@ -40,9 +40,27 @@ export default function GameProvider({ children }) {
         bulwark: 0,
     });
 
+    // spin default state
+    const resetSpinResult = [
+        {id: 1, result: '', checked: false},
+        {id: 2, result: '', checked: false},
+        {id: 3, result: '', checked: false},
+        {id: 4, result: '', checked: false},
+        {id: 5, result: '', checked: false},
+    ];
+
+    // states
+    const [spinResult, setSpinResult] = useState(resetSpinResult);
+    const [spinCount, setSpinCount] = useState(3);
 
     return (
-        <GameContext.Provider value={{player1, setPlayer1, player2, setPlayer2}}>
+        <GameContext.Provider value={{
+            player1, setPlayer1, 
+            player2, setPlayer2,
+            spinResult, setSpinResult,
+            spinCount, setSpinCount,
+            resetSpinResult,
+            }}>
             {children}
         </GameContext.Provider>
     );

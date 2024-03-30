@@ -4,19 +4,6 @@ export const WheelContext = createContext();
 
 export default function WheelProvider({ children }) {
 
-    // spin default state
-    const resetSpinResult = [
-        {id: 1, result: '', checked: false},
-        {id: 2, result: '', checked: false},
-        {id: 3, result: '', checked: false},
-        {id: 4, result: '', checked: false},
-        {id: 5, result: '', checked: false},
-    ];
-
-    // states
-    const [spinResult, setSpinResult] = useState(resetSpinResult);
-    const [spinCount, setSpinCount] = useState(3);
-
     // wheels content dictionary
     const wheels= {
         1: ['s1', 'd1', 's1', 'sp1', 'd1', 'h1', 'dp2', 'h1'],
@@ -37,7 +24,6 @@ export default function WheelProvider({ children }) {
     };
 
     const wheelValues = {
-        spinResult, setSpinResult, spinCount, setSpinCount,
         wheels, spriteDict,
     }
 
