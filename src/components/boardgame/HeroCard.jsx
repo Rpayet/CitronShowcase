@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import { GiDefensiveWall, GiBroadsword } from "react-icons/gi";
+import { GiBroadsword } from "react-icons/gi";
+import { TbBuildingCastle } from "react-icons/tb";
 import { FaDiamond, FaSquare } from "react-icons/fa6";
 
 export default function HeroCard({ base, hero, player }) {
@@ -30,7 +31,7 @@ export default function HeroCard({ base, hero, player }) {
                         <p>{crown}</p>
                     </div>
                     <div className='defensive'>
-                        <GiDefensiveWall />
+                        <TbBuildingCastle />
                         <p>{bulwark}</p>
                     </div>
                 </div>

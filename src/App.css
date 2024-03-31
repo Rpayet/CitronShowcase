@@ -148,6 +148,30 @@ ul {
   flex-direction: column;
 }
 
+#Crown {
+  width: 5rem;
+  height: 5rem;
+  padding: 0.5rem;
+  color: white;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: center;
+  border: 1px solid white;
+  border-radius: 50%;
+}
+
+#Bulwark {
+  color: white;
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+  border: 1px solid white;
+  padding: 0.5rem;
+}
+
 #Boardgame {
   width: 100vw;
   height: 100vh;
@@ -164,7 +188,21 @@ ul {
 }
 #Boardgame .player-board {
   display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   gap: 1rem;
+}
+#Boardgame .player-board .top {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+#Boardgame .player-board .bottom {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /*# sourceMappingURL=App.css.map */

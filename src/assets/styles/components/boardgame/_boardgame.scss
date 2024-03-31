@@ -1,5 +1,7 @@
  @import "./heroes-card";
  @import "./wheels";
+ @import "./crown";
+ @import "./bulwark";
 
 #Boardgame {
     width: 100vw;
@@ -18,7 +20,24 @@
 
     .player-board {
         display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
         gap: 1rem;
+
+        .top {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+    
+        .bottom {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    
     }
 
 }
