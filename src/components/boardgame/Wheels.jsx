@@ -6,7 +6,8 @@ import { GameContext } from "../../context/GameContext";
 
 export default function Wheels() {
 
-    const { spinResult, setSpinResult, spinCount, setSpinCount, resetSpinResult } = useContext(GameContext);
+    const { spinResult, setSpinResult, spinCount, 
+        setSpinCount, resetSpinResult, setPlayer1 } = useContext(GameContext);
 
     const { wheels, spriteDict } = useContext(WheelContext);
     
@@ -89,7 +90,7 @@ export default function Wheels() {
     const handleReset = () => {
         setSpinResult(resetSpinResult);
         setSpinCount(3);
-    }
+    };
 
     return (
         <div id='Wheels-spinner'>
@@ -115,7 +116,7 @@ export default function Wheels() {
                     onClick={() => { handleSpin() }}>
                         Spin ({spinCount} left)
                 </button>
-                <button type="button" className="btn-spin-trigger" onClick={handleReset}>Reset</button>
+                {/* <button type="button" className="btn-spin-trigger" onClick={handleReset}>Reset</button> */}
             </div>
 
             {/** todo: Convertir le code ci dessous en une série de cylindre à 8 faces avec Three Fiber */}

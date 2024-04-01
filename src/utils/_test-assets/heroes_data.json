@@ -5,12 +5,12 @@
         "silver": 3,
         "gold": 3
     },
-    "crown": {
+    "apt1": {
         "bronze": 3,
         "silver": 5,
         "gold": 7
     },
-    "bulwark": {
+    "apt2": {
         "bronze": 3,
         "silver": 5,
         "gold": 5
@@ -24,12 +24,12 @@
         "silver": 4,
         "gold": 4
     },
-    "crown": {
+    "apt1": {
         "bronze": 2,
         "silver": 3,
         "gold": 3
     },
-    "bulwark": {
+    "apt2": {
         "bronze": 2,
         "silver": 3,
         "gold": 5
@@ -43,12 +43,12 @@
         "silver": 3,
         "gold": 3
     },
-    "crown": {
+    "apt1": {
         "bronze": 3,
         "silver": 4,
         "gold": 6
     },
-    "bulwark": {
+    "apt2": {
         "bronze": 1,
         "silver": 2,
         "gold": 3
@@ -62,12 +62,12 @@
         "silver": 4,
         "gold": 3
     },
-    "crown": {
+    "apt1": {
         "bronze": 1,
         "silver": 2,
         "gold": 4
     },
-    "bulwark": {
+    "apt2": {
         "bronze": 3,
         "silver": 5,
         "gold": 5
@@ -81,12 +81,12 @@
         "silver": 3,
         "gold": 3
     },
-    "crown": {
+    "apt1": {
         "bronze": 1,
         "silver": 1,
         "gold": 2
     },
-    "bulwark": {
+    "apt2": {
         "bronze": 1,
         "silver": 2,
         "gold": 2
@@ -100,12 +100,12 @@
         "silver": 3,
         "gold": 3
     },
-    "crown": {
+    "apt1": {
         "bronze": 1,
         "silver": 2,
         "gold": 2
     },
-    "bulwark": {
+    "apt2": {
         "bronze": 2,
         "silver": 2,
         "gold": 3

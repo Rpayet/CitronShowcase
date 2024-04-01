@@ -1,6 +1,5 @@
 import { useContext } from 'react';
 import HeroCard from '../components/boardgame/HeroCard';
-import heroes from '../utils/_test-assets/heroes_data.json';
 import { GameContext } from '../context/GameContext';
 import Wheels from '../components/boardgame/Wheels';
 import WheelProvider from '../context/WheelContext';
@@ -10,9 +9,7 @@ import Crown from '../components/boardgame/Crown';
 export default function BoardGame() {
     
     const { player1, player2 } = useContext(GameContext);
-    
-    const heroesList = Object.values(heroes);
-    
+        
     return (
         <section id='Boardgame'>
             <h1>Player 1</h1>
@@ -22,11 +19,11 @@ export default function BoardGame() {
                     <Crown player={player1}/>
                 </div>
                 <div className='bottom'>
-                    <HeroCard base={'square'} hero={heroesList[0]} player={player1} />
+                    <HeroCard base={'square'} player={player1.square} />
                     <WheelProvider>
                         <Wheels />
                     </WheelProvider>
-                    <HeroCard base={'diamond'} hero={heroesList[1]} player={player1} />
+                    <HeroCard base={'diamond'} player={player1.diamond} />
                 </div>
             </div>
         </section>

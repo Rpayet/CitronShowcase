@@ -1,19 +1,22 @@
 import { createContext, useState } from "react";
+import heroes from '../utils/_test-assets/heroes_data.json';
 
 export const GameContext = createContext();
 
 export default function GameProvider({ children }) {
 
+    const heroesList = Object.values(heroes);
+
     const [player1, setPlayer1] = useState({
         rank : '',
         square: {
-            hero: {},
+            hero: heroesList[0],
             hero_rank: 'bronze',
             rod: 0,
             exp: 0,
         },
         diamond : {
-            hero: {},
+            hero: heroesList[1],
             hero_rank: 'bronze',
             rod: 0,
             exp: 0,
