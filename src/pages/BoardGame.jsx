@@ -8,7 +8,7 @@ import Crown from '../components/boardgame/Crown';
 
 export default function BoardGame() {
     
-    const { player1, player2 } = useContext(GameContext);
+    const { setPlayer1, player1, player2 } = useContext(GameContext);
         
     return (
         <section id='Boardgame'>
@@ -21,7 +21,7 @@ export default function BoardGame() {
                 <div className='bottom'>
                     <HeroCard base={'square'} player={player1.square} />
                     <WheelProvider>
-                        <Wheels />
+                        <Wheels setPlayer={setPlayer1}  />
                     </WheelProvider>
                     <HeroCard base={'diamond'} player={player1.diamond} />
                 </div>

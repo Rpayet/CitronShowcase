@@ -3,11 +3,12 @@ import { Sprite, Stage } from "@pixi/react";
 import wheelSpriteSheet from '../../assets/images/sprites/Wheels_sprite-sheet_HD.png';
 import { WheelContext } from "../../context/WheelContext";
 import { GameContext } from "../../context/GameContext";
+import SpinHandler from "./_utils/SpinHandler";
 
-export default function Wheels() {
+export default function Wheels({ setPlayer }) {
 
     const { spinResult, setSpinResult, spinCount, 
-        setSpinCount, resetSpinResult, setPlayer1 } = useContext(GameContext);
+        setSpinCount, resetSpinResult } = useContext(GameContext);
 
     const { wheels, spriteDict } = useContext(WheelContext);
     
@@ -87,10 +88,13 @@ export default function Wheels() {
         }
     }, []);
 
-    const handleReset = () => {
-        setSpinResult(resetSpinResult);
-        setSpinCount(3);
-    };
+    useEffect(() => {
+        if (spinCount === 0) {
+            SpinHandler({ setPlayer, spinResult });
+            setSpinResult(resetSpinResult);
+            setSpinCount(3);
+        }
+    })
 
     return (
         <div id='Wheels-spinner'>
@@ -116,21 +120,7 @@ export default function Wheels() {
                     onClick={() => { handleSpin() }}>
                         Spin ({spinCount} left)
                 </button>
-                {/* <button type="button" className="btn-spin-trigger" onClick={handleReset}>Reset</button> */}
             </div>
-
-            {/** todo: Convertir le code ci dessous en une série de cylindre à 8 faces avec Three Fiber */}
-            {/* <div className='wheel-spin'>
-                {Object.values(wheels).map((wheel, index) => (
-                    <div key={index} className='wheel'>
-                        {wheel.map((icon, i) => (
-                            <Stage key={i} width={102.5} height={77.5} options={{ backgroundAlpha: 0 }}>
-                                    <Sprite image={wheelSpriteSheet} {...spriteDict[icon]} anchor={0} scale={.25} />
-                            </Stage>
-                        ))}
-                    </div>
-                ))}
-            </div> */}
 
         </div>
     )

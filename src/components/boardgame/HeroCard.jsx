@@ -11,13 +11,15 @@ export default function HeroCard({ base, player }) {
     const [heroApt2, setApt2] = useState(hero.apt2[hero_rank]);
     const [heroRod, setHeroRod] = useState(player.rod);
     const [energy_to_act, setEnergy_to_act] = useState(hero.energy_to_act[hero_rank]);
-    const [heroExp, setHeroExp] = useState(0);
+    const [heroExp, setHeroExp] = useState(player.exp);
 
     useEffect(() => {
         setApt1(hero.apt1[hero_rank]);
         setApt2(hero.apt2[hero_rank]);
         setEnergy_to_act(hero.energy_to_act[hero_rank]);
-    }, [hero_rank, hero.apt1[hero_rank], hero.apt2[hero_rank], hero.energy_to_act[hero_rank]]);
+        setHeroRod(player.rod);
+        setHeroExp(player.exp);
+    }, [hero, player]);
 
     return (
         <div id='Hero' className={base}>
