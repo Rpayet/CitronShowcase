@@ -8,6 +8,7 @@ export default function GameProvider({ children }) {
     const heroesList = Object.values(heroes);
 
     const [player1, setPlayer1] = useState({
+        id: 1,
         rank : '',
         square: {
             hero: heroesList[0],
@@ -26,6 +27,7 @@ export default function GameProvider({ children }) {
     });
 
     const [player2, setPlayer2] = useState({
+        id: 2,
         rank : '',
         square: {
             hero: {},

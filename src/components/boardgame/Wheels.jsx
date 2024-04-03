@@ -5,10 +5,12 @@ import { WheelContext } from "../../context/WheelContext";
 import { GameContext } from "../../context/GameContext";
 import SpinHandler from "./_utils/SpinHandler";
 
-export default function Wheels({ setPlayer }) {
+export default function Wheels({ player }) {
 
     const { spinResult, setSpinResult, spinCount, 
-        setSpinCount, resetSpinResult } = useContext(GameContext);
+        setSpinCount, resetSpinResult, setPlayer1, setPlayer2 } = useContext(GameContext);
+
+    const setPlayer = (player.id === 1) ? setPlayer1 : setPlayer2;
 
     const { wheels, spriteDict } = useContext(WheelContext);
     

@@ -1,11 +1,17 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { GiBroadsword } from "react-icons/gi";
 import { TbBuildingCastle } from "react-icons/tb";
 import { FaDiamond, FaSquare } from "react-icons/fa6";
+import { GameContext } from "../../context/GameContext";
 
-export default function HeroCard({ base, player, setPlayer }) {
+export default function HeroCard({ base, player }) {
+
+    const { setPlayer1, setPlayer2 } = useContext(GameContext);
 
     const { hero, hero_rank, exp, rod } = player[base];
+
+    const setPlayer = (player.id === 1) ? setPlayer1 : setPlayer2;
+    const setOpponent = (player.id === 1) ? setPlayer2 : setPlayer1;
 
     const [heroApt1, setApt1] = useState(hero.apt1[hero_rank]);
     const [heroApt2, setApt2] = useState(hero.apt2[hero_rank]);
