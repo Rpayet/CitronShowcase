@@ -19,11 +19,11 @@ export default function BoardGame() {
                     <Crown player={player1}/>
                 </div>
                 <div className='bottom'>
-                    <HeroCard base={'square'} player={player1.square} />
+                    <HeroCard base={'square'} player={player1} setPlayer={setPlayer1} />
                     <WheelProvider>
                         <Wheels setPlayer={setPlayer1}  />
                     </WheelProvider>
-                    <HeroCard base={'diamond'} player={player1.diamond} />
+                    <HeroCard base={'diamond'} player={player1} setPlayer={setPlayer1} />
                 </div>
             </div>
         </section>

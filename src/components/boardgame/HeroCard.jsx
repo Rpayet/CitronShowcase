@@ -3,23 +3,54 @@ import { GiBroadsword } from "react-icons/gi";
 import { TbBuildingCastle } from "react-icons/tb";
 import { FaDiamond, FaSquare } from "react-icons/fa6";
 
-export default function HeroCard({ base, player }) {
+export default function HeroCard({ base, player, setPlayer }) {
 
-    const { hero, hero_rank } = player;
+    const { hero, hero_rank, exp, rod } = player[base];
 
     const [heroApt1, setApt1] = useState(hero.apt1[hero_rank]);
     const [heroApt2, setApt2] = useState(hero.apt2[hero_rank]);
-    const [heroRod, setHeroRod] = useState(player.rod);
+    const [heroRod, setHeroRod] = useState(rod);
     const [energy_to_act, setEnergy_to_act] = useState(hero.energy_to_act[hero_rank]);
-    const [heroExp, setHeroExp] = useState(player.exp);
+    const [heroExp, setHeroExp] = useState(exp);
 
     useEffect(() => {
         setApt1(hero.apt1[hero_rank]);
         setApt2(hero.apt2[hero_rank]);
         setEnergy_to_act(hero.energy_to_act[hero_rank]);
-        setHeroRod(player.rod);
-        setHeroExp(player.exp);
-    }, [hero, player]);
+        setHeroRod(rod);
+        setHeroExp(exp);
+    }, [hero, player[base]]);
+
+    useEffect(() => {
+        if (heroExp >= 6) {
+            switch (hero_rank) {
+                case 'bronze':
+                    setPlayer(prevState => ({
+                        ...prevState,
+                        [base]: {
+                            ...prevState[base],
+                            hero_rank: 'silver',
+                            exp: 0,
+                        }
+                    }));
+                    break;
+                case 'silver':
+                    setPlayer(prevState => ({
+                        ...prevState,
+                        [base]: {
+                            ...prevState[base],
+                            hero_rank: 'gold',
+                            exp: 0,
+                        }
+                    }));
+                    break;
+                case 'gold':
+                    // Bonus Action
+                    break;
+                default:
+                    break;
+        }}
+    }, [heroExp])
 
     return (
         <div id='Hero' className={base}>

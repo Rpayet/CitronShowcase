@@ -44,6 +44,8 @@ export default function SpinHandler({ setPlayer, spinResult }) {
             rod: prevState.diamond.rod + Math.max(0, diamondRod - 2),
             exp: prevState.diamond.exp + diamondExp,
         },
-        bulwark: prevState.bulwark + Math.max(0, bulwarkPoints - 2),
+        bulwark: ((prevState.bulwark + Math.max(0, bulwarkPoints - 2)) > 5)
+            ? 5
+            : prevState.bulwark + Math.max(0, bulwarkPoints - 2),
     }));
 }

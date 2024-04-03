@@ -91,7 +91,7 @@ export default function Wheels({ setPlayer }) {
     useEffect(() => {
         if (spinCount === 0) {
             SpinHandler({ setPlayer, spinResult });
-            setSpinResult(resetSpinResult);
+            setSpinResult(spinResult.map(wheel => ({ ...wheel, checked: false })));
             setSpinCount(3);
         }
     })
