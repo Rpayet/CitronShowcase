@@ -3,6 +3,7 @@ import { GiBroadsword } from "react-icons/gi";
 import { TbBuildingCastle } from "react-icons/tb";
 import { FaDiamond, FaSquare } from "react-icons/fa6";
 import { GameContext } from "../../context/GameContext";
+import HeroesActions from "./_utils/HeroesActions";
 
 export default function HeroCard({ base, player }) {
 
@@ -26,6 +27,12 @@ export default function HeroCard({ base, player }) {
         setHeroRod(rod);
         setHeroExp(exp);
     }, [hero, player[base]]);
+
+    useEffect(() => {
+        if (heroRod >= energy_to_act) {
+            HeroesActions({ setPlayer, setOpponent, hero, base });
+        }
+    }, [heroRod])
 
     useEffect(() => {
         if (heroExp >= 6) {
