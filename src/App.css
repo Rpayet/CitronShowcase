@@ -101,20 +101,27 @@ ul {
   border-radius: 0.5rem;
 }
 
-#Wheels-spinner {
-  display: flex;
+#Wheels-spinner1 {
   flex-direction: column;
+}
+
+#Wheels-spinner2 {
+  flex-direction: column-reverse;
+}
+
+#Wheels-spinner1, #Wheels-spinner2 {
+  display: flex;
   gap: 1rem;
   z-index: 100;
 }
-#Wheels-spinner .wheels-trigger {
+#Wheels-spinner1 .wheels-trigger, #Wheels-spinner2 .wheels-trigger {
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: start;
   gap: 1rem;
 }
-#Wheels-spinner .wheels-trigger .btn-spin-trigger {
+#Wheels-spinner1 .wheels-trigger .btn-spin-trigger, #Wheels-spinner2 .wheels-trigger .btn-spin-trigger {
   width: fit-content;
   padding: 1rem;
   background-color: white;
@@ -127,23 +134,23 @@ ul {
   text-align: center;
   margin-bottom: 1rem;
 }
-#Wheels-spinner .wheels-trigger .btn-spin-trigger:disabled {
+#Wheels-spinner1 .wheels-trigger .btn-spin-trigger:disabled, #Wheels-spinner2 .wheels-trigger .btn-spin-trigger:disabled {
   background-color: #d3d3d3;
   color: #a9a9a9;
   cursor: not-allowed;
 }
-#Wheels-spinner .wheel-spin {
+#Wheels-spinner1 .wheel-spin, #Wheels-spinner2 .wheel-spin {
   display: flex;
   height: 620px;
 }
-#Wheels-spinner .wheel-spin .wheel {
+#Wheels-spinner1 .wheel-spin .wheel, #Wheels-spinner2 .wheel-spin .wheel {
   display: flex;
   flex-direction: column;
 }
-#Wheels-spinner .wheels-row {
+#Wheels-spinner1 .wheels-row, #Wheels-spinner2 .wheels-row {
   display: flex;
 }
-#Wheels-spinner .wheels-row .wheel {
+#Wheels-spinner1 .wheels-row .wheel, #Wheels-spinner2 .wheels-row .wheel {
   display: flex;
   flex-direction: column;
 }
@@ -176,9 +183,10 @@ ul {
   width: 100vw;
   height: 100vh;
   display: flex;
-  flex-direction: column;
+  flex-direction: column-reverse;
   justify-content: center;
   align-items: center;
+  gap: 1rem;
   background-color: black;
 }
 #Boardgame h1 {
@@ -186,20 +194,30 @@ ul {
   font-size: 2rem;
   margin-bottom: 1rem;
 }
-#Boardgame .player-board {
-  display: flex;
+#Boardgame .player-board1 {
   flex-direction: column;
+}
+#Boardgame .player-board2 {
+  flex-direction: column-reverse;
+}
+#Boardgame .player-board1, #Boardgame .player-board2 {
+  display: flex;
   justify-content: center;
   align-items: center;
   gap: 1rem;
 }
-#Boardgame .player-board .top {
-  display: flex;
+#Boardgame .player-board1 .top-player1, #Boardgame .player-board2 .top-player1 {
   flex-direction: column;
+}
+#Boardgame .player-board1 .top-player2, #Boardgame .player-board2 .top-player2 {
+  flex-direction: column-reverse;
+}
+#Boardgame .player-board1 .top-player1, #Boardgame .player-board1 .top-player2, #Boardgame .player-board2 .top-player1, #Boardgame .player-board2 .top-player2 {
+  display: flex;
   justify-content: center;
   align-items: center;
 }
-#Boardgame .player-board .bottom {
+#Boardgame .player-board1 .bottom-player1, #Boardgame .player-board1 .bottom-player2, #Boardgame .player-board2 .bottom-player1, #Boardgame .player-board2 .bottom-player2 {
   display: flex;
   justify-content: center;
   align-items: center;

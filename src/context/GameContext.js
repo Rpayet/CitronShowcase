@@ -30,13 +30,13 @@ export default function GameProvider({ children }) {
         id: 2,
         rank : '',
         square: {
-            hero: {},
+            hero: heroesList[2],
             hero_rank: 'bronze',
             rod: 0,
             exp: 0,
         },
         diamond : {
-            hero: {},
+            hero: heroesList[3],
             hero_rank: 'bronze',
             rod: 0,
             exp: 0,

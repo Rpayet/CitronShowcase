@@ -99,7 +99,7 @@ export default function Wheels({ player }) {
     })
 
     return (
-        <div id='Wheels-spinner'>
+        <div id={`Wheels-spinner${player.id}`}>
 
             <div className='wheels-row'>
                 {spinResult.map((wheel) => {

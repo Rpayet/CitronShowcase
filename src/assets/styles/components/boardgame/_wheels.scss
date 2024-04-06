@@ -1,20 +1,25 @@
-#Wheels-spinner {
-    display: flex;
+#Wheels-spinner1 {
     flex-direction: column;
+}
+
+#Wheels-spinner2 {
+    flex-direction: column-reverse;
+}
+
+#Wheels-spinner1, #Wheels-spinner2 {
+    display: flex;
     gap: 1rem;
     z-index: 100;
 
     .wheels-trigger {
         width: 100%;
         display: flex;
-        // flex-direction: column;
         justify-content: center;
         align-items: start;
         gap: 1rem;
 
         .btn-spin-trigger {
             width: fit-content;
-            // margin: 0 auto;
             padding: 1rem;
             background-color: white;
             color: black;

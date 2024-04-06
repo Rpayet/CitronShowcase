@@ -8,24 +8,27 @@ import Crown from '../components/boardgame/Crown';
 
 export default function BoardGame() {
     
-    const { setPlayer1, player1 } = useContext(GameContext);
+    const { player1, player2 } = useContext(GameContext);
+
+    const playerArray = [player1, player2];
         
     return (
         <section id='Boardgame'>
-            <h1>Player 1</h1>
-            <div className='player-board'>
-                <div className='top'>
-                    <Bulwark player={player1} />
-                    <Crown player={player1} />
+            {playerArray.map(player => (
+                <div className={`player-board${player.id}`}>
+                    <div className={`top-player${player.id}`}>
+                        <Bulwark player={player} />
+                        <Crown player={player} />
+                    </div>
+                    <div className={`bottom-player${player.id}`}>
+                        <HeroCard base={'square'} player={player} />
+                        <WheelProvider>
+                            <Wheels player={player}/>
+                        </WheelProvider>
+                        <HeroCard base={'diamond'} player={player} />
+                    </div>
                 </div>
-                <div className='bottom'>
-                    <HeroCard base={'square'} player={player1} />
-                    <WheelProvider>
-                        <Wheels player={player1}/>
-                    </WheelProvider>
-                    <HeroCard base={'diamond'} player={player1} />
-                </div>
-            </div>
+            ))}
         </section>
     );
 }

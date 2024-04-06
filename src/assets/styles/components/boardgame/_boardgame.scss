@@ -7,9 +7,10 @@
     width: 100vw;
     height: 100vh;
     display: flex;
-    flex-direction: column;
+    flex-direction: column-reverse;
     justify-content: center;
     align-items: center;
+    gap: 1rem;
     background-color: black;
 
     h1 {
@@ -18,21 +19,35 @@
         margin-bottom: 1rem;
     }
 
-    .player-board {
-        display: flex;
+    .player-board1 {
         flex-direction: column;
+    }
+
+    .player-board2 {
+        flex-direction: column-reverse;
+    }
+
+    .player-board1, .player-board2 {
+        display: flex;
         justify-content: center;
         align-items: center;
         gap: 1rem;
 
-        .top {
-            display: flex;
+        .top-player1 {
             flex-direction: column;
+        }
+
+        .top-player2 {
+            flex-direction: column-reverse;
+        }
+
+        .top-player1, .top-player2 {
+            display: flex;
             justify-content: center;
             align-items: center;
         }
     
-        .bottom {
+        .bottom-player1, .bottom-player2 {
             display: flex;
             justify-content: center;
             align-items: center;
