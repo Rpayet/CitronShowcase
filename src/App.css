@@ -196,15 +196,18 @@ ul {
 }
 #Boardgame .player-board1 {
   flex-direction: column;
+  border-top: 1px solid white;
 }
 #Boardgame .player-board2 {
   flex-direction: column-reverse;
+  border-bottom: 1px solid white;
 }
 #Boardgame .player-board1, #Boardgame .player-board2 {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 1rem;
+  padding: 1rem;
 }
 #Boardgame .player-board1 .top-player1, #Boardgame .player-board2 .top-player1 {
   flex-direction: column;

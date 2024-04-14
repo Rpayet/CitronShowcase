@@ -7,8 +7,7 @@ import SpinHandler from "./_utils/SpinHandler";
 
 export default function Wheels({ player }) {
 
-    const { spinResult, setSpinResult, spinCount, 
-        setSpinCount, resetSpinResult, setPlayer1, setPlayer2 } = useContext(GameContext);
+    const { resetSpinResult, setPlayer1, setPlayer2 } = useContext(GameContext);
 
     const setPlayer = (player.id === 1) ? setPlayer1 : setPlayer2;
 
@@ -16,19 +15,19 @@ export default function Wheels({ player }) {
     
     const handleWheelResult = () => {
         // block the spin if no spin count left
-        if (spinCount === 0) return;
+        if (player.spinCount === 0) return;
 
         // filter checked wheels
-        const checkedWheels = spinResult.filter(wheel => wheel.checked);
+        const checkedWheels = player.spinResult.filter(wheel => wheel.checked);
 
         if (checkedWheels.length === 5) {
             // reset the spin count
-            setSpinCount(0);
+            setPlayer(prevState => ({ ...prevState, spinCount: 0 }))
             return;
         }
         
         // filter unchecked wheels & randomize their result
-        const uncheckedWheels = spinResult
+        const uncheckedWheels = player.spinResult
             .filter(wheel => !wheel.checked)
             .map(wheel => {
                 const wheelIcons = wheels[wheel.id];
@@ -45,7 +44,7 @@ export default function Wheels({ player }) {
             };
 
             // merge checked & unchecked wheels
-            const newSpinResult = spinResult.map(wheel => {
+            const newSpinResult = player.spinResult.map(wheel => {
                 // find the checked wheel in the checkedWheels array
                 const checkedWheel = checkedWheels.find(w => w.id === wheel.id);
                 if (checkedWheel) {
@@ -58,43 +57,39 @@ export default function Wheels({ player }) {
             });
 
             // update the spin result
-            setSpinResult(newSpinResult);
+            setPlayer(prevState => ({ ...prevState, spinResult: newSpinResult }));
     }
 
     // function to handle the checkbox
     const handleCheck = (id) => {
-        setSpinResult(spinResult.map(wheel => {
+        setPlayer(prevState => ({...prevState, spinResult: prevState.spinResult.map(wheel => {
             if (wheel.id === id) {
                 return { ...wheel, checked: !wheel.checked };
             }
-            return wheel;
-        }));
-    };
-    
-    // function to handle the spin count
-    const handleSpinCount = () => {
-        setSpinCount(spinCount - 1);
+            return wheel;   
+        })}));
     };
 
-    // function to handle the spin logic
+    // function to handle the spin & decrement the spin count
     const handleSpin = () => {
-        handleSpinCount();
         handleWheelResult();
+        setPlayer(prevState =>({ ...prevState, spinCount: prevState.spinCount - 1 }));
     }
-
+    
     // useEffect to trigger the spin on first render & cleanup
     useEffect(() => {
         handleWheelResult();
         return () => {
-            setSpinResult(resetSpinResult);
+            setPlayer(prevState => ({...prevState, spinResult: resetSpinResult}))
         }
     }, []);
 
+    // useEffect to end the player's turn
     useEffect(() => {
-        if (spinCount === 0) {
-            SpinHandler({ setPlayer, spinResult });
-            setSpinResult(spinResult.map(wheel => ({ ...wheel, checked: false })));
-            setSpinCount(3);
+        if (player.spinCount === 0) {
+            // Handler to manage the spin result
+            SpinHandler({ setPlayer, player });
+            setPlayer(prevState => ({...prevState, spinResult: prevState.spinResult.map(wheel => ({ ...wheel, checked: false })), spinCount: 3}))
         }
     })
 
@@ -102,13 +97,21 @@ export default function Wheels({ player }) {
         <div id={`Wheels-spinner${player.id}`}>
 
             <div className='wheels-row'>
-                {spinResult.map((wheel) => {
+                {player.spinResult.map((wheel) => {
                     return (
                         <div key={wheel.id} className='wheel'>
-                            <Stage width={102.5} height={77.5} options={{ backgroundAlpha: 0 }} onClick={(spinCount < 3 && spinCount > 0) ? (() => {handleCheck(wheel.id)}) : null}>
-                                <Sprite image={wheelSpriteSheet} {...spriteDict[wheel.result]} anchor={0} scale={.25} />
+                            <Stage 
+                                width={102.5} 
+                                height={77.5} 
+                                options={{ backgroundAlpha: 0 }} 
+                                onClick={(player.spinCount < 3 && player.spinCount > 0) ? (() => {handleCheck(wheel.id)}) : null}>
+
+                                    <Sprite image={wheelSpriteSheet} {...spriteDict[wheel.result]} anchor={0} scale={.25} />
+
                             </Stage>
-                            {(spinCount < 3 && spinCount > 0) && <input type="checkbox" checked={wheel.checked} onChange={() => {handleCheck(wheel.id)} } />}
+                            {(player.spinCount < 3 && player.spinCount > 0) && 
+                                <input type="checkbox" checked={wheel.checked} onChange={() => {handleCheck(wheel.id)} } />
+                            }
                         </div>
                     )
                 })}
@@ -118,9 +121,9 @@ export default function Wheels({ player }) {
                 <button 
                     type="button"
                     className='btn-spin-trigger'
-                    disabled={spinCount === 0} 
+                    disabled={player.spinCount === 0} 
                     onClick={() => { handleSpin() }}>
-                        Spin ({spinCount} left)
+                        Spin ({player.spinCount} left)
                 </button>
             </div>
 

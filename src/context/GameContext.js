@@ -7,6 +7,15 @@ export default function GameProvider({ children }) {
 
     const heroesList = Object.values(heroes);
 
+    // spin default state
+    const resetSpinResult = [
+        {id: 1, result: '', checked: false},
+        {id: 2, result: '', checked: false},
+        {id: 3, result: '', checked: false},
+        {id: 4, result: '', checked: false},
+        {id: 5, result: '', checked: false},
+    ];
+
     const [player1, setPlayer1] = useState({
         id: 1,
         rank : '',
@@ -24,6 +33,9 @@ export default function GameProvider({ children }) {
         },
         crown: 10,
         bulwark: 0,
+        spinResult: resetSpinResult,
+        spinCount: 3, 
+        nimp: 0,
     });
 
     const [player2, setPlayer2] = useState({
@@ -43,27 +55,14 @@ export default function GameProvider({ children }) {
         },
         crown: 10,
         bulwark: 0,
+        spinResult: resetSpinResult,
+        spinCount: 3,
     });
-
-    // spin default state
-    const resetSpinResult = [
-        {id: 1, result: '', checked: false},
-        {id: 2, result: '', checked: false},
-        {id: 3, result: '', checked: false},
-        {id: 4, result: '', checked: false},
-        {id: 5, result: '', checked: false},
-    ];
-
-    // states
-    const [spinResult, setSpinResult] = useState(resetSpinResult);
-    const [spinCount, setSpinCount] = useState(3);
 
     return (
         <GameContext.Provider value={{
             player1, setPlayer1, 
             player2, setPlayer2,
-            spinResult, setSpinResult,
-            spinCount, setSpinCount,
             resetSpinResult,
             }}>
             {children}

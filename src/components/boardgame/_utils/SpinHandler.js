@@ -1,4 +1,6 @@
-export default function SpinHandler({ setPlayer, spinResult }) {
+export default function SpinHandler({ setPlayer, player }) {
+
+    const { spinResult } = player;
 
     let squareRod = 0;
     let diamondRod = 0;

@@ -15,7 +15,7 @@ export default function BoardGame() {
     return (
         <section id='Boardgame'>
             {playerArray.map(player => (
-                <div className={`player-board${player.id}`}>
+                <div key={player.id} className={`player-board${player.id}`}>
                     <div className={`top-player${player.id}`}>
                         <Bulwark player={player} />
                         <Crown player={player} />
