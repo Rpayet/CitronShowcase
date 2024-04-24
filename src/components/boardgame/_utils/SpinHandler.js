@@ -1,4 +1,4 @@
-export default function SpinHandler({ setPlayer, player }) {
+export default function SpinHandler({ setPlayer, player, setHistory }) {
 
     const { spinResult } = player;
 
@@ -34,6 +34,8 @@ export default function SpinHandler({ setPlayer, player }) {
         }
     });
 
+    setHistory(prevState => [...prevState, player]);
+
     setPlayer(prevState => ({
         ...prevState,
         square: {
@@ -50,4 +52,5 @@ export default function SpinHandler({ setPlayer, player }) {
             ? 5
             : prevState.bulwark + Math.max(0, bulwarkPoints - 2),
     }));
+
 }

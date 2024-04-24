@@ -1,9 +1,8 @@
-import { useEffect, useState, Suspense, useRef, useContext } from "react";
+import { useEffect, useContext } from "react";
 import { Sprite, Stage } from "@pixi/react";
 import wheelSpriteSheet from '../../assets/images/sprites/Wheels_sprite-sheet_HD.png';
 import { WheelContext } from "../../context/WheelContext";
 import { GameContext } from "../../context/GameContext";
-import SpinHandler from "./_utils/SpinHandler";
 
 export default function Wheels({ player }) {
 
@@ -24,7 +23,7 @@ export default function Wheels({ player }) {
             // reset the spin count
             setPlayer(prevState => ({ ...prevState, spinCount: 0 }))
             return;
-        }
+        };
         
         // filter unchecked wheels & randomize their result
         const uncheckedWheels = player.spinResult
@@ -58,7 +57,7 @@ export default function Wheels({ player }) {
 
             // update the spin result
             setPlayer(prevState => ({ ...prevState, spinResult: newSpinResult }));
-    }
+    };
 
     // function to handle the checkbox
     const handleCheck = (id) => {
@@ -73,8 +72,12 @@ export default function Wheels({ player }) {
     // function to handle the spin & decrement the spin count
     const handleSpin = () => {
         handleWheelResult();
-        setPlayer(prevState =>({ ...prevState, spinCount: prevState.spinCount - 1 }));
-    }
+        if (player.spinResult.filter(wheel => wheel.checked).length === 5) {
+            setPlayer(prevState => ({...prevState, spinCount: 0}));
+        } else {
+            setPlayer(prevState =>({ ...prevState, spinCount: prevState.spinCount - 1 }));
+        }
+    };
     
     // useEffect to trigger the spin on first render & cleanup
     useEffect(() => {
@@ -83,15 +86,6 @@ export default function Wheels({ player }) {
             setPlayer(prevState => ({...prevState, spinResult: resetSpinResult}))
         }
     }, []);
-
-    // useEffect to end the player's turn
-    useEffect(() => {
-        if (player.spinCount === 0) {
-            // Handler to manage the spin result
-            SpinHandler({ setPlayer, player });
-            setPlayer(prevState => ({...prevState, spinResult: prevState.spinResult.map(wheel => ({ ...wheel, checked: false })), spinCount: 3}))
-        }
-    })
 
     return (
         <div id={`Wheels-spinner${player.id}`}>

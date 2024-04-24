@@ -34,11 +34,11 @@ Heroes array :
 |--------|----------|-------|-------|----------------------------------------------------|
 | Assassin   | 3 Energy to Act | 3 Energy to Act | 3 Energy to Act | Specialist Hero. Attacks delay the opponent's Hero with the least amount of energy left before acting. Also deals low damage to the Crown directly, disregarding Bulwark.   |
 |        | Crown: 1 | Crown: 1 | Crown: 2 |                                                    |
-|        | Bulwark: 1| Bulwark: 2 | Bulwark: 2 |                                      |
+|        | Opponent Base: 1| Opponent Base: 2 | Opponent Base: 2 |                                      |
 |--------|----------|-------|-------|----------------------------------------------------|
 | Priest   | 4 Energy to Act | 3 Energy to Act | 3 Energy to Act | Support Hero. Heals its team's Crown, and gives energy to its fellow Hero.   |
 |        | Crown: 1 | Crown: 2 | Crown: 2 |                                                    |
-|        | Bulwark: 2| Bulwark: 2 | Bulwark: 3 |                                      |                         
+|        | Ally: 2| Ally: 2 | Ally: 3 |                                      |                         
 
 
 ### Wheels statistics
