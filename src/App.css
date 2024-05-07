@@ -14,6 +14,64 @@ ul {
   list-style: none;
 }
 
+#Dashboard {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  gap: 1rem;
+  z-index: 100;
+  transition: all 0.7s ease-in-out;
+}
+#Dashboard a {
+  color: white;
+}
+
+#App {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+}
+#App .app-container {
+  position: relative;
+  max-width: 1640px;
+  width: 1640px;
+  max-height: 800px;
+  height: 800px;
+  border-radius: 1rem;
+  border: 0.25rem solid rgba(255, 255, 255, 0.6666666667);
+  background: linear-gradient(to bottom, #1e81c8, #163bb3);
+  box-shadow: 0 0 1rem rgba(0, 0, 0, 0.35);
+  overflow: hidden;
+  transition: all 0.3s ease-in-out;
+}
+
+#Menu {
+  width: 60%;
+  border-radius: 0.5rem 0 0 0.5rem;
+}
+
+#Resume {
+  width: 40%;
+  border-radius: 0 0.5rem 0.5rem 0;
+}
+
+#Landing {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+#Landing #Menu, #Landing #Resume {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid black;
+}
+
 #Hero {
   width: 17rem;
   height: 14rem;
@@ -180,8 +238,8 @@ ul {
 }
 
 #Boardgame {
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column-reverse;
   justify-content: center;

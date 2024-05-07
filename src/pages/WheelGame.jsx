@@ -6,7 +6,7 @@ import WheelProvider from '../context/WheelContext';
 import Bulwark from '../components/boardgame/Bulwark';
 import Crown from '../components/boardgame/Crown';
 
-export default function BoardGame() {
+export default function WheelGame() {
     
     const { player1, player2 } = useContext(GameContext);
 

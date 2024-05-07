@@ -1,0 +1,13 @@
+#Dashboard {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    gap: 1rem;
+    z-index: 100;
+    transition: all .7s ease-in-out;
+    
+    a {
+        color: white;
+    }
+}

@@ -1,0 +1,24 @@
+@import '../components/dashboard/dashboard';
+
+#App {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+
+    .app-container {
+        position: relative;
+        max-width: 1640px;
+        width: 1640px;
+        max-height: 800px;
+        height: 800px;
+        border-radius: 1rem;
+        border: .25rem solid #ffffffaa;
+        background: linear-gradient(to bottom, #1e81c8, #163bb3);
+        box-shadow: 0 0 1rem rgba(0, 0, 0, 0.35);
+        overflow: hidden;
+        transition: all .3s ease-in-out;
+    }
+}

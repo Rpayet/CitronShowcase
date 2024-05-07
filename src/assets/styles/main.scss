@@ -1,4 +1,6 @@
 @import './base/_reset';
 @import './utils/mixin.scss';
 
+@import './base/app';
+@import './components/landing/landing';
 @import './components/boardgame/boardgame.scss';
