@@ -1,4 +1,29 @@
 #Resume {
-    width: 40%;
+    width: 35%;
     border-radius: 0 .5rem .5rem 0;
+    display: flex;
+    justify-content: center;
+    padding: 4rem;
+    
+    .pictures {
+        position: relative;
+        width: 25rem;
+        height: 25rem;
+        border-radius: 50%;
+        border: .25rem solid black;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        
+        .presentation {
+            position: absolute;
+            border: 2px solid black;
+            width: 25rem;
+            height: 10rem;
+            bottom: -25%;
+            left: 0;
+            text-align: center;
+        }
+    }
+
 }

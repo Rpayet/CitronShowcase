@@ -1,9 +1,12 @@
+import Menu from "../components/landing/menu/Menu";
+import Resume from "../components/landing/resume/Resume";
+
 export default function Landing() {
 
     return (
         <section id='Landing'>
-            <div id='Menu'>Menu</div>
-            <div id='Resume'>Résumé</div>
+            <Menu />
+            <Resume />
         </section>
     )
 }
