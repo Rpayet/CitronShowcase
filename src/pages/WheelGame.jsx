@@ -1,10 +1,10 @@
 import { useContext } from 'react';
-import HeroCard from '../components/boardgame/HeroCard';
+import HeroCard from '../components/arcade/wheels/HeroCard';
 import { GameContext } from '../context/GameContext';
-import Wheels from '../components/boardgame/Wheels';
+import Wheels from '../components/arcade/wheels/Wheels';
 import WheelProvider from '../context/WheelContext';
-import Bulwark from '../components/boardgame/Bulwark';
-import Crown from '../components/boardgame/Crown';
+import Bulwark from '../components/arcade/wheels/Bulwark';
+import Crown from '../components/arcade/wheels/Crown';
 
 export default function WheelGame() {
     

@@ -1,8 +1,8 @@
 import { useEffect, useContext } from "react";
 import { Sprite, Stage } from "@pixi/react";
-import wheelSpriteSheet from '../../assets/images/sprites/Wheels_sprite-sheet_HD.png';
-import { WheelContext } from "../../context/WheelContext";
-import { GameContext } from "../../context/GameContext";
+import wheelSpriteSheet from '../../../assets/images/sprites/Wheels_sprite-sheet_HD.png';
+import { WheelContext } from "../../../context/WheelContext";
+import { GameContext } from "../../../context/GameContext";
 
 export default function Wheels({ player }) {
 

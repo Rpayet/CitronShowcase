@@ -1,6 +1,5 @@
 #Menu {
     width: 65%;
-    border-radius: .5rem 0 0 .5rem;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(2, 1fr);
@@ -25,13 +24,19 @@
     }
 
     .latest, .articles {
-        width: 20rem;
-        height: 20rem;
+        max-width: 20rem;
+        max-height: 20rem;
     }
 
     .latest, .articles, .portefolio, .arcade {
         border: .25rem solid black;
         border-radius: .5rem;
         padding: 1rem;
+        transition: all .3s ease-in-out;
+
+        &:hover {
+            border: .15rem solid white;
+            transform: scale(1.02);
+        }
     }
 }

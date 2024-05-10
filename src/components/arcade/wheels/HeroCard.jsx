@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { GiBroadsword } from "react-icons/gi";
 import { TbBuildingCastle } from "react-icons/tb";
 import { FaDiamond, FaSquare } from "react-icons/fa6";
-import { GameContext } from "../../context/GameContext";
+import { GameContext } from "../../../context/GameContext";
 import HeroesActions from "./_utils/HeroesActions";
 
 export default function HeroCard({ base, player }) {

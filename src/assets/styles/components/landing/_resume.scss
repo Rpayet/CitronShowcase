@@ -1,6 +1,5 @@
 #Resume {
     width: 35%;
-    border-radius: 0 .5rem .5rem 0;
     display: flex;
     justify-content: center;
     padding: 4rem;
@@ -18,11 +17,48 @@
         .presentation {
             position: absolute;
             border: 2px solid black;
+            border-radius: .5rem;
             width: 25rem;
             height: 10rem;
             bottom: -25%;
             left: 0;
             text-align: center;
+            background-color: #00000050;
+            backdrop-filter: blur(.25rem);
+
+            .content {
+                position: relative;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100%;
+
+                .text {
+                    color: white;
+                }
+                
+                .arrow {
+                    position: absolute;
+                    font-size: 5rem;
+                    top: 25%;
+                    transition: all .3s ease-in-out;
+                    
+                    &:hover {
+                        transform: scale(1.1);
+                        color: white;
+                        cursor: pointer;
+                    }
+                }
+
+                .left {
+                    left: -2.5rem;
+
+                }
+
+                .right {
+                    right: -2.5rem;
+                }
+            }
         }
     }
 

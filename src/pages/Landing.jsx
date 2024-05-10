@@ -5,8 +5,8 @@ export default function Landing() {
 
     return (
         <section id='Landing'>
-            <Menu />
             <Resume />
+            <Menu />
         </section>
     )
 }

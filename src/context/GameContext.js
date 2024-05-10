@@ -1,6 +1,6 @@
 import { createContext, useEffect, useState } from "react";
 import heroes from '../utils/_test-assets/heroes_data.json';
-import SpinHandler from "../components/boardgame/_utils/SpinHandler";
+import SpinHandler from "../components/arcade/wheels/_utils/SpinHandler";
 
 export const GameContext = createContext();
 

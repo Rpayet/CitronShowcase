@@ -1,10 +1,12 @@
+import { Link } from "react-router-dom";
+
 export default function Menu() {
     return (
         <div id='Menu'>
-            <div className='latest'>Actualités</div>
-            <div className='articles'>Articles</div>
-            <div className='portefolio'>Portefolio</div>
-            <div className='arcade'>Arcade Palace</div>
+            <Link to='/latest' className='latest'>Actualités</Link>
+            <Link to='/articles' className='articles'>Articles</Link>
+            <Link to='/portefolio' className='portefolio'>Portefolio</Link>
+            <Link to='/arcade-palace' className='arcade'>Arcade Palace</Link>
         </div>
     )
 }

@@ -1,4 +1,4 @@
-import heroes from '../../utils/_test-assets/heroes_data.json';
+import heroes from '../../../utils/_test-assets/heroes_data.json';
 
 export default function HeroesList() {
     return (

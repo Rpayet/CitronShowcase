@@ -50,7 +50,6 @@ ul {
 
 #Menu {
   width: 65%;
-  border-radius: 0.5rem 0 0 0.5rem;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(2, 1fr);
@@ -71,18 +70,22 @@ ul {
   grid-area: 1/3/3/4;
 }
 #Menu .latest, #Menu .articles {
-  width: 20rem;
-  height: 20rem;
+  max-width: 20rem;
+  max-height: 20rem;
 }
 #Menu .latest, #Menu .articles, #Menu .portefolio, #Menu .arcade {
   border: 0.25rem solid black;
   border-radius: 0.5rem;
   padding: 1rem;
+  transition: all 0.3s ease-in-out;
+}
+#Menu .latest:hover, #Menu .articles:hover, #Menu .portefolio:hover, #Menu .arcade:hover {
+  border: 0.15rem solid white;
+  transform: scale(1.02);
 }
 
 #Resume {
   width: 35%;
-  border-radius: 0 0.5rem 0.5rem 0;
   display: flex;
   justify-content: center;
   padding: 4rem;
@@ -100,11 +103,41 @@ ul {
 #Resume .pictures .presentation {
   position: absolute;
   border: 2px solid black;
+  border-radius: 0.5rem;
   width: 25rem;
   height: 10rem;
   bottom: -25%;
   left: 0;
   text-align: center;
+  background-color: rgba(0, 0, 0, 0.3137254902);
+  backdrop-filter: blur(0.25rem);
+}
+#Resume .pictures .presentation .content {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+#Resume .pictures .presentation .content .text {
+  color: white;
+}
+#Resume .pictures .presentation .content .arrow {
+  position: absolute;
+  font-size: 5rem;
+  top: 25%;
+  transition: all 0.3s ease-in-out;
+}
+#Resume .pictures .presentation .content .arrow:hover {
+  transform: scale(1.1);
+  color: white;
+  cursor: pointer;
+}
+#Resume .pictures .presentation .content .left {
+  left: -2.5rem;
+}
+#Resume .pictures .presentation .content .right {
+  right: -2.5rem;
 }
 
 #Landing {
@@ -114,7 +147,6 @@ ul {
 }
 #Landing #Menu, #Landing #Resume {
   height: 100%;
-  border: 1px solid black;
 }
 
 #Hero {
