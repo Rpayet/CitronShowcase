@@ -149,6 +149,34 @@ ul {
   height: 100%;
 }
 
+#ArcadePalace {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+#ArcadePalace .games {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+#ArcadePalace .games .game-link {
+  width: 20rem;
+  height: 30rem;
+  background-color: rgba(0, 0, 0, 0.3137254902);
+  border: 0.25rem solid black;
+  border-radius: 0.5rem;
+  color: white;
+  transition: all 0.3s ease-in-out;
+}
+#ArcadePalace .games .game-link:hover {
+  border: 0.15rem solid white;
+  transform: scale(1.02);
+}
+
 #Hero {
   width: 17rem;
   height: 14rem;

@@ -1,0 +1,30 @@
+#ArcadePalace {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+
+    .games {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        gap: 1rem;
+
+        .game-link {
+            width: 20rem;
+            height: 30rem;
+            background-color: #00000050;
+            border: .25rem solid black;
+            border-radius: .5rem;
+            color: white;
+            transition: all .3s ease-in-out;
+
+            &:hover {
+                border: .15rem solid white;
+                transform: scale(1.02);
+            }
+        }
+    }
+}
