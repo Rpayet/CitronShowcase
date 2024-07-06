@@ -457,6 +457,58 @@ ul {
     opacity: 1;
   }
 }
+#EventListInput {
+  position: relative;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  margin-top: 1.5rem;
+  z-index: 1;
+}
+#EventListInput.open {
+  animation: slide-in-from-top 0.5s ease-in-out;
+}
+#EventListInput.closed {
+  animation: slide-out-to-top 0.5s ease-in-out;
+}
+#EventListInput label {
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+#EventListInput .input {
+  width: 100%;
+  padding: 0.5rem;
+  border-radius: 0.75rem;
+  outline: none;
+  border: 0.2rem solid transparent;
+  color: black;
+  background-color: white;
+  border: 0.2rem solid #1c3649;
+}
+#EventListInput .input:focus {
+  border: 0.2rem solid #40C5EC;
+}
+
+@keyframes slide-in-from-top {
+  0% {
+    transform: translateX(-200%);
+  }
+  50% {
+    transform: translateX(-200%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+@keyframes slide-out-to-top {
+  from {
+    transform: translateX(0%);
+  }
+  to {
+    transform: translateX(-200%);
+  }
+}
 #EventsList {
   width: 100%;
   height: 100%;

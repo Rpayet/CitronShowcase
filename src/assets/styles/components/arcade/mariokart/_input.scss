@@ -1,0 +1,56 @@
+#EventListInput {
+    position: relative;
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    margin-top: 1.5rem;
+    z-index: 1;
+
+    &.open {
+        animation: slide-in-from-top .5s ease-in-out;
+    }
+
+    &.closed {
+        animation: slide-out-to-top .5s ease-in-out;
+    }
+
+    label {
+        font-size: .75rem;
+        font-weight: 500;
+    }
+
+    .input {
+        width: 100%;
+        padding: .5rem;
+        border-radius: .75rem;
+        outline: none;
+        border: .2rem solid transparent;
+        color: black;
+        background-color: white;
+        border: .2rem solid $mk-bg-secondary;
+
+        &:focus {
+            border: .2rem solid $lumi;
+        }
+    }
+
+}
+
+@keyframes slide-in-from-top {
+    0% {
+        transform: translateX(-200%);
+    } 50% {
+        transform: translateX(-200%);
+    } 100% {
+        transform: translateX(0%);
+    }
+}
+
+@keyframes slide-out-to-top {
+    from {
+        transform: translateX(0%);
+    } to {
+        transform: translateX(-200%);
+    }
+}
