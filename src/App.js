@@ -7,6 +7,7 @@ import ArcadePalace from './pages/ArcadePalace';
 import GameProvider from './context/GameContext';
 import HeroesSelect from './components/arcade/wheels/HeroesSelect';
 import { MkProvider } from './context/MkContext';
+import EventsList from './components/arcade/mariokart/search/EventsList';
 
 export default function App() {
     return (
@@ -18,7 +19,7 @@ export default function App() {
                     <Route path='/arcade-palace' element={<ArcadePalace />} />
                     <Route path='/arcade-palace/mk-trials' element={
                         <MkProvider>
-                            <h2>Mario Kart - Concours contre-la-montre</h2>
+                            <EventsList />
                         </MkProvider>
                     } />
                     <Route path='/arcade-palace/wheels' element={

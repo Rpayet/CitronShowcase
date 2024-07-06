@@ -1,12 +1,12 @@
 import { createContext } from "react";
 
-import mk_tournaments_list from '../utils/_test-assets/mk_tournaments_list.json';
+import tounamentsList from '../utils/_test-assets/mk_tournament_list.json';
 
 export const MkContext = createContext();
 
 export const MkProvider = ({children}) => {
 
-    const tournaments = Object.values(mk_tournaments_list);
+    const tournaments = Object.values(tounamentsList);
 
     const mkContextValue = {
         // Add the mk context values here
