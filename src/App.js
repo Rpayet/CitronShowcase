@@ -6,6 +6,7 @@ import Landing from './pages/Landing';
 import ArcadePalace from './pages/ArcadePalace';
 import GameProvider from './context/GameContext';
 import HeroesSelect from './components/arcade/wheels/HeroesSelect';
+import { MkProvider } from './context/MkContext';
 
 export default function App() {
     return (
@@ -15,7 +16,11 @@ export default function App() {
                 <Routes>
                     <Route path='/' element={<Landing />} />
                     <Route path='/arcade-palace' element={<ArcadePalace />} />
-                    <Route path='/arcade-palace/mk-trials' element={<h2>Mario Kart - Concours contre-la-montre</h2>} />
+                    <Route path='/arcade-palace/mk-trials' element={
+                        <MkProvider>
+                            <h2>Mario Kart - Concours contre-la-montre</h2>
+                        </MkProvider>
+                    } />
                     <Route path='/arcade-palace/wheels' element={
                         <GameProvider>
                             <HeroesSelect />                            
