@@ -32,7 +32,7 @@ export default function MkCard({tournament, setCardId, cardId, fadeKey}) {
 
     return (
         <div 
-            id="EventCard"
+            id="MkCard"
             style={{animation : `fadein ${ (1 + (fadeKey/10)) / 2}s ease-in-out`}}
             className={`event-card 
                 ${hovered ? 'hovered' : 'unhovered' }-${speed === '200cc' ? '200cc' : '150cc'}

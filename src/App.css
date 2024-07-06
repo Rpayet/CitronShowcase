@@ -149,6 +149,460 @@ ul {
   height: 100%;
 }
 
+#MkCard {
+  display: flex;
+  align-items: flex-end;
+  width: 300px;
+  height: 100px;
+  border-radius: 0.5rem;
+  display: flex;
+  backdrop-filter: blur(10px);
+  opacity: 1;
+  z-index: 1;
+}
+#MkCard.unhovered-200cc::after, #MkCard.unhovered-200cc::before, #MkCard.hovered-200cc::after, #MkCard.hovered-200cc::before, #MkCard.unhovered-150cc::after, #MkCard.unhovered-150cc::before, #MkCard.hovered-150cc::after, #MkCard.hovered-150cc::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 50%;
+  border-radius: 0 0.5rem 0 0.5rem;
+  z-index: -1;
+  transition: all 0.2s ease-in-out;
+}
+#MkCard.unhovered-200cc::before, #MkCard.hovered-200cc::before, #MkCard.unhovered-150cc::before, #MkCard.hovered-150cc::before {
+  opacity: 0.5;
+  background: linear-gradient(to bottom left, rgba(255, 255, 255, 0.0666666667), #ffffff);
+  z-index: -1;
+}
+#MkCard.unhovered-200cc::before, #MkCard.unhovered-150cc::before {
+  transform: translate(0, -50%) skew(0deg, -5deg) rotate(0deg);
+}
+#MkCard.unhovered-200cc::after, #MkCard.unhovered-150cc::after {
+  transform: translate(1%, -30%) skew(0deg, -5deg) rotate(0deg);
+}
+#MkCard.hovered-200cc::before, #MkCard.hovered-150cc::before {
+  transform: translate(0, -50%) skew(0deg, -5deg) rotate(5deg) scale(1.05);
+}
+#MkCard.hovered-200cc::after, #MkCard.hovered-150cc::after {
+  border: 0.4rem solid goldenrod;
+  transform: translate(0%, -20%) skew(0deg, -5deg) rotate(5deg);
+}
+#MkCard.unhovered-200cc::after {
+  border: 0.2rem solid goldenrod;
+}
+#MkCard.hovered-200cc::after {
+  background-color: goldenrod;
+  border: 0.4rem solid goldenrod;
+}
+#MkCard.unhovered-150cc::after {
+  border: 0.2rem solid #00d0ff;
+}
+#MkCard.hovered-150cc::after {
+  background-color: #00d0ff;
+  border: 0.4rem solid #00d0ff;
+}
+#MkCard.selected-200cc {
+  animation: shake 0.5s ease-in-out;
+}
+#MkCard.selected-200cc::before {
+  transform: translate(0, -50%) skew(0deg, -5deg) rotate(5deg) scale(1.05);
+}
+#MkCard.selected-200cc::after {
+  z-index: 0;
+  height: 15px;
+  background-color: goldenrod;
+  border: 0.4rem solid goldenrod;
+  transform: translate(10px, 0) skew(0deg, -5deg) rotate(5deg);
+}
+#MkCard.selected-150cc {
+  animation: shake 0.5s ease-in-out;
+}
+#MkCard.selected-150cc::before {
+  transform: translate(0, -50%) skew(0deg, -5deg) rotate(5deg) scale(1.05);
+}
+#MkCard.selected-150cc::after {
+  z-index: 0;
+  height: 15px;
+  background-color: #00d0ff;
+  border: 0.4rem solid #00d0ff;
+  transform: translate(10px, 0) skew(0deg, -5deg) rotate(5deg);
+}
+#MkCard.event-card {
+  cursor: pointer;
+}
+#MkCard.event-card .event-img {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  background-size: cover;
+  background-position: center;
+  transition: all 0.1s linear;
+}
+#MkCard.event-card .event-img::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 0 0.5rem 0 0.5rem;
+  background: linear-gradient(to bottom left, rgba(255, 255, 255, 0.0666666667), #ffffff);
+  transition: all 0.2s ease-in-out;
+  z-index: 10;
+}
+#MkCard.event-card .event-img.hovered {
+  animation: cartridge-in 0.2s linear;
+  transform: scale(1.2) translate(0, 0);
+}
+#MkCard.event-card .event-img.hovered::after {
+  height: 0%;
+}
+#MkCard.event-card .event-img.unhovered {
+  animation: cartridge-out 0.2s linear;
+  transform: scale(1) translate(0, 0);
+}
+#MkCard.event-card .event-img.unhovered::after {
+  height: 0%;
+}
+#MkCard.event-card .event-img.active {
+  transform: scale(1.1) translate(0, -10px);
+}
+#MkCard.event-card .event-img.selected {
+  animation: cartridge-insert 0.5s ease-in-out;
+  transform: scale(1) translate(0px, 0px);
+}
+#MkCard.event-card .event-img .race-icon {
+  width: 64px;
+  height: 64px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  transition: all 0.2s ease-in-out;
+}
+#MkCard.event-card .event-img .race-icon::after {
+  content: "";
+  position: absolute;
+  bottom: -45px;
+  left: -15px;
+  width: 100px;
+  height: 10px;
+  border-radius: 0 0 0.5rem 0.5rem;
+  border-bottom: 0.2rem solid rgba(0, 0, 0, 0.3333333333);
+  transition: all 0.2s ease-in-out;
+  filter: blur(1.5px);
+  opacity: 0;
+}
+#MkCard.event-card .event-img .race-icon.unhovered {
+  transform: translate(0%, 10%) scale(1.2);
+}
+#MkCard.event-card .event-img .race-icon.hovered {
+  transform: translate(-15%, 30%) scale(0.5);
+}
+#MkCard.event-card .event-img .race-icon.selected {
+  transform: translate(-15%, 30%) scale(0.5);
+}
+#MkCard.event-card .event-img .race-icon.selected::after {
+  opacity: 1;
+}
+#MkCard.event-card .event-img .race-icon .icon {
+  width: 100%;
+  height: 100%;
+}
+#MkCard.event-card .event-info {
+  position: relative;
+  width: 250px;
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  margin-left: 0.5rem;
+  z-index: 2;
+  transition: all 0.2s ease-in-out;
+}
+#MkCard.event-card .event-info .event-race {
+  font-size: 1rem;
+  font-weight: 700;
+}
+#MkCard.event-card .event-info .event-name {
+  font-size: 0.75rem;
+  font-weight: 400;
+}
+#MkCard.event-card .event-info .event-speed {
+  position: absolute;
+  right: 0;
+  bottom: 25px;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #000000;
+  opacity: 0.1;
+  z-index: -1;
+  transition: all 0.2s ease-in-out;
+}
+#MkCard.event-card .event-info .event-speed.show {
+  opacity: 0.1;
+}
+#MkCard.event-card .event-info .event-speed.hide {
+  opacity: 0;
+}
+#MkCard.event-card .event-details-200cc, #MkCard.event-card .event-details-150cc {
+  position: absolute;
+  display: flex;
+  align-items: flex-end;
+  bottom: 0;
+  right: -20px;
+  z-index: 2;
+}
+#MkCard.event-card .event-details-200cc .capacity, #MkCard.event-card .event-details-200cc .endAt, #MkCard.event-card .event-details-200cc .user, #MkCard.event-card .event-details-150cc .capacity, #MkCard.event-card .event-details-150cc .endAt, #MkCard.event-card .event-details-150cc .user {
+  font-size: 0.75rem;
+  font-weight: 400;
+  width: fit-content;
+  display: flex;
+  align-items: center;
+  gap: 0.15rem;
+  padding: 0.25rem;
+  margin: 0.25rem;
+  border-radius: 0 0.5rem 0 0.5rem;
+}
+#MkCard.event-card .event-details-150cc .capacity, #MkCard.event-card .event-details-150cc .endAt, #MkCard.event-card .event-details-150cc .user {
+  background-color: #00d0ff;
+}
+#MkCard.event-card .event-details-200cc .capacity, #MkCard.event-card .event-details-200cc .endAt, #MkCard.event-card .event-details-200cc .user {
+  background-color: goldenrod;
+}
+#MkCard .shadow {
+  width: 110px;
+  height: 20px;
+  position: absolute;
+  bottom: 15px;
+  left: 5px;
+  transition: all 0.2s ease-in-out;
+  border-bottom: 0.25rem solid rgba(0, 0, 0, 0.2);
+  border-radius: 0 0 0.5rem 0.5rem;
+  filter: blur(1.5px);
+  opacity: 0;
+  z-index: 2;
+  transition: all 0.2s ease-in-out 0.3s;
+  transform: translate(-15%, -90%) scale(0.5);
+}
+#MkCard .shadow.selected {
+  transform: translate(-15%, 40%) scale(0.5);
+  opacity: 1;
+}
+
+@keyframes cartridge-in {
+  from {
+    transform: scale(1) translate(0, 0);
+  }
+  to {
+    transform: scale(1.2) translate(0, 0);
+  }
+}
+@keyframes cartridge-out {
+  from {
+    transform: scale(1.2) translate(0, 0);
+  }
+  to {
+    transform: scale(1) translate(0, 0);
+  }
+}
+@keyframes cartridge-insert {
+  0% {
+    transform: translate(0%, 10%) scale(1.2);
+  }
+  50% {
+    transform: translate(0%, -70%) scale(1);
+  }
+  100% {
+    transform: translate(0px, 0px) scale(1);
+  }
+}
+@keyframes cartridge-remove {
+  from {
+    transform: scale(1) translate(0, -10px);
+  }
+  to {
+    transform: scale(1) translate(0, 0);
+  }
+}
+@keyframes shake {
+  0% {
+    transform: translate(0%, 0%);
+  }
+  50% {
+    transform: translate(0%, 10%);
+    z-index: 0;
+  }
+  100% {
+    transform: translate(0%, 0%);
+    z-index: 0;
+  }
+}
+@keyframes bring-front {
+  from {
+    z-index: -1;
+  }
+  to {
+    z-index: 1;
+  }
+}
+@keyframes fadein {
+  from {
+    opacity: 0;
+    transform: translate(40px, 0px);
+  }
+  to {
+    opacity: 1;
+  }
+}
+#EventsList {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+#EventsList .list-menu {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 30%;
+  height: 100%;
+  padding: 1rem 0.5rem;
+  transition: all 0.5s ease-in-out;
+}
+#EventsList .list-menu::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 25px;
+  height: 100%;
+  background: linear-gradient(to bottom, #1969A4, #122F8F);
+  transform: translate(-17px, 0) rotateZ(5deg);
+  background-repeat: repeat-y;
+  -webkit-mask-image: url("/src/assets/images/statics/mariokart/triangle.svg");
+  mask-image: url("/src/assets/images/statics/mariokart/triangle.svg");
+}
+#EventsList .list-menu::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: -24px;
+  width: 450px;
+  height: 100%;
+  background: linear-gradient(to bottom, #1969A4, #122F8F);
+  height: 100%;
+  padding: 1rem 0.5rem;
+  transform-origin: bottom left;
+  transform: translate(-100px, -50px) rotateZ(5deg);
+}
+#EventsList .list-menu.open {
+  transform: translate(0px, 0px);
+  animation: open-menu 0.3s ease-in-out;
+}
+#EventsList .list-menu.closed {
+  transform: translate(-500px, 0px);
+  animation: closed-menu 0.3s ease-in-out;
+}
+#EventsList .list-sorter {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 75%;
+  height: 100%;
+}
+#EventsList .list-sorter.open {
+  transform: translateX(0%);
+  animation: open-container 0.5s ease-in-out;
+}
+#EventsList .list-sorter.closed {
+  transform: translateX(100%);
+  animation: closed-container 0.3s ease-in-out;
+}
+#EventsList .list-sorter .list-card {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 0rem 3rem;
+  width: 100%;
+  height: 75%;
+  transition: all 0.5s ease-in-out;
+}
+#EventsList .list-sorter .list-pagination {
+  display: flex;
+  width: 50px;
+  height: 25px;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+#EventsList .list-sorter .list-pagination .pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+#EventsList .list-sorter .list-pagination .pagination .pagination-btn {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background-color: #40C5EC;
+  border: 1px solid #40C5EC;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.1s ease-in-out;
+}
+#EventsList .list-sorter .list-pagination .pagination .pagination-btn:disabled {
+  background-color: #e0eaf4;
+  border: 1px solid #e0eaf4;
+  opacity: 0.5;
+  cursor: default;
+}
+#EventsList .list-sorter .list-pagination .pagination .pagination-btn:hover {
+  background-color: #256e85;
+  color: white;
+}
+
+@keyframes open-menu {
+  from {
+    transform: translate(-500px, 0px);
+  }
+  to {
+    transform: translate(0px, 0px);
+  }
+}
+@keyframes closed-menu {
+  from {
+    transform: translate(0px, 0px);
+  }
+  to {
+    transform: translate(-500px, 0px);
+  }
+}
+@keyframes open-container {
+  from {
+    transform: translateX(200%);
+  }
+  to {
+    transform: translateX(0%);
+  }
+}
+@keyframes closed-container {
+  from {
+    transform: translateX(0%);
+  }
+  to {
+    transform: translateX(200%);
+  }
+}
 #ArcadePalace {
   display: flex;
   flex-direction: column;

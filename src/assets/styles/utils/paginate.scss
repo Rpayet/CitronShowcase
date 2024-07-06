@@ -1,0 +1,42 @@
+@mixin paginate {
+    .list-pagination {
+        display : flex;
+        width: 50px;
+        height: 25px;
+        justify-content: space-between;
+        align-items: center;
+        gap: 1rem;
+
+        .pagination {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            
+            .pagination-btn {
+                width: 25px;
+                height: 25px;
+                border-radius: 50%;
+                background-color: #40C5EC;
+                border: 1px solid #40C5EC;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                cursor: pointer;
+                transition: all 0.1s ease-in-out;
+
+                &:disabled {
+                    background-color: #e0eaf4;
+                    border: 1px solid #e0eaf4;
+                    opacity: .5;
+                    cursor: default;
+                }
+
+                &:hover {
+                    background-color: #256e85;
+                    color: white;
+                }
+            }
+        }
+    }
+}
