@@ -19,7 +19,7 @@
             height: 50%;
             border-radius: 0 .5rem 0 .5rem;
             z-index: -1;
-            transition: all .1s ease-in-out;
+            transition: all .2s ease-in-out;
         }
 
         &::before {
@@ -73,7 +73,7 @@
     &.hovered-200cc {
         &::after {
             background-color: goldenrod;
-            border: .4rem solid goldenrod;
+            border: .2rem solid goldenrod;
         }
     }
 
@@ -86,7 +86,7 @@
     &.hovered-150cc {
         &::after {
             background-color: #00d0ff;
-            border: .4rem solid #00d0ff;
+            border: .2rem solid #00d0ff;
         }
     }
 
