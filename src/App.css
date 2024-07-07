@@ -169,7 +169,7 @@ ul {
   height: 50%;
   border-radius: 0 0.5rem 0 0.5rem;
   z-index: -1;
-  transition: all 0.2s ease-in-out;
+  transition: all 0.1s ease-in-out;
 }
 #MkCard.unhovered-200cc::before, #MkCard.hovered-200cc::before, #MkCard.unhovered-150cc::before, #MkCard.hovered-150cc::before {
   opacity: 0.5;
