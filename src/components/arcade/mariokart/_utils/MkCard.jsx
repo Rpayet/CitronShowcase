@@ -3,6 +3,8 @@ import { getTimeRemaining } from "../../../../services/mariokart/delayService";
 import { AiOutlineClockCircle } from 'react-icons/ai';
 import { SiMaildotru } from "react-icons/si";
 import { FaUsers } from 'react-icons/fa';
+import { Sprite, Stage } from "@pixi/react";
+import cardrigeSpriteSheet from '../../../../assets/images/sprites/cardriges_spritesheet.png';
 
 export default function MkCard({tournament, setCardId, cardId, fadeKey}) {
 
@@ -47,14 +49,20 @@ export default function MkCard({tournament, setCardId, cardId, fadeKey}) {
                     ${hovered ? 'hovered' : 'unhovered' } 
                     ${active ? 'active' : ''}
                     ${cardId === id ? 'selected' : ''} `}>
-                        <div className={`race-icon 
+                        <Stage 
+                            width={100} 
+                            height={100} 
+                            options={{backgroundAlpha: 0}} >
+                            <Sprite image={cardrigeSpriteSheet} x={-700} y={0} anchor={0} scale={.4}/>
+                        </Stage>
+                        {/* <div className={`race-icon 
                                     ${hovered ? 'hovered' : 'unhovered'}
                                     ${cardId === id ? 'selected' : 'unselected'} `}>
                             <img 
                                 className='icon'
                                 src="/assets/admin/img/cartridge/switch/sc_default_icon.png" 
                                 alt="event icon" />
-                        </div>
+                        </div> */}
                 </div>
 
                 <div className={`shadow

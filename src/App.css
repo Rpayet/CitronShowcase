@@ -211,7 +211,7 @@ ul {
 }
 #MkCard.selected-200cc::after {
   z-index: 0;
-  height: 15px;
+  height: 20px;
   background-color: goldenrod;
   border: 0.4rem solid goldenrod;
   transform: translate(10px, 0) skew(0deg, -5deg) rotate(5deg);
@@ -224,7 +224,7 @@ ul {
 }
 #MkCard.selected-150cc::after {
   z-index: 0;
-  height: 15px;
+  height: 20px;
   background-color: #00d0ff;
   border: 0.4rem solid #00d0ff;
   transform: translate(10px, 0) skew(0deg, -5deg) rotate(5deg);
@@ -254,7 +254,7 @@ ul {
 }
 #MkCard.event-card .event-img.hovered {
   animation: cartridge-in 0.2s linear;
-  transform: scale(1.2) translate(0, 0);
+  transform: translate(0, 0);
 }
 #MkCard.event-card .event-img.hovered::after {
   height: 0%;
@@ -373,22 +373,24 @@ ul {
   background-color: goldenrod;
 }
 #MkCard .shadow {
-  width: 110px;
+  width: 115px;
   height: 20px;
   position: absolute;
-  bottom: 15px;
+  bottom: 20px;
   left: 5px;
   transition: all 0.2s ease-in-out;
   border-bottom: 0.25rem solid rgba(0, 0, 0, 0.2);
+  border-left: 0.15rem solid rgba(0, 0, 0, 0.3333333333);
+  border-right: 0.25rem solid rgba(0, 0, 0, 0.0666666667);
   border-radius: 0 0 0.5rem 0.5rem;
   filter: blur(1.5px);
   opacity: 0;
   z-index: 2;
   transition: all 0.2s ease-in-out 0.3s;
-  transform: translate(-15%, -90%) scale(0.5);
+  transform: translate(-0.8rem, -90%) scale(0.5);
 }
 #MkCard .shadow.selected {
-  transform: translate(-15%, 40%) scale(0.5);
+  transform: translate(-0.8rem, 40%) scale(0.5);
   opacity: 1;
 }
 
@@ -397,12 +399,12 @@ ul {
     transform: scale(1) translate(0, 0);
   }
   to {
-    transform: scale(1.2) translate(0, 0);
+    transform: translate(0, 0);
   }
 }
 @keyframes cartridge-out {
   from {
-    transform: scale(1.2) translate(0, 0);
+    transform: translate(0, 0);
   }
   to {
     transform: scale(1) translate(0, 0);
