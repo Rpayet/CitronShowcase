@@ -4,14 +4,12 @@ import { MkContext } from "../../../../context/MkContext";
 import InputField from "../../../_utils/InputField";
 import MkCard from "../_utils/MkCard"
 import { MdFirstPage, MdLastPage } from "react-icons/md";
-import { Sprite, Stage } from "@pixi/react";
-import cardrigeSpriteSheet from '../../../../assets/images/sprites/cardriges_spritesheet.png';
 
 export default function EventsList({}) {
 
     const { mkPageAnim, setMkPageAnim } = useContext(AnimationContext);
 
-    const { tournaments } = useContext(MkContext);
+    const { tournaments, switchCardSprites } = useContext(MkContext);
 
     const [cardId, setCardId] = useState();
 
@@ -47,7 +45,13 @@ export default function EventsList({}) {
     const paginatedTournaments = tournaments.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
 
     useEffect(() => {
+        if (tournaments && tournaments.length > 0 && switchCardSprites) {
         setMkPageAnim(true);
+        }
+    }, [tournaments, switchCardSprites]);
+
+    useEffect(() => {
+        return () => setMkPageAnim(false);
     }, []);
 
     return (

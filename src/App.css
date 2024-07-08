@@ -558,7 +558,7 @@ ul {
 }
 #EventsList .list-menu.open {
   transform: translate(0px, 0px);
-  animation: open-menu 0.3s ease-in-out;
+  animation: open-menu 0.5s ease-in-out;
 }
 #EventsList .list-menu.closed {
   transform: translate(-500px, 0px);

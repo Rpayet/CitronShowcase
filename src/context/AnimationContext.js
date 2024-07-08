@@ -4,7 +4,7 @@ export const AnimationContext = createContext();
 
 export const AnimationProvider = ({children}) => {
 
-    const [mkPageAnim, setMkPageAnim] = useState(true);
+    const [mkPageAnim, setMkPageAnim] = useState(false);
 
     const animationContextValue = {
         mkPageAnim, setMkPageAnim

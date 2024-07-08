@@ -48,7 +48,7 @@
 
         &.open {
             transform: translate(0px, 0px);
-            animation: open-menu .3s ease-in-out;
+            animation: open-menu .5s ease-in-out;
         }
 
         &.closed {

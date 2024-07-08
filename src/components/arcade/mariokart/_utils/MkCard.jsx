@@ -1,12 +1,14 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { getTimeRemaining } from "../../../../services/mariokart/delayService";
 import { AiOutlineClockCircle } from 'react-icons/ai';
 import { SiMaildotru } from "react-icons/si";
 import { FaUsers } from 'react-icons/fa';
 import { Sprite, Stage } from "@pixi/react";
-import cardrigeSpriteSheet from '../../../../assets/images/sprites/cardriges_spritesheet.png';
+import { MkContext } from "../../../../context/MkContext";
 
 export default function MkCard({tournament, setCardId, cardId, fadeKey}) {
+    
+    const { switchCardSprites } = useContext(MkContext);
 
     const {id, name, speed, race, endAt, registered, capacity, user} = tournament;
 
@@ -85,7 +87,7 @@ export default function MkCard({tournament, setCardId, cardId, fadeKey}) {
                             width={100} 
                             height={100} 
                             options={{backgroundAlpha: 0}} >
-                            <Sprite image={cardrigeSpriteSheet} x={spritePosition} y={0} anchor={0} scale={.4}/>
+                            <Sprite image={switchCardSprites} x={spritePosition} y={0} anchor={0} scale={.4}/>
                         </Stage>
                         <div className={`race-icon 
                                     ${hovered ? 'hovered' : 'unhovered'}
@@ -94,7 +96,7 @@ export default function MkCard({tournament, setCardId, cardId, fadeKey}) {
                                 width={100} 
                                 height={100} 
                                 options={{backgroundAlpha: 0}} >
-                                <Sprite image={cardrigeSpriteSheet} x={0} y={-100} scale={.4} />
+                                <Sprite image={switchCardSprites} x={0} y={-100} scale={.4} />
                             </Stage>
                         </div>
                 </div>
