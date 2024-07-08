@@ -191,10 +191,10 @@
             }
 
             .race-icon {
-                width: 64px;
-                height: 64px;
+                width: 100px;
+                height: 100px;
                 position: absolute;
-                top: 0;
+                top: -25px;
                 right: 0;
                 transition: all .2s ease-in-out;
 
@@ -206,7 +206,6 @@
                     width: 100px;
                     height: 10px;
                     border-radius: 0 0 .5rem .5rem;
-                    border-bottom: .2rem solid #00000055;
                     transition: all .2s ease-in-out;
                     filter: blur(1.5px);
                     opacity: 0;
@@ -217,11 +216,11 @@
                 }
                 
                 &.hovered {
-                    transform: translate(-15%,30%) scale(.5);
+                    transform: translate(0%,25%) scale(.65);
                 }
 
                 &.selected {
-                    transform: translate(-15%,30%) scale(.5);
+                    transform: translate(0%,25%) scale(.65);
 
                     &::after {
                         opacity: 1;
@@ -329,19 +328,22 @@
         filter: blur(1.5px);
         opacity: 0;
         z-index: 2;
-        transition: all .2s ease-in-out .3s;
         transform: translate(-.8rem,-90%) scale(.5);
-
+        
         &.selected {
+            transition: all .2s ease-in-out .3s;
             transform: translate(-.8rem,40%) scale(.5);
             opacity: 1;
+        }
+
+        &.unselected {
+            opacity: 0;
         }
     }
 }
 
 @keyframes cartridge-in {
     from {
-        // background-image: url('/public/assets/admin/img/cartridge/switch/sc_default_in.gif');
         transform: scale(1) translate(0,0);
     }
     to {
@@ -351,7 +353,6 @@
 
 @keyframes cartridge-out {
     from {
-        // background-image: url('/public/assets/admin/img/cartridge/switch/sc_default_out.gif');
         transform: translate(0,0);
     }
     to {
@@ -371,7 +372,6 @@
 
 @keyframes cartridge-remove {
     from {
-        // background-image: url('/public/assets/admin/img/cartridge/switch/sc_default_out.gif');
         transform: scale(1) translate(0,-10px);
     }
     to {

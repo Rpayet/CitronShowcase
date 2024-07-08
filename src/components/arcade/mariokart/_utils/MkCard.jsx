@@ -13,6 +13,7 @@ export default function MkCard({tournament, setCardId, cardId, fadeKey}) {
     const [hovered, setHovered] = useState(false);
     const [active, setActive] = useState(false);
     const [timeRemaining, setTimeRemaining] = useState();
+    const [ spritePosition, setSpritePosition ] = useState(0);
 
     useEffect(() => {
         if (endAt) {
@@ -31,6 +32,37 @@ export default function MkCard({tournament, setCardId, cardId, fadeKey}) {
     const handleClick = () => {
         setCardId(id);
     };
+
+    useEffect(() => {
+        let intervalId;
+        if (hovered & (cardId !== id)) {
+            intervalId = setInterval(() => {
+                setSpritePosition((prevPosition) => {
+                    if (prevPosition > -700) {
+                        return prevPosition - 100;
+                    } else {
+                        clearInterval(intervalId);
+                        return prevPosition;
+                    }
+                });
+            }, 25);
+        } else if (!hovered & (cardId !== id)) {
+            intervalId = setInterval(() => {
+                setSpritePosition((prevPosition) => {
+                    if (prevPosition < 0) {
+                        return prevPosition + 100;
+                    } else {
+                        clearInterval(intervalId);
+                        return prevPosition;
+                    }
+                });
+            }, 25);
+        } else if (!hovered & cardId === id) {
+            setSpritePosition(-700);
+        } 
+
+        return () => clearInterval(intervalId);
+    }, [hovered, cardId]);
 
     return (
         <div 
@@ -53,16 +85,18 @@ export default function MkCard({tournament, setCardId, cardId, fadeKey}) {
                             width={100} 
                             height={100} 
                             options={{backgroundAlpha: 0}} >
-                            <Sprite image={cardrigeSpriteSheet} x={-700} y={0} anchor={0} scale={.4}/>
+                            <Sprite image={cardrigeSpriteSheet} x={spritePosition} y={0} anchor={0} scale={.4}/>
                         </Stage>
-                        {/* <div className={`race-icon 
+                        <div className={`race-icon 
                                     ${hovered ? 'hovered' : 'unhovered'}
                                     ${cardId === id ? 'selected' : 'unselected'} `}>
-                            <img 
-                                className='icon'
-                                src="/assets/admin/img/cartridge/switch/sc_default_icon.png" 
-                                alt="event icon" />
-                        </div> */}
+                            <Stage
+                                width={100} 
+                                height={100} 
+                                options={{backgroundAlpha: 0}} >
+                                <Sprite image={cardrigeSpriteSheet} x={0} y={-100} scale={.4} />
+                            </Stage>
+                        </div>
                 </div>
 
                 <div className={`shadow
