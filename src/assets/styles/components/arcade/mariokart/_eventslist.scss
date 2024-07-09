@@ -84,7 +84,31 @@
             gap: 0rem 3rem;
             width: 100%;
             height: 75%;
-            transition: all .5s ease-in-out;
+            transition: all .3s ease-in-out;
+
+            &.outRight {
+                transform: translateX(5%);
+                opacity: 0;
+                animation: outRight .3s ease-in-out;
+            }
+    
+            &.outLeft {
+                transform: translateX(5%);
+                opacity: 0;
+                animation: outLeft .3s ease-in-out;
+            }
+    
+            &.inRight {
+                transform: translateX(0%);
+                opacity: 1;
+                animation: inRight .3s ease-in-out;
+            }
+    
+            &.inLeft {
+                transform: translateX(0%);
+                opacity: 1;
+                animation: inLeft .3s ease-in-out;
+            }
         }
 
         @include paginate;
@@ -120,5 +144,45 @@
         transform: translateX(0%);
     } to {
         transform: translateX(200%);
+    }
+}
+
+@keyframes outLeft {
+    from {
+        transform: translateX(0%);
+        opacity: 1;
+    } to {
+        transform: translateX(-5%);
+        opacity: 0;
+    }
+}
+
+@keyframes outRight {
+    from {
+        transform: translateX(0%);
+        opacity: 1;
+    } to {
+        transform: translateX(5%);
+        opacity: 0;
+    }
+}
+
+@keyframes inLeft {
+    from {
+        transform: translateX(-5%);
+        opacity: 0;
+    } to {
+        transform: translateX(0%);
+        opacity: 1;
+    }
+}
+
+@keyframes inRight {
+    from {
+        transform: translateX(5%);
+        opacity: 0;
+    } to {
+        transform: translateX(0%);
+        opacity: 1;
     }
 }

@@ -16,15 +16,7 @@ export default function MkCard({tournament, setCardId, cardId, fadeKey}) {
     const [active, setActive] = useState(false);
     const [timeRemaining, setTimeRemaining] = useState();
     const [ spritePosition, setSpritePosition ] = useState(0);
-
-    useEffect(() => {
-        if (endAt) {
-            const interval = setInterval(() => {
-                setTimeRemaining(getTimeRemaining(endAt));
-            }, 1000);
-            return () => clearInterval(interval);
-        }
-    }, []);
+    const [imagesLoaded, setImageLoaded] = useState(false);
 
     const handleMouseLeave = () => {
         setHovered(false);
@@ -34,6 +26,21 @@ export default function MkCard({tournament, setCardId, cardId, fadeKey}) {
     const handleClick = () => {
         setCardId(id);
     };
+
+    useEffect(() => {
+        if (endAt) {
+            const interval = setInterval(() => {
+                setTimeRemaining(getTimeRemaining(endAt));
+            }, 1000);
+            return () => clearInterval(interval);
+        }
+    }, [endAt]);
+
+    useEffect(() => {
+        const img = new Image();
+        img.src = switchCardSprites;
+        img.onload = () => setImageLoaded(true);
+    }, [switchCardSprites]);
 
     useEffect(() => {
         let intervalId;
@@ -83,30 +90,40 @@ export default function MkCard({tournament, setCardId, cardId, fadeKey}) {
                     ${hovered ? 'hovered' : 'unhovered' } 
                     ${active ? 'active' : ''}
                     ${cardId === id ? 'selected' : ''} `}>
-                        <Stage 
-                            width={100} 
-                            height={100} 
-                            options={{backgroundAlpha: 0}} >
-                            <Sprite image={switchCardSprites} x={spritePosition} y={0} anchor={0} scale={.4}/>
-                        </Stage>
-                        <div className={`race-icon 
-                                    ${hovered ? 'hovered' : 'unhovered'}
-                                    ${cardId === id ? 'selected' : 'unselected'} `}>
-                            <Stage
-                                width={100} 
-                                height={100} 
-                                options={{backgroundAlpha: 0}} >
-                                <Sprite image={switchCardSprites} x={0} y={-100} scale={.4} />
-                            </Stage>
-                        </div>
+                        {imagesLoaded 
+                            ? (
+                                <>
+                                    <Stage 
+                                        width={100} 
+                                        height={100} 
+                                        options={{backgroundAlpha: 0}} >
+                                        <Sprite image={switchCardSprites} x={spritePosition} y={0} anchor={0} scale={.4}/>
+                                    </Stage>
+                                    <div className={`race-icon 
+                                                ${hovered ? 'hovered' : 'unhovered'}
+                                                ${cardId === id ? 'selected' : 'unselected'} `}>
+                                        <Stage
+                                            width={100} 
+                                            height={100} 
+                                            options={{backgroundAlpha: 0}} >
+                                            <Sprite image={switchCardSprites} x={0} y={-100} scale={.4} />
+                                        </Stage>
+                                    </div>
+                                </>
+                            ) : (
+                                <div className="loading">
+                                    <div className="spinner"></div>
+                                </div>
+                            )
+                        }
                 </div>
 
                 <div className={`shadow
                     ${cardId === id ? 'selected' : 'unselected'} `} ></div>
 
                 <div className="event-info">
-                    <h3 className='event-race'>{race.name.toUpperCase()}</h3>
-                    <p className='event-name'>{name}</p>
+                    <h3 className='event-name'>{name.toUpperCase()}</h3>
+                    <p className='event-race'>{race.name}</p>
                     <p className={`event-speed ${hovered && (cardId !== id)? 'show' : 'hide'}`}>{speed === '200cc' ? '200cc' : '150cc'}</p>
                 </div>
 

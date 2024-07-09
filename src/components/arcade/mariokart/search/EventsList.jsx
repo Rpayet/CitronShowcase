@@ -8,13 +8,12 @@ import { MdFirstPage, MdLastPage } from "react-icons/md";
 export default function EventsList({}) {
 
     const { mkPageAnim, setMkPageAnim } = useContext(AnimationContext);
-
     const { tournaments, switchCardSprites } = useContext(MkContext);
 
     const [cardId, setCardId] = useState();
-
     const [itemsPerPage, setItemsPerPage] = useState(9);
     const [currentPage, setCurrentPage] = useState(1);
+    const [eventListClassName, setEventListClassName] = useState('closed');
 
     const eventListInput = {
         id: 'EventListInput',
@@ -22,6 +21,24 @@ export default function EventsList({}) {
         placeholder: 'Rechercher un tournoi',
         idClassName: mkPageAnim ? 'open' : 'closed',
         inputClassName: 'input',
+    };
+
+    const paginatedTournaments = tournaments.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
+
+    const handlePagination = (direction) => {
+        if (direction === 'next') {
+            setEventListClassName('outLeft');
+            setTimeout(() => {
+                setCurrentPage(currentPage + 1);
+                setEventListClassName('inRight');
+            }, 290);
+        } else if (direction === 'prev') {
+            setEventListClassName('outRight');
+            setTimeout(() => {
+                setCurrentPage(currentPage - 1);
+                setEventListClassName('inLeft');
+            }, 290);
+        }
     };
 
     useEffect(() => {
@@ -42,11 +59,11 @@ export default function EventsList({}) {
     
     }, []);
 
-    const paginatedTournaments = tournaments.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
 
     useEffect(() => {
         if (tournaments && tournaments.length > 0 && switchCardSprites) {
         setMkPageAnim(true);
+        setEventListClassName('open');
         }
     }, [tournaments, switchCardSprites]);
 
@@ -62,7 +79,7 @@ export default function EventsList({}) {
                 </div>
             </div>
             <div className={`list-sorter ${mkPageAnim ? 'open' : 'closed'}`}>
-                <div className={`list-card`}> 
+                <div className={`list-card ${eventListClassName}`}> 
                     {paginatedTournaments.map((tournament, index) => (
                         <MkCard 
                             key={tournament.id}
@@ -75,13 +92,13 @@ export default function EventsList({}) {
                 <div className={`list-pagination`}>
                     <div className="pagination">
                         <button 
-                            onClick={() => setCurrentPage(currentPage - 1)}
+                            onClick={() => handlePagination('prev')}
                             disabled={currentPage === 1}
                             className="pagination-btn">
                             <MdFirstPage />
                         </button>
                         <button 
-                            onClick={() => setCurrentPage(currentPage + 1)}
+                            onClick={() => handlePagination('next')}
                             disabled={currentPage === Math.ceil(tournaments.length / itemsPerPage)}
                             className="pagination-btn">
                             <MdLastPage />
