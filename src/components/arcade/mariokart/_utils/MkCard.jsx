@@ -15,7 +15,7 @@ export default function MkCard({tournament, setCardId, cardId, fadeKey}) {
     const [hovered, setHovered] = useState(false);
     const [active, setActive] = useState(false);
     const [timeRemaining, setTimeRemaining] = useState();
-    const [ spritePosition, setSpritePosition ] = useState(0);
+    const [spritePosition, setSpritePosition] = useState(0);
     const [imagesLoaded, setImageLoaded] = useState(false);
 
     const handleMouseLeave = () => {
@@ -101,7 +101,7 @@ export default function MkCard({tournament, setCardId, cardId, fadeKey}) {
                                     </Stage>
                                     <div className={`race-icon 
                                                 ${hovered ? 'hovered' : 'unhovered'}
-                                                ${cardId === id ? 'selected' : 'unselected'} `}>
+                                                ${cardId === id ? 'selected' : 'unselected'}`}>
                                         <Stage
                                             width={100} 
                                             height={100} 
@@ -111,9 +111,7 @@ export default function MkCard({tournament, setCardId, cardId, fadeKey}) {
                                     </div>
                                 </>
                             ) : (
-                                <div className="loading">
-                                    <div className="spinner"></div>
-                                </div>
+                                <div className="loading"></div>
                             )
                         }
                 </div>

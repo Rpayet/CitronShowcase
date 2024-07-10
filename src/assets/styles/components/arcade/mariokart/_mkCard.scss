@@ -136,7 +136,6 @@
         }
     }
 
-
     &.event-card {
         cursor: pointer;
 
@@ -146,8 +145,8 @@
             height: 100px;
             background-size: cover;
             background-position: center;
-            // background-image: url('/public/assets/admin/img/cartridge/switch/sc_default_unselect.png');
             transition: all .1s linear;
+            animation: popOut .5s ease-in-out;
 
             &::after {
                 content: '';
@@ -164,7 +163,6 @@
     
             &.hovered {
                 animation: cartridge-in .2s linear;
-                // background-image: url('/public/assets/admin/img/cartridge/switch/sc_default_select.png');
                 transform: translate(0,0);
                 &::after {
                     height: 0%;
@@ -173,7 +171,6 @@
     
             &.unhovered {
                 animation: cartridge-out .2s linear;
-                // background-image: url('/public/assets/admin/img/cartridge/switch/sc_default_unselect.png');
                 transform: scale(1) translate(0,0);
                 &::after {
                     height: 0%;
@@ -186,8 +183,15 @@
 
             &.selected {
                 animation: cartridge-insert .5s ease-in-out;
-                // background-image: url('/public/assets/admin/img/cartridge/switch/sc_default_select.png');
                 transform: scale(1) translate(0px,0px);
+            }
+
+            .loading {
+                width: 100px;
+                height: 100px;
+                background: linear-gradient(to bottom, #ffffff00 50%, #ffffff);
+                border-radius: 1rem 1rem 0 0;
+                animation: infinite fadeloop .75s linear;
             }
 
             .race-icon {
@@ -408,5 +412,25 @@
     }
     to {
         opacity: 1;
+    }
+}
+
+@keyframes fadeloop {
+    0% {
+        opacity: 0;
+    }
+    50% {
+        opacity: .5;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes popOut {
+    from {
+        transform: scale(0);
+    } to {
+        transform: scale(1);
     }
 }

@@ -1,7 +1,7 @@
 @import "./mkCard";
 @import "./input";
 
-#EventsList {
+#MkPages {
     @include section;
     display: flex;
     justify-content: space-between;

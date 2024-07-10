@@ -239,6 +239,7 @@ ul {
   background-size: cover;
   background-position: center;
   transition: all 0.1s linear;
+  animation: popOut 0.5s ease-in-out;
 }
 #MkCard.event-card .event-img::after {
   content: "";
@@ -272,6 +273,13 @@ ul {
 #MkCard.event-card .event-img.selected {
   animation: cartridge-insert 0.5s ease-in-out;
   transform: scale(1) translate(0px, 0px);
+}
+#MkCard.event-card .event-img .loading {
+  width: 100px;
+  height: 100px;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 50%, #ffffff);
+  border-radius: 1rem 1rem 0 0;
+  animation: infinite fadeloop 0.75s linear;
 }
 #MkCard.event-card .event-img .race-icon {
   width: 100px;
@@ -461,6 +469,25 @@ ul {
     opacity: 1;
   }
 }
+@keyframes fadeloop {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes popOut {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
+}
 #EventListInput {
   position: relative;
   width: 300px;
@@ -513,14 +540,14 @@ ul {
     transform: translateX(-200%);
   }
 }
-#EventsList {
+#MkPages {
   width: 100%;
   height: 100%;
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
 }
-#EventsList .list-menu {
+#MkPages .list-menu {
   position: relative;
   display: flex;
   flex-direction: column;
@@ -530,7 +557,7 @@ ul {
   padding: 1rem 0.5rem;
   transition: all 0.5s ease-in-out;
 }
-#EventsList .list-menu::after {
+#MkPages .list-menu::after {
   content: "";
   position: absolute;
   top: 0;
@@ -543,7 +570,7 @@ ul {
   -webkit-mask-image: url("/src/assets/images/statics/mariokart/triangle.svg");
   mask-image: url("/src/assets/images/statics/mariokart/triangle.svg");
 }
-#EventsList .list-menu::before {
+#MkPages .list-menu::before {
   content: "";
   position: absolute;
   top: 0;
@@ -556,15 +583,15 @@ ul {
   transform-origin: bottom left;
   transform: translate(-100px, -50px) rotateZ(5deg);
 }
-#EventsList .list-menu.open {
+#MkPages .list-menu.open {
   transform: translate(0px, 0px);
   animation: open-menu 0.5s ease-in-out;
 }
-#EventsList .list-menu.closed {
+#MkPages .list-menu.closed {
   transform: translate(-500px, 0px);
   animation: closed-menu 0.3s ease-in-out;
 }
-#EventsList .list-sorter {
+#MkPages .list-sorter {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -572,15 +599,15 @@ ul {
   width: 75%;
   height: 100%;
 }
-#EventsList .list-sorter.open {
+#MkPages .list-sorter.open {
   transform: translateX(0%);
   animation: open-container 0.5s ease-in-out;
 }
-#EventsList .list-sorter.closed {
+#MkPages .list-sorter.closed {
   transform: translateX(100%);
   animation: closed-container 0.3s ease-in-out;
 }
-#EventsList .list-sorter .list-card {
+#MkPages .list-sorter .list-card {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -590,27 +617,27 @@ ul {
   height: 75%;
   transition: all 0.3s ease-in-out;
 }
-#EventsList .list-sorter .list-card.outRight {
+#MkPages .list-sorter .list-card.outRight {
   transform: translateX(5%);
   opacity: 0;
   animation: outRight 0.3s ease-in-out;
 }
-#EventsList .list-sorter .list-card.outLeft {
+#MkPages .list-sorter .list-card.outLeft {
   transform: translateX(5%);
   opacity: 0;
   animation: outLeft 0.3s ease-in-out;
 }
-#EventsList .list-sorter .list-card.inRight {
+#MkPages .list-sorter .list-card.inRight {
   transform: translateX(0%);
   opacity: 1;
   animation: inRight 0.3s ease-in-out;
 }
-#EventsList .list-sorter .list-card.inLeft {
+#MkPages .list-sorter .list-card.inLeft {
   transform: translateX(0%);
   opacity: 1;
   animation: inLeft 0.3s ease-in-out;
 }
-#EventsList .list-sorter .list-pagination {
+#MkPages .list-sorter .list-pagination {
   display: flex;
   width: 50px;
   height: 25px;
@@ -618,13 +645,13 @@ ul {
   align-items: center;
   gap: 1rem;
 }
-#EventsList .list-sorter .list-pagination .pagination {
+#MkPages .list-sorter .list-pagination .pagination {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 1rem;
 }
-#EventsList .list-sorter .list-pagination .pagination .pagination-btn {
+#MkPages .list-sorter .list-pagination .pagination .pagination-btn {
   width: 25px;
   height: 25px;
   border-radius: 50%;
@@ -636,13 +663,13 @@ ul {
   cursor: pointer;
   transition: all 0.1s ease-in-out;
 }
-#EventsList .list-sorter .list-pagination .pagination .pagination-btn:disabled {
+#MkPages .list-sorter .list-pagination .pagination .pagination-btn:disabled {
   background-color: #e0eaf4;
   border: 1px solid #e0eaf4;
   opacity: 0.5;
   cursor: default;
 }
-#EventsList .list-sorter .list-pagination .pagination .pagination-btn:hover {
+#MkPages .list-sorter .list-pagination .pagination .pagination-btn:hover {
   background-color: #256e85;
   color: white;
 }

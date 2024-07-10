@@ -24,7 +24,7 @@ export default function App() {
                     } />
                     <Route path='/arcade-palace/wheels' element={
                         <GameProvider>
-                            <HeroesSelect />                            
+                            <HeroesSelect />
                             {/* <WheelGame /> */}
                         </GameProvider>
                     } />

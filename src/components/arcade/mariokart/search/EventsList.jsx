@@ -72,7 +72,7 @@ export default function EventsList({}) {
     }, []);
 
     return (
-        <div id='EventsList'>
+        <div id='MkPages'>
             <div className={`list-menu ${mkPageAnim ? 'open' : 'closed'}`}>
                 <div>
                     <InputField inputData={eventListInput} />
