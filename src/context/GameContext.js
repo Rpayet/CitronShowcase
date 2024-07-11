@@ -20,13 +20,13 @@ export default function GameProvider({ children }) {
     const defaultPlayer = {
         rank : '',
         square: {
-            hero: null,
+            hero: heroesList[0],
             hero_rank: 'bronze',
             rod: 0,
             exp: 0,
         },
         diamond : {
-            hero: null,
+            hero: heroesList[2],
             hero_rank: 'bronze',
             rod: 0,
             exp: 0,

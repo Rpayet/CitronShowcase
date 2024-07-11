@@ -24,11 +24,11 @@ export default function App() {
                     } />
                     <Route path='/arcade-palace/wheels' element={
                         <GameProvider>
-                            <HeroesSelect />
-                            {/* <WheelGame /> */}
+                            {/* <HeroesSelect /> */}
+                            <WheelGame />
                         </GameProvider>
                     } />
-                    <Route path='/arcade-palace/sonic-tac-toe' element={<h2>Sonic Tac Toe - Jeu original en cours de travail</h2>} />
+                    <Route path='/arcade-palace/sonic-tac-toe' element={<h2>STT - Jeu original en cours de travail</h2>} />
                 </Routes>
             </div>
         </div>
