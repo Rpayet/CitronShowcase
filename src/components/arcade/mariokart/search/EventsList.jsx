@@ -7,8 +7,12 @@ import { MdFirstPage, MdLastPage } from "react-icons/md";
 
 export default function EventsList({}) {
 
-    const { mkPageAnim, setMkPageAnim } = useContext(AnimationContext);
+    const { animations } = useContext(AnimationContext);
     const { tournaments, switchCardSprites } = useContext(MkContext);
+
+    const [mkPageAnim, setMkPageAnim] = animations.mkTrials;
+
+    console.log(mkPageAnim);
 
     const [cardId, setCardId] = useState();
     const [itemsPerPage, setItemsPerPage] = useState(9);
@@ -19,7 +23,7 @@ export default function EventsList({}) {
         id: 'EventListInput',
         type: 'text',
         placeholder: 'Rechercher un tournoi',
-        idClassName: mkPageAnim ? 'open' : 'closed',
+        idClassName:  mkPageAnim ? 'open' : 'closed',
         inputClassName: 'input',
     };
 

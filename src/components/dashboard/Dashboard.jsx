@@ -1,13 +1,20 @@
-import { Link } from "react-router-dom";
+import { usePageTransition } from "../../services/navigation/animationService";
 
 export default function Dashboard() {
 
+    const { navigateWithAnimation } = usePageTransition();
+    
+    const handleNavigation = (toPage) => {
+        const fromPage = window.location.pathname.split('/')[1];
+        navigateWithAnimation(fromPage, toPage, 500);
+    }
+
     return (
         <div id="Dashboard">
-            <Link to="/">Accueil</Link>
-            <Link to="/articles">Articles</Link>
-            <Link to="/portefolio">Portefolio</Link>
-            <Link to="/arcade-palace">Arcade Palace</Link>
+            <button onClick={() => handleNavigation('landing') } >Accueil</button>
+            <button onClick={() => handleNavigation('articles') } >Articles</button>
+            <button onClick={() => handleNavigation('portfolio') } >Portefolio</button>
+            <button onClick={() => handleNavigation('arcadePalace') } >Arcade Palace</button>
         </div>
     );
 }
