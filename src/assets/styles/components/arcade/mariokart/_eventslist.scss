@@ -53,7 +53,7 @@
 
         &.closed {
             transform: translate(-500px, 0px);
-            animation: closed-menu .3s ease-in-out;
+            animation: closed-menu .5s ease-in-out;
         }
 
     }
@@ -73,7 +73,7 @@
 
         &.closed {
             transform: translateX(100%);
-            animation: closed-container .3s ease-in-out;
+            animation: closed-container .5s ease-in-out;
         }
     
         .list-card {

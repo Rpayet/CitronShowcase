@@ -15,20 +15,20 @@ export default function App() {
             <div className="app-container" >
                 <Dashboard />
                 <Routes>
-                    <Route path='/' element={<Landing />} />
-                    <Route path='/arcade-palace' element={<ArcadePalace />} />
-                    <Route path='/arcade-palace/mk-trials' element={
+                    <Route path='/landing' element={<Landing />} />
+                    <Route path='/arcadePalace' element={<ArcadePalace />} />
+                    <Route path='/mkTrials' element={
                         <MkProvider>
                             <EventsList />
                         </MkProvider>
                     } />
-                    <Route path='/arcade-palace/wheels' element={
+                    <Route path='/wheels' element={
                         <GameProvider>
                             {/* <HeroesSelect /> */}
                             <WheelGame />
                         </GameProvider>
                     } />
-                    <Route path='/arcade-palace/sonic-tac-toe' element={<h2>STT - Jeu original en cours de travail</h2>} />
+                    <Route path='/sonic-tac-toe' element={<h2>STT - Jeu original en cours de travail</h2>} />
                 </Routes>
             </div>
         </div>
