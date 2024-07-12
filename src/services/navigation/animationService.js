@@ -1,11 +1,11 @@
 import { useContext } from "react";
 import { AnimationContext } from "../../context/AnimationContext";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export const usePageTransition = () => {
 
     const { animations } = useContext(AnimationContext);
-    const history = useHistory();
+    const navigate = useNavigate();
 
     const navigateWithAnimation = (fromPage, toPage, timeout=500) => {
         if (fromPage === toPage) return;
@@ -14,9 +14,9 @@ export const usePageTransition = () => {
         const [__, setToPageAnim] = animations[toPage];
 
         setFromPageAnim(false);
+        setToPageAnim(true);
         setTimeout(() => {
-            setToPageAnim(true);
-            history.push(`/${toPage}`);
+            navigate(`/${toPage}`);
         }, timeout);
     };
 

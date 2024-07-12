@@ -4,12 +4,19 @@ export const AnimationContext = createContext();
 
 export const AnimationProvider = ({children}) => {
 
-    const [mkPageAnim, setMkPageAnim] = useState(false);
     const [landingPageAnim, setLandingPageAnim] = useState(false);
+    const [articlesPageAnim, setArticlesPageAnim] = useState(false);
+    const [portfolioPageAnim, setPortfolioPageAnim] = useState(false);
+    const [arcadePalacePageAnim, setArcadePalacePageAnim] = useState(false);
+
+    const [mkPageAnim, setMkPageAnim] = useState(false);
 
     const animations = {
-        mkPage: [mkPageAnim, setMkPageAnim],
-        landingPage: [landingPageAnim, setLandingPageAnim],
+        landing: [landingPageAnim, setLandingPageAnim],
+        articles: [articlesPageAnim, setArticlesPageAnim],
+        portfolio: [portfolioPageAnim, setPortfolioPageAnim],
+        arcadePalace: [arcadePalacePageAnim, setArcadePalacePageAnim],
+        mkTrials: [mkPageAnim, setMkPageAnim],
     }
 
     return (
