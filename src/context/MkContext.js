@@ -1,6 +1,6 @@
 import { createContext } from "react";
 import tounamentsList from '../utils/_test-assets/mk_tournament_list.json';
-import switchCardSprites from '../assets/images/sprites/cardriges_spritesheet.png';
+import switchCardSprites from '../assets/images/sprites/cardriges_spritesheet_lite.png';
 
 export const MkContext = createContext();
 
