@@ -15,7 +15,7 @@ export default function App() {
             <div className="app-container" >
                 <Dashboard />
                 <Routes>
-                    <Route path='/landing' element={<Landing />} />
+                    <Route path='/' element={<Landing />} />
                     <Route path='/arcadePalace' element={<ArcadePalace />} />
                     <Route path='/mkTrials' element={
                         <MkProvider>
