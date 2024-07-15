@@ -10,6 +10,7 @@ export const AnimationProvider = ({children}) => {
     const [arcadePalacePageAnim, setArcadePalacePageAnim] = useState(false);
 
     const [mkPageAnim, setMkPageAnim] = useState(false);
+    const [wheelsPageAnim, setWheelsPageAnim] = useState(false);
 
     const animations = {
         landing: [landingPageAnim, setLandingPageAnim],
@@ -17,6 +18,7 @@ export const AnimationProvider = ({children}) => {
         portfolio: [portfolioPageAnim, setPortfolioPageAnim],
         arcadePalace: [arcadePalacePageAnim, setArcadePalacePageAnim],
         mkTrials: [mkPageAnim, setMkPageAnim],
+        wheels: [wheelsPageAnim, setWheelsPageAnim],
     }
 
     return (

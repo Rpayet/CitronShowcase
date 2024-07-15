@@ -1,11 +1,16 @@
 import { MdOutlineKeyboardArrowLeft, MdOutlineKeyboardArrowRight } from "react-icons/md";
 
-export default function Resume() {
+export default function Resume({ landingPageAnim }) {
+
+    const getScaleInClass = () => {
+        return landingPageAnim ? 'scaleIn' : 'scaleOut';
+    };
+
     return (
         <div id="Resume">
-            <div className="pictures">
+            <div className={`pictures ${getScaleInClass()}`}>
                 <p>Image</p>
-                <div className="presentation">
+                <div className={`presentation ${getScaleInClass()}`}>
                     <div className="content">
                         <MdOutlineKeyboardArrowLeft className="arrow left" />
                         <p className="text">Bienvenue chez moi !</p>

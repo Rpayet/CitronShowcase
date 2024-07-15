@@ -1,12 +1,41 @@
-import { Link } from "react-router-dom";
+import { usePageTransition } from '../../../services/navigation/animationService';
+import { useContext, useEffect } from 'react';
+import { AnimationContext } from '../../../context/AnimationContext';
 
-export default function Menu() {
+export default function Menu({ landingPageAnim }) {
+
+    const { handleNavigation } = usePageTransition();
+
+    const getSlideInClass = () => {
+        return landingPageAnim ? 'slideIn' : 'slideOut';
+    };
+
     return (
         <div id='Menu'>
-            <Link to='/latest' className='latest'>Actualités</Link>
-            <Link to='/articles' className='articles'>Articles</Link>
-            <Link to='/portefolio' className='portefolio'>Portefolio</Link>
-            <Link to='/arcadePalace' className='arcade'>Arcade Palace</Link>
+            <button 
+                id='latest'
+                className={`latest ${getSlideInClass()}`}
+                onClick={() => handleNavigation('latest')}>
+                    Actualités
+            </button>
+            <button 
+                id='articles'
+                className={`articles ${getSlideInClass()}`}
+                onClick={() => handleNavigation('articles')}>
+                    Articles
+            </button>
+            <button 
+                id='portfolio'
+                className={`portfolio ${getSlideInClass()}`}
+                onClick={() => handleNavigation('portfolio')}>
+                    Portefolio
+            </button>
+            <button 
+                id='arcadePalace'
+                className={`arcade ${getSlideInClass()}`}
+                onClick={() => handleNavigation('arcadePalace')}>
+                    Arcade Palace
+            </button>
         </div>
     )
 }

@@ -10,16 +10,29 @@ export const usePageTransition = () => {
     const navigateWithAnimation = (fromPage, toPage, timeout=500) => {
         if (fromPage === toPage) return;
 
-        const [_, setFromPageAnim] = animations[fromPage];
-        const [__, setToPageAnim] = animations[toPage];
+        const [_, setFromPageAnim] = animations[(fromPage === '') ? 'landing' : fromPage];
+        const [__, setToPageAnim] = animations[(toPage === '') ? 'landing' : toPage];
 
         setFromPageAnim(false);
         setToPageAnim(true);
         setTimeout(() => {
-            navigate(`/${toPage}`);
+            if (fromPage === '') {
+                navigate(`/`);
+            } else {
+                navigate(`/${toPage}`);
+            }
         }, timeout);
     };
 
-    return { navigateWithAnimation };
+    const handleNavigation = (toPage) => {
+        const fromPage = window.location.pathname.split('/')[1];
+        if (fromPage === '') {
+            navigateWithAnimation('landing', toPage, 500);
+        } else {
+            navigateWithAnimation(fromPage, toPage, 500);
+        }
+    };
+
+    return { navigateWithAnimation, handleNavigation };
 
 }
