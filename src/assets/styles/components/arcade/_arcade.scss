@@ -5,7 +5,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    height: 100%;
 
     .games {
         display: flex;
@@ -32,15 +32,33 @@
                 transform: scale(1.02);
             }
 
+            &.slideIn {
+                animation-name : slideIn;
+                animation-fill-mode: forwards;
+            }
+
+            &.slideOut {
+                animation-name : slideOut;
+                animation-fill-mode: forwards;
+            }
         }
     }
 }
 
 @keyframes slideIn {
     from {
-        transform: translateX(-100%);
+        transform: translateY(200%);
     }
     to {
-        transform: translateX(0);
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideOut {
+    from {
+        transform: translateY(0);
+    }
+    to {
+        transform: translateY(200%);
     }
 }

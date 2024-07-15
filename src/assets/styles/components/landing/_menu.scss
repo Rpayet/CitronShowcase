@@ -9,18 +9,51 @@
 
     .latest {
         grid-area: 1 / 1 / 2 / 2;
+    
+        &.slideIn {
+            transform: translateY(0);
+            animation: slideInUp .5s forwards;
+        }
+
+        &.slideOut {
+            animation: slideOutUp .5s forwards;
+        }
     }
 
     .articles {
         grid-area: 2 / 1 / 3 / 2;
+    
+        &.slideIn {
+            animation: slideInDown .5s forwards;
+        }
+
+        &.slideOut {
+            animation: slideOutDown .5s forwards;
+        }
     }
 
-    .portefolio {
+    .portfolio {
         grid-area: 1 / 2 / 3 / 3;
+    
+        &.slideIn {
+            animation: slideInRight .5s forwards;
+        }
+
+        &.slideOut {
+            animation: slideOutRight .5s forwards;
+        }
     }
 
     .arcade {
         grid-area: 1 / 3 / 3 / 4;
+    
+        &.slideIn {
+            animation: slideInRight .6s forwards;
+        }
+
+        &.slideOut {
+            animation: slideOutRight .4s forwards;
+        }
     }
 
     .latest, .articles {
@@ -28,7 +61,7 @@
         max-height: 20rem;
     }
 
-    .latest, .articles, .portefolio, .arcade {
+    .latest, .articles, .portfolio, .arcade {
         border: .25rem solid black;
         border-radius: .5rem;
         padding: 1rem;
@@ -38,5 +71,59 @@
             border: .15rem solid white;
             transform: scale(1.02);
         }
+    }
+}
+
+@keyframes slideInUp {
+    from {
+        transform: translateY(-200%);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideOutUp {
+    from {
+        transform: translateY(0);
+    }
+    to {
+        transform: translateY(-200%);
+    }
+}
+
+@keyframes slideInDown {
+    from {
+        transform: translateY(200%);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideOutDown {
+    from {
+        transform: translateY(0);
+    }
+    to {
+        transform: translateY(200%);
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        transform: translateX(300%);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideOutRight {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(300%);
     }
 }

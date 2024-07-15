@@ -13,6 +13,16 @@
         display: flex;
         justify-content: center;
         align-items: center;
+
+        &.scaleIn {
+            transform: scale(1);
+            animation: scaleIn .3s forwards;
+        }
+
+        &.scaleOut {
+            transform: scale(0);
+            animation: scaleOut .5s forwards;
+        }
         
         .presentation {
             position: absolute;
@@ -25,6 +35,16 @@
             text-align: center;
             background-color: #00000050;
             backdrop-filter: blur(.25rem);
+
+            &.scaleIn {
+                transform: scale(1);
+                animation: scaleIn .5s forwards;
+            }
+
+            &.scaleOut {
+                transform: scale(0);
+                animation: scaleOut .3s forwards;
+            }
 
             .content {
                 position: relative;
@@ -62,4 +82,22 @@
         }
     }
 
+}
+
+@keyframes scaleIn {
+    from {
+        transform: scale(0);
+    }
+    to {
+        transform: scale(1);
+    }
+}
+
+@keyframes scaleOut {
+    from {
+        transform: scale(1);
+    }
+    to {
+        transform: scale(0);
+    }
 }
