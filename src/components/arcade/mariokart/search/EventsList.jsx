@@ -12,8 +12,6 @@ export default function EventsList({}) {
 
     const [mkPageAnim, setMkPageAnim] = animations.mkTrials;
 
-    console.log(mkPageAnim);
-
     const [cardId, setCardId] = useState();
     const [itemsPerPage, setItemsPerPage] = useState(9);
     const [currentPage, setCurrentPage] = useState(1);
@@ -66,14 +64,13 @@ export default function EventsList({}) {
 
     useEffect(() => {
         if (tournaments && tournaments.length > 0 && switchCardSprites) {
-        setMkPageAnim(true);
-        setEventListClassName('open');
+            setMkPageAnim(true);
+            setEventListClassName('open');
         }
-    }, [tournaments, switchCardSprites]);
 
-    useEffect(() => {
         return () => setMkPageAnim(false);
-    }, []);
+        
+    }, [tournaments, switchCardSprites]);
 
     return (
         <div id='MkPages'>
