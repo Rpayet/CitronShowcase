@@ -2,10 +2,16 @@ import { useContext } from "react";
 import { IoIosArrowDropdown } from "react-icons/io";
 import { ModalContext } from "../../context/ModalContext";
 import Login from "./Login";
+import { AppContext } from "../../context/AppProvider";
+import { AnimationContext } from "../../context/AnimationContext";
 
 export default function LoginBtn() {
 
     const { setContent, setTitle, setOpen } = useContext(ModalContext);
+    const { mainLoading, userIdentifier } = useContext(AppContext);
+    const { animations } = useContext(AnimationContext);
+    const [loginAnimation, setLoginAnimation] = animations.login;
+    const [profilAnimation, setProfilAnimation] = animations.profil;
 
     const handleLoginModal = () => {
         setTitle('Connexion');
@@ -18,7 +24,7 @@ export default function LoginBtn() {
             <div className={`container ${userIdentifier ? 'register' : 'unregister'}`}>
                 {!userIdentifier
                     ?
-                    <div className={`login ${loginAnimation ? 'show' : 'hide'}`} onClick={handleLoginModal}>
+                    <div className={`loginbtn ${loginAnimation ? 'show' : 'hide'}`} onClick={handleLoginModal}>
                         <p>Connexion</p>
                     </div>
                     :

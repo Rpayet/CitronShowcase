@@ -1,4 +1,17 @@
+import { useContext } from "react";
+import { ModalContext } from "../../context/ModalContext";
+import Login from "./Login";
+
 export default function Register() {
+
+    const { setContent, setTitle, setOpen } = useContext(ModalContext);
+
+    const openLogin = () => {
+        setContent(() => (<Login />) );
+        setTitle('Connexion');
+        setOpen(true);
+    }
+
     return (
         <div id="Register">
             <form className='form'>

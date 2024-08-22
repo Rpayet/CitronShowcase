@@ -1,10 +1,12 @@
 import { useContext, useState } from "react";
 import { ModalContext } from "../../context/ModalContext";
 import Register from "./Register";
+import { AppContext } from "../../context/AppProvider";
 
 export default function Login() {
 
     const { setContent, setTitle, setOpen } = useContext(ModalContext);
+    const {error , userIdentifier, handleLogin, handleLogout} = useContext(AppContext);
 
     const [ email, setEmail ] = useState('');
     const [ password, setPassword ] = useState('');
@@ -18,20 +20,20 @@ export default function Login() {
     return (
         <div id='Login'>
         <form className="form">
-            {/* {error && (
+            {error && (
                 <div className="">
                     {error}
                 </div>
-            )} */}
+            )}
 
-            {/* {userIdentifier && (
+            {userIdentifier && (
                 <div className="">
                     {userIdentifier.name},
                     <p onClick={handleLogout} className="">
                         Game Over
                     </p>
                 </div>
-            )} */}
+            )}
 
             {!userIdentifier && (
                 <>

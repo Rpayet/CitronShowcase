@@ -3,6 +3,8 @@
 @import './utils/mixin.scss';
 
 @import './base/app';
+@import './components/modal/modal';
+@import './components/auth/authentication';
 @import './components/landing/landing';
 @import './components/arcade/arcade';
 @import './components/boardgame/boardgame.scss';
