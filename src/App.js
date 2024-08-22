@@ -8,6 +8,7 @@ import ArcadePalace from './pages/ArcadePalace';
 import GameProvider from './context/GameContext';
 import { MkProvider } from './context/MkContext';
 import EventsList from './components/arcade/mariokart/search/EventsList';
+import LoginBtn from './components/auth/LoginBtn';
 
 export default function App() {
     return (
@@ -16,6 +17,10 @@ export default function App() {
                 <div className="bg-pattern">
                     {/* A utiliser pour créer un arrière-plan dynamique */}
                 </div>
+                <div>
+                    <LoginBtn />
+                </div>
+
                 <Dashboard />
                 <div className="main-content">
                     <Routes>
