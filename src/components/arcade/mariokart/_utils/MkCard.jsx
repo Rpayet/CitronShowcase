@@ -93,7 +93,7 @@ export default function MkCard({tournament, setCardId, cardId, fadeKey}) {
                         {imagesLoaded 
                             ? (
                                 <>
-                                    {/* <Stage 
+                                    <Stage 
                                         width={100} 
                                         height={100} 
                                         options={{backgroundAlpha: 0}} >
@@ -108,7 +108,7 @@ export default function MkCard({tournament, setCardId, cardId, fadeKey}) {
                                             options={{backgroundAlpha: 0}} >
                                             <Sprite image={switchCardSprites} x={0} y={-100} scale={1} />
                                         </Stage>
-                                    </div> */}
+                                    </div>
                                 </>
                             ) : (
                                 <div className="loading"></div>

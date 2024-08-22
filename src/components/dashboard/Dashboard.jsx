@@ -8,10 +8,10 @@ export default function Dashboard() {
     const { handleNavigation } = usePageTransition();
 
     const dashboardLink = [
-        {id: 'landing', name: 'Accueil', icon: [0, 0]},
-        {id: 'articles', name: 'Articles', icon: [-50, 0]},
-        {id: 'portfolio', name: 'Portefolio', icon: [-100, 0]},
-        {id: 'arcadePalace', name: 'Arcade Palace', icon: [-150, 0]}
+        {id: 'landing', to:'', name: 'Accueil', icon: [0, 0]},
+        {id: 'articles', to:'articles', name: 'Articles', icon: [-50, 0]},
+        {id: 'portfolio', to:'portfolio', name: 'Portefolio', icon: [-100, 0]},
+        {id: 'arcadePalace', to:'arcadePalace', name: 'Arcade Palace', icon: [-150, 0]}
     ]
 
     const [dashStatus, setDashStatus] = useState('');
@@ -36,7 +36,7 @@ export default function Dashboard() {
                         key={link.id}
                         id={link.id}
                         className={`dashlink`}
-                        onClick={() => handleNavigation(link.id) } >
+                        onClick={() => handleNavigation(link.to) } >
                                 <div className="icon">
                                 <Stage                        
                                     width={50}
