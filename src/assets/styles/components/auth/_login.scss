@@ -8,7 +8,7 @@
         flex-direction: column;
         gap: 1rem;
 
-        .email, .password {
+        .email, .password, .username {
             display: flex;
             flex-direction: column;
 
@@ -19,13 +19,13 @@
 
             .input {
                 border-radius: 0.5rem;
-                border: 1px solid white;
+                border: 1px solid grey;
                 padding: .5rem;
             }
         }
 
         .submit-btn {
-            background-color: white;
+            background-color: black;
             color: white;
             padding: .5rem;
             border-radius: 0.5rem;

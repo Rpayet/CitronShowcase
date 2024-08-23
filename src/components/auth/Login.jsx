@@ -2,14 +2,30 @@ import { useContext, useState } from "react";
 import { ModalContext } from "../../context/ModalContext";
 import Register from "./Register";
 import { AppContext } from "../../context/AppProvider";
+import { useAuth } from "../../context/AuthContext";
 
 export default function Login() {
 
     const { setContent, setTitle, setOpen } = useContext(ModalContext);
-    const {error , userIdentifier, handleLogin, handleLogout} = useContext(AppContext);
+    //TODO : replace userIdentifier by auth/me 
+    const {userIdentifier} = useContext(AppContext);
+    const auth = useAuth();
 
-    const [ email, setEmail ] = useState('');
-    const [ password, setPassword ] = useState('');
+    const [input, setInput] = useState({
+        username: '',
+        password: ''
+    });
+
+    const handleSubmitEvent = (e) => {
+        e.preventDefault();
+        auth.loginAction(input);
+        if (input.username !== "" && input.password !== "") {
+            auth.loginAction(input);
+            return;
+        }
+        //TODO : Add validator 
+        console.log('Veuillez remplir tous les champs');
+    };
 
     const openRegister = () => {
         setContent(() => (<Register />) );
@@ -19,21 +35,23 @@ export default function Login() {
 
     return (
         <div id='Login'>
-        <form className="form">
-            {error && (
+        <form className="form" onSubmit={handleSubmitEvent}>
+            {/**TODO : Error Message */}
+            {/* {error && (
                 <div className="">
                     {error}
                 </div>
-            )}
+            )} */}
 
-            {userIdentifier && (
+            {/**TODO : Logout option when User already connected. Options here really necessary ? */}
+            {/* {userIdentifier && (
                 <div className="">
                     {userIdentifier.name},
                     <p onClick={handleLogout} className="">
                         Game Over
                     </p>
                 </div>
-            )}
+            )} */}
 
             {!userIdentifier && (
                 <>
@@ -41,10 +59,10 @@ export default function Login() {
                         <label htmlFor="inputUsername" className="label">Identifiant</label>
                         <input
                             type="email"
-                            value={email}
+                            value={input.username}
                             name="email"
                             id="inputUsername"
-                            onChange={(e) => setEmail(e.target.value)}
+                            onChange={(e) => setInput({...input, username: e.target.value})}
                             className="input"
                             required
                         />
@@ -56,8 +74,8 @@ export default function Login() {
                             type="password"
                             name="password"
                             id="inputPassword"
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)}
+                            value={input.password}
+                            onChange={(e) => setInput({...input, password: e.target.value})}
                             className="input"
                             autoComplete="current-password"
                             required
@@ -71,9 +89,9 @@ export default function Login() {
                     </div>
 
 
-                    <p className="submit-btn" onClick={handleLogin} >
+                    <button type='submit' className="submit-btn" >
                         - Insert Coin -
-                    </p>
+                    </button>
 
                 </>
             )}

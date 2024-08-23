@@ -117,6 +117,7 @@ ul {
   backdrop-filter: blur(5px);
   background-color: rgba(0, 0, 0, 0.3137254902);
   z-index: 1100;
+  transition: all 0.35s ease-in-out;
 }
 #Modal.fade-in {
   animation: fade-in 0.35s ease-in-out;
@@ -130,9 +131,9 @@ ul {
   border-radius: 1rem;
   border: 0.25rem solid white;
   width: 50%;
-  height: 50%;
-  top: 25%;
-  left: 25%;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
 }
 #Modal .modal.zoom-in {
   animation: zoom-in 0.35s ease-in-out;
@@ -220,21 +221,21 @@ ul {
   flex-direction: column;
   gap: 1rem;
 }
-#Login .form .email, #Login .form .password, #Register .form .email, #Register .form .password {
+#Login .form .email, #Login .form .password, #Login .form .username, #Register .form .email, #Register .form .password, #Register .form .username {
   display: flex;
   flex-direction: column;
 }
-#Login .form .email .label, #Login .form .password .label, #Register .form .email .label, #Register .form .password .label {
+#Login .form .email .label, #Login .form .password .label, #Login .form .username .label, #Register .form .email .label, #Register .form .password .label, #Register .form .username .label {
   font-size: small;
   text-align: center;
 }
-#Login .form .email .input, #Login .form .password .input, #Register .form .email .input, #Register .form .password .input {
+#Login .form .email .input, #Login .form .password .input, #Login .form .username .input, #Register .form .email .input, #Register .form .password .input, #Register .form .username .input {
   border-radius: 0.5rem;
-  border: 1px solid white;
+  border: 1px solid grey;
   padding: 0.5rem;
 }
 #Login .form .submit-btn, #Register .form .submit-btn {
-  background-color: white;
+  background-color: black;
   color: white;
   padding: 0.5rem;
   border-radius: 0.5rem;

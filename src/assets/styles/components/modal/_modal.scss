@@ -7,6 +7,7 @@
     backdrop-filter: blur(5px);
     background-color: #00000050;
     z-index: 1100;
+    transition: all 0.35s ease-in-out;
 
     &.fade-in {
         animation: fade-in 0.35s ease-in-out;
@@ -22,9 +23,9 @@
         border-radius: 1rem;
         border: .25rem solid white;
         width: 50%;
-        height: 50%;
-        top: 25%;
-        left: 25%;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
 
         &.zoom-in {
             animation: zoom-in 0.35s ease-in-out;

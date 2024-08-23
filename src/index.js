@@ -7,17 +7,20 @@ import { BrowserRouter } from 'react-router-dom';
 import { AnimationProvider } from './context/AnimationContext';
 import { ModalProvider } from './context/ModalContext';
 import { AppProvider } from './context/AppProvider';
+import AuthProvider from './context/AuthContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <React.StrictMode>
         <AppProvider>
             <BrowserRouter>
-                <AnimationProvider>
-                    <ModalProvider>
-                        <App />
-                    </ModalProvider>
-                </AnimationProvider>
+                <AuthProvider>
+                    <AnimationProvider>
+                        <ModalProvider>
+                            <App />
+                        </ModalProvider>
+                    </AnimationProvider>
+                </AuthProvider>
             </BrowserRouter>
         </AppProvider>
     </React.StrictMode>
