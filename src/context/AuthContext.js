@@ -14,7 +14,7 @@ export default function AuthProvider({ children }) {
         try {
             const response = await Axios.post('/api/v1/auth/login', data);
             if (response.status === 200) {
-                localStorage.setItem('site', response.data.token);
+                localStorage.setItem('token', response.data.token);
                 setToken(response.data.token);
                 setUser(response.data.user);
                 navigate('/');
@@ -32,13 +32,23 @@ export default function AuthProvider({ children }) {
 
 
     useEffect(() => {
-        Axios.get('/auth/me')
-            .then(response => {
-                setUser(response.data);
-            })
-            .catch(() => {
-                setUser(null);
+
+        const token = localStorage.getItem('token');
+
+        if (token) {
+            Axios.get('/api/v1/auth/me', {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            }).then(response => {
+                setUser(response.data.user);
+            }).catch(error => {
+                console.log(error);
             });
+        } else {
+            setUser(null);
+        }
+
     }, []);
 
     return (

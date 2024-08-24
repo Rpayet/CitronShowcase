@@ -2,10 +2,13 @@ import { useContext, useState } from "react";
 import { ModalContext } from "../../context/ModalContext";
 import Login from "./Login";
 import Axios from "../../services/server/callerService";
+import { useAuth } from "../../context/AuthContext";
 
 export default function Register() {
 
     const { setContent, setTitle, setOpen } = useContext(ModalContext);
+
+    const auth = useAuth();
 
     const [ input, setInput ] = useState({
         username: '',
@@ -25,16 +28,24 @@ export default function Register() {
         e.preventDefault();
 
         if (input.password !== input.passwordConfirm) {
+            //TODO : Add validator
             console.log('Les mots de passe ne correspondent pas');
             return;
         } else {
             try {
-                const response = await Axios.post('/auth/register', {
+                const response = await Axios.post('api/v1/auth/register', {
                     username: input.username,
                     email: input.email,
                     password: input.password
                 });
-                console.log(response.data);
+
+                if (response.status === 200) {
+                    auth.loginAction({
+                        username: input.username,
+                        password: input.password
+                    });
+                }
+
             } catch {
                 console.log('Une erreur est survenue lors de l\'inscription');
             }
@@ -42,11 +53,11 @@ export default function Register() {
         }
     };
 
-    // Add validator
+    //TODO : Add validator
 
     return (
         <div id="Register">
-            <form className='form'>
+            <form className='form' onSubmit={handleRegister}>
                 <div className="username">
                     <label className='label' htmlFor="username">Nom d'utilisateur</label>
                     <input 
@@ -84,8 +95,7 @@ export default function Register() {
                         id="passwordConfirm" />
                 </div>
                 <button 
-                    type='button'
-                    onClick={(e) => handleRegister(e)}
+                    type='submit'
                     className="submit-btn">
                         S'inscrire
                 </button>

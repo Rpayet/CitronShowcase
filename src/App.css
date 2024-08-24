@@ -134,6 +134,7 @@ ul {
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
+  transition: all 0.35s ease-in-out;
 }
 #Modal .modal.zoom-in {
   animation: zoom-in 0.35s ease-in-out;
@@ -147,6 +148,7 @@ ul {
   width: 100%;
   flex-direction: column;
   align-items: center;
+  transition: all 0.35s ease-in-out;
 }
 #Modal .modal .container .header {
   display: flex;

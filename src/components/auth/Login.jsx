@@ -7,19 +7,17 @@ import { useAuth } from "../../context/AuthContext";
 export default function Login() {
 
     const { setContent, setTitle, setOpen } = useContext(ModalContext);
-    //TODO : replace userIdentifier by auth/me 
-    const {userIdentifier} = useContext(AppContext);
     const auth = useAuth();
 
     const [input, setInput] = useState({
-        username: '',
+        email: '',
         password: ''
     });
 
     const handleSubmitEvent = (e) => {
         e.preventDefault();
-        auth.loginAction(input);
         if (input.username !== "" && input.password !== "") {
+            setOpen(false);
             auth.loginAction(input);
             return;
         }
@@ -42,59 +40,43 @@ export default function Login() {
                     {error}
                 </div>
             )} */}
+            <div className='email'>
+                <label htmlFor="inputUsername" className="label">Identifiant</label>
+                <input
+                    type="email"
+                    value={input.email}
+                    name="email"
+                    id="inputUsername"
+                    onChange={(e) => setInput({...input, email: e.target.value})}
+                    className="input"
+                    required
+                />
+            </div>
 
-            {/**TODO : Logout option when User already connected. Options here really necessary ? */}
-            {/* {userIdentifier && (
-                <div className="">
-                    {userIdentifier.name},
-                    <p onClick={handleLogout} className="">
-                        Game Over
-                    </p>
-                </div>
-            )} */}
+            <div className='password'>
+                <label htmlFor="inputPassword" className="label">Mot de passe</label>
+                <input
+                    type="password"
+                    name="password"
+                    id="inputPassword"
+                    value={input.password}
+                    onChange={(e) => setInput({...input, password: e.target.value})}
+                    className="input"
+                    autoComplete="current-password"
+                    required
+                />
+            </div>
 
-            {!userIdentifier && (
-                <>
-                    <div className='email'>
-                        <label htmlFor="inputUsername" className="label">Identifiant</label>
-                        <input
-                            type="email"
-                            value={input.username}
-                            name="email"
-                            id="inputUsername"
-                            onChange={(e) => setInput({...input, username: e.target.value})}
-                            className="input"
-                            required
-                        />
-                    </div>
-
-                    <div className='password'>
-                        <label htmlFor="inputPassword" className="label">Mot de passe</label>
-                        <input
-                            type="password"
-                            name="password"
-                            id="inputPassword"
-                            value={input.password}
-                            onChange={(e) => setInput({...input, password: e.target.value})}
-                            className="input"
-                            autoComplete="current-password"
-                            required
-                        />
-                    </div>
-
-                    <div className="remember">
-                        <label>
-                            <input type="checkbox" name="_remember_me" /> Se souvenir de moi
-                        </label>
-                    </div>
+            <div className="remember">
+                <label>
+                    <input type="checkbox" name="_remember_me" /> Se souvenir de moi
+                </label>
+            </div>
 
 
-                    <button type='submit' className="submit-btn" >
-                        - Insert Coin -
-                    </button>
-
-                </>
-            )}
+            <button type='submit' className="submit-btn" >
+                - Insert Coin -
+            </button>
 
         </form>
 
