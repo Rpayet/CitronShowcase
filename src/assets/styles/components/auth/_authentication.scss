@@ -93,7 +93,7 @@
 
     }
 
-    .loginbtn {
+    .auth-btn {
         width: 150px;
         height: 50px;
         position: relative;
@@ -135,10 +135,18 @@
         transition: all 0.3s ease-in-out;
         cursor: pointer;
 
+        .user-menu {
+            color: #fff;
+        }
+
         .picture,
         .default {
+            display: flex;
+            justify-content: center;
+            align-items: center;
             width: 70px;
-            border-radius: 1rem;
+            height: 70px;
+            border-radius: 50%;
             border: .2rem solid #60e75c;
             transition: all .3s ease-in-out;
 
@@ -151,6 +159,13 @@
             }
         }
 
+        .default {
+            background: #60e75c;
+            color: #fff;
+            padding: .5rem;
+            transition: all .3s ease-in-out;
+        }
+
         .user-menu {
             display: flex;
             align-items: center;
@@ -158,6 +173,7 @@
             transition: all .3s ease-in-out;
 
             .user-name {
+                color: #fff;
                 font-size: 1.25rem;
                 font-weight: 500;
                 text-align: right;

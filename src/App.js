@@ -8,7 +8,7 @@ import ArcadePalace from './pages/ArcadePalace';
 import GameProvider from './context/GameContext';
 import { MkProvider } from './context/MkContext';
 import EventsList from './components/arcade/mariokart/search/EventsList';
-import LoginBtn from './components/auth/LoginBtn';
+import LoginBtn from './components/auth/AuthOrProfileButton';
 import Modal from './components/modals/Modal';
 import PrivateRoute from './routes/authorizations/PrivateRoute';
 
@@ -43,7 +43,7 @@ export default function App() {
                         {/* <Route element={<PrivateRoute />}>
                             <Route path='/admin/' element={<h1>Privée</h1>} />
                         </Route> */}
-                        
+
                     </Routes>
                 </div>
             </div>

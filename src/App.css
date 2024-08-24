@@ -326,7 +326,7 @@ ul {
   border-radius: 0 0 0 1rem;
   border: 0.2rem solid rgba(255, 255, 255, 0.6666666667);
 }
-#Authentication .loginbtn {
+#Authentication .auth-btn {
   width: 150px;
   height: 50px;
   position: relative;
@@ -340,16 +340,16 @@ ul {
   color: #fff;
   cursor: pointer;
 }
-#Authentication .loginbtn:active {
+#Authentication .auth-btn:active {
   transform: scale(0.95);
 }
-#Authentication .loginbtn:hover {
+#Authentication .auth-btn:hover {
   letter-spacing: 0.05rem;
 }
-#Authentication .loginbtn.show {
+#Authentication .auth-btn.show {
   transform: scale(1);
 }
-#Authentication .loginbtn.hide {
+#Authentication .auth-btn.hide {
   transform: scale(0);
 }
 #Authentication .profil {
@@ -363,10 +363,17 @@ ul {
   transition: all 0.3s ease-in-out;
   cursor: pointer;
 }
+#Authentication .profil .user-menu {
+  color: #fff;
+}
 #Authentication .profil .picture,
 #Authentication .profil .default {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 70px;
-  border-radius: 1rem;
+  height: 70px;
+  border-radius: 50%;
   border: 0.2rem solid #60e75c;
   transition: all 0.3s ease-in-out;
 }
@@ -378,6 +385,12 @@ ul {
 #Authentication .profil .default.hide {
   transform: translate(350px, 0px);
 }
+#Authentication .profil .default {
+  background: #60e75c;
+  color: #fff;
+  padding: 0.5rem;
+  transition: all 0.3s ease-in-out;
+}
 #Authentication .profil .user-menu {
   display: flex;
   align-items: center;
@@ -385,6 +398,7 @@ ul {
   transition: all 0.3s ease-in-out;
 }
 #Authentication .profil .user-menu .user-name {
+  color: #fff;
   font-size: 1.25rem;
   font-weight: 500;
   text-align: right;
@@ -1472,6 +1486,24 @@ ul {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+#Profil-menu {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 1rem 5rem;
+}
+#Profil-menu .profil-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 30%;
+  padding: 1rem;
+  border-radius: 10px;
+  border: 1px solid black;
+  cursor: pointer;
 }
 
 /*# sourceMappingURL=App.css.map */

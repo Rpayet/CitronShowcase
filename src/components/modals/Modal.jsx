@@ -32,9 +32,7 @@ export default function Modal() {
                             <h2>{title}</h2>
                             <IoCloseCircleOutline className='closed-btn' onClick={handleClose} />
                         </div>
-                        <div className="content">
-                            {content}
-                        </div>
+                        {content}
                     </div>
 
             </div>
