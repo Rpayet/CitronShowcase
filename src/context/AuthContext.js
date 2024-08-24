@@ -33,8 +33,6 @@ export default function AuthProvider({ children }) {
 
     useEffect(() => {
 
-        const token = localStorage.getItem('token');
-
         if (token) {
             Axios.get('/api/v1/auth/me', {
                 headers: {
@@ -49,7 +47,7 @@ export default function AuthProvider({ children }) {
             setUser(null);
         }
 
-    }, []);
+    }, [token]);
 
     return (
         <AuthContext.Provider value={{ user, token, loginAction, logout }}>
