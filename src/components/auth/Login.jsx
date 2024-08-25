@@ -3,6 +3,7 @@ import { ModalContext } from "../../context/ModalContext";
 import Register from "./Register";
 import { AppContext } from "../../context/AppProvider";
 import { useAuth } from "../../context/AuthContext";
+import Loading from "../modals/Loading";
 
 export default function Login() {
 
@@ -14,12 +15,28 @@ export default function Login() {
         password: ''
     });
 
-    const handleSubmitEvent = (e) => {
+    const [isLoading, setIsLoading] = useState(false);
+
+    const [error, setError] = useState(false);
+
+    const handleSubmitEvent = async (e) => {
         e.preventDefault();
+        setIsLoading(true);
         if (input.username !== "" && input.password !== "") {
-            setOpen(false);
-            auth.loginAction(input);
-            return;
+            const response = await auth.loginAction(input);
+            if (response.success) {
+                setIsLoading(false);
+                setOpen(false);
+                return;
+            } else if (response.error) {
+                setIsLoading(false);
+                setError(true);
+                return;
+            } else {
+                setIsLoading(false);
+                setContent(() => (<p>Une erreur est survenue</p>));
+                return;
+            }
         }
         //TODO : Add validator 
         console.log('Veuillez remplir tous les champs');
@@ -34,12 +51,9 @@ export default function Login() {
     return (
         <div id='Login'>
         <form className="form" onSubmit={handleSubmitEvent}>
-            {/**TODO : Error Message */}
-            {/* {error && (
-                <div className="">
-                    {error}
-                </div>
-            )} */}
+            {error && (
+                <p className='error'>Identifiants incorrects</p>
+            )}
             <div className='email'>
                 <label htmlFor="inputUsername" className="label">Identifiant</label>
                 <input
@@ -66,7 +80,8 @@ export default function Login() {
                     required
                 />
             </div>
-
+            
+            {/** TODO: styles it for focus */}
             <div className="remember">
                 <label>
                     <input type="checkbox" name="_remember_me" /> Se souvenir de moi
@@ -75,7 +90,7 @@ export default function Login() {
 
 
             <button type='submit' className="submit-btn" >
-                - Insert Coin -
+                {isLoading ? <Loading /> : 'Connexion'}
             </button>
 
         </form>

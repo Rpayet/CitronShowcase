@@ -1,20 +1,23 @@
 import { useContext, useState } from "react";
 import { ModalContext } from "../../context/ModalContext";
 import Login from "./Login";
-import Axios from "../../services/server/callerService";
 import { useAuth } from "../../context/AuthContext";
+import RegisterSuccess from "./RegisterSuccess";
+import Loading from "../modals/Loading";
 
 export default function Register() {
 
     const { setContent, setTitle, setOpen } = useContext(ModalContext);
 
+    const [isLoading, setIsLoading] = useState(false);
+
     const auth = useAuth();
 
-    const [ input, setInput ] = useState({
+    const [ data, setInput ] = useState({
         username: '',
         email: '',
         password: '',
-        passwordConfirm: ''
+        password_confirmation: ''
     });
 
     const openLogin = () => {
@@ -24,36 +27,25 @@ export default function Register() {
     };
 
     const handleRegister = async (e) => {
-
         e.preventDefault();
-
-        if (input.password !== input.passwordConfirm) {
-            //TODO : Add validator
-            console.log('Les mots de passe ne correspondent pas');
+        setIsLoading(true);
+        const response = await auth.registerAction(data);
+        if (response.error) {
+            setIsLoading(false);
+            //TODO : Replace with error message for each fields
+            console.log(response.error);
             return;
-        } else {
-            try {
-                const response = await Axios.post('api/v1/auth/register', {
-                    username: input.username,
-                    email: input.email,
-                    password: input.password
-                });
-
-                if (response.status === 200) {
-                    auth.loginAction({
-                        username: input.username,
-                        password: input.password
-                    });
-                }
-
-            } catch {
-                console.log('Une erreur est survenue lors de l\'inscription');
-            }
-            return;
+        } else if (response.success) {
+            auth.loginAction({ email: data.email, password: data.password });
+            setTitle('Inscription réussie');
+            setContent(() => (<RegisterSuccess />) );
+            setTimeout(() => {
+                setOpen(false);
+            }, 5000);
         }
     };
 
-    //TODO : Add validator
+    //TODO : Add validator in the render
 
     return (
         <div id="Register">
@@ -61,7 +53,7 @@ export default function Register() {
                 <div className="username">
                     <label className='label' htmlFor="username">Nom d'utilisateur</label>
                     <input 
-                        onChange={(e) => setInput({...input, username: e.target.value})}
+                        onChange={(e) => setInput({...data, username: e.target.value})}
                         className="input" 
                         type="text" 
                         name="username" 
@@ -70,7 +62,7 @@ export default function Register() {
                 <div className="email">
                     <label className='label' htmlFor="email">Email</label>
                     <input 
-                        onChange={(e) => setInput({...input, email: e.target.value})}
+                        onChange={(e) => setInput({...data, email: e.target.value})}
                         className="input" 
                         type="email" 
                         name="email" 
@@ -79,7 +71,7 @@ export default function Register() {
                 <div className="password">
                     <label className='label' htmlFor="password">Mot de passe</label>
                     <input 
-                        onChange={(e) => setInput({...input, password: e.target.value})}
+                        onChange={(e) => setInput({...data, password: e.target.value})}
                         className="input" 
                         type="password" 
                         name="password" 
@@ -88,7 +80,7 @@ export default function Register() {
                 <div className="password">
                     <label className='label' htmlFor="passwordConfirm">Confirmation du mot de passe</label>
                     <input 
-                        onChange={(e) => setInput({...input, passwordConfirm: e.target.value})}
+                        onChange={(e) => setInput({...data, password_confirmation: e.target.value})}
                         className="input" 
                         type="password" 
                         name="passwordConfirm" 
@@ -97,10 +89,10 @@ export default function Register() {
                 <button 
                     type='submit'
                     className="submit-btn">
-                        S'inscrire
+                        {isLoading ? <Loading /> : <span>S'inscrire</span>}
                 </button>
             </form>
-            <p className='redirect' onClick={() => openLogin()}>Déjà inscrit ?</p>
+            <button type='button' className='redirect' onClick={() => openLogin()}>Déjà inscrit ?</button>
         </div>
     )
 }

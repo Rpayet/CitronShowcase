@@ -18,9 +18,11 @@ export default function AuthProvider({ children }) {
                 setToken(response.data.token);
                 setUser(response.data.user);
                 navigate('/');
+
+                return { success: true }
             }
         } catch (error) {
-            console.log(error);
+            return { success: false, error: error.response.data.errors }
         }
     }
 
@@ -30,6 +32,21 @@ export default function AuthProvider({ children }) {
         navigate('/');
     }
 
+    const registerAction = async (data) => {
+
+        try {
+            await Axios.post('api/v1/auth/register', data);
+            return { success: true }
+
+        } catch (error) {
+            if (error.response.status === 422) {
+                return { error: error.response.data.errors }
+            } else {
+                return { error: 'Une erreur est survenue' }
+            }
+        }
+
+    };
 
     useEffect(() => {
 
@@ -50,7 +67,7 @@ export default function AuthProvider({ children }) {
     }, [token]);
 
     return (
-        <AuthContext.Provider value={{ user, token, loginAction, logout }}>
+        <AuthContext.Provider value={{ user, token, loginAction, registerAction, logout }}>
             {children}
         </AuthContext.Provider>
     );
