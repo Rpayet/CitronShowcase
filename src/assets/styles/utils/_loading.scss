@@ -1,0 +1,28 @@
+#Loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: all .3s ease-in-out;
+
+    .spinner {
+        width: 4rem;
+        height: 4rem;
+        border: .5rem solid #ffffff;
+        border-top: .5rem solid #000000;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+    }
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}

@@ -223,6 +223,10 @@ ul {
   flex-direction: column;
   gap: 1rem;
 }
+#Login .form .error, #Register .form .error {
+  color: red;
+  text-align: center;
+}
 #Login .form .email, #Login .form .password, #Login .form .username, #Register .form .email, #Register .form .password, #Register .form .username {
   display: flex;
   flex-direction: column;
@@ -235,6 +239,10 @@ ul {
   border-radius: 0.5rem;
   border: 1px solid grey;
   padding: 0.5rem;
+  text-align: center;
+}
+#Login .form .email:focus-within .input, #Login .form .password:focus-within .input, #Login .form .username:focus-within .input, #Register .form .email:focus-within .input, #Register .form .password:focus-within .input, #Register .form .username:focus-within .input {
+  border: 1px solid #40C5EC;
 }
 #Login .form .submit-btn, #Register .form .submit-btn {
   background-color: black;
@@ -243,14 +251,40 @@ ul {
   border-radius: 0.5rem;
   text-align: center;
   cursor: pointer;
+  border: 2px solid transparent;
+}
+#Login .form .submit-btn:focus, #Register .form .submit-btn:focus {
+  border: 1px solid #40C5EC;
+}
+#Login .form .submit-btn #Loading .spinner, #Register .form .submit-btn #Loading .spinner {
+  width: 1.5rem;
+  height: 1.5rem;
+  border: 0.25rem solid #ffffff;
+  border-top: 0.25rem solid #000000;
 }
 #Login .redirect, #Register .redirect {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   text-align: center;
   margin-top: 1rem;
+  padding: 1rem;
   cursor: pointer;
 }
-#Login .redirect:hover, #Register .redirect:hover {
+#Login .redirect:hover, #Login .redirect:active, #Login .redirect:focus, #Register .redirect:hover, #Register .redirect:active, #Register .redirect:focus {
   text-decoration: underline;
+}
+
+#RegisterSuccess {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  font-weight: 500;
+  text-align: center;
+  padding: 1rem;
 }
 
 #Authentication {
@@ -1471,6 +1505,34 @@ ul {
   border-radius: 10px;
   border: 1px solid black;
   cursor: pointer;
+}
+
+#Loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transition: all 0.3s ease-in-out;
+}
+#Loading .spinner {
+  width: 4rem;
+  height: 4rem;
+  border: 0.5rem solid #ffffff;
+  border-top: 0.5rem solid #000000;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 /*# sourceMappingURL=App.css.map */

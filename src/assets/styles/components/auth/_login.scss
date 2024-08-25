@@ -8,6 +8,11 @@
         flex-direction: column;
         gap: 1rem;
 
+        .error {
+            color: red;
+            text-align: center;
+        }
+
         .email, .password, .username {
             display: flex;
             flex-direction: column;
@@ -21,6 +26,13 @@
                 border-radius: 0.5rem;
                 border: 1px solid grey;
                 padding: .5rem;
+                text-align: center;
+            }
+
+            &:focus-within {
+                .input {
+                    border: 1px solid $lumi;
+                }
             }
         }
 
@@ -31,17 +43,38 @@
             border-radius: 0.5rem;
             text-align: center;
             cursor: pointer;
+            border: 2px solid transparent;
+
+            &:focus {
+                border: 1px solid $lumi;
+            }
+
+            #Loading {
+                .spinner {
+                    width: 1.5rem;
+                    height: 1.5rem;
+                    border: .25rem solid #ffffff;
+                    border-top: .25rem solid #000000;
+                }
+            }
         }
     }
 
     .redirect {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
         text-align: center;
         margin-top: 1rem;
+        padding: 1rem;
         cursor: pointer;
 
-        &:hover {
+        &:hover, &:active, &:focus {
             text-decoration: underline;
         }
+
+
         
     }
 }
