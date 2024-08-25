@@ -14,13 +14,13 @@ root.render(
     <React.StrictMode>
         <AppProvider>
             <BrowserRouter>
-                <AuthProvider>
-                    <AnimationProvider>
-                        <ModalProvider>
-                            <App />
-                        </ModalProvider>
-                    </AnimationProvider>
-                </AuthProvider>
+                <ModalProvider>
+                    <AuthProvider>
+                        <AnimationProvider>
+                                <App />
+                        </AnimationProvider>
+                    </AuthProvider>
+                </ModalProvider>
             </BrowserRouter>
         </AppProvider>
     </React.StrictMode>
