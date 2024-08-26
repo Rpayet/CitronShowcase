@@ -8,6 +8,7 @@ export default function AuthProvider({ children }) {
     
     const [user, setUser] = useState(null);
     const [token, setToken] = useState(localStorage.getItem('token') || "");
+    const [displayAuthBtn, setDisplayAuthBtn] = useState(false);
     const navigate = useNavigate();
 
     const loginAction = async (data) => {
@@ -57,17 +58,19 @@ export default function AuthProvider({ children }) {
                 }
             }).then(response => {
                 setUser(response.data.user);
+                setDisplayAuthBtn(true);
             }).catch(error => {
                 console.log(error);
             });
         } else {
             setUser(null);
+            setDisplayAuthBtn(true);
         }
 
     }, [token]);
 
     return (
-        <AuthContext.Provider value={{ user, token, loginAction, registerAction, logout }}>
+        <AuthContext.Provider value={{ user, token, displayAuthBtn, loginAction, registerAction, logout }}>
             {children}
         </AuthContext.Provider>
     );

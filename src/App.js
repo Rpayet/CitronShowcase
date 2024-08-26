@@ -1,5 +1,4 @@
 import { Route, Routes } from 'react-router-dom';
-import { Stage, Sprite } from '@pixi/react';
 import './App.css';
 import WheelGame from './pages/WheelGame';
 import Dashboard from './components/dashboard/Dashboard';
@@ -11,16 +10,20 @@ import EventsList from './components/arcade/mariokart/search/EventsList';
 import LoginBtn from './components/auth/AuthOrProfileButton';
 import Modal from './components/modals/Modal';
 import PrivateRoute from './routes/authorizations/PrivateRoute';
+import { useAuth } from './context/AuthContext';
 
 export default function App() {
+
+    const auth = useAuth();
+
     return (
         <div id="App">
-            <div className="app-container" >
+            <div className="app-container">
                 <div className="bg-pattern">
                     {/* A utiliser pour créer un arrière-plan dynamique */}
                 </div>
                 <Modal />
-                <LoginBtn />
+                { auth.displayAuthBtn && <LoginBtn /> }
                 <Dashboard />
                 <div className="main-content">
                     <Routes>

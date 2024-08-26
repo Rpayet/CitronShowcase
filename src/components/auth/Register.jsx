@@ -20,6 +20,8 @@ export default function Register() {
         password_confirmation: ''
     });
 
+    const [error, setError] = useState([]);
+
     const openLogin = () => {
         setContent(() => (<Login />) );
         setTitle('Connexion');
@@ -33,6 +35,7 @@ export default function Register() {
         if (response.error) {
             setIsLoading(false);
             //TODO : Replace with error message for each fields
+            setError(response.error);
             console.log(response.error);
             return;
         } else if (response.success) {
@@ -45,8 +48,6 @@ export default function Register() {
         }
     };
 
-    //TODO : Add validator in the render
-
     return (
         <div id="Register">
             <form className='form' onSubmit={handleRegister}>
@@ -58,6 +59,9 @@ export default function Register() {
                         type="text" 
                         name="username" 
                         id="username" />
+                    {error.find(e => e.field === 'username') 
+                        ? <span className='error'>{error.find(e => e.field === 'username').message}</span> 
+                        : null}
                 </div>
                 <div className="email">
                     <label className='label' htmlFor="email">Email</label>
@@ -67,6 +71,9 @@ export default function Register() {
                         type="email" 
                         name="email" 
                         id="email" />
+                    {error.find(e => e.field === 'email') 
+                        ? <span className='error'>{error.find(e => e.field === 'email').message}</span> 
+                        : null}
                 </div>
                 <div className="password">
                     <label className='label' htmlFor="password">Mot de passe</label>
@@ -76,6 +83,10 @@ export default function Register() {
                         type="password" 
                         name="password" 
                         id="password" />
+                    {error.find(e => e.field === 'password') 
+                        ? <span className='error'>{error.find(e => e.field === 'password').message}</span> 
+                        : null}
+
                 </div>
                 <div className="password">
                     <label className='label' htmlFor="passwordConfirm">Confirmation du mot de passe</label>
@@ -85,6 +96,10 @@ export default function Register() {
                         type="password" 
                         name="passwordConfirm" 
                         id="passwordConfirm" />
+                    {error.find(e => e?.meta?.otherField === 'password_confirmation') 
+                        ? <span className='error'>{error.find(e => e.rule === 'confirmed').message}</span> 
+                        : null}
+
                 </div>
                 <button 
                     type='submit'
