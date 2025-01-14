@@ -8,6 +8,7 @@ export const AppProvider = ({ children }) => {
     const [userIdentifier, setUserIdentifier] = useState(false);
     const [tournaments, setTournaments] = useState([]);
     const [races, setRaces] = useState([]);
+    const [bgPattern, setBgPattern] = useState('');
 
     const [mainLoading, setMainLoading] = useState(false);
 

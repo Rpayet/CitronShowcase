@@ -8,6 +8,10 @@ export const AnimationProvider = ({children}) => {
     const [articlesPageAnim, setArticlesPageAnim] = useState(false);
     const [portfolioPageAnim, setPortfolioPageAnim] = useState(false);
     const [arcadePalacePageAnim, setArcadePalacePageAnim] = useState(false);
+    const [bgAnimation, setBgAnimation] = useState({
+        state: false,
+        pattern: 'landing',
+    });
     const [loginAnimation, setLoginAnimation] = useState(true);
     const [profilAnimation, setProfilAnimation] = useState(true);
 
@@ -23,6 +27,7 @@ export const AnimationProvider = ({children}) => {
         wheels: [wheelsPageAnim, setWheelsPageAnim],
         login: [loginAnimation, setLoginAnimation],
         profil: [profilAnimation, setProfilAnimation],
+        bgPattern: [bgAnimation, setBgAnimation],
     }
 
     return (

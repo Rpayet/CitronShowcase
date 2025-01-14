@@ -12,15 +12,29 @@ export const usePageTransition = () => {
 
         const [_, setFromPageAnim] = animations[(fromPage === '') ? 'landing' : fromPage];
         const [__, setToPageAnim] = animations[(toPage === '') ? 'landing' : toPage];
+        const [___, setBgPatternAnim] = animations.bgPattern;
 
         setFromPageAnim(false);
         setToPageAnim(true);
+        setBgPatternAnim(
+            prevState => ({
+                ...prevState,
+                state: true,
+            })
+        );
         setTimeout(() => {
             if (fromPage === '') {
                 navigate(`/`);
             } else {
                 navigate(`/${toPage}`);
             }
+            setBgPatternAnim(
+                prevState => ({
+                    ...prevState,
+                    state: false,
+                    pattern: (toPage === '') ? 'landing' : toPage,
+                })
+            );
         }, timeout);
     };
 

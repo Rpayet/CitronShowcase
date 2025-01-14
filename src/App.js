@@ -11,16 +11,57 @@ import LoginBtn from './components/auth/AuthOrProfileButton';
 import Modal from './components/modals/Modal';
 import PrivateRoute from './routes/authorizations/PrivateRoute';
 import { useAuth } from './context/AuthContext';
+import { useContext, useEffect, useState } from 'react';
+import { AnimationContext } from './context/AnimationContext';
 
 export default function App() {
 
+    const [patternSpeed, setPatternSpeed] = useState(30);
+
+    const { animations } = useContext(AnimationContext);
+    const [bgPatternAnim, setBgPatternAnim] = animations.bgPattern;
     const auth = useAuth();
+
+    const gradientArray = {
+        landing : 'linear-gradient(to top right, #3995a6ff 50%, #89caccff)',
+        arcadePalace : 'linear-gradient(to top right, #ff8c00ff 50%, #ffcd56ff)',
+        portfolio: 'linear-gradient(to top right, #8cff00ff 50%, #cdff56ff)',
+        articles: 'linear-gradient(to top right, #ff8c4dff 50%, #ffcd58ff)',
+    }
+
+    const patternStyleAttribution = {
+        animationDuration: `${patternSpeed}s`,
+    };
+
+    const gradientStyleAttribution = {
+        background: `${gradientArray[bgPatternAnim.pattern]}`,
+        transition: `all .5s ease-in-out`,
+
+    };
+
+    useEffect(() => {
+        let interval;
+        if (!bgPatternAnim.state) {
+            interval = setInterval(() => {
+                setPatternSpeed(prevSpeed => prevSpeed < 30 ? prevSpeed + .9 : 30);
+            }, 5);
+        } else if (bgPatternAnim.state) {
+            interval = setInterval(() => {
+                setPatternSpeed(prevSpeed => prevSpeed > .1 ? prevSpeed - .9 : .1);
+            }, 5);
+        }
+        return () => clearInterval(interval);
+    }, [bgPatternAnim.state]);
 
     return (
         <div id="App">
-            <div className="app-container">
-                <div className="bg-pattern">
-                    {/* A utiliser pour créer un arrière-plan dynamique */}
+            <div
+                style={gradientStyleAttribution} 
+                className="app-container">
+                <div 
+                    style={patternStyleAttribution}
+                    className={`bg-pattern ${bgPatternAnim.pattern}`}>
+                        {/* A utiliser pour créer un arrière-plan dynamique */}
                 </div>
                 <Modal />
                 { auth.displayAuthBtn && <LoginBtn /> }
