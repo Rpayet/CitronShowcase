@@ -1,13 +1,11 @@
 @import '../components/dashboard/dashboard';
 
 #App {
-
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100vw;
     height: 100vh;
-    transition: all .5s ease-in-out;
 
     .app-container {
         position: relative;
@@ -17,8 +15,10 @@
         height: 800px;
         border-radius: 1rem;
         border: .25rem solid #ffffffaa;
+        background: linear-gradient(to top right, #3995a6ff 50%, #89caccff);
         box-shadow: 0 0 1rem rgba(0, 0, 0, 0.35);
         overflow: hidden;
+        transition: all .3s ease-in-out;
 
         .main-content {
             z-index: 1;
@@ -27,7 +27,6 @@
         }
 
         .bg-pattern {
-
             content: "";
             position: absolute;
             left: 0;
@@ -35,29 +34,36 @@
             height: 225%;
             background-size: 350px;
             background-repeat: repeat;
-            transform: rotateZ(15deg) scale(1.2);
-            opacity: .25;
+            // transform: rotateZ(15deg) scale(1.2);
+            opacity: .2;
             z-index: 0;
             pointer-events: none;
             transition: all .3s ease-in-out;
             animation: infinite linear move-bg;
 
-
             &.landing {
                 background-image: url('/src/assets/images/statics/brand/Lemonify_Logo_V3.png');
-
             }
 
             &.arcadePalace {
                 background-image: url('/src/assets/images/statics/brand/arcade_pattern.png');
             }
 
-            &::before {
+            &.mkTrials {
+                background-image: url('/src/assets/images/statics/brand/arcade_time_pattern.png');
+            }
 
+            &.portfolio {
+                background-image: url('/src/assets/images/statics/brand/portfolio_pattern.png');
+            }
+
+            &.articles {
+                background-image: url('/src/assets/images/statics/brand/articles_pattern.png');
             }
         }
     }
 }
+
 @keyframes move-bg {
     0% {
         background-position: 0 0;

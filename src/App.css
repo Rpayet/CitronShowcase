@@ -78,7 +78,6 @@ ul {
   align-items: center;
   width: 100vw;
   height: 100vh;
-  transition: all 0.5s ease-in-out;
 }
 #App .app-container {
   position: relative;
@@ -88,8 +87,10 @@ ul {
   height: 800px;
   border-radius: 1rem;
   border: 0.25rem solid rgba(255, 255, 255, 0.6666666667);
+  background: linear-gradient(to top right, #3995a6 50%, #89cacc);
   box-shadow: 0 0 1rem rgba(0, 0, 0, 0.35);
   overflow: hidden;
+  transition: all 0.3s ease-in-out;
 }
 #App .app-container .main-content {
   z-index: 1;
@@ -104,8 +105,7 @@ ul {
   height: 225%;
   background-size: 350px;
   background-repeat: repeat;
-  transform: rotateZ(15deg) scale(1.2);
-  opacity: 0.25;
+  opacity: 0.2;
   z-index: 0;
   pointer-events: none;
   transition: all 0.3s ease-in-out;
@@ -117,6 +117,16 @@ ul {
 #App .app-container .bg-pattern.arcadePalace {
   background-image: url("/src/assets/images/statics/brand/arcade_pattern.png");
 }
+#App .app-container .bg-pattern.mkTrials {
+  background-image: url("/src/assets/images/statics/brand/arcade_time_pattern.png");
+}
+#App .app-container .bg-pattern.portfolio {
+  background-image: url("/src/assets/images/statics/brand/portfolio_pattern.png");
+}
+#App .app-container .bg-pattern.articles {
+  background-image: url("/src/assets/images/statics/brand/articles_pattern.png");
+}
+
 @keyframes move-bg {
   0% {
     background-position: 0 0;
@@ -1048,19 +1058,6 @@ ul {
   padding: 1rem 0.5rem;
   transition: all 0.5s ease-in-out;
 }
-#MkPages .list-menu::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 25px;
-  height: 100%;
-  background: linear-gradient(to bottom, #1969A4, #122F8F);
-  transform: translate(-17px, 0) rotateZ(5deg);
-  background-repeat: repeat-y;
-  -webkit-mask-image: url("/src/assets/images/statics/mariokart/triangle.svg");
-  mask-image: url("/src/assets/images/statics/mariokart/triangle.svg");
-}
 #MkPages .list-menu::before {
   content: "";
   position: absolute;
@@ -1068,7 +1065,7 @@ ul {
   right: -24px;
   width: 450px;
   height: 100%;
-  background: linear-gradient(to bottom, #1969A4, #122F8F);
+  background: linear-gradient(to top right, #3995a6 50%, #89cacc);
   height: 100%;
   padding: 1rem 0.5rem;
   transform-origin: bottom left;

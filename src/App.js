@@ -13,42 +13,46 @@ import PrivateRoute from './routes/authorizations/PrivateRoute';
 import { useAuth } from './context/AuthContext';
 import { useContext, useEffect, useState } from 'react';
 import { AnimationContext } from './context/AnimationContext';
+import { Filter } from 'pixi.js';
 
 export default function App() {
 
     const [patternSpeed, setPatternSpeed] = useState(30);
+    const [rotateCursor, setRotateCursor] = useState(15);
 
     const { animations } = useContext(AnimationContext);
     const [bgPatternAnim, setBgPatternAnim] = animations.bgPattern;
     const auth = useAuth();
 
-    const gradientArray = {
-        landing : 'linear-gradient(to top right, #3995a6ff 50%, #89caccff)',
-        arcadePalace : 'linear-gradient(to top right, #ff8c00ff 50%, #ffcd56ff)',
-        portfolio: 'linear-gradient(to top right, #8cff00ff 50%, #cdff56ff)',
-        articles: 'linear-gradient(to top right, #ff8c4dff 50%, #ffcd58ff)',
-    }
+    // const gradientArray = {
+    //     landing : 'linear-gradient(to top right, #3995a6ff 50%, #89caccff)',
+    //     arcadePalace : 'linear-gradient(to top right, #ff8c00ff 50%, #ffcd56ff)',
+    //     portfolio: 'linear-gradient(to top right, #8cff00ff 50%, #cdff56ff)',
+    //     articles: 'linear-gradient(to top right, #ff8c4dff 50%, #ffcd58ff)',
+    // }
 
     const patternStyleAttribution = {
         animationDuration: `${patternSpeed}s`,
+        transform: `rotateZ(${rotateCursor}deg) scale(1.2)`,
     };
 
-    const gradientStyleAttribution = {
-        background: `${gradientArray[bgPatternAnim.pattern]}`,
-        transition: `all .5s ease-in-out`,
-
-    };
+    // const gradientStyleAttribution = {
+    //     background: `${gradientArray[bgPatternAnim.pattern]}`,
+    //     transition: `all .5s ease-in-out`,
+    // };
 
     useEffect(() => {
         let interval;
         if (!bgPatternAnim.state) {
             interval = setInterval(() => {
-                setPatternSpeed(prevSpeed => prevSpeed < 30 ? prevSpeed + .9 : 30);
-            }, 5);
+                setPatternSpeed(prevSpeed => prevSpeed < 30 ? prevSpeed + 1 : 30);
+                setRotateCursor(prevRotate => prevRotate > 15 ? prevRotate - .1 : 15);
+            }, 8);
         } else if (bgPatternAnim.state) {
             interval = setInterval(() => {
-                setPatternSpeed(prevSpeed => prevSpeed > .1 ? prevSpeed - .9 : .1);
-            }, 5);
+                setPatternSpeed(prevSpeed => prevSpeed > 1 ? prevSpeed - 1 : 1);
+                setRotateCursor(prevRotate => prevRotate < 17 ? prevRotate + .1 : 16);
+            }, 8);
         }
         return () => clearInterval(interval);
     }, [bgPatternAnim.state]);
@@ -56,7 +60,7 @@ export default function App() {
     return (
         <div id="App">
             <div
-                style={gradientStyleAttribution} 
+                // style={gradientStyleAttribution} 
                 className="app-container">
                 <div 
                     style={patternStyleAttribution}

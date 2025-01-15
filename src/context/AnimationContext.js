@@ -1,8 +1,10 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 
 export const AnimationContext = createContext();
 
 export const AnimationProvider = ({children}) => {
+
+    const fromPage = window.location.pathname.split('/')[1];
 
     const [landingPageAnim, setLandingPageAnim] = useState(false);
     const [articlesPageAnim, setArticlesPageAnim] = useState(false);
@@ -10,7 +12,7 @@ export const AnimationProvider = ({children}) => {
     const [arcadePalacePageAnim, setArcadePalacePageAnim] = useState(false);
     const [bgAnimation, setBgAnimation] = useState({
         state: false,
-        pattern: 'landing',
+        pattern: (fromPage === '') ? 'landing' : fromPage,
     });
     const [loginAnimation, setLoginAnimation] = useState(true);
     const [profilAnimation, setProfilAnimation] = useState(true);
