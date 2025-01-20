@@ -1,5 +1,5 @@
 import { usePageTransition } from "../../services/navigation/animationService";
-import dashboardSprites from "../../assets/images/sprites/dashboard_spritesheet.png";
+import lemonifylogoset from "../../assets/images/statics/brand/lemonify_logoset.png";
 import { Stage, Sprite } from "@pixi/react";
 import { useEffect, useState } from "react";
 
@@ -8,11 +8,11 @@ export default function Dashboard() {
     const { handleNavigation } = usePageTransition();
 
     const dashboardLink = [
-        {id: 'landing', to:'', name: 'Accueil', icon: [0, 0]},
-        {id: 'articles', to:'articles', name: 'Articles', icon: [-50, 0]},
-        {id: 'portfolio', to:'portfolio', name: 'Portefolio', icon: [-100, 0]},
-        {id: 'arcadePalace', to:'arcadePalace', name: 'Arcade Palace', icon: [-150, 0]}
-    ]
+        {id: 'landing', to:'', name: 'Accueil', icon: [-64, -640]},
+        {id: 'articles', to:'articles', name: 'Articles', icon: [-320, -640]},
+        {id: 'portfolio', to:'portfolio', name: 'Portefolio', icon: [-576, -640]},
+        {id: 'arcadePalace', to:'arcadePalace', name: 'Arcade Palace', icon: [-832, -640]}
+    ];
 
     const [dashStatus, setDashStatus] = useState('');
 
@@ -39,11 +39,11 @@ export default function Dashboard() {
                         onClick={() => handleNavigation(link.to) } >
                                 <div className="icon">
                                 <Stage                        
-                                    width={50}
-                                    height={50}
+                                    width={64}
+                                    height={64}
                                     options={{backgroundAlpha: 0}}>
                                         <Sprite
-                                            image={dashboardSprites}
+                                            image={lemonifylogoset}
                                             position={link.icon}
                                             anchor={[0, 0]}
                                             scale={1}                                   

@@ -9,14 +9,16 @@
 
     .app-container {
         position: relative;
-        max-width: 1640px;
-        width: 1640px;
-        max-height: 800px;
-        height: 800px;
-        border-radius: 1rem;
-        border: .25rem solid #ffffffaa;
+        width: 100%;
+        height: 100%;
+        // max-width: 1640px;
+        // width: 1640px;
+        // max-height: 800px;
+        // height: 800px;
         background: linear-gradient(to top right, #3995a6ff 50%, #89caccff);
-        box-shadow: 0 0 1rem rgba(0, 0, 0, 0.35);
+        // border-radius: 1rem;
+        // border: .25rem solid #ffffffaa;
+        // box-shadow: 0 0 1rem rgba(0, 0, 0, 0.35);
         overflow: hidden;
         transition: all .3s ease-in-out;
 
@@ -35,11 +37,10 @@
             background-size: 350px;
             background-repeat: repeat;
             // transform: rotateZ(15deg) scale(1.2);
-            opacity: .2;
             z-index: 0;
             pointer-events: none;
             transition: all .3s ease-in-out;
-            animation: infinite linear move-bg;
+            animation: infinite 30s linear move-bg;
 
             &.landing {
                 background-image: url('/src/assets/images/statics/brand/Lemonify_Logo_V3.png');
