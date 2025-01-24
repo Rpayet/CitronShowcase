@@ -1,4 +1,4 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useState } from "react";
 
 export const AnimationContext = createContext();
 
@@ -13,6 +13,7 @@ export const AnimationProvider = ({children}) => {
     const [bgAnimation, setBgAnimation] = useState({
         state: false,
         pattern: (fromPage === '') ? 'landing' : fromPage,
+        theme: 'light'
     });
     const [loginAnimation, setLoginAnimation] = useState(true);
     const [profilAnimation, setProfilAnimation] = useState(true);
