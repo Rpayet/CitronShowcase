@@ -1,48 +1,100 @@
-import { useContext, useEffect, useState } from "react";
-import { AnimationContext } from "../../context/AnimationContext";
+import { useEffect, useRef } from "react";
 import lemonifylogoset from "../../assets/images/statics/brand/lemonify_logoset.png";
-import { Stage, TilingSprite } from "@pixi/react";
 
 export default function BgGenerator() {
+  const canvasRef = useRef(null);
+  const animationRef = useRef(null);
 
-    const logoset = [
-        {id: 'landing', light: [0, 0], dark: [0, -256]},
-        {id: 'articles', light: [-256, 0], dark: [-256, -256]},
-        {id: 'portfolio', light: [-512, 0], dark: [-512, -256]},
-        {id: 'arcadePalace', light: [-768, 0], dark: [-768, -256]}
-    ];
-   
-    const [translateValue, setTranslateValue] = useState({x: 0, y: 0});
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    const ctx = canvas.getContext("2d");
 
-    const [opacityValue, setOpacityValue] = useState(0.1);
+    // Dimensions du canvas (HD 4K)
+    canvas.width = 3840;
+    canvas.height = 3840;
 
-    const { animations } = useContext(AnimationContext);
+    // Charger l'image source
+    const image = new Image();
+    image.src = lemonifylogoset;
 
-    const [bgPatternAnim, setBgPatternAnim] = animations.bgPattern;
+    image.onload = () => {
+      // Taille d'une icône dans le sprite
+      const iconWidth = 256;
+      const iconHeight = 256;
 
-    useEffect(() => {
-        if (bgPatternAnim.state) {
-                setTranslateValue({x: -10, y: 10});
-                setOpacityValue(0);
-        } else {
-            setTranslateValue({x: 10, y: -10});
-            setTimeout(() => {
-                setTranslateValue({x: 0, y: 0});
-                setOpacityValue(0.1);
-            }, 250);
+      // Décalage entre les motifs
+      const offsetX = 256; // Décalage horizontal
+      const offsetY = 128; // Décalage vertical
+
+      // Fonction pour dessiner une rangée décalée
+      const drawPattern = () => {
+        for (let y = 0; y < canvas.height; y += iconHeight + offsetY) {
+          for (let x = 0; x < canvas.width; x += iconWidth + offsetX) {
+            // Si la rangée est impaire, décaler le motif horizontalement
+            const offset = (y / (iconHeight + offsetY)) % 2 === 1 ? (iconWidth + offsetX) / 2 : 0;
+
+            ctx.drawImage(
+              image,
+              0, // Coordonnées x de l'icône dans le sprite
+              0, // Coordonnées y de l'icône dans le sprite
+              iconWidth,
+              iconHeight,
+              x + offset, // Position x sur le canvas
+              y, // Position y sur le canvas
+              iconWidth,
+              iconHeight
+            );
+          }
         }
-    }, [bgPatternAnim]);
+      };
 
-    const patternStyleAttribution = {
-        transform: `rotateZ(${bgPatternAnim.state ? '13' : '15'}deg) scale(1.2) translate(${translateValue.x}%, ${translateValue.y}%)`,
-        opacity: `${opacityValue}`,
+      // Dessiner le motif initial
+      drawPattern();
+
+      // Animation de translation
+      let startTime = performance.now();
+      const duration = 5000; // 30 secondes en millisecondes
+
+      function animateTranslate(currentTime) {
+        const elapsedTime = currentTime - startTime;
+        const progress = Math.min(elapsedTime / duration, 1);
+
+        // Interpolation linéaire 
+        const translateX = progress * 1886;
+        const translateY = progress * 989;
+
+        canvas.style.translate = `-${translateX}px ${translateY}px`;
+
+        if (progress < 1) {
+          animationRef.current = requestAnimationFrame(animateTranslate);
+        } else if (progress === 1) {
+          startTime = performance.now();
+          animationRef.current = requestAnimationFrame(animateTranslate);
+        }
+      }
+
+      animationRef.current = requestAnimationFrame(animateTranslate);
     };
 
-    return (
-        <div 
-            style={patternStyleAttribution}
-            className={`bg-pattern ${bgPatternAnim.pattern}`}>
-                {/* A utiliser pour créer un arrière-plan dynamique */}
-        </div>
-    )
+    // Nettoyer l'animation au démontage du composant
+    return () => {
+      if (animationRef.current) {
+        cancelAnimationFrame(animationRef.current);
+      }
+    };
+  }, []);
+
+  return (
+    <canvas
+      ref={canvasRef}
+      style={{
+        position: "absolute",
+        bottom: "-256px",
+        left: "0",
+        opacity: ".1",
+        transform: "rotate(5deg)",
+        zIndex: "0",
+      }}
+    ></canvas>
+  );
 }
