@@ -4,6 +4,7 @@ import lemonifylogoset from "../../assets/images/statics/brand/lemonify_logoset.
 import { AnimationContext } from "../../context/AnimationContext";
 
 export default function BgPixiGenerator() {
+    
     const [patternUrl, setPatternUrl] = useState(null);
     const [tilePosition, setTilePosition] = useState({ x: 0, y: 0 });
     const [speed, setSpeed] = useState({ x: 0.5, y: 0.25 });
@@ -18,6 +19,7 @@ export default function BgPixiGenerator() {
         articles: { light: [256, 0], dark: [256, 256] },
         portfolio: { light: [512, 0], dark: [512, 256] },
         arcadePalace: { light: [768, 0], dark: [768, 256] },
+        mkTrials: { light: [768, 0], dark: [768, 256] },
     };
 
     const [patternCoords, setPatternCoords] = useState(patternArray[pattern][theme]);
@@ -119,8 +121,8 @@ export default function BgPixiGenerator() {
     return (
         <div id="BgPixiGenerator">
             <Stage
-                width={1920}
-                height={1080}
+                width={window.innerWidth}
+                height={window.innerHeight}
                 options={{ backgroundAlpha: 0 }}
             >
                 {patternUrl && (
@@ -130,7 +132,6 @@ export default function BgPixiGenerator() {
                         height={window.innerHeight}
                         tileScale={{ x: 1, y: 1 }}
                         tilePosition={tilePosition}
-                        style={{ zIndex: "0" }}
                     />
                 )}
             </Stage>

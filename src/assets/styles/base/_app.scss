@@ -1,39 +1,32 @@
 @import '../components/dashboard/dashboard';
 
 #App {
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100vw;
     height: 100vh;
+    background: linear-gradient(to top right, #3995a6ff 50%, #89caccff);
+    overflow: hidden;
+    
+    #BgPixiGenerator {
+        position: absolute;
+        top: 0;
+        left: 0;
+        opacity: .1;
+        pointer-events: none;
+        z-index: 0;
+    }
 
     .app-container {
         position: relative;
         width: 100%;
         height: 100%;
-        // max-width: 1640px;
-        // width: 1640px;
-        // max-height: 800px;
-        // height: 800px;
-        background: linear-gradient(to top right, #3995a6ff 50%, #89caccff);
-        // border-radius: 1rem;
-        // border: .25rem solid #ffffffaa;
-        // box-shadow: 0 0 1rem rgba(0, 0, 0, 0.35);
-        overflow: hidden;
         transition: all .3s ease-in-out;
-
-        #BgPixiGenerator {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            opacity: .1;
-            pointer-events: none;
-        }
+        z-index: 1;
 
         .main-content {
-            z-index: 1;
             width: 100%;
             height: 100%;
         }
