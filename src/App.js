@@ -12,6 +12,7 @@ import Modal from './components/modals/Modal';
 import PrivateRoute from './routes/authorizations/PrivateRoute';
 import { useAuth } from './context/AuthContext';
 import BgGenerator from './components/background/BgGenerator';
+import BgPixiGenerator from './components/background/BgPixiGenerator';
 
 export default function App() {
 
@@ -20,7 +21,6 @@ export default function App() {
     return (
         <div id="App">
             <div className="app-container">
-                <BgGenerator />
                 <Modal />
                 { auth.displayAuthBtn && <LoginBtn /> }
                 <Dashboard />
@@ -48,6 +48,8 @@ export default function App() {
 
                     </Routes>
                 </div>
+                {/* <BgGenerator /> */}
+                <BgPixiGenerator />
             </div>
         </div>
     );
