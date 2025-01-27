@@ -8,7 +8,8 @@ export const AppProvider = ({ children }) => {
     const [userIdentifier, setUserIdentifier] = useState(false);
     const [tournaments, setTournaments] = useState([]);
     const [races, setRaces] = useState([]);
-    const [bgPattern, setBgPattern] = useState('');
+
+    const [appTheme, setAppTheme] = useState('light');
 
     const [mainLoading, setMainLoading] = useState(false);
 
@@ -28,7 +29,7 @@ export const AppProvider = ({ children }) => {
     const appContextValue = {
         userIdentifier, setUserIdentifier,
         tournaments, setTournaments, races, setRaces,
-        mainLoading,
+        mainLoading, appTheme, setAppTheme
     };
 
     return (

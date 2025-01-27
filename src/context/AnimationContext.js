@@ -12,8 +12,7 @@ export const AnimationProvider = ({children}) => {
     const [arcadePalacePageAnim, setArcadePalacePageAnim] = useState(false);
     const [bgAnimation, setBgAnimation] = useState({
         state: false,
-        pattern: (fromPage === '') ? 'landing' : fromPage,
-        theme: 'light'
+        pattern: (fromPage === '') ? 'landing' : fromPage
     });
     const [loginAnimation, setLoginAnimation] = useState(true);
     const [profilAnimation, setProfilAnimation] = useState(true);

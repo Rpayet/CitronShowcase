@@ -2,6 +2,7 @@ import { Stage, TilingSprite } from "@pixi/react";
 import { useContext, useEffect, useRef, useState } from "react";
 import lemonifylogoset from "../../assets/images/statics/brand/lemonify_logoset.png";
 import { AnimationContext } from "../../context/AnimationContext";
+import { AppContext } from "../../context/AppProvider";
 
 export default function BgPixiGenerator() {
     
@@ -11,8 +12,9 @@ export default function BgPixiGenerator() {
     const animationRef = useRef(null);
 
     const { animations } = useContext(AnimationContext);
+    const { appTheme } = useContext(AppContext);
     const [bgPattern, setBgPattern] = animations.bgPattern;
-    const { state, pattern, theme } = bgPattern;
+    const { state, pattern } = bgPattern;
 
     const patternArray = {
         landing: { light: [0, 0], dark: [0, 256] },
@@ -22,7 +24,7 @@ export default function BgPixiGenerator() {
         mkTrials: { light: [768, 0], dark: [768, 256] },
     };
 
-    const [patternCoords, setPatternCoords] = useState(patternArray[pattern][theme]);
+    const [patternCoords, setPatternCoords] = useState(patternArray[pattern][appTheme]);
 
     useEffect(() => {
         const createPattern = async () => {
@@ -115,8 +117,8 @@ export default function BgPixiGenerator() {
     }, [speed]);
 
     useEffect(() => {
-        setPatternCoords(patternArray[pattern][theme]);
-    }, [pattern, theme]);
+        setPatternCoords(patternArray[pattern][appTheme]);
+    }, [pattern, appTheme]);
 
     return (
         <div id="BgPixiGenerator">
