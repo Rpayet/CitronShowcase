@@ -1,5 +1,5 @@
 #Dashboard {
-    width: 20rem;
+    width: 25rem;
     margin: 1rem;
     position: absolute;
     top: 0;
@@ -7,11 +7,12 @@
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
-    z-index: 100;
+    z-index: 1000;
     transition: all .7s ease-in-out;
 
     &.hidden {
         transform: translateX(-200%);
+        opacity: 0;
     }
 
     &.show {
@@ -24,49 +25,117 @@
             font-size: 1rem;
             font-weight: 700;
             text-align: center;
-            width: 100%;
             display: flex;
             align-items: center;
             cursor: pointer;
         }
     }
 
-
     .header {
+        position: relative;
         display: flex;
         justify-content: space-between;
         align-items: center;
         background: #004579;
         border-radius: .5rem;
+        transition: all .3s ease-in-out;
+        border-bottom: 1px solid #ffffff00;
+        border-left: 1px solid #ffffff00;
+        border-right: 1px solid #ffffff00;
+        border-top: 1px solid #ffffff00;
+
+            &::before {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                border-radius: .5rem;
+                background: linear-gradient(to top right, #3995a655 10%, #00457900 90%);
+                transition: all .5s ease-in-out;
+                opacity: 0;                
+            }
+
+            &:hover {
+                border-bottom: 1px solid #fff;
+                border-left: 1px solid #fff;
+                &::before {
+                    opacity: 1;
+                }
+            }
 
         .dashLink {
+            border-radius: .5rem;
+            z-index: 1;
+        
             .headerIcon {
                 padding: 0 1rem;
+            }
+
+            .linkname {
+                font-family: $caveat;
+                font-size: 2rem;
             }
         }
     }
 
     .dashBody {
-
+        
         .nav {
             display: flex;
-            
-            .dashlink {
-                
+            align-items: flex-end;
+            transition: all .5s ease-in-out;
+
+            .dashLink {
+                border-radius: .5rem;
+                border-top: 1px solid #fff;
+                border-left: 1px solid #fff;
+                border-right: 1px solid #fff;
+                border-radius: 1rem 1rem 0 0;
+                cursor: pointer;
+
+                &.selected {
+                    border-bottom: 1px solid #004579;
+                    transform: translateY(1px);
+                    background: #004579;
+                }
+
+                &.unselected {
+                    border-bottom: 1px solid #fff;
+                    justify-content: flex-start;
+                    background: #ccc;
+                    width: 4rem;
+                    height: 3rem;
+                }
+
                 .navIcon {
                     padding: 0 1rem;
-                    border-top: 1px solid #fff;
-                    border-left: 1px solid #fff;
-                    border-right: 1px solid #fff;
-                    border-radius: 1rem 1rem 0 0;
                     transition: all .3s ease-in-out;
-        
-                    &:hover {
-                        animation: jump .25s infinite alternate;
+                    transform: scale(1);
+
+                    &.reduce {
+                        transform: scale(.7);
+                        padding: 0;
                     }
-        
                 }
-                
+            }
+
+            .linkname {
+                margin-left: 1rem;
+                font-size: 1.5rem;
+                font-weight: 700;
+                color: #fff;
+                text-align: center;
+                display: none;
+                transform: translateX(2rem);
+                transition: all .3s ease-in-out;
+
+                &.show {
+                    display: block;
+                    transform: translateX(0);
+                    animation: hoverLink .3s ease-in-out;
+                }
             }
         }
 
@@ -76,7 +145,9 @@
             gap: 1rem;
             padding: 1rem;
             border: 1px solid #fff;
+            background: #004579;
             border-radius: 0 .5rem .5rem .5rem;
+            color: #fff;
 
             .section {
                 font-size: 1.45rem;
@@ -99,10 +170,11 @@
 
 }
 
-@keyframes jump {
+
+@keyframes hoverLink {
     from {
-        transform: translateY(0);
+        transform: translateX(2rem);
+    } to {
+        transform: translateX(0);
     }
-    to {
-        transform: translateY(-.5rem);}
 }

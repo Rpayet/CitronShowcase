@@ -15,7 +15,7 @@ ul {
 }
 
 #Dashboard {
-  width: 20rem;
+  width: 25rem;
   margin: 1rem;
   position: absolute;
   top: 0;
@@ -23,11 +23,12 @@ ul {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
-  z-index: 100;
+  z-index: 1000;
   transition: all 0.7s ease-in-out;
 }
 #Dashboard.hidden {
   transform: translateX(-200%);
+  opacity: 0;
 }
 #Dashboard.show {
   transform: translateX(0);
@@ -37,34 +38,101 @@ ul {
   font-size: 1rem;
   font-weight: 700;
   text-align: center;
-  width: 100%;
   display: flex;
   align-items: center;
   cursor: pointer;
 }
 #Dashboard .header {
+  position: relative;
   display: flex;
   justify-content: space-between;
   align-items: center;
   background: #004579;
   border-radius: 0.5rem;
+  transition: all 0.3s ease-in-out;
+  border-bottom: 1px solid rgba(255, 255, 255, 0);
+  border-left: 1px solid rgba(255, 255, 255, 0);
+  border-right: 1px solid rgba(255, 255, 255, 0);
+  border-top: 1px solid rgba(255, 255, 255, 0);
+}
+#Dashboard .header::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 0.5rem;
+  background: linear-gradient(to top right, rgba(57, 149, 166, 0.3333333333) 10%, rgba(0, 69, 121, 0) 90%);
+  transition: all 0.5s ease-in-out;
+  opacity: 0;
+}
+#Dashboard .header:hover {
+  border-bottom: 1px solid #fff;
+  border-left: 1px solid #fff;
+}
+#Dashboard .header:hover::before {
+  opacity: 1;
+}
+#Dashboard .header .dashLink {
+  border-radius: 0.5rem;
+  z-index: 1;
 }
 #Dashboard .header .dashLink .headerIcon {
   padding: 0 1rem;
 }
+#Dashboard .header .dashLink .linkname {
+  font-family: "Caveat", cursive;
+  font-size: 2rem;
+}
 #Dashboard .dashBody .nav {
   display: flex;
+  align-items: flex-end;
+  transition: all 0.5s ease-in-out;
 }
-#Dashboard .dashBody .nav .dashlink .navIcon {
-  padding: 0 1rem;
+#Dashboard .dashBody .nav .dashLink {
+  border-radius: 0.5rem;
   border-top: 1px solid #fff;
   border-left: 1px solid #fff;
   border-right: 1px solid #fff;
   border-radius: 1rem 1rem 0 0;
+  cursor: pointer;
+}
+#Dashboard .dashBody .nav .dashLink.selected {
+  border-bottom: 1px solid #004579;
+  transform: translateY(1px);
+  background: #004579;
+}
+#Dashboard .dashBody .nav .dashLink.unselected {
+  border-bottom: 1px solid #fff;
+  justify-content: flex-start;
+  background: #ccc;
+  width: 4rem;
+  height: 3rem;
+}
+#Dashboard .dashBody .nav .dashLink .navIcon {
+  padding: 0 1rem;
+  transition: all 0.3s ease-in-out;
+  transform: scale(1);
+}
+#Dashboard .dashBody .nav .dashLink .navIcon.reduce {
+  transform: scale(0.7);
+  padding: 0;
+}
+#Dashboard .dashBody .nav .linkname {
+  margin-left: 1rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #fff;
+  text-align: center;
+  display: none;
+  transform: translateX(2rem);
   transition: all 0.3s ease-in-out;
 }
-#Dashboard .dashBody .nav .dashlink .navIcon:hover {
-  animation: jump 0.25s infinite alternate;
+#Dashboard .dashBody .nav .linkname.show {
+  display: block;
+  transform: translateX(0);
+  animation: hoverLink 0.3s ease-in-out;
 }
 #Dashboard .dashBody .dashBodyContent {
   display: flex;
@@ -72,7 +140,9 @@ ul {
   gap: 1rem;
   padding: 1rem;
   border: 1px solid #fff;
+  background: #004579;
   border-radius: 0 0.5rem 0.5rem 0.5rem;
+  color: #fff;
 }
 #Dashboard .dashBody .dashBodyContent .section {
   font-size: 1.45rem;
@@ -89,12 +159,12 @@ ul {
   text-align: center;
 }
 
-@keyframes jump {
+@keyframes hoverLink {
   from {
-    transform: translateY(0);
+    transform: translateX(2rem);
   }
   to {
-    transform: translateY(-0.5rem);
+    transform: translateX(0);
   }
 }
 #App {
