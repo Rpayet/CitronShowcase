@@ -1,6 +1,7 @@
 import { useContext, useEffect } from "react";
 import { usePageTransition } from "../services/navigation/animationService";
 import { AnimationContext } from "../context/AnimationContext";
+import { Outlet } from "react-router-dom";
 
 export default function ArcadePalace() {
 
@@ -32,24 +33,25 @@ export default function ArcadePalace() {
         <section id="ArcadePalace">
             <div className="games">
                 <button 
-                    onClick={() => handleNavigation('arcadepalace/mkTrials')} 
+                    onClick={() => handleNavigation('mktrials')} 
                     className={`game-link ${getSlideInClass()}`}
                     style={getAnimationDurationStyle(0)}>
                     Mario Kart - Concours contre-la-montre
                 </button>
                 <button 
-                    onClick={() => handleNavigation('arcadepalace/wheels')} 
+                    onClick={() => handleNavigation('wheels')} 
                     className={`game-link ${getSlideInClass()}`}
                     style={getAnimationDurationStyle(1)}>
                     Roulettes - Adaptation du mini-jeu de "Sea of Stars"
                 </button>
                 <button 
-                    onClick={() => handleNavigation('arcadepalace/sonicTT')} 
+                    onClick={() => handleNavigation('sonictactoe')} 
                     className={`game-link ${getSlideInClass()}`}
                     style={getAnimationDurationStyle(2)}>
                     STT - Jeu original en cours de travail
                 </button>
             </div>
+            <Outlet />
         </section>
     )
 }

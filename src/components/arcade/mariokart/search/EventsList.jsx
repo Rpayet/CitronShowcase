@@ -10,7 +10,7 @@ export default function EventsList({}) {
     const { animations } = useContext(AnimationContext);
     const { tournaments, switchCardSprites } = useContext(MkContext);
 
-    const [mkPageAnim, setMkPageAnim] = animations.mkTrials;
+    const [mkPageAnim, setMkPageAnim] = animations.mktrials;
 
     const [cardId, setCardId] = useState();
     const [itemsPerPage, setItemsPerPage] = useState(9);

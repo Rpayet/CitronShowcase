@@ -41,7 +41,7 @@ export default function App() {
                     <Routes>
                         <Route path='/' element={<Landing />} />
                         <Route path='/arcadepalace' element={<ArcadePalace />}>
-                            <Route path='mkTrials' element={
+                            <Route path='mktrials' element={
                                 <MkProvider>
                                     <EventsList />
                                 </MkProvider>
@@ -52,7 +52,7 @@ export default function App() {
                                     <WheelGame />
                                 </GameProvider>
                             } />
-                            <Route path='sonic-tac-toe' element={<h2>STT - Jeu original en cours de travail</h2>} />
+                            <Route path='sonictactoe' element={<h2>STT - Jeu original en cours de travail</h2>} />
                         </Route>
 
                         {/** Use this to privatize route */}

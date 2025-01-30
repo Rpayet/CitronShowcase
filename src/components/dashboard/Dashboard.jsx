@@ -19,7 +19,7 @@ export default function Dashboard() {
         articles : {id: 'articles', to:'articles', name: 'Articles', light: [-256, -640], dark:[-320, -640]},
         portfolio : {id: 'portfolio', to:'portfolio', name: 'Portefolio', light: [-512, -640], dark:[-576, -640]},
         arcadepalace : {id: 'arcadepalace', to:'arcadepalace', name: 'Arcade Palace', light: [-768, -640], dark:[-832, -640]},
-        mkTrials : {id: 'arcadepalace', to:'arcadepalace', name: 'Arcade Palace', light: [-768, -640], dark:[-832, -640]},
+        mktrials : {id: 'arcadepalace', to:'arcadepalace', name: 'Arcade Palace', light: [-768, -640], dark:[-832, -640]},
     }
 
     const [linkArray, setLinkArray] = useState([dashboardLink.articles, dashboardLink.portfolio, dashboardLink.arcadepalace]);
@@ -47,7 +47,7 @@ export default function Dashboard() {
         <div id="Dashboard" className={dashboardAnim ? 'dashSlideIn' : 'dashSlideOut'}>
             <div 
                 className={`header`}
-                onClick={() => handleNavigation('')} >
+                onClick={() => handleNavigation('landing')} >
                     <button className="dashLink">
                         <div className="headerIcon">
                             <Stage

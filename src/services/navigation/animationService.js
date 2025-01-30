@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { AnimationContext } from "../../context/AnimationContext";
 import { useNavigate } from "react-router-dom";
+import getUrl from "./urlService";
 
 export const usePageTransition = () => {
 
@@ -10,8 +11,8 @@ export const usePageTransition = () => {
     const navigateWithAnimation = (fromPage, toPage, timeout=500) => {
         if (fromPage === toPage) return;
 
-        const [_, setFromPageAnim] = animations[(fromPage === '') ? 'landing' : fromPage];
-        const [__, setToPageAnim] = animations[(toPage === '') ? 'landing' : toPage];
+        const [_, setFromPageAnim] = animations[fromPage];
+        const [__, setToPageAnim] = animations[toPage];
         const [___, setBgPatternAnim] = animations.bgPattern;
         const [____, setDashboardAnim] = animations.dashboard;
 
@@ -29,16 +30,14 @@ export const usePageTransition = () => {
         } 
 
         setTimeout(() => {
-            if (fromPage === '') {
-                navigate(`/`);
-            } else {
-                navigate(`/${toPage}`);
-            }
+          
+            navigate(getUrl(toPage));
+            
             setBgPatternAnim(
                 prevState => ({
                     ...prevState,
                     state: false,
-                    pattern: (toPage === '') ? 'landing' : toPage,
+                    pattern: toPage,
                 })
             );
         }, timeout);

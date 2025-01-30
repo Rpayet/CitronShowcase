@@ -21,7 +21,7 @@ export default function BgPixiGenerator() {
         articles: { light: [256, 0], dark: [256, 256] },
         portfolio: { light: [512, 0], dark: [512, 256] },
         arcadepalace: { light: [768, 0], dark: [768, 256] },
-        mkTrials: { light: [768, 0], dark: [768, 256] },
+        mktrials: { light: [1024, 0], dark: [1024, 256] },
     };
 
     const [patternCoords, setPatternCoords] = useState(patternArray[pattern][appTheme]);

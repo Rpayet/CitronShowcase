@@ -27,7 +27,7 @@ export const AnimationProvider = ({children}) => {
         articles: [articlesPageAnim, setArticlesPageAnim],
         portfolio: [portfolioPageAnim, setPortfolioPageAnim],
         arcadepalace: [arcadePalacePageAnim, setArcadePalacePageAnim],
-        mkTrials: [mkPageAnim, setMkPageAnim],
+        mktrials: [mkPageAnim, setMkPageAnim],
         wheels: [wheelsPageAnim, setWheelsPageAnim],
         login: [loginAnimation, setLoginAnimation],
         profil: [profilAnimation, setProfilAnimation],
