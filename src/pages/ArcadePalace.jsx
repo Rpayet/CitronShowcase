@@ -7,10 +7,10 @@ export default function ArcadePalace() {
     const { animations } = useContext(AnimationContext);
     const { navigateWithAnimation } = usePageTransition();
 
-    const [arcadePalacePageAnim, setArcadePalacePageAnim] = animations.arcadePalace;
+    const [arcadePalacePageAnim, setArcadePalacePageAnim] = animations.arcadepalace;
 
     const handleNavigation = (toPage) => {
-        navigateWithAnimation('arcadePalace', toPage, 500);
+        navigateWithAnimation('arcadepalace', toPage, 500);
     };
 
     const getSlideInClass = () => {
@@ -32,19 +32,19 @@ export default function ArcadePalace() {
         <section id="ArcadePalace">
             <div className="games">
                 <button 
-                    onClick={() => handleNavigation('mkTrials')} 
+                    onClick={() => handleNavigation('arcadepalace/mkTrials')} 
                     className={`game-link ${getSlideInClass()}`}
                     style={getAnimationDurationStyle(0)}>
                     Mario Kart - Concours contre-la-montre
                 </button>
                 <button 
-                    onClick={() => handleNavigation('wheels')} 
+                    onClick={() => handleNavigation('arcadepalace/wheels')} 
                     className={`game-link ${getSlideInClass()}`}
                     style={getAnimationDurationStyle(1)}>
                     Roulettes - Adaptation du mini-jeu de "Sea of Stars"
                 </button>
                 <button 
-                    onClick={() => handleNavigation('sonicTT')} 
+                    onClick={() => handleNavigation('arcadepalace/sonicTT')} 
                     className={`game-link ${getSlideInClass()}`}
                     style={getAnimationDurationStyle(2)}>
                     STT - Jeu original en cours de travail

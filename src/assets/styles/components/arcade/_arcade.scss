@@ -1,12 +1,12 @@
 @import "./mariokart/eventslist";
 
 #ArcadePalace {
+    @include section;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 100%;
-    margin-left: 25rem;
 
     .games {
         display: flex;

@@ -31,9 +31,9 @@ export default function Menu({ landingPageAnim }) {
                     Portefolio
             </button>
             <button 
-                id='arcadePalace'
+                id='arcadepalace'
                 className={`arcade ${getSlideInClass()}`}
-                onClick={() => handleNavigation('arcadePalace')}>
+                onClick={() => handleNavigation('arcadepalace')}>
                     Arcade Palace
             </button>
         </div>

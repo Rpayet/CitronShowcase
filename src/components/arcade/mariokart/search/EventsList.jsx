@@ -73,12 +73,7 @@ export default function EventsList({}) {
     }, [tournaments, switchCardSprites]);
 
     return (
-        <div id='MkPages'>
-            <div className={`list-menu ${mkPageAnim ? 'open' : 'closed'}`}>
-                <div>
-                    <InputField inputData={eventListInput} />
-                </div>
-            </div>
+        <section id='MkPages'>
             <div className={`list-sorter ${mkPageAnim ? 'open' : 'closed'}`}>
                 <div className={`list-card ${eventListClassName}`}> 
                     {paginatedTournaments.map((tournament, index) => (
@@ -108,7 +103,7 @@ export default function EventsList({}) {
                 </div>
             </div>
             
-        </div>
+        </section>
 
     )
 }

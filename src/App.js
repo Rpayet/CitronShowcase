@@ -40,19 +40,20 @@ export default function App() {
                 <div className="main-content">
                     <Routes>
                         <Route path='/' element={<Landing />} />
-                        <Route path='/arcadePalace' element={<ArcadePalace />} />
-                        <Route path='/mkTrials' element={
-                            <MkProvider>
-                                <EventsList />
-                            </MkProvider>
-                        } />
-                        <Route path='/wheels' element={
-                            <GameProvider>
-                                {/* <HeroesSelect /> */}
-                                <WheelGame />
-                            </GameProvider>
-                        } />
-                        <Route path='/sonic-tac-toe' element={<h2>STT - Jeu original en cours de travail</h2>} />
+                        <Route path='/arcadepalace' element={<ArcadePalace />}>
+                            <Route path='mkTrials' element={
+                                <MkProvider>
+                                    <EventsList />
+                                </MkProvider>
+                            } />
+                            <Route path='wheels' element={
+                                <GameProvider>
+                                    {/* <HeroesSelect /> */}
+                                    <WheelGame />
+                                </GameProvider>
+                            } />
+                            <Route path='sonic-tac-toe' element={<h2>STT - Jeu original en cours de travail</h2>} />
+                        </Route>
 
                         {/** Use this to privatize route */}
                         {/* <Route element={<PrivateRoute />}>

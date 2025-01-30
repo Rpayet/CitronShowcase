@@ -8,7 +8,7 @@ import { AnimationContext } from "../../context/AnimationContext";
 export default function Dashboard() {
 
     const fromPage = window.location.pathname.split('/')[1];
-    const { handleNavigation } = usePageTransition(); // reprendre ici
+    const { handleNavigation } = usePageTransition();
     const { appTheme } = useContext(AppContext);
 
     const { animations } = useContext(AnimationContext);
@@ -18,10 +18,11 @@ export default function Dashboard() {
         landing : {id: 'landing', to:'', name: 'Lemonify', light: [0, -640], dark:[-64, -640]},
         articles : {id: 'articles', to:'articles', name: 'Articles', light: [-256, -640], dark:[-320, -640]},
         portfolio : {id: 'portfolio', to:'portfolio', name: 'Portefolio', light: [-512, -640], dark:[-576, -640]},
-        arcadePalace : {id: 'arcadePalace', to:'arcadePalace', name: 'Arcade Palace', light: [-768, -640], dark:[-832, -640]},
+        arcadepalace : {id: 'arcadepalace', to:'arcadepalace', name: 'Arcade Palace', light: [-768, -640], dark:[-832, -640]},
+        mkTrials : {id: 'arcadepalace', to:'arcadepalace', name: 'Arcade Palace', light: [-768, -640], dark:[-832, -640]},
     }
 
-    const [linkArray, setLinkArray] = useState([dashboardLink.articles, dashboardLink.portfolio, dashboardLink.arcadePalace]);
+    const [linkArray, setLinkArray] = useState([dashboardLink.articles, dashboardLink.portfolio, dashboardLink.arcadepalace]);
 
     const [selected, setSelected] = useState(fromPage);
     const [hovered, setHovered] = useState('');
