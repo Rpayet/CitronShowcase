@@ -13,6 +13,7 @@ export const usePageTransition = () => {
         const [_, setFromPageAnim] = animations[(fromPage === '') ? 'landing' : fromPage];
         const [__, setToPageAnim] = animations[(toPage === '') ? 'landing' : toPage];
         const [___, setBgPatternAnim] = animations.bgPattern;
+        const [____, setDashboardAnim] = animations.dashboard;
 
         setFromPageAnim(false);
         setToPageAnim(true);
@@ -22,6 +23,11 @@ export const usePageTransition = () => {
                 state: true,
             })
         );
+
+        if (toPage === '') {
+            setDashboardAnim(false);
+        } 
+
         setTimeout(() => {
             if (fromPage === '') {
                 navigate(`/`);

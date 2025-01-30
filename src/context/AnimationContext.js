@@ -6,6 +6,7 @@ export const AnimationProvider = ({children}) => {
 
     const fromPage = window.location.pathname.split('/')[1];
 
+    const [dashboardAnim, setDashboardAnim] = useState(false);
     const [landingPageAnim, setLandingPageAnim] = useState(false);
     const [articlesPageAnim, setArticlesPageAnim] = useState(false);
     const [portfolioPageAnim, setPortfolioPageAnim] = useState(false);
@@ -21,6 +22,7 @@ export const AnimationProvider = ({children}) => {
     const [wheelsPageAnim, setWheelsPageAnim] = useState(false);
 
     const animations = {
+        dashboard: [dashboardAnim, setDashboardAnim],
         landing: [landingPageAnim, setLandingPageAnim],
         articles: [articlesPageAnim, setArticlesPageAnim],
         portfolio: [portfolioPageAnim, setPortfolioPageAnim],

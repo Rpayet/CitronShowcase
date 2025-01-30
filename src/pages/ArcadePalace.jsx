@@ -30,7 +30,6 @@ export default function ArcadePalace() {
 
     return (
         <section id="ArcadePalace">
-            {/* <h1>Arcade Palace</h1> */}
             <div className="games">
                 <button 
                     onClick={() => handleNavigation('mkTrials')} 

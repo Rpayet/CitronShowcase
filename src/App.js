@@ -12,10 +12,24 @@ import Modal from './components/modals/Modal';
 import PrivateRoute from './routes/authorizations/PrivateRoute';
 import { useAuth } from './context/AuthContext';
 import BgPixiGenerator from './components/background/BgPixiGenerator';
+import { useContext, useEffect, useState } from 'react';
+import { AnimationContext } from './context/AnimationContext';
 
 export default function App() {
 
     const auth = useAuth();
+
+    const fromPage = window.location.pathname.split('/')[1];
+
+    const [dashboardHide, setDashboardHide] = useState(false);
+
+    useEffect(() => {
+        if (fromPage !== '') {
+            setDashboardHide(true);
+        } else {
+            setDashboardHide(false);
+        }
+    }, [fromPage]);
 
     return (
         <div id="App">

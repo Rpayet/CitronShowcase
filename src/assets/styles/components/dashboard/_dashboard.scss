@@ -8,15 +8,15 @@
     flex-direction: column;
     gap: 1.5rem;
     z-index: 1000;
-    transition: all .7s ease-in-out;
 
-    &.hidden {
-        transform: translateX(-200%);
-        opacity: 0;
+    &.dashSlideIn {
+        transform: translateX(0);
+        animation: dashIn .5s ease-in-out;
     }
 
-    &.show {
-        transform: translateX(0);
+    &.dashSlideOut {
+        transform: translateX(-200%);
+        animation: dashOut .5s ease-in-out;
     }
 
     .header, .dashBody {
@@ -107,6 +107,11 @@
                     background: #ccc;
                     width: 4rem;
                     height: 3rem;
+                    transition: all .3s ease-in-out;
+
+                    &:hover {
+                        height: 3.5rem;
+                    }
                 }
 
                 .navIcon {
@@ -152,8 +157,6 @@
             .section {
                 font-size: 1.45rem;
                 font-weight: 700;
-                text-align: center;
-
             }
         }
     }
@@ -176,5 +179,23 @@
         transform: translateX(2rem);
     } to {
         transform: translateX(0);
+    }
+}
+
+@keyframes dashIn {
+    from {
+        transform: translateX(-200%);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+
+@keyframes dashOut {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-200%);
     }
 }

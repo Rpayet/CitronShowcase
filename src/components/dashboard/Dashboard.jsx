@@ -3,12 +3,16 @@ import lemonifylogoset from "../../assets/images/statics/brand/lemonify_logoset.
 import { Stage, Sprite } from "@pixi/react";
 import { useEffect, useState, useContext } from "react";
 import { AppContext } from "../../context/AppProvider";
+import { AnimationContext } from "../../context/AnimationContext";
 
 export default function Dashboard() {
 
     const fromPage = window.location.pathname.split('/')[1];
-    const { handleNavigation } = usePageTransition();
+    const { handleNavigation } = usePageTransition(); // reprendre ici
     const { appTheme } = useContext(AppContext);
+
+    const { animations } = useContext(AnimationContext);
+    const [dashboardAnim, setDashboardAnim] = animations.dashboard;
 
     const dashboardLink = {
         landing : {id: 'landing', to:'', name: 'Lemonify', light: [0, -640], dark:[-64, -640]},
@@ -19,17 +23,10 @@ export default function Dashboard() {
 
     const [linkArray, setLinkArray] = useState([dashboardLink.articles, dashboardLink.portfolio, dashboardLink.arcadePalace]);
 
-    const [dashStatus, setDashStatus] = useState('');
-
     const [selected, setSelected] = useState(fromPage);
     const [hovered, setHovered] = useState('');
     
     useEffect(() => {
-        if (fromPage === '') {
-            setDashStatus('hidden');
-        } else {
-            setDashStatus('show');
-        }
         setSelected(fromPage);
         if (fromPage !== '') {
             setLinkArray((prevArray) => {
@@ -40,9 +37,13 @@ export default function Dashboard() {
         }
     }, [fromPage]);
 
-        
+    useEffect(() => {
+        setDashboardAnim(fromPage === '' ? false : true);
+        return () => setDashboardAnim(false);
+    }, [setDashboardAnim, fromPage]);
+
     return (
-        <div id="Dashboard" className={dashStatus}>
+        <div id="Dashboard" className={dashboardAnim ? 'dashSlideIn' : 'dashSlideOut'}>
             <div 
                 className={`header`}
                 onClick={() => handleNavigation('')} >
@@ -72,7 +73,7 @@ export default function Dashboard() {
                                 id={link.id}
                                 className={`dashLink ${hovered === link.name ? 'focus' : 'unfocus' } ${selected === link.id ? 'selected' : 'unselected'}`}
                                 onClick={() => handleNavigation(link.to) } 
-                                onMouseEnter={() => setHovered(link.name)}
+                                onMouseEnter={() => setHovered(link.id)}
                                 onMouseLeave={() => setHovered('')}>
                                     <div className={`navIcon ${selected === link.id ? '' : 'reduce'}`}>
                                         <Stage                        
@@ -90,10 +91,12 @@ export default function Dashboard() {
                             </button>
                         );
                     })}
-                    <p className={`linkname ${hovered !== '' ? 'show' : ''}`}>{hovered}</p>
+                    {hovered !== selected &&
+                        <p className={`linkname ${hovered !== '' ? 'show' : ''}`}>{linkArray.find(link => link.id === hovered)?.name}</p>
+                    }
                 </div>
                 <div className="dashBodyContent">
-                    <h2 className="section">{linkArray.find(link => link.id === selected)?.name}</h2>
+                    <h1 className="section">{linkArray.find(link => link.id === selected)?.name}</h1>
                     <p className="description">Lorem, ipsum dolor sit amet consectetur adipisicing elit. </p>
                     <div>
                         <p>Sous-lien</p>

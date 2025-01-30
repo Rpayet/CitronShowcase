@@ -24,14 +24,14 @@ ul {
   flex-direction: column;
   gap: 1.5rem;
   z-index: 1000;
-  transition: all 0.7s ease-in-out;
 }
-#Dashboard.hidden {
-  transform: translateX(-200%);
-  opacity: 0;
-}
-#Dashboard.show {
+#Dashboard.dashSlideIn {
   transform: translateX(0);
+  animation: dashIn 0.5s ease-in-out;
+}
+#Dashboard.dashSlideOut {
+  transform: translateX(-200%);
+  animation: dashOut 0.5s ease-in-out;
 }
 #Dashboard .header .dashLink, #Dashboard .dashBody .dashLink {
   color: #fff;
@@ -109,6 +109,10 @@ ul {
   background: #ccc;
   width: 4rem;
   height: 3rem;
+  transition: all 0.3s ease-in-out;
+}
+#Dashboard .dashBody .nav .dashLink.unselected:hover {
+  height: 3.5rem;
 }
 #Dashboard .dashBody .nav .dashLink .navIcon {
   padding: 0 1rem;
@@ -147,7 +151,6 @@ ul {
 #Dashboard .dashBody .dashBodyContent .section {
   font-size: 1.45rem;
   font-weight: 700;
-  text-align: center;
 }
 #Dashboard .footer {
   display: flex;
@@ -165,6 +168,22 @@ ul {
   }
   to {
     transform: translateX(0);
+  }
+}
+@keyframes dashIn {
+  from {
+    transform: translateX(-200%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+@keyframes dashOut {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-200%);
   }
 }
 #App {
@@ -1337,13 +1356,14 @@ ul {
   justify-content: center;
   align-items: center;
   height: 100%;
+  margin-left: 25rem;
 }
 #ArcadePalace .games {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  gap: 1rem;
+  gap: 5rem;
 }
 #ArcadePalace .games .game-link {
   display: flex;
