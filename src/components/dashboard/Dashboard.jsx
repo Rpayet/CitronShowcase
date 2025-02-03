@@ -1,45 +1,49 @@
 import { usePageTransition } from "../../services/navigation/animationService";
 import lemonifylogoset from "../../assets/images/statics/brand/lemonify_logoset.png";
 import { Stage, Sprite } from "@pixi/react";
-import { useEffect, useState, useContext } from "react";
+import { useEffect, useState, useContext, useMemo } from "react";
 import { AppContext } from "../../context/AppProvider";
 import { AnimationContext } from "../../context/AnimationContext";
+import dashboard from "../../utils/_test-assets/dashboard.json";
+import DashSubLinks from "./DashSubLinks";
+import { DashboardContext } from "../../context/DashboardContext";
 
 export default function Dashboard() {
 
-    const fromPage = window.location.pathname.split('/')[1];
+    const fromPage = useMemo(() => window.location.pathname.split('/'), [window.location.pathname]);
     const { handleNavigation } = usePageTransition();
     const { appTheme } = useContext(AppContext);
+    const { dashboardContent } = useContext(DashboardContext);
 
     const { animations } = useContext(AnimationContext);
     const [dashboardAnim, setDashboardAnim] = animations.dashboard;
 
-    const dashboardLink = {
-        landing : {id: 'landing', to:'', name: 'Lemonify', light: [0, -640], dark:[-64, -640]},
-        articles : {id: 'articles', to:'articles', name: 'Articles', light: [-256, -640], dark:[-320, -640]},
-        portfolio : {id: 'portfolio', to:'portfolio', name: 'Portefolio', light: [-512, -640], dark:[-576, -640]},
-        arcadepalace : {id: 'arcadepalace', to:'arcadepalace', name: 'Arcade Palace', light: [-768, -640], dark:[-832, -640]},
-        mktrials : {id: 'arcadepalace', to:'arcadepalace', name: 'Arcade Palace', light: [-768, -640], dark:[-832, -640]},
-    }
+    const dashboardLink = dashboard;
 
     const [linkArray, setLinkArray] = useState([dashboardLink.articles, dashboardLink.portfolio, dashboardLink.arcadepalace]);
 
-    const [selected, setSelected] = useState(fromPage);
+    const [selected, setSelected] = useState(fromPage[1]);
     const [hovered, setHovered] = useState('');
-    
+
+    const sublinksDict = [
+        'mktrials', 'wheels', 'sonictactoe'
+    ];
+
+    const sublinks = linkArray.find(link => link.id === selected)?.sublink || {};
+        
     useEffect(() => {
-        setSelected(fromPage);
-        if (fromPage !== '') {
+        setSelected(fromPage[1]);
+        if (fromPage[1] !== '') {
             setLinkArray((prevArray) => {
-                const selectedLink = dashboardLink[fromPage];
-                const filteredArray = prevArray.filter(link => link.id !== fromPage);
+                const selectedLink = dashboardLink[fromPage[1]];
+                const filteredArray = prevArray.filter(link => link.id !== fromPage[1]);
                 return [selectedLink, ...filteredArray];
             });
         }
     }, [fromPage]);
 
     useEffect(() => {
-        setDashboardAnim(fromPage === '' ? false : true);
+        setDashboardAnim(fromPage[1] === '' ? false : true);
         return () => setDashboardAnim(false);
     }, [setDashboardAnim, fromPage]);
 
@@ -97,13 +101,10 @@ export default function Dashboard() {
                     }
                 </div>
                 <div className="dashBodyContent">
-                    <h1 className="section">{linkArray.find(link => link.id === selected)?.name}</h1>
-                    <p className="description">Lorem, ipsum dolor sit amet consectetur adipisicing elit. </p>
-                    <div>
-                        <p>Sous-lien</p>
-                        <p>Sous-lien</p>
-                        <p>Sous-lien</p>
-                    </div>
+                    <h1 className="sectionName">{dashboardContent.category}{dashboardContent.subcategory !== '' ? ' - '+dashboardContent.subcategory  : ''}</h1>
+                    <p className="description">{dashboardContent.description}</p>
+                    <DashSubLinks sublinks={sublinks} />
+                    {/** Espace pour les options liés au sous-catégories */}
                 </div>
             </div>
             <div className="footer">

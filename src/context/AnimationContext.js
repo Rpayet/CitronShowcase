@@ -4,7 +4,7 @@ export const AnimationContext = createContext();
 
 export const AnimationProvider = ({children}) => {
 
-    const fromPage = window.location.pathname.split('/')[1];
+    const fromPage = window.location.pathname.split('/').pop();
 
     const [dashboardAnim, setDashboardAnim] = useState(false);
     const [landingPageAnim, setLandingPageAnim] = useState(false);

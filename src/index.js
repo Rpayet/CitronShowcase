@@ -8,19 +8,22 @@ import { AnimationProvider } from './context/AnimationContext';
 import { ModalProvider } from './context/ModalContext';
 import { AppProvider } from './context/AppProvider';
 import AuthProvider from './context/AuthContext';
+import { DashboardProvider } from './context/DashboardContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <React.StrictMode>
         <AppProvider>
             <BrowserRouter>
-                <ModalProvider>
-                    <AuthProvider>
-                        <AnimationProvider>
-                                <App />
-                        </AnimationProvider>
-                    </AuthProvider>
-                </ModalProvider>
+                <DashboardProvider>
+                    <ModalProvider>
+                        <AuthProvider>
+                            <AnimationProvider>
+                                    <App />
+                            </AnimationProvider>
+                        </AuthProvider>
+                    </ModalProvider>
+                </DashboardProvider>
             </BrowserRouter>
         </AppProvider>
     </React.StrictMode>

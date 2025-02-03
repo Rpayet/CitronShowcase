@@ -1,0 +1,64 @@
+{
+    "landing" : {
+        "id": "landing", 
+        "to": "", 
+        "name": "Lemonify", 
+        "light": [0, -640], 
+        "dark":[-64, -640]},
+    "articles" : {
+        "id": "articles", 
+        "to":"articles", 
+        "name": "Articles",
+        "description" : "A collection of articles that I have written over the years. Some of them are still in development, while others are fully functional. Feel free to try them out and let me know what you think.", 
+        "light": [-256, -640], 
+        "dark":[-320, -640],
+        "sublink" : {
+
+        }
+    },
+    "portfolio" : {
+        "id": "portfolio", 
+        "to":"portfolio", 
+        "name": "Portefolio",
+        "description" : "A collection of projects that I have worked on over the years. Some of them are still in development, while others are fully functional. Feel free to try them out and let me know what you think.", 
+        "light": [-512, -640], 
+        "dark":[-576, -640],
+        "sublink" : {
+
+        }
+    },
+    "arcadepalace" : {
+        "id": "arcadepalace", 
+        "to":"arcadepalace", 
+        "name": "Arcade Palace",
+        "description" : "A collection of games that I have created over the years. Some of them are still in development, while others are fully functional. Feel free to try them out and let me know what you think.", 
+        "light": [-768, -640], 
+        "dark":[-832, -640],
+        "sublink" : {
+            "mktrials" : {
+                "id": "mktrials", 
+                "to":"mktrials", 
+                "name": "Mario Kart Trials",
+                "description" : "Contest friendly", 
+                "light": [-1024, -640], 
+                "dark":[-1088, -640]
+            },
+            "wheels" : {
+                "id": "wheels", 
+                "to":"wheels", 
+                "name": "Wheels",
+                "description" : "Adapted from the classic game Sea of Stars", 
+                "light": [-1088, -640], 
+                "dark":[-1152, -640]
+            },
+            "sonictactoe" : {
+                "id": "sonictactoe", 
+                "to":"sonictactoe", 
+                "name": "Sonic Tac Toe",
+                "description" : "That's right, Sonic is back and he's ready to play some Tic Tac Toe", 
+                "light": [-1152, -640], 
+                "dark":[-1216, -640]
+            }
+        }
+    }
+}

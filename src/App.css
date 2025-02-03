@@ -148,8 +148,36 @@ ul {
   border-radius: 0 0.5rem 0.5rem 0.5rem;
   color: #fff;
 }
-#Dashboard .dashBody .dashBodyContent .section {
+#Dashboard .dashBody .dashBodyContent .sectionName {
   font-size: 1.45rem;
+  font-weight: 700;
+}
+#Dashboard .dashBody .dashBodyContent .sublinks {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+}
+#Dashboard .dashBody .dashBodyContent .sublinks .sublink {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  background: #fff;
+  color: #004579;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+#Dashboard .dashBody .dashBodyContent .sublinks .sublink:hover {
+  background: #004579;
+  color: #fff;
+}
+#Dashboard .dashBody .dashBodyContent .sublinks .sublink .sublinkIcon {
+  padding: 0 1rem;
+}
+#Dashboard .dashBody .dashBodyContent .sublinks .sublink .sublinkName {
+  font-size: 1.25rem;
   font-weight: 700;
 }
 #Dashboard .footer {

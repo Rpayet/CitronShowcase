@@ -5,6 +5,8 @@ import { Outlet } from "react-router-dom";
 
 export default function ArcadePalace() {
 
+    const fromPage = window.location.pathname.split('/').pop();
+
     const { animations } = useContext(AnimationContext);
     const { navigateWithAnimation } = usePageTransition();
 
@@ -25,7 +27,7 @@ export default function ArcadePalace() {
     };
 
     useEffect(() => {
-        setArcadePalacePageAnim(true);
+        setArcadePalacePageAnim(fromPage === 'arcadepalace' ? true : false);
         return () => setArcadePalacePageAnim(false);
     }, [setArcadePalacePageAnim]);
 
