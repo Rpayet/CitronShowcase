@@ -9,7 +9,7 @@ export const DashboardProvider = ({ children }) => {
     const location = useLocation();
     const { appTheme } = useContext(AppContext);
 
-    const currentCategory = location.pathname.split('/')[1] === "" ? "landing" : location.pathname.split('/')[1];
+    const currentCategory = location.pathname.split('/')[1] === "" ? "lemonify" : location.pathname.split('/')[1];
     const currentSubcategory = location.pathname.split('/')[2] || "";
 
     // Optimisation avec useMemo pour éviter des recalculs inutiles
@@ -27,8 +27,16 @@ export const DashboardProvider = ({ children }) => {
                 to: dashboard[key].to,
                 theme: dashboard[key][appTheme]
             })) || '',
-            category: categoryData.name || '',
-            subcategory: subcategoryData?.name || '',
+            category: {
+                id: categoryData.id || '',
+                name: categoryData.name || '',
+                to: categoryData.to || '',
+            },
+            subcategory: {
+                id: subcategoryData?.id || '',
+                name: subcategoryData?.name || '',
+                to: subcategoryData?.to || '',
+            },
             description: subcategoryData?.description || categoryData.description || '',
             sublinks: dashboard[currentCategory].sublink || {}
         };

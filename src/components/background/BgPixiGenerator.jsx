@@ -16,7 +16,7 @@ export default function BgPixiGenerator() {
     const { state, pattern } = bgPattern;
 
     const patternArray = {
-        landing: { light: [0, 0], dark: [0, 256] },
+        lemonify: { light: [0, 0], dark: [0, 256] },
         articles: { light: [256, 0], dark: [256, 256] },
         portfolio: { light: [512, 0], dark: [512, 256] },
         arcadepalace: { light: [768, 0], dark: [768, 256] },

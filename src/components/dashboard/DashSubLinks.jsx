@@ -1,28 +1,38 @@
 import { Sprite, Stage } from "@pixi/react";
 import { usePageTransition } from "../../services/navigation/animationService";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AppContext } from "../../context/AppProvider";
 import { DashboardContext } from "../../context/DashboardContext";
+import { IoIosArrowBack } from "react-icons/io";
 
 export default function DashSubLinks() {
     const { handleNavigation } = usePageTransition();
     const { appTheme, lemonifylogoset } = useContext(AppContext);
     const { dashboardContent } = useContext(DashboardContext);
+    const { category, subcategory, sublinks } = dashboardContent;
 
-    const sublinks = dashboardContent.sublinks;
+    const [subHover, setSubHover] = useState('');
     
     return (
         <div className="sublinks">
-            {Object.keys(sublinks).map((sublink) => {
-                if (sublinks[sublink].name === dashboardContent.subcategory) 
-                    return (
-                        <button>Retour</button>
-                );
+            <button 
+                onClick={() => handleNavigation('arcadepalace')}
+                onMouseEnter={() => setSubHover('arcadePalace')}
+                onMouseLeave={() => setSubHover('')}
+                className={`sublink ${subcategory.id !== '' ? 'popIn' : 'popOut'} ${subHover === 'arcadePalace' ? 'hovered' : ''}`}>
+                    <IoIosArrowBack className='arcadeBack' />
+                    {subHover === 'arcadePalace' ? <span>Arcade Palace</span> : ''}
+            </button>
+            {Object.keys(sublinks).map((sublink, index) => {
+                if (sublink === subcategory.id) return;
                 return (
                     <button
                         key={sublinks[sublink].id}
-                        className={`sublink ${!dashboardContent.subcategory ? 'popIn' : 'popOut'}`}
-                        onClick={() => handleNavigation(sublinks[sublink].to)}>
+                        style={{animation : `popIn ${ (1 + (index/10)) /1.8}s ease-in-out`}}
+                        className={`sublink ${subcategory.id !== '' ? 'popIn' : 'popOut'} ${sublinks[sublink].name === subHover ? 'hovered' : ''}`}
+                        onClick={() => handleNavigation(sublinks[sublink].to)}
+                        onMouseEnter={() => setSubHover(sublinks[sublink].name)}
+                        onMouseLeave={() => setSubHover('')}>
                             <div>
                                 <Stage
                                     width={32}
@@ -36,7 +46,7 @@ export default function DashSubLinks() {
                                     />
                                 </Stage>
                             </div>
-                            <p>{sublinks[sublink].name}</p>
+                            {sublinks[sublink].name === subHover ? <span>{sublinks[sublink].name}</span> : ''}
                     </button>
                 );
             })}

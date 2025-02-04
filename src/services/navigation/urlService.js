@@ -1,6 +1,6 @@
 
 const urls = [
-    { name: 'landing', url: '/' },
+    { name: 'lemonify', url: '/' },
     { name: 'articles', url: '/articles' },
     { name: 'portfolio', url: '/portfolio' },
     { name: 'arcadepalace', url: '/arcadepalace' },

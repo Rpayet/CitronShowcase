@@ -18,7 +18,7 @@ export default function Dashboard() {
     const [hovered, setHovered] = useState('');
 
     useEffect(() => {
-        setDashboardAnim(dashboardContent.category === "Lemonify" ? false : true);
+        setDashboardAnim(dashboardContent.category.name === "Lemonify" ? false : true);
         return () => setDashboardAnim(false);
     }, [setDashboardAnim, dashboardContent.category]);
 
@@ -26,7 +26,7 @@ export default function Dashboard() {
         <div id="Dashboard" className={dashboardAnim ? 'dashSlideIn' : 'dashSlideOut'}>
             <div 
                 className={`header`}
-                onClick={() => handleNavigation('landing')} >
+                onClick={() => handleNavigation('lemonify')} >
                     <button className="dashLink">
                         <div className="headerIcon">
                             <Stage
@@ -47,16 +47,16 @@ export default function Dashboard() {
             <div className="dashBody">
                 <div className="nav">
                     {dashboardContent.navigation.map((link) => {
-                        if (link.id === 'landing') return;
+                        if (link.id === 'lemonify') return;
                         return (
                             <button
                                 key={link.id}
                                 id={link.id}
-                                className={`dashLink ${hovered === link.name ? 'focus' : 'unfocus' } ${dashboardContent.category === link.name ? 'selected' : 'unselected'}`}
+                                className={`dashLink ${hovered === link.name ? 'focus' : 'unfocus' } ${dashboardContent.category.name === link.name ? 'selected' : 'unselected'}`}
                                 onClick={() => handleNavigation(link.to) } 
                                 onMouseEnter={() => setHovered(link.id)}
                                 onMouseLeave={() => setHovered('')}>
-                                    <div className={`navIcon ${dashboardContent.category === link.name ? '' : 'reduce'}`}>
+                                    <div className={`navIcon ${dashboardContent.category.name === link.name ? '' : 'reduce'}`}>
                                         <Stage                  
                                             width={64}
                                             height={64}
@@ -74,7 +74,7 @@ export default function Dashboard() {
                     })}
                     <p className={`linkname ${hovered !== '' ? 'show' : ''}`}>
                         {Object.keys(dashboardContent.navigation).map(key => {
-                            if (dashboardContent.navigation[key].id === hovered && dashboardContent.navigation[key].name !== dashboardContent.category) {
+                            if (dashboardContent.navigation[key].id === hovered && dashboardContent.navigation[key].name !== dashboardContent.category.name) {
                                 return dashboardContent.navigation[key].name;
                             }
                         })}
@@ -82,11 +82,11 @@ export default function Dashboard() {
                 </div>
                 <div className="dashBodyContent">
                     <h1 className="sectionName">
-                        {dashboardContent.category !== 'Lemonify' ? dashboardContent.category : ''}
-                        {dashboardContent.subcategory !== '' ? ' - '+dashboardContent.subcategory  : ''}
+                        {dashboardContent.category.name !== 'Lemonify' ? dashboardContent.category.name : ''}
+                        {dashboardContent.subcategory.name !== '' ? ' - '+dashboardContent.subcategory.name  : ''}
                     </h1>
                     <p className="description">{dashboardContent.description}</p>
-                    { dashboardContent.subcategory && <DashSubLinks /> }
+                    { dashboardContent.subcategory.id !== '' && <DashSubLinks /> }
                     {/** Espace pour les options liés au sous-catégories */}
                 </div>
             </div>

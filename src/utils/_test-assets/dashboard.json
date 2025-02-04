@@ -1,6 +1,6 @@
 {
-    "landing" : {
-        "id": "landing", 
+    "lemonify" : {
+        "id": "lemonify", 
         "to": "", 
         "name": "Lemonify", 
         "light": [0, -640], 

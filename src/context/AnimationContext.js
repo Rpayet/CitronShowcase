@@ -1,10 +1,16 @@
-import { createContext, useState } from "react";
+import { createContext, useContext, useState } from "react";
+import { DashboardContext } from "./DashboardContext";
 
 export const AnimationContext = createContext();
 
 export const AnimationProvider = ({children}) => {
 
-    const fromPage = window.location.pathname.split('/').pop();
+    const { dashboardContent } = useContext(DashboardContext);
+    const { category, subcategory } = dashboardContent;
+
+    const fromPage = subcategory.id === '' ? category.id : subcategory.id;
+
+    console.log(category, subcategory, fromPage)
 
     const [dashboardAnim, setDashboardAnim] = useState(false);
     const [landingPageAnim, setLandingPageAnim] = useState(false);
@@ -13,7 +19,7 @@ export const AnimationProvider = ({children}) => {
     const [arcadePalacePageAnim, setArcadePalacePageAnim] = useState(false);
     const [bgAnimation, setBgAnimation] = useState({
         state: false,
-        pattern: (fromPage === '') ? 'landing' : fromPage
+        pattern: fromPage
     });
     const [loginAnimation, setLoginAnimation] = useState(true);
     const [profilAnimation, setProfilAnimation] = useState(true);
@@ -21,9 +27,11 @@ export const AnimationProvider = ({children}) => {
     const [mkPageAnim, setMkPageAnim] = useState(false);
     const [wheelsPageAnim, setWheelsPageAnim] = useState(false);
 
+    console.log('fromPage', fromPage)
+
     const animations = {
         dashboard: [dashboardAnim, setDashboardAnim],
-        landing: [landingPageAnim, setLandingPageAnim],
+        lemonify: [landingPageAnim, setLandingPageAnim],
         articles: [articlesPageAnim, setArticlesPageAnim],
         portfolio: [portfolioPageAnim, setPortfolioPageAnim],
         arcadepalace: [arcadePalacePageAnim, setArcadePalacePageAnim],

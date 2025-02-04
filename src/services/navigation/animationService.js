@@ -2,10 +2,14 @@ import { useContext } from "react";
 import { AnimationContext } from "../../context/AnimationContext";
 import { useNavigate } from "react-router-dom";
 import getUrl from "./urlService";
+import { DashboardContext } from "../../context/DashboardContext";
 
 export const usePageTransition = () => {
 
     const { animations } = useContext(AnimationContext);
+    const { dashboardContent } = useContext(DashboardContext);
+    const { category, subcategory } = dashboardContent;
+
     const navigate = useNavigate();
 
     const navigateWithAnimation = (fromPage, toPage, timeout=500) => {
@@ -44,12 +48,8 @@ export const usePageTransition = () => {
     };
 
     const handleNavigation = (toPage) => {
-        const fromPage = window.location.pathname.split('/')[1];
-        if (fromPage === '') {
-            navigateWithAnimation('landing', toPage, 500);
-        } else {
-            navigateWithAnimation(fromPage, toPage, 500);
-        }
+        const fromPage = subcategory.id === '' ? category.id : subcategory.id;
+        navigateWithAnimation(fromPage, toPage, 500);
     };
 
     return { navigateWithAnimation, handleNavigation };

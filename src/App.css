@@ -97,10 +97,11 @@ ul {
   border-right: 1px solid #fff;
   border-radius: 1rem 1rem 0 0;
   cursor: pointer;
+  z-index: 1;
 }
 #Dashboard .dashBody .nav .dashLink.selected {
   border-bottom: 1px solid #004579;
-  transform: translateY(1px);
+  transform: translateY(2px);
   background: #004579;
 }
 #Dashboard .dashBody .nav .dashLink.unselected {
@@ -136,8 +137,10 @@ ul {
   display: block;
 }
 #Dashboard .dashBody .dashBodyContent {
+  position: relative;
   display: flex;
   flex-direction: column;
+  min-height: 15rem;
   gap: 1rem;
   padding: 1rem;
   border: 1px solid #fff;
@@ -151,31 +154,36 @@ ul {
   font-weight: 700;
 }
 #Dashboard .dashBody .dashBodyContent .sublinks {
+  position: absolute;
+  left: 100%;
+  top: 10px;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem;
+  flex-direction: column;
 }
 #Dashboard .dashBody .dashBodyContent .sublinks .sublink {
+  width: 3.5rem;
   display: flex;
-  justify-content: space-between;
   align-items: center;
   padding: 0.5rem;
-  border-radius: 0.5rem;
-  background: #ccc;
-  color: #004579;
+  border-radius: 0 0.5rem 0.5rem 0;
+  background: #004579;
+  color: #fff;
+  border-top: 1px solid #fff;
+  border-right: 1px solid #fff;
+  border-bottom: 1px solid #fff;
+  transform-origin: left top;
   cursor: pointer;
-  transition: all 0.3s ease-in-out;
 }
 #Dashboard .dashBody .dashBodyContent .sublinks .sublink.popIn {
   animation: popIn 0.5s ease-in-out;
+  transform: scale(1);
 }
 #Dashboard .dashBody .dashBodyContent .sublinks .sublink.popOut {
   animation: popOut 0.5s ease-in-out;
+  transform: scale(0);
 }
-#Dashboard .dashBody .dashBodyContent .sublinks .sublink:hover {
-  background: #004579;
-  color: #fff;
+#Dashboard .dashBody .dashBodyContent .sublinks .sublink.hovered {
+  width: 12rem;
 }
 #Dashboard .dashBody .dashBodyContent .sublinks .sublink .sublinkIcon {
   padding: 0 1rem;
@@ -183,6 +191,10 @@ ul {
 #Dashboard .dashBody .dashBodyContent .sublinks .sublink .sublinkName {
   font-size: 1.25rem;
   font-weight: 700;
+}
+#Dashboard .dashBody .dashBodyContent .sublinks .sublink .arcadeBack {
+  width: 32px;
+  height: 32px;
 }
 #Dashboard .footer {
   display: flex;
@@ -226,7 +238,7 @@ ul {
     transform: scale(1);
   }
   to {
-    transform: scale(0);
+    transform: tscale(0);
   }
 }
 #App {
@@ -1617,6 +1629,9 @@ ul {
 }
 
 #Boardgame {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   display: flex;
@@ -1624,7 +1639,6 @@ ul {
   justify-content: center;
   align-items: center;
   gap: 1rem;
-  background-color: black;
 }
 #Boardgame h1 {
   color: white;

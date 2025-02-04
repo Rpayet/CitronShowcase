@@ -6,7 +6,7 @@ import Resume from "../components/landing/resume/Resume";
 export default function Landing() {
 
     const { animations } = useContext(AnimationContext);
-    const [ landingPageAnim, setLandingPageAnim ] = animations.landing;
+    const [ landingPageAnim, setLandingPageAnim ] = animations.lemonify;
 
     useEffect(() => {
         setLandingPageAnim(true);
