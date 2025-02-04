@@ -15,7 +15,7 @@
     }
 
     &.dashSlideOut {
-        transform: translateX(-200%);
+        transform: translate(0, 400%) rotateZ(2deg) scale(.5);
         animation: dashOut .5s ease-in-out;
     }
 
@@ -104,7 +104,7 @@
                 &.unselected {
                     border-bottom: 1px solid #fff;
                     justify-content: flex-start;
-                    background: #ccc;
+                    background: #555;
                     width: 4rem;
                     height: 3rem;
                     transition: all .3s ease-in-out;
@@ -133,13 +133,10 @@
                 color: #fff;
                 text-align: center;
                 display: none;
-                transform: translateX(2rem);
                 transition: all .3s ease-in-out;
 
                 &.show {
                     display: block;
-                    transform: translateX(0);
-                    animation: hoverLink .3s ease-in-out;
                 }
             }
         }
@@ -153,6 +150,7 @@
             background: #004579;
             border-radius: 0 .5rem .5rem .5rem;
             color: #fff;
+            transition: all .3s ease-in-out;
 
             .sectionName {
                 font-size: 1.45rem;
@@ -171,10 +169,18 @@
                     align-items: center;
                     padding: .5rem;
                     border-radius: .5rem;
-                    background: #fff;
+                    background: #ccc;
                     color: #004579;
                     cursor: pointer;
                     transition: all .3s ease-in-out;
+
+                    &.popIn {
+                        animation: popIn .5s ease-in-out;
+                    }
+
+                    &.popOut {
+                        animation: popOut .5s ease-in-out;
+                    }
     
                     &:hover {
                         background: #004579;
@@ -206,15 +212,6 @@
 
 }
 
-
-@keyframes hoverLink {
-    from {
-        transform: translateX(2rem);
-    } to {
-        transform: translateX(0);
-    }
-}
-
 @keyframes dashIn {
     from {
         transform: translateX(-200%);
@@ -225,10 +222,31 @@
 }
 
 @keyframes dashOut {
+    0% {
+        transform: translate(0,0);
+    } 
+    15% {
+        transform: translate(0, -15%) rotateZ(-15deg);
+    }
+    100% {
+        transform: translate(0, 400%) rotateZ(2deg) scale(.5);
+    }
+}
+
+@keyframes popIn {
     from {
-        transform: translateX(0);
+        transform: scale(0);
     }
     to {
-        transform: translateX(-200%);
+        transform: scale(1);
+    }
+}
+
+@keyframes popOut {
+    from {
+        transform: scale(1);
+    }
+    to {
+        transform: scale(0);
     }
 }

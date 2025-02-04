@@ -1,39 +1,42 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useContext, useMemo } from "react";
 import { useLocation } from "react-router-dom";
 import dashboard from "../utils/_test-assets/dashboard.json";
+import { AppContext } from "./AppProvider";
 
 export const DashboardContext = createContext();
 
 export const DashboardProvider = ({ children }) => {
-
     const location = useLocation();
+    const { appTheme } = useContext(AppContext);
 
-    const [currentCategory, setCurrentCategory] = useState(location.pathname.split('/')[1] || '');
-    const [currentSubcategory, setCurrentSubcategory] = useState(location.pathname.split('/')[2] || '');
+    const currentCategory = location.pathname.split('/')[1] === "" ? "landing" : location.pathname.split('/')[1];
+    const currentSubcategory = location.pathname.split('/')[2] || "";
 
-    const [dashboardContent, setDashboardContent] = useState({
-        category: '',
-        subcategory: '',
-        description: '',
-    });
+    // Optimisation avec useMemo pour éviter des recalculs inutiles
+    // En attendant de réabilité l'usage de useState et useEffect
+    const dashboardContent = useMemo(() => {
 
-    useEffect(() => {
-        setCurrentCategory(location.pathname.split('/')[1]);
-        setCurrentSubcategory(location.pathname.split('/')[2]);
-        if (currentCategory !== '') {
-            setDashboardContent({
-                category: dashboard[currentCategory].name|| '',
-                subcategory: dashboard[currentCategory].sublink[currentSubcategory].name || '',
-                description: dashboard[currentCategory].sublink[currentSubcategory] 
-                    ? dashboard[currentCategory].sublink[currentSubcategory].description 
-                    : dashboard[currentCategory].description,
-            });
-        }
-    }, [location, currentCategory, currentSubcategory]);
+        const categoryData = dashboard[currentCategory];
+        const subcategoryData = categoryData.sublink?.[currentSubcategory];
+
+        return {
+            navigation: Object.keys(dashboard).map(key => ({ 
+                key: key,
+                id: key, 
+                name: dashboard[key].name,
+                to: dashboard[key].to,
+                theme: dashboard[key][appTheme]
+            })) || '',
+            category: categoryData.name || '',
+            subcategory: subcategoryData?.name || '',
+            description: subcategoryData?.description || categoryData.description || '',
+            sublinks: dashboard[currentCategory].sublink || {}
+        };
+    }, [currentCategory, currentSubcategory]);
 
     return (
-        <DashboardContext.Provider value={{dashboardContent}}>
+        <DashboardContext.Provider value={{ dashboardContent }}>
             {children}
         </DashboardContext.Provider>
-    )
+    );
 };

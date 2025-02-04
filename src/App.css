@@ -30,7 +30,7 @@ ul {
   animation: dashIn 0.5s ease-in-out;
 }
 #Dashboard.dashSlideOut {
-  transform: translateX(-200%);
+  transform: translate(0, 400%) rotateZ(2deg) scale(0.5);
   animation: dashOut 0.5s ease-in-out;
 }
 #Dashboard .header .dashLink, #Dashboard .dashBody .dashLink {
@@ -106,7 +106,7 @@ ul {
 #Dashboard .dashBody .nav .dashLink.unselected {
   border-bottom: 1px solid #fff;
   justify-content: flex-start;
-  background: #ccc;
+  background: #555;
   width: 4rem;
   height: 3rem;
   transition: all 0.3s ease-in-out;
@@ -130,13 +130,10 @@ ul {
   color: #fff;
   text-align: center;
   display: none;
-  transform: translateX(2rem);
   transition: all 0.3s ease-in-out;
 }
 #Dashboard .dashBody .nav .linkname.show {
   display: block;
-  transform: translateX(0);
-  animation: hoverLink 0.3s ease-in-out;
 }
 #Dashboard .dashBody .dashBodyContent {
   display: flex;
@@ -147,6 +144,7 @@ ul {
   background: #004579;
   border-radius: 0 0.5rem 0.5rem 0.5rem;
   color: #fff;
+  transition: all 0.3s ease-in-out;
 }
 #Dashboard .dashBody .dashBodyContent .sectionName {
   font-size: 1.45rem;
@@ -164,10 +162,16 @@ ul {
   align-items: center;
   padding: 0.5rem;
   border-radius: 0.5rem;
-  background: #fff;
+  background: #ccc;
   color: #004579;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
+}
+#Dashboard .dashBody .dashBodyContent .sublinks .sublink.popIn {
+  animation: popIn 0.5s ease-in-out;
+}
+#Dashboard .dashBody .dashBodyContent .sublinks .sublink.popOut {
+  animation: popOut 0.5s ease-in-out;
 }
 #Dashboard .dashBody .dashBodyContent .sublinks .sublink:hover {
   background: #004579;
@@ -190,14 +194,6 @@ ul {
   text-align: center;
 }
 
-@keyframes hoverLink {
-  from {
-    transform: translateX(2rem);
-  }
-  to {
-    transform: translateX(0);
-  }
-}
 @keyframes dashIn {
   from {
     transform: translateX(-200%);
@@ -207,11 +203,30 @@ ul {
   }
 }
 @keyframes dashOut {
+  0% {
+    transform: translate(0, 0);
+  }
+  15% {
+    transform: translate(0, -15%) rotateZ(-15deg);
+  }
+  100% {
+    transform: translate(0, 400%) rotateZ(2deg) scale(0.5);
+  }
+}
+@keyframes popIn {
   from {
-    transform: translateX(0);
+    transform: scale(0);
   }
   to {
-    transform: translateX(-200%);
+    transform: scale(1);
+  }
+}
+@keyframes popOut {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(0);
   }
 }
 #App {

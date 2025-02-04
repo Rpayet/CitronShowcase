@@ -40,24 +40,24 @@
                 "to":"mktrials", 
                 "name": "Mario Kart Trials",
                 "description" : "Contest friendly", 
-                "light": [-1024, -640], 
-                "dark":[-1088, -640]
+                "light": [-1024, -704], 
+                "dark":[-1056, -704]
             },
             "wheels" : {
                 "id": "wheels", 
                 "to":"wheels", 
                 "name": "Wheels",
                 "description" : "Adapted from the classic game Sea of Stars", 
-                "light": [-1088, -640], 
-                "dark":[-1152, -640]
+                "light": [-1280, -704], 
+                "dark":[-1312, -704]
             },
             "sonictactoe" : {
                 "id": "sonictactoe", 
                 "to":"sonictactoe", 
                 "name": "Sonic Tac Toe",
                 "description" : "That's right, Sonic is back and he's ready to play some Tic Tac Toe", 
-                "light": [-1152, -640], 
-                "dark":[-1216, -640]
+                "light": [-1536, -704], 
+                "dark":[-1568, -704]
             }
         }
     }

@@ -1,5 +1,6 @@
 import { createContext, useEffect, useState } from "react";
 import Axios from "../services/server/callerService";
+import lemonifylogoset from "../assets/images/statics/brand/lemonify_logoset.png";
 
 export const AppContext = createContext();
 
@@ -29,7 +30,7 @@ export const AppProvider = ({ children }) => {
     const appContextValue = {
         userIdentifier, setUserIdentifier,
         tournaments, setTournaments, races, setRaces,
-        mainLoading, appTheme, setAppTheme
+        mainLoading, appTheme, setAppTheme, lemonifylogoset
     };
 
     return (

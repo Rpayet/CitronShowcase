@@ -1,12 +1,13 @@
 import { useContext, useEffect, useRef, useState } from "react";
-import lemonifylogoset from "../../assets/images/statics/brand/lemonify_logoset.png";
 import { AnimationContext } from "../../context/AnimationContext";
+import { AppContext } from "../../context/AppProvider";
 
 export default function BgGenerator() {
     const canvasRef = useRef(null);
     const animationRef = useRef(null);
 
     const { animations } = useContext(AnimationContext);
+    const { lemonifylogoset } = useContext(AppContext)
     const [bgPattern, setBgPattern] = animations.bgPattern;
     const { state, pattern, theme } = bgPattern;
 

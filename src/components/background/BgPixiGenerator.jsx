@@ -1,6 +1,5 @@
 import { Stage, TilingSprite } from "@pixi/react";
 import { useContext, useEffect, useRef, useState } from "react";
-import lemonifylogoset from "../../assets/images/statics/brand/lemonify_logoset.png";
 import { AnimationContext } from "../../context/AnimationContext";
 import { AppContext } from "../../context/AppProvider";
 
@@ -12,7 +11,7 @@ export default function BgPixiGenerator() {
     const animationRef = useRef(null);
 
     const { animations } = useContext(AnimationContext);
-    const { appTheme } = useContext(AppContext);
+    const { appTheme, lemonifylogoset } = useContext(AppContext);
     const [bgPattern, setBgPattern] = animations.bgPattern;
     const { state, pattern } = bgPattern;
 
@@ -22,6 +21,8 @@ export default function BgPixiGenerator() {
         portfolio: { light: [512, 0], dark: [512, 256] },
         arcadepalace: { light: [768, 0], dark: [768, 256] },
         mktrials: { light: [1024, 0], dark: [1024, 256] },
+        wheels: { light: [1280, 0], dark: [1280, 256] },
+        sonictactoe: { light: [1536, 0], dark: [1536, 256] },
     };
 
     const [patternCoords, setPatternCoords] = useState(patternArray[pattern][appTheme]);

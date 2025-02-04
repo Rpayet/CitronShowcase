@@ -1,51 +1,26 @@
 import { usePageTransition } from "../../services/navigation/animationService";
-import lemonifylogoset from "../../assets/images/statics/brand/lemonify_logoset.png";
 import { Stage, Sprite } from "@pixi/react";
 import { useEffect, useState, useContext, useMemo } from "react";
-import { AppContext } from "../../context/AppProvider";
 import { AnimationContext } from "../../context/AnimationContext";
-import dashboard from "../../utils/_test-assets/dashboard.json";
 import DashSubLinks from "./DashSubLinks";
 import { DashboardContext } from "../../context/DashboardContext";
+import { AppContext } from "../../context/AppProvider";
 
 export default function Dashboard() {
 
-    const fromPage = useMemo(() => window.location.pathname.split('/'), [window.location.pathname]);
     const { handleNavigation } = usePageTransition();
-    const { appTheme } = useContext(AppContext);
     const { dashboardContent } = useContext(DashboardContext);
+    const { lemonifylogoset } = useContext(AppContext);
 
     const { animations } = useContext(AnimationContext);
     const [dashboardAnim, setDashboardAnim] = animations.dashboard;
 
-    const dashboardLink = dashboard;
-
-    const [linkArray, setLinkArray] = useState([dashboardLink.articles, dashboardLink.portfolio, dashboardLink.arcadepalace]);
-
-    const [selected, setSelected] = useState(fromPage[1]);
     const [hovered, setHovered] = useState('');
 
-    const sublinksDict = [
-        'mktrials', 'wheels', 'sonictactoe'
-    ];
-
-    const sublinks = linkArray.find(link => link.id === selected)?.sublink || {};
-        
     useEffect(() => {
-        setSelected(fromPage[1]);
-        if (fromPage[1] !== '') {
-            setLinkArray((prevArray) => {
-                const selectedLink = dashboardLink[fromPage[1]];
-                const filteredArray = prevArray.filter(link => link.id !== fromPage[1]);
-                return [selectedLink, ...filteredArray];
-            });
-        }
-    }, [fromPage]);
-
-    useEffect(() => {
-        setDashboardAnim(fromPage[1] === '' ? false : true);
+        setDashboardAnim(dashboardContent.category === "Lemonify" ? false : true);
         return () => setDashboardAnim(false);
-    }, [setDashboardAnim, fromPage]);
+    }, [setDashboardAnim, dashboardContent.category]);
 
     return (
         <div id="Dashboard" className={dashboardAnim ? 'dashSlideIn' : 'dashSlideOut'}>
@@ -60,34 +35,35 @@ export default function Dashboard() {
                                 options={{backgroundAlpha: 0}}>
                                     <Sprite
                                         image={lemonifylogoset}
-                                        position={dashboardLink.landing[appTheme]}
+                                        position={dashboardContent.navigation[0].theme}
                                         anchor={[0, 0]}
                                         scale={1}
                                     />
                             </Stage>
                         </div>
-                        <p className="linkname">{dashboardLink.landing.name}</p>
+                        <p className="linkname">{dashboardContent.navigation[0].name}</p>
                     </button>
             </div>
             <div className="dashBody">
                 <div className="nav">
-                    {linkArray.map((link) => {
+                    {dashboardContent.navigation.map((link) => {
+                        if (link.id === 'landing') return;
                         return (
                             <button
                                 key={link.id}
                                 id={link.id}
-                                className={`dashLink ${hovered === link.name ? 'focus' : 'unfocus' } ${selected === link.id ? 'selected' : 'unselected'}`}
+                                className={`dashLink ${hovered === link.name ? 'focus' : 'unfocus' } ${dashboardContent.category === link.name ? 'selected' : 'unselected'}`}
                                 onClick={() => handleNavigation(link.to) } 
                                 onMouseEnter={() => setHovered(link.id)}
                                 onMouseLeave={() => setHovered('')}>
-                                    <div className={`navIcon ${selected === link.id ? '' : 'reduce'}`}>
-                                        <Stage                        
+                                    <div className={`navIcon ${dashboardContent.category === link.name ? '' : 'reduce'}`}>
+                                        <Stage                  
                                             width={64}
                                             height={64}
                                             options={{backgroundAlpha: 0}}>
                                                 <Sprite
                                                     image={lemonifylogoset}
-                                                    position={selected === link.id ? link.light : link.dark}
+                                                    position={link.theme}
                                                     anchor={[0, 0]}
                                                     scale={1}                                   
                                                 />
@@ -96,14 +72,21 @@ export default function Dashboard() {
                             </button>
                         );
                     })}
-                    {hovered !== selected &&
-                        <p className={`linkname ${hovered !== '' ? 'show' : ''}`}>{linkArray.find(link => link.id === hovered)?.name}</p>
-                    }
+                    <p className={`linkname ${hovered !== '' ? 'show' : ''}`}>
+                        {Object.keys(dashboardContent.navigation).map(key => {
+                            if (dashboardContent.navigation[key].id === hovered && dashboardContent.navigation[key].name !== dashboardContent.category) {
+                                return dashboardContent.navigation[key].name;
+                            }
+                        })}
+                    </p>
                 </div>
                 <div className="dashBodyContent">
-                    <h1 className="sectionName">{dashboardContent.category}{dashboardContent.subcategory !== '' ? ' - '+dashboardContent.subcategory  : ''}</h1>
+                    <h1 className="sectionName">
+                        {dashboardContent.category !== 'Lemonify' ? dashboardContent.category : ''}
+                        {dashboardContent.subcategory !== '' ? ' - '+dashboardContent.subcategory  : ''}
+                    </h1>
                     <p className="description">{dashboardContent.description}</p>
-                    <DashSubLinks sublinks={sublinks} />
+                    { dashboardContent.subcategory && <DashSubLinks /> }
                     {/** Espace pour les options liés au sous-catégories */}
                 </div>
             </div>
