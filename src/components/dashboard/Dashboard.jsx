@@ -10,6 +10,7 @@ export default function Dashboard() {
 
     const { handleNavigation } = usePageTransition();
     const { dashboardContent } = useContext(DashboardContext);
+    const { navigation, category, subcategory, description, sublinks } = dashboardContent;
     const { lemonifylogoset } = useContext(AppContext);
 
     const { animations } = useContext(AnimationContext);
@@ -18,9 +19,9 @@ export default function Dashboard() {
     const [hovered, setHovered] = useState('');
 
     useEffect(() => {
-        setDashboardAnim(dashboardContent.category.name === "Lemonify" ? false : true);
+        setDashboardAnim(!category.to ? false : true);
         return () => setDashboardAnim(false);
-    }, [setDashboardAnim, dashboardContent.category]);
+    }, [setDashboardAnim, category]);
 
     return (
         <div id="Dashboard" className={dashboardAnim ? 'dashSlideIn' : 'dashSlideOut'}>
@@ -35,28 +36,28 @@ export default function Dashboard() {
                                 options={{backgroundAlpha: 0}}>
                                     <Sprite
                                         image={lemonifylogoset}
-                                        position={dashboardContent.navigation[0].theme}
+                                        position={navigation[0].theme}
                                         anchor={[0, 0]}
                                         scale={1}
                                     />
                             </Stage>
                         </div>
-                        <p className="linkname">{dashboardContent.navigation[0].name}</p>
+                        <p className="linkname">{navigation[0].name}</p>
                     </button>
             </div>
             <div className="dashBody">
                 <div className="nav">
-                    {dashboardContent.navigation.map((link) => {
+                    {navigation.map((link) => {
                         if (link.id === 'lemonify') return;
                         return (
                             <button
                                 key={link.id}
                                 id={link.id}
-                                className={`dashLink ${hovered === link.name ? 'focus' : 'unfocus' } ${dashboardContent.category.name === link.name ? 'selected' : 'unselected'}`}
+                                className={`dashLink ${hovered === link.name ? 'focus' : 'unfocus' } ${category.name === link.name ? 'selected' : 'unselected'}`}
                                 onClick={() => handleNavigation(link.to) } 
                                 onMouseEnter={() => setHovered(link.id)}
                                 onMouseLeave={() => setHovered('')}>
-                                    <div className={`navIcon ${dashboardContent.category.name === link.name ? '' : 'reduce'}`}>
+                                    <div className={`navIcon ${category.name === link.name ? '' : 'reduce'}`}>
                                         <Stage                  
                                             width={64}
                                             height={64}
@@ -73,20 +74,20 @@ export default function Dashboard() {
                         );
                     })}
                     <p className={`linkname ${hovered !== '' ? 'show' : ''}`}>
-                        {Object.keys(dashboardContent.navigation).map(key => {
-                            if (dashboardContent.navigation[key].id === hovered && dashboardContent.navigation[key].name !== dashboardContent.category.name) {
-                                return dashboardContent.navigation[key].name;
+                        {Object.keys(navigation).map(key => {
+                            if (navigation[key].id === hovered && navigation[key].name !== category.name) {
+                                return navigation[key].name;
                             }
                         })}
                     </p>
                 </div>
                 <div className="dashBodyContent">
                     <h1 className="sectionName">
-                        {dashboardContent.category.name !== 'Lemonify' ? dashboardContent.category.name : ''}
-                        {dashboardContent.subcategory.name !== '' ? ' - '+dashboardContent.subcategory.name  : ''}
+                        {category.name !== 'Lemonify' ? category.name : ''}
+                        {subcategory.name !== '' ? (' - ' + subcategory.name)  : ''}
                     </h1>
-                    <p className="description">{dashboardContent.description}</p>
-                    { dashboardContent.subcategory.id !== '' && <DashSubLinks /> }
+                    <p className="description">{description}</p>
+                    { subcategory.id && <DashSubLinks /> }
                     {/** Espace pour les options liés au sous-catégories */}
                 </div>
             </div>

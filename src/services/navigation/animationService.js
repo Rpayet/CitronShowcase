@@ -29,9 +29,7 @@ export const usePageTransition = () => {
             })
         );
 
-        if (toPage === '') {
-            setDashboardAnim(false);
-        } 
+        setDashboardAnim(category.id === 'lemonify' ? false : true);
 
         setTimeout(() => {
           

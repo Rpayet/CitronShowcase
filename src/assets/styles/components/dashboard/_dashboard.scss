@@ -173,13 +173,14 @@
                     align-items: center;
                     padding: .5rem;
                     border-radius: 0 .5rem .5rem 0;
-                    background: #004579;
+                    background: linear-gradient(to right, #004579, #004579);
                     color: #fff;
                     border-top: 1px solid #fff;
                     border-right: 1px solid #fff;
                     border-bottom: 1px solid #fff;
                     transform-origin: left top;
                     cursor: pointer;
+                    transition: all .1s ease-in-out;
                     
                     &.popIn {
                         animation: popIn .5s ease-in-out;
@@ -193,6 +194,7 @@
     
                     &.hovered {
                         width: 12rem;
+                        background: linear-gradient(to right, #004579, #0095b3);
                     }
     
                     .sublinkIcon {
@@ -204,9 +206,16 @@
                         font-weight: 700;
                     }
 
-                    .arcadeBack {
+                    .sectionBack {
                         width: 32px;
                         height: 32px;
+                    }
+
+                    .sectionbacktitle {
+                        padding-left: 1rem;
+                        overflow: hidden;
+                        white-space: nowrap;
+                        transition: all .2s ease-in-out;
                     }
                 }
             }
@@ -263,3 +272,4 @@
         transform: tscale(0);
     }
 }
+

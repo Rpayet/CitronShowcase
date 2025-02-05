@@ -17,11 +17,11 @@ export default function DashSubLinks() {
         <div className="sublinks">
             <button 
                 onClick={() => handleNavigation('arcadepalace')}
-                onMouseEnter={() => setSubHover('arcadePalace')}
+                onMouseEnter={() => setSubHover('arcadepalace')}
                 onMouseLeave={() => setSubHover('')}
-                className={`sublink ${subcategory.id !== '' ? 'popIn' : 'popOut'} ${subHover === 'arcadePalace' ? 'hovered' : ''}`}>
-                    <IoIosArrowBack className='arcadeBack' />
-                    {subHover === 'arcadePalace' ? <span>Arcade Palace</span> : ''}
+                className={`sublink ${subcategory.id !== '' ? 'popIn' : 'popOut'} ${subHover === category.id ? 'hovered' : ''}`}>
+                    <IoIosArrowBack className='sectionBack' />
+                    {subHover === category.id ? <span className='sectionbacktitle'>{category.name}</span> : ''}
             </button>
             {Object.keys(sublinks).map((sublink, index) => {
                 if (sublink === subcategory.id) return;
@@ -46,7 +46,7 @@ export default function DashSubLinks() {
                                     />
                                 </Stage>
                             </div>
-                            {sublinks[sublink].name === subHover ? <span>{sublinks[sublink].name}</span> : ''}
+                            {sublinks[sublink].name === subHover ? <span className='sectionbacktitle'>{sublinks[sublink].name}</span> : ''}
                     </button>
                 );
             })}

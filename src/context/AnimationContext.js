@@ -10,9 +10,8 @@ export const AnimationProvider = ({children}) => {
 
     const fromPage = subcategory.id === '' ? category.id : subcategory.id;
 
-    console.log(category, subcategory, fromPage)
-
     const [dashboardAnim, setDashboardAnim] = useState(false);
+    
     const [landingPageAnim, setLandingPageAnim] = useState(false);
     const [articlesPageAnim, setArticlesPageAnim] = useState(false);
     const [portfolioPageAnim, setPortfolioPageAnim] = useState(false);
@@ -26,8 +25,6 @@ export const AnimationProvider = ({children}) => {
 
     const [mkPageAnim, setMkPageAnim] = useState(false);
     const [wheelsPageAnim, setWheelsPageAnim] = useState(false);
-
-    console.log('fromPage', fromPage)
 
     const animations = {
         dashboard: [dashboardAnim, setDashboardAnim],
