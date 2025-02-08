@@ -10,13 +10,26 @@ export default function Dashboard() {
 
     const { handleNavigation } = usePageTransition();
     const { dashboardContent } = useContext(DashboardContext);
-    const { navigation, category, subcategory, description, sublinks } = dashboardContent;
+    const { navigation, category, subcategory, description } = dashboardContent;
     const { lemonifylogoset } = useContext(AppContext);
 
     const { animations } = useContext(AnimationContext);
     const [dashboardAnim, setDashboardAnim] = animations.dashboard;
 
     const [hovered, setHovered] = useState('');
+    const [navDynamicArray, setNavDynamicArray] = useState(navigation || []);
+
+    useEffect(() => {
+        if (navigation.length === 0) return;
+
+        setNavDynamicArray((prevArray) => {
+            const selectedLink = navigation.find(link => link.id === category.id);
+            if (!selectedLink) return prevArray;
+
+            const filteredArray = prevArray.filter(link => link.id !== category.id);
+            return [selectedLink, ...filteredArray];
+        })
+    }, [navigation]);
 
     useEffect(() => {
         setDashboardAnim(!category.to ? false : true);
@@ -47,7 +60,7 @@ export default function Dashboard() {
             </div>
             <div className="dashBody">
                 <div className="nav">
-                    {navigation.map((link) => {
+                    {navDynamicArray.map((link) => {
                         if (link.id === 'lemonify') return;
                         return (
                             <button
