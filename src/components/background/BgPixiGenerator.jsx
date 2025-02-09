@@ -10,10 +10,10 @@ export default function BgPixiGenerator() {
     const [speed, setSpeed] = useState({ x: 0.5, y: 0.25 });
     const animationRef = useRef(null);
 
-    const { animations } = useContext(AnimationContext);
-    const { appTheme, lemonifylogoset } = useContext(AppContext);
-    const [bgPattern, setBgPattern] = animations.bgPattern;
+    const { animus } = useContext(AnimationContext);
+    const { bgPattern } = animus;
     const { state, pattern } = bgPattern;
+    const { appTheme, lemonifylogoset } = useContext(AppContext);
 
     const patternArray = {
         lemonify: { light: [0, 0], dark: [0, 256] },

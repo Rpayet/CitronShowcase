@@ -4,13 +4,13 @@ import { MkContext } from "../../../../context/MkContext";
 import InputField from "../../../_utils/InputField";
 import MkCard from "../_utils/MkCard"
 import { MdFirstPage, MdLastPage } from "react-icons/md";
+import { isPageRefreshed } from "../../../../services/navigation/navigationService";
 
 export default function EventsList({}) {
 
-    const { animations } = useContext(AnimationContext);
+    const { animus, setAnimus } = useContext(AnimationContext);
+    const { mktrialsComp } = animus;
     const { tournaments, switchCardSprites } = useContext(MkContext);
-
-    const [mkPageAnim, setMkPageAnim] = animations.mktrials;
 
     const [cardId, setCardId] = useState();
     const [itemsPerPage, setItemsPerPage] = useState(9);
@@ -21,7 +21,7 @@ export default function EventsList({}) {
         id: 'EventListInput',
         type: 'text',
         placeholder: 'Rechercher un tournoi',
-        idClassName:  mkPageAnim ? 'open' : 'closed',
+        idClassName:  mktrialsComp ? 'open' : 'closed',
         inputClassName: 'input',
     };
 
@@ -64,17 +64,23 @@ export default function EventsList({}) {
 
     useEffect(() => {
         if (tournaments && tournaments.length > 0 && switchCardSprites) {
-            setMkPageAnim(true);
+            setAnimus(prevState => ({
+                ...prevState,
+                mktrialsComp: true,
+            }));
             setEventListClassName('open');
         }
 
-        return () => setMkPageAnim(false);
+        return () => setAnimus(prevState => ({
+            ...prevState,
+            mktrialsComp: false,
+        }));;
         
     }, [tournaments, switchCardSprites]);
 
     return (
         <section id='MkPages'>
-            <div className={`list-sorter ${mkPageAnim ? 'open' : 'closed'}`}>
+            <div className={`list-sorter ${mktrialsComp ? 'open' : 'closed'}`}>
                 <div className={`list-card ${eventListClassName}`}> 
                     {paginatedTournaments.map((tournament, index) => (
                         <MkCard 

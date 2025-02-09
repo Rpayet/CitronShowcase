@@ -5,6 +5,7 @@ import { AnimationContext } from "../../context/AnimationContext";
 import DashSubLinks from "./DashSubLinks";
 import { DashboardContext } from "../../context/DashboardContext";
 import { AppContext } from "../../context/AppProvider";
+import { isPageRefreshed } from "../../services/navigation/navigationService";
 
 export default function Dashboard() {
 
@@ -13,11 +14,20 @@ export default function Dashboard() {
     const { navigation, category, subcategory, description } = dashboardContent;
     const { lemonifylogoset } = useContext(AppContext);
 
-    const { animations } = useContext(AnimationContext);
-    const [dashboardAnim, setDashboardAnim] = animations.dashboard;
+    const { animus, setAnimus } = useContext(AnimationContext);
+    const { dashboardComp } = animus;
 
     const [hovered, setHovered] = useState('');
     const [navDynamicArray, setNavDynamicArray] = useState(navigation || []);
+
+    const getAnimationDurationStyle = () => {
+        if (isPageRefreshed()) return {
+            animationDuration: '0s',
+        };
+        return {
+            animationDuration: '.7s',
+        };
+    };
 
     useEffect(() => {
         if (navigation.length === 0) return;
@@ -32,12 +42,19 @@ export default function Dashboard() {
     }, [navigation]);
 
     useEffect(() => {
-        setDashboardAnim(!category.to ? false : true);
-        return () => setDashboardAnim(false);
-    }, [setDashboardAnim, category]);
+        setAnimus(prev => {
+            return {
+                ...prev,
+                dashboardComp: !category.to ? false : true
+            }
+        })
+    }, [setAnimus, category]);
 
     return (
-        <div id="Dashboard" className={dashboardAnim ? 'dashSlideIn' : 'dashSlideOut'}>
+        <div 
+            id="Dashboard"
+            className={dashboardComp ? 'dashSlideIn' : 'dashSlideOut'}
+            style={getAnimationDurationStyle()}>
             <div 
                 className={`header`}
                 onClick={() => handleNavigation('lemonify')} >

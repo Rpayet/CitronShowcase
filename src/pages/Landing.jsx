@@ -5,18 +5,28 @@ import Resume from "../components/landing/resume/Resume";
 
 export default function Landing() {
 
-    const { animations } = useContext(AnimationContext);
-    const [ landingPageAnim, setLandingPageAnim ] = animations.lemonify;
+    const { animations, animus, setAnimus } = useContext(AnimationContext);
+    const { lemonifyComp } = animus;
 
     useEffect(() => {
-        setLandingPageAnim(true);
-        return () => setLandingPageAnim(false);
-    }, [setLandingPageAnim]);
+        setAnimus(prevState => {
+            return {
+                ...prevState,
+                lemonifyComp: true,
+            }
+        })
+        return () => setAnimus(prevState => {
+            return {
+                ...prevState,
+                lemonifyComp: false,
+            }
+        });
+    }, [setAnimus]);
 
     return (
         <section id='Landing'>
-            <Resume landingPageAnim={landingPageAnim} />
-            <Menu landingPageAnim={landingPageAnim}  />
+            <Resume />
+            <Menu />
         </section>
     )
 }

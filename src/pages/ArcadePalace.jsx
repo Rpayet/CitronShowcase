@@ -2,34 +2,44 @@ import { useContext, useEffect } from "react";
 import { usePageTransition } from "../services/navigation/animationService";
 import { AnimationContext } from "../context/AnimationContext";
 import { Outlet } from "react-router-dom";
+import { DashboardContext } from "../context/DashboardContext";
+import { isPageRefreshed } from "../services/navigation/navigationService";
 
 export default function ArcadePalace() {
 
-    const fromPage = window.location.pathname.split('/').pop();
-
-    const { animations } = useContext(AnimationContext);
+    const { dashboardContent } = useContext(DashboardContext);
+    const { category, subcategory } = dashboardContent;
+    const { animus, setAnimus } = useContext(AnimationContext);
+    const { arcadepalaceComp } = animus;
     const { navigateWithAnimation } = usePageTransition();
-
-    const [arcadePalacePageAnim, setArcadePalacePageAnim] = animations.arcadepalace;
 
     const handleNavigation = (toPage) => {
         navigateWithAnimation('arcadepalace', toPage, 500);
     };
 
     const getSlideInClass = () => {
-        return arcadePalacePageAnim ? 'slideIn' : 'slideOut';
+        return arcadepalaceComp ? 'slideIn' : 'slideOut';
     };
 
     const getAnimationDurationStyle = (index) => {
+        if (isPageRefreshed()) return {
+            animationDuration: '0s',
+        };
         return {
             animationDuration: `${0.5 + (index * 0.1)}s`,
         };
     };
 
     useEffect(() => {
-        setArcadePalacePageAnim(fromPage === 'arcadepalace' ? true : false);
-        return () => setArcadePalacePageAnim(false);
-    }, [setArcadePalacePageAnim]);
+        setAnimus(prevState => ({
+            ...prevState,
+            arcadepalaceComp: (category.id === 'arcadepalace' && subcategory.id === '') ? true : false,
+        }));
+        return () => setAnimus(prevState => ({
+                ...prevState,
+                arcadepalaceComp: false,
+            }));
+    }, [setAnimus]);
 
     return (
         <section id="ArcadePalace">

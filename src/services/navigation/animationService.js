@@ -6,7 +6,7 @@ import { DashboardContext } from "../../context/DashboardContext";
 
 export const usePageTransition = () => {
 
-    const { animations } = useContext(AnimationContext);
+    const { animus, setAnimus } = useContext(AnimationContext);
     const { dashboardContent } = useContext(DashboardContext);
     const { category, subcategory } = dashboardContent;
 
@@ -15,33 +15,27 @@ export const usePageTransition = () => {
     const navigateWithAnimation = (fromPage, toPage, timeout=500) => {
         if (fromPage === toPage) return;
 
-        const [_, setFromPageAnim] = animations[fromPage];
-        const [__, setToPageAnim] = animations[toPage];
-        const [___, setBgPatternAnim] = animations.bgPattern;
-        const [____, setDashboardAnim] = animations.dashboard;
-
-        setFromPageAnim(false);
-        setToPageAnim(true);
-        setBgPatternAnim(
-            prevState => ({
-                ...prevState,
+        setAnimus(prevState => ({
+            ...prevState,
+            [fromPage+'Comp']: false,
+            [toPage+'Comp']: true,
+            dashboard: category.id === 'lemonify' ? false : true,
+            bgPattern: {
+                ...animus.bgPattern,
                 state: true,
-            })
-        );
-
-        setDashboardAnim(category.id === 'lemonify' ? false : true);
+            }
+        }));
 
         setTimeout(() => {
-          
             navigate(getUrl(toPage));
-            
-            setBgPatternAnim(
-                prevState => ({
-                    ...prevState,
+            setAnimus(prevState => ({
+                ...prevState,
+                bgPattern: {
                     state: false,
                     pattern: toPage,
-                })
-            );
+                }
+            }));
+
         }, timeout);
     };
 

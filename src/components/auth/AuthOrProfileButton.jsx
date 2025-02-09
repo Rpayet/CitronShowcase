@@ -12,10 +12,9 @@ export default function AuthOrProfileButton() {
 
     const { setContent, setTitle, setOpen } = useContext(ModalContext);
     const { mainLoading } = useContext(AppContext);
-    const { animations } = useContext(AnimationContext);
+    const { animus, setAnimus } = useContext(AnimationContext);
+    const { loginComp, profilComp } = animus;
     const user = useAuth().user;
-    const [loginAnimation, setLoginAnimation] = animations.login;
-    const [profilAnimation, setProfilAnimation] = animations.profil;
 
     const handleLoginModal = () => {
         setTitle('Connexion');
@@ -34,12 +33,12 @@ export default function AuthOrProfileButton() {
             <div className={`container ${user ? 'register' : 'unregister'}`}>
                 {!user
                     ?
-                    <div className={`auth-btn ${loginAnimation ? 'show' : 'hide'}`} onClick={handleLoginModal}>
+                    <div className={`auth-btn ${loginComp ? 'show' : 'hide'}`} onClick={handleLoginModal}>
                         <p>Connexion</p>
                     </div>
                     :
                     <div className={`profil`} onClick={handleProfilmodal}>
-                        <div className={`user-menu ${profilAnimation ? 'show' : 'hide'}`}>
+                        <div className={`user-menu ${profilComp ? 'show' : 'hide'}`}>
                             <p className="user-name">{user.username}</p>
                             <IoIosArrowDropdown className='user-menu' />
                         </div>
@@ -47,7 +46,7 @@ export default function AuthOrProfileButton() {
                             <img
                                 src={`/assets/user/img/${user.picture}`}
                                 alt={user.name}
-                                className={`picture ${profilAnimation ? 'show' : 'hide'}`} />
+                                className={`picture ${profilComp ? 'show' : 'hide'}`} />
                         ) : (
                             <FaUser className='default'/>
                         )}

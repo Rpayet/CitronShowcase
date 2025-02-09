@@ -12,11 +12,13 @@
     
         &.slideIn {
             transform: translateY(0);
-            animation: slideInUp .5s forwards;
+            animation-name: slideInUp;
+            animation-fill-mode: forwards;
         }
 
         &.slideOut {
-            animation: slideOutUp .5s forwards;
+            animation-name: slideOutUp;
+            animation-fill-mode: forwards;
         }
     }
 
@@ -24,11 +26,13 @@
         grid-area: 2 / 1 / 3 / 2;
     
         &.slideIn {
-            animation: slideInDown .5s forwards;
+            animation-name: slideInDown;
+            animation-fill-mode: forwards;
         }
 
         &.slideOut {
-            animation: slideOutDown .5s forwards;
+            animation-name: slideOutDown;
+            animation-fill-mode: forwards;
         }
     }
 
@@ -36,11 +40,13 @@
         grid-area: 1 / 2 / 3 / 3;
     
         &.slideIn {
-            animation: slideInRight .5s forwards;
+            animation-name: slideInRight;
+            animation-fill-mode: forwards;
         }
 
         &.slideOut {
-            animation: slideOutRight .5s forwards;
+            animation-name: slideOutRight;
+            animation-fill-mode: forwards;
         }
     }
 
@@ -48,11 +54,13 @@
         grid-area: 1 / 3 / 3 / 4;
     
         &.slideIn {
-            animation: slideInRight .6s forwards;
+            animation-name: slideInRight;
+            animation-fill-mode: forwards; //.6s
         }
 
         &.slideOut {
-            animation: slideOutRight .4s forwards;
+            animation-name: slideOutRight;
+            animation-fill-mode: forwards; //.4S
         }
     }
 

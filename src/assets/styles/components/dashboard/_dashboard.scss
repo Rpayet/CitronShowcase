@@ -11,12 +11,14 @@
 
     &.dashSlideIn {
         transform: translateX(0);
-        animation: dashIn .5s ease-in-out;
+        animation-name: dashIn;
+        animation-fill-mode: forwards;
     }
 
     &.dashSlideOut {
         transform: translate(0, 400%) rotateZ(2deg) scale(.5);
-        animation: dashOut .5s ease-in-out;
+        animation-name: dashOut;
+        animation-fill-mode: forwards;
     }
 
     .header, .dashBody {
