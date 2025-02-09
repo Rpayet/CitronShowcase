@@ -5,8 +5,7 @@ import Resume from "../components/landing/resume/Resume";
 
 export default function Landing() {
 
-    const { animations, animus, setAnimus } = useContext(AnimationContext);
-    const { lemonifyComp } = animus;
+    const { setAnimus } = useContext(AnimationContext);
 
     useEffect(() => {
         setAnimus(prevState => {

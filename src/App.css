@@ -25,15 +25,17 @@ ul {
   gap: 1.5rem;
   z-index: 1000;
 }
+#Dashboard.dashSlideIn, #Dashboard.dashSlideOut {
+  animation-fill-mode: forwards;
+  animation-duration: var(--dash-animation-duration);
+}
 #Dashboard.dashSlideIn {
   transform: translateX(0);
   animation-name: dashIn;
-  animation-fill-mode: forwards;
 }
 #Dashboard.dashSlideOut {
   transform: translate(0, 400%) rotateZ(2deg) scale(0.5);
   animation-name: dashOut;
-  animation-fill-mode: forwards;
 }
 #Dashboard .header .dashLink, #Dashboard .dashBody .dashLink {
   color: #fff;

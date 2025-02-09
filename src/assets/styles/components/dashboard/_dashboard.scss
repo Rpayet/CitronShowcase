@@ -9,16 +9,19 @@
     gap: 1.5rem;
     z-index: 1000;
 
+    &.dashSlideIn, &.dashSlideOut {
+        animation-fill-mode: forwards;
+        animation-duration: var(--dash-animation-duration);
+    }
+
     &.dashSlideIn {
         transform: translateX(0);
         animation-name: dashIn;
-        animation-fill-mode: forwards;
     }
 
     &.dashSlideOut {
         transform: translate(0, 400%) rotateZ(2deg) scale(.5);
         animation-name: dashOut;
-        animation-fill-mode: forwards;
     }
 
     .header, .dashBody {

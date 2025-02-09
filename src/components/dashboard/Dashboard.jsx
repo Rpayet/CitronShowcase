@@ -20,14 +20,14 @@ export default function Dashboard() {
     const [hovered, setHovered] = useState('');
     const [navDynamicArray, setNavDynamicArray] = useState(navigation || []);
 
-    const getAnimationDurationStyle = () => {
-        if (isPageRefreshed()) return {
-            animationDuration: '0s',
-        };
-        return {
-            animationDuration: '.7s',
-        };
+    const updateAnimationDuration = () => {
+        const duration = isPageRefreshed() ? "0s" : ".7s";
+        document.documentElement.style.setProperty("--dash-animation-duration", duration);
     };
+    
+    useEffect(() => {
+        updateAnimationDuration();
+    }, []);    
 
     useEffect(() => {
         if (navigation.length === 0) return;
@@ -53,8 +53,7 @@ export default function Dashboard() {
     return (
         <div 
             id="Dashboard"
-            className={dashboardComp ? 'dashSlideIn' : 'dashSlideOut'}
-            style={getAnimationDurationStyle()}>
+            className={dashboardComp ? 'dashSlideIn' : 'dashSlideOut'}>
             <div 
                 className={`header`}
                 onClick={() => handleNavigation('lemonify')} >

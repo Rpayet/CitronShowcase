@@ -3,7 +3,7 @@ import { useContext } from 'react';
 import { AnimationContext } from '../../../context/AnimationContext';
 import { isPageRefreshed } from '../../../services/navigation/navigationService';
 
-export default function Menu({ landingPageAnim }) {
+export default function Menu() {
 
     const { animus } = useContext(AnimationContext);
     const { lemonifyComp } = animus;
