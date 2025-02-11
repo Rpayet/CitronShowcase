@@ -8,7 +8,7 @@ import { isPageRefreshed } from "../services/navigation/navigationService";
 export default function ArcadePalace() {
 
     const { dashboardContent } = useContext(DashboardContext);
-    const { category, subcategory } = dashboardContent;
+    const { category, subcategory, sublinks } = dashboardContent;
     const { animus, setAnimus } = useContext(AnimationContext);
     const { arcadepalaceComp } = animus;
     const { navigateWithAnimation } = usePageTransition();
@@ -18,17 +18,20 @@ export default function ArcadePalace() {
     };
 
     const getSlideInClass = () => {
-        return arcadepalaceComp ? 'slideIn' : 'slideOut';
+        return arcadepalaceComp ? 'In' : 'Out';
     };
 
-    const getAnimationDurationStyle = (index) => {
-        if (isPageRefreshed()) return {
-            animationDuration: '0s',
-        };
-        return {
-            animationDuration: `${0.5 + (index * 0.1)}s`,
-        };
+    const updateAnimationDuration = () => {
+        const linksArray = Object.keys(sublinks);
+        for (let i = 0; i < linksArray.length; i++) {
+            const duration = isPageRefreshed() ? "0s" : `${0.5 + (i * 0.1)}s`;
+            document.documentElement.style.setProperty(`--${linksArray[i]}-animation-duration`, duration);
+        }
     };
+    
+    useEffect(() => {
+        updateAnimationDuration();
+    }, [isPageRefreshed()]);
 
     useEffect(() => {
         setAnimus(prevState => ({
@@ -44,24 +47,14 @@ export default function ArcadePalace() {
     return (
         <section id="ArcadePalace">
             <div className="games">
-                <button 
-                    onClick={() => handleNavigation('mktrials')} 
-                    className={`game-link ${getSlideInClass()}`}
-                    style={getAnimationDurationStyle(0)}>
-                    Mario Kart - Concours contre-la-montre
-                </button>
-                <button 
-                    onClick={() => handleNavigation('wheels')} 
-                    className={`game-link ${getSlideInClass()}`}
-                    style={getAnimationDurationStyle(1)}>
-                    Roulettes - Adaptation du mini-jeu de "Sea of Stars"
-                </button>
-                <button 
-                    onClick={() => handleNavigation('sonictactoe')} 
-                    className={`game-link ${getSlideInClass()}`}
-                    style={getAnimationDurationStyle(2)}>
-                    STT - Jeu original en cours de travail
-                </button>
+                {Object.keys(sublinks).map((link) => (
+                    <button 
+                        key={sublinks[link].id}
+                        onClick={() => handleNavigation(sublinks[link].to)} 
+                        className={`game-link ${sublinks[link].id+getSlideInClass()}`}>
+                        {sublinks[link].name}
+                    </button>
+                ))}
             </div>
             <Outlet />
         </section>

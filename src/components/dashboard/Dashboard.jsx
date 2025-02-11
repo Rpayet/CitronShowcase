@@ -27,7 +27,7 @@ export default function Dashboard() {
     
     useEffect(() => {
         updateAnimationDuration();
-    }, []);    
+    }, [isPageRefreshed()]);   
 
     useEffect(() => {
         if (navigation.length === 0) return;

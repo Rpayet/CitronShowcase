@@ -635,50 +635,35 @@ ul {
   grid-area: 1/1/2/2;
 }
 #Menu .latest.slideIn {
-  transform: translateY(0);
-  animation-name: slideInUp;
-  animation-fill-mode: forwards;
+  animation: slideInUp var(--menu-animation-duration) forwards;
 }
 #Menu .latest.slideOut {
-  animation-name: slideOutUp;
-  animation-fill-mode: forwards;
+  animation: slideOutUp var(--menu-animation-duration) forwards;
 }
 #Menu .articles {
   grid-area: 2/1/3/2;
 }
 #Menu .articles.slideIn {
-  animation-name: slideInDown;
-  animation-fill-mode: forwards;
+  animation: slideInDown var(--menu-animation-duration) forwards;
 }
 #Menu .articles.slideOut {
-  animation-name: slideOutDown;
-  animation-fill-mode: forwards;
+  animation: slideOutDown var(--menu-animation-duration) forwards;
 }
 #Menu .portfolio {
   grid-area: 1/2/3/3;
 }
-#Menu .portfolio.slideIn {
-  animation-name: slideInRight;
-  animation-fill-mode: forwards;
-}
-#Menu .portfolio.slideOut {
-  animation-name: slideOutRight;
-  animation-fill-mode: forwards;
-}
 #Menu .arcade {
   grid-area: 1/3/3/4;
-}
-#Menu .arcade.slideIn {
-  animation-name: slideInRight;
-  animation-fill-mode: forwards;
-}
-#Menu .arcade.slideOut {
-  animation-name: slideOutRight;
-  animation-fill-mode: forwards;
 }
 #Menu .latest, #Menu .articles {
   max-width: 20rem;
   max-height: 20rem;
+}
+#Menu .portfolio.slideIn, #Menu .arcade.slideIn {
+  animation: slideInRight var(--menu-animation-duration) forwards;
+}
+#Menu .portfolio.slideOut, #Menu .arcade.slideOut {
+  animation: slideOutRight var(--menu-animation-duration) forwards;
 }
 #Menu .latest, #Menu .articles, #Menu .portfolio, #Menu .arcade {
   border: 0.25rem solid black;
@@ -746,6 +731,14 @@ ul {
   justify-content: center;
   padding: 4rem;
 }
+#Resume .pictures.scaleIn, #Resume .presentation.scaleIn {
+  transform: scale(1);
+  animation: scaleIn var(--scale-animation-duration) forwards;
+}
+#Resume .pictures.scaleOut, #Resume .presentation.scaleOut {
+  transform: scale(0);
+  animation: scaleOut var(--scale-animation-duration) forwards;
+}
 #Resume .pictures {
   position: relative;
   width: 25rem;
@@ -755,14 +748,6 @@ ul {
   display: flex;
   justify-content: center;
   align-items: center;
-}
-#Resume .pictures.scaleIn {
-  transform: scale(1);
-  animation: scaleIn 0.3s forwards;
-}
-#Resume .pictures.scaleOut {
-  transform: scale(0);
-  animation: scaleOut 0.5s forwards;
 }
 #Resume .pictures .presentation {
   position: absolute;
@@ -775,14 +760,6 @@ ul {
   text-align: center;
   background-color: rgba(0, 0, 0, 0.3137254902);
   backdrop-filter: blur(0.25rem);
-}
-#Resume .pictures .presentation.scaleIn {
-  transform: scale(1);
-  animation: scaleIn 0.5s forwards;
-}
-#Resume .pictures .presentation.scaleOut {
-  transform: scale(0);
-  animation: scaleOut 0.3s forwards;
 }
 #Resume .pictures .presentation .content {
   position: relative;
@@ -1458,13 +1435,23 @@ ul {
   border: 0.15rem solid white;
   transform: scale(1.02);
 }
-#ArcadePalace .games .game-link.slideIn {
-  animation-name: slideIn;
-  animation-fill-mode: forwards;
+#ArcadePalace .games .game-link.mktrialsIn {
+  animation: slideIn var(--mktrials-animation-duration) forwards;
 }
-#ArcadePalace .games .game-link.slideOut {
-  animation-name: slideOut;
-  animation-fill-mode: forwards;
+#ArcadePalace .games .game-link.wheelsIn {
+  animation: slideIn var(--wheels-animation-duration) forwards;
+}
+#ArcadePalace .games .game-link.sonictactoeIn {
+  animation: slideIn var(--sonictactoe-animation-duration) forwards;
+}
+#ArcadePalace .games .game-link.mktrialsOut {
+  animation: slideOut var(--mktrials-animation-duration) forwards;
+}
+#ArcadePalace .games .game-link.wheelsOut {
+  animation: slideOut var(--wheels-animation-duration) forwards;
+}
+#ArcadePalace .games .game-link.sonictactoeOut {
+  animation: slideOut var(--sonictactoe-animation-duration) forwards;
 }
 
 @keyframes slideIn {

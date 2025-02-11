@@ -35,14 +35,28 @@
                 transform: scale(1.02);
             }
 
-            &.slideIn {
-                animation-name : slideIn;
-                animation-fill-mode: forwards;
+            &.mktrialsIn {
+                animation: slideIn var(--mktrials-animation-duration) forwards;
             }
 
-            &.slideOut {
-                animation-name : slideOut;
-                animation-fill-mode: forwards;
+            &.wheelsIn {
+                animation: slideIn var(--wheels-animation-duration) forwards;
+            }
+
+            &.sonictactoeIn {
+                animation: slideIn var(--sonictactoe-animation-duration) forwards;
+            }
+
+            &.mktrialsOut {
+                animation: slideOut var(--mktrials-animation-duration) forwards;
+            }
+
+            &.wheelsOut {
+                animation: slideOut var(--wheels-animation-duration) forwards;
+            }
+
+            &.sonictactoeOut {
+                animation: slideOut var(--sonictactoe-animation-duration) forwards;
             }
         }
     }
