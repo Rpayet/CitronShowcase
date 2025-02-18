@@ -59,6 +59,8 @@
         border-radius: .5rem;
         padding: 1rem;
         transition: all .3s ease-in-out;
+        background: #ccc;
+        box-shadow: $drop-shadow;
         cursor: pointer;
 
         &:hover {

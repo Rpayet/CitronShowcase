@@ -1,6 +1,6 @@
 import { usePageTransition } from "../../services/navigation/animationService";
 import { Stage, Sprite } from "@pixi/react";
-import { useEffect, useState, useContext, useMemo } from "react";
+import { useEffect, useState, useContext } from "react";
 import { AnimationContext } from "../../context/AnimationContext";
 import DashSubLinks from "./DashSubLinks";
 import { DashboardContext } from "../../context/DashboardContext";

@@ -58,6 +58,7 @@ ul {
   border-left: 1px solid rgba(255, 255, 255, 0);
   border-right: 1px solid rgba(255, 255, 255, 0);
   border-top: 1px solid rgba(255, 255, 255, 0);
+  box-shadow: 5px 10px 0 0 rgba(0, 0, 0, 0.4);
 }
 #Dashboard .header::before {
   content: "";
@@ -152,6 +153,7 @@ ul {
   border-radius: 0 0.5rem 0.5rem 0.5rem;
   color: #fff;
   transition: all 0.3s ease-in-out;
+  box-shadow: 5px 10px 0 0 rgba(0, 0, 0, 0.4);
 }
 #Dashboard .dashBody .dashBodyContent .sectionName {
   font-size: 1.45rem;
@@ -216,6 +218,7 @@ ul {
   background: #fff;
   border-radius: 0.5rem;
   text-align: center;
+  box-shadow: 5px 10px 0 0 rgba(0, 0, 0, 0.4);
 }
 
 @keyframes dashIn {
@@ -670,6 +673,8 @@ ul {
   border-radius: 0.5rem;
   padding: 1rem;
   transition: all 0.3s ease-in-out;
+  background: #ccc;
+  box-shadow: 5px 10px 0 0 rgba(0, 0, 0, 0.4);
   cursor: pointer;
 }
 #Menu .latest:hover, #Menu .articles:hover, #Menu .portfolio:hover, #Menu .arcade:hover {
