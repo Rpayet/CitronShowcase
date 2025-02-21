@@ -1,7 +1,9 @@
 @import './menu';
 @import './resume';
+@import './notebook';
 
 #Landing {
+    position: relative;
     display: flex;
     align-items: flex-end;
     width: 100%;

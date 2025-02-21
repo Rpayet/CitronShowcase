@@ -57,7 +57,7 @@ export default function Dashboard() {
             <div 
                 className={`header`}
                 onClick={() => handleNavigation('lemonify')} >
-                    <button className="dashLink">
+                    <a className="dashLink">
                         <div className="headerIcon">
                             <Stage
                                 width={64}
@@ -72,7 +72,7 @@ export default function Dashboard() {
                             </Stage>
                         </div>
                         <p className="linkname">{navigation[0].name}</p>
-                    </button>
+                    </a>
             </div>
             <div className="dashBody">
                 <div className="nav">
