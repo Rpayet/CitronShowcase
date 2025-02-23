@@ -32,7 +32,7 @@
     "portfolio" : {
         "id": "portfolio", 
         "to":"portfolio", 
-        "name": "Portefolio",
+        "name": "Portfolio",
         "description" : "A collection of projects that I have worked on over the years. Some of them are still in development, while others are fully functional. Feel free to try them out and let me know what you think.", 
         "landing": {
             "light": [-512, -512], 

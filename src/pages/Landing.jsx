@@ -3,6 +3,7 @@ import {AnimationContext} from "../context/AnimationContext";
 import { DashboardContext } from "../context/DashboardContext";
 import { AppContext } from "../context/AppProvider";
 import { Sprite, Stage } from "@pixi/react";
+import { usePageTransition } from "../services/navigation/animationService";
 
 export default function Landing() {
 
@@ -10,6 +11,7 @@ export default function Landing() {
     const { dashboardContent } = useContext(DashboardContext);
     const { navigation, category, subcategory, description } = dashboardContent;
     const { lemonifylogoset } = useContext(AppContext);
+    const { handleNavigation } = usePageTransition();
 
     useEffect(() => {
         setAnimus(prevState => {
@@ -26,6 +28,30 @@ export default function Landing() {
         });
     }, [setAnimus]);
 
+    const handleLinkName = (name) => {
+        switch (name) {
+            case 'Portfolio': 
+                return name.split('').map((char, i) => (
+                    <span key={i} className={`portfolio_char-${i}`}>{char}</span>
+                ));
+            case 'Articles': 
+                return Array(4).fill().map((_, i) => (
+                    <span key={i} className={`articles_iteration-${i}`}>{name}</span>
+                ));
+            case 'Arcade Palace': 
+                return name.split(' ').map((word, i) => (
+                    <>
+                        {(word === 'Arcade') && (
+                            word.split('').map((char, j) => (
+                                <span key={j} className={`arcade_char-${j}`}>{char}</span>
+                            ))
+                        )}
+                        {(word === 'Palace') && ( <span>Palace</span> )}
+                    </>
+                ));
+        }
+    }
+
     return (
         <section id='Landing'>
             <div id="Notebook">
@@ -38,7 +64,9 @@ export default function Landing() {
                             if (link.id === 'lemonify') return;
                             return (
                                 <li key={link.id}>
-                                    <a className={`navLink ${link.id}`}>
+                                    <a 
+                                        onClick={() => handleNavigation(link.id)}
+                                        className={`navLink ${link.id}`}>
                                         <div className={`${link.id}-icon`}>
                                             <Stage width={128} height={128} options={{backgroundAlpha: 0}}>
                                                 <Sprite
@@ -48,7 +76,9 @@ export default function Landing() {
                                                     scale={1} />
                                             </Stage>
                                         </div>
-                                        <p className={`${link.id}-name`}>{link.name}</p>
+                                        <p className={`${link.id}-name`}>
+                                            {handleLinkName(link.name)}
+                                        </p>
                                     </a>
                                 </li>
                             )
@@ -63,7 +93,6 @@ export default function Landing() {
 
                 </div>
             </div>
-            {/* <Menu /> */}
         </section>
     )
 }
