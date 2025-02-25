@@ -52,6 +52,37 @@ export default function Landing() {
         }
     }
 
+    useEffect(() => {
+        const radius = 35;
+        const centerX = 50;
+        const centerY = 50;
+
+        for (let i = 3; i >= 0; i--) {
+            const angle = i * 30 * (Math.PI / 180);
+            const x = centerX + radius * Math.cos(angle);
+            const y = centerY - radius * Math.sin(angle);
+
+            const charElement = document.querySelector(`.portfolio_char-${3 - i}`);
+            if (charElement) {
+                charElement.style.left = `${x}%`;
+                charElement.style.top = `${y}%`;
+                charElement.style.transform = `translate(-50%, -50%) rotate(${(3 - i) * 30}deg)`;
+            }
+        }
+        for (let i = 4; i < 9; i++) {
+            const angle = (i - 4) * 30 * (Math.PI / 180);
+            const x = centerX - radius * Math.cos(angle);
+            const y = centerY + radius * Math.sin(angle);
+
+            const charElement = document.querySelector(`.portfolio_char-${i}`);
+            if (charElement) {
+                charElement.style.left = `${x}%`;
+                charElement.style.top = `${y}%`;
+                charElement.style.transform = `translate(-50%, -50%) rotate(-${((i - 4) * 30) + 270}deg)`;
+            }
+        }
+    }, []);
+
     return (
         <section id='Landing'>
             <div id="Notebook">
