@@ -1,67 +1,207 @@
-$ambiant-shadow: drop-shadow(-2px 2px 4px #000);
+$ambiant-shadow: drop-shadow(-5px 5px 2px #00000055);
 
 #Notebook {
-    position: absolute;
-    top: 25px;
-    left: 1100px;
+    position: relative;
+    top: 35%;
     width: 500px;
     height: 800px;
-    z-index: 100;
-    transform: rotate(-8deg);
+    transform-origin: center;
     filter: $ambiant-shadow;
+    transition: all .6s linear;
 
-    &::after {
-        content: '';
+    &.notebook-closed {
+        transform: translate(-50%, -50%) rotate(-5deg);
+        left: 70%;
+    } 
+
+    &.notebook-open {
+        transform: translate(-50%, -50%) rotate(0deg);
+        left: -15%;
+    }
+
+    #Notebook-cover, #Notebook-content {
         position: absolute;
         top: 0;
         left: 0;
         width: 100%;
         height: 100%;
-        background: radial-gradient(#684931, #382618);
-        border-radius: 10px 40px 40px 0px;
-        z-index: 0;
-        box-shadow: inset -5px 2px 6px 0px #93643f;
     }
 
-    &::before {
-        content: '';
-        position: absolute;
-        top: 15px;
+    #Bookmark {
+        position: relative;
+        top: 0;
         left: 0;
-        width: 100%;
-        height: 100%;
-        background: radial-gradient(#583E2A, #281B12);
-        border-radius: 10px 40px 40px 10px;
-        z-index: 0;
-    }
+        width: 70px;
+        height: 800px;
 
-    .bookmark{
+        &.bookmark-closed {
+            &::before {
+                left: 15px;
+                animation: bookmark-before-closed .6s linear;
+            }
+            &::after {
+                left: 50px;
+                animation: bookmark-after-closed .6s linear;
+            }
+        }
+
+        &.bookmark-open {
+            &::before {
+                left: 515px;
+                animation: bookmark-before-open .6s linear;
+            }
+            &::after {
+                left: 550px;
+                animation: bookmark-after-open .6s linear;
+            }
+        }
+
+        @keyframes bookmark-before-closed {
+            0% {
+                left: 515px;
+            }
+            50% {
+                left: 15px;
+            }
+            100% {
+                left: 15px;
+            }
+        }
+
+        @keyframes bookmark-after-closed {
+            0% {
+                left: 550px;
+            }
+            50% {
+                left: 50px;
+            }
+            100% {
+                left: 50px;
+            }
+        }
+
+        @keyframes bookmark-before-open {
+            0% {
+                left: 15px;
+            }
+            50% {
+                left: 15px;
+            }
+            100% {
+                left: 515px;
+            }
+        }
+
+        @keyframes bookmark-after-open {
+            0% {
+                left: 50px;
+            }
+            50% {
+                left: 50px;
+            }
+            100% {
+                left: 550px;
+            }
+        }
+
         &::before {
             content: '';
             position: absolute;
             width: 70px;
-            height: 90%;
+            height: 95%;
             left: 15px;
             bottom: -30px;
             background: #043D5B;
             border-left: 3px solid #FFFFFF;
             border-bottom: 3px solid #FFFFFF;
-            transform: skewY(-45deg);
+            transform: skewY( -45deg);
+            transition: all .6s linear;
+            z-index: 120;
         }
 
         &::after {
             content: '';
             position: absolute;
             width: 35px;
-            height: 90%;
+            height: 95%;
             left: 50px;
             bottom: -50px;
             background: #043D5B;
             border-right: 3px solid #FFFFFF;
             border-bottom: 3px solid #FFFFFF;
             transform: skewY(45deg);
+            transition: all .6s linear;
+            z-index: 120;
         }
     }
+}
+
+#Notebook-cover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 130;
+    transform-origin: left center;
+    transition: all .6s ease-in-out;
+
+    &::before { 
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        transition: all .6s ease-in-out;
+        background: radial-gradient(#684931, #382618);
+        border-radius: 10px 40px 40px 0px;
+        box-shadow: inset -5px 2px 6px 0px #93643f;
+        z-index: 1;
+    }
+
+    &.notebook-cover-closed {
+        transform: rotate3d(1, 1, 1, 0deg) skewY(0deg);
+        animation: CoverTurn-closed .6s ease-in-out;
+
+        &::before {
+            height: 100%;
+        }
+    }
+
+    &.notebook-cover-open {
+        transform: rotate3d(0, 1, 0, 90deg) skewY(-15deg);
+        animation: CoverTurn-open .6s ease-in-out;
+
+        &::before {
+            height: 102%;
+        }
+    }
+
+    @keyframes CoverTurn-open {
+        0% {
+            transform: rotate3d(1, 1, 1, 0deg) skewY(0deg);
+        }
+        50% {
+            transform: rotate3d(0, 1, 0, 90deg) skewY(5deg);
+        }
+        100% {
+            transform: rotate3d(0, 1, 0, 90deg) skewY(0deg);
+        }
+    }
+
+    @keyframes CoverTurn-closed {
+        0% {
+            transform: rotate3d(1, 1, 1, 90deg) skewY(0deg);
+        }
+        50% {
+            transform: rotate3d(0, 1, 0, 90deg) skewY(-15deg);
+        }
+        100% {
+            transform: rotate3d(0, 1, 0, 0deg) skewY(0deg);
+        }
+    }
+
+
 
     #Notebook_Nav {
         position: absolute;
@@ -160,6 +300,7 @@ $ambiant-shadow: drop-shadow(-2px 2px 4px #000);
                 background: #C6324D;
                 transform: rotate(-30deg);
                 filter: $ambiant-shadow;
+                transition: all .6s ease-in-out;
 
                 .portfolio-icon {
                     transform: scale(.8) rotate(30deg);
@@ -191,17 +332,42 @@ $ambiant-shadow: drop-shadow(-2px 2px 4px #000);
             }
 
             &.arcadepalace {
+                position: relative;
                 align-items: center;
                 justify-content: center;
                 top: 300px;
                 left: 50px;
                 width: 245px;
                 height: 170px;
-                filter: drop-shadow(1px 6px 0px #FFFFFF);
                 transform: rotate(5deg);
+                filter: $ambiant-shadow;
 
                 .arcadepalace-icon {
                     transform: translateY(-25px);
+                }
+
+                .arcadepalace-name {
+                    text-transform: uppercase;
+                    
+                    @for $i from 0 through 5 {
+                        .arcade_char-#{$i} {
+                            position: absolute;
+                            font-weight: 700;
+                        }
+                    }
+
+                    .palace_word {
+                        position: absolute;
+                        top: 60%;
+                        left: 50%;
+                        transform: translate(-50%, -50%);
+                        font-family: $notable;
+                        font-size: 2.5rem;
+                        letter-spacing: 5px;
+                        text-align: center;
+                        color: #fff;
+                        text-shadow: -2px 0 #095867, 0 2px #095867, 2px 0 #095867, 0 -2px #095867;
+                    }
                 }
 
                 &::before {
@@ -209,9 +375,10 @@ $ambiant-shadow: drop-shadow(-2px 2px 4px #000);
                     position: absolute;
                     width: 245px;
                     height: 113px;                
-                    background: #0D5A6E;
+                    background: linear-gradient(to top, #0D5A6E, #095867);
                     border: 5px solid white;
                     border-radius: 10px;
+                    filter: drop-shadow(2px 6px 0px #FFFFFF);
                     z-index: -2;
                 }
 
@@ -236,11 +403,21 @@ $ambiant-shadow: drop-shadow(-2px 2px 4px #000);
         position: absolute;
         top: 50%;
         left: 50%;
-        transform: translate(-50%, -50%);
+        transform: 
+            translate(-50%, -50%);     
+        transform-origin: left center;
         width: 95%;
-        height: 97%;
         background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='25' ry='25' stroke='%23734E32' stroke-width='4' stroke-dasharray='6%2c 14' stroke-dashoffset='0' stroke-linecap='square'/%3e%3c/svg%3e");        
-        z-index: 1;
+        z-index: 110;
+        transition: all .6s linear;
+
+        &.notebook_frontpage-closed {
+            height: 97%;
+        }
+
+        &.notebook_frontpage-open {
+            height: 99%;
+        }
 
         .header {
             position: relative;
@@ -271,6 +448,64 @@ $ambiant-shadow: drop-shadow(-2px 2px 4px #000);
             }
         }
     }
-
 }
+
+#Notebook-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 100;
+
+    &.notebook-content-closed {
+        &::before {
+            width: 100%;
+            animation: PageTurn-closed .6s linear;
+        }
+}
+
+    &.notebook-content-open {
+        &::before {
+            width: 200%;
+            animation: PageTurn-open .6s linear;
+        }
+}
+
+    &::before {
+        content: '';
+        position: absolute;
+        height: 102%;
+        top: 0;
+        left: 0;
+        transform-origin: right center;
+        background: radial-gradient(#583E2A, #281B12);
+        border-radius: 10px 40px 40px 10px;
+        z-index: 1;
+    }
+}
+
+
+@keyframes PageTurn-closed {
+    0% {
+        width: 200%;
+    } 
+    50% {
+        width: 100%;
+    }
+    100% {
+        width: 100%;
+    }
+}
+
+@keyframes PageTurn-open {
+    0% {
+        width: 100%;
+    } 
+    50% {
+        width: 100%;
+    }
+    100% {
+        width: 200%;
+    }
+}
+
 
