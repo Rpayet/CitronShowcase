@@ -14,6 +14,7 @@ import { useAuth } from './context/AuthContext';
 import BgPixiGenerator from './components/background/BgPixiGenerator';
 import { useContext, useEffect, useState } from 'react';
 import { AnimationContext } from './context/AnimationContext';
+import Notebook from './components/dashboard/Notebook';
 
 export default function App() {
 
@@ -36,7 +37,7 @@ export default function App() {
             <div className="app-container">
                 <Modal />
                 { auth.displayAuthBtn && <LoginBtn /> }
-                <Dashboard />
+                <Notebook />
                 <div className="main-content">
                     <Routes>
                         <Route path='/' element={<Landing />} />

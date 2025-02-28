@@ -1,33 +1,19 @@
 #Dashboard {
-    width: 25rem;
-    margin: 1rem;
+    width: 400px;
+    height: 800px;
+    padding: 1rem;
     position: absolute;
     top: 0;
-    left: 0;
+    left: 70px;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     gap: 1.5rem;
-    z-index: 1000;
-
-    &.dashSlideIn, &.dashSlideOut {
-        animation-fill-mode: forwards;
-        animation-duration: var(--dash-animation-duration);
-    }
-
-    &.dashSlideIn {
-        transform: translateX(0);
-        animation-name: dashIn;
-    }
-
-    &.dashSlideOut {
-        transform: translate(0, 400%) rotateZ(2deg) scale(.5);
-        animation-name: dashOut;
-    }
+    z-index: 1100;
 
     .header, .dashBody {
 
         .dashLink {
-            color: #fff;
             font-size: 1rem;
             font-weight: 700;
             text-align: center;
@@ -42,31 +28,14 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        background: linear-gradient(to top right, #0166e1, #453ea1);
-        border-radius: .5rem;
         transition: all .3s ease-in-out;
         border-bottom: 1px solid #ffffff00;
         border-left: 1px solid #ffffff00;
         border-right: 1px solid #ffffff00;
         border-top: 1px solid #ffffff00;
-        box-shadow: $drop-shadow;
-
-            &::before {
-                content: "";
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                border-radius: .5rem;
-                background: linear-gradient(to top right, #3995a655 10%, #00457900 90%);
-                transition: all .5s ease-in-out;
-                opacity: 0;                
-            }
 
             &:hover {
-                border-bottom: 1px solid #fff;
-                border-left: 1px solid #fff;
+                border-bottom: 1px solid #004579;
                 &::before {
                     opacity: 1;
                 }
@@ -83,6 +52,7 @@
             .linkname {
                 font-family: $caveat;
                 font-size: 2rem;
+                color: #004579;
             }
         }
     }
@@ -96,23 +66,17 @@
 
             .dashLink {
                 border-radius: .5rem;
-                border-top: 1px solid #fff;
-                border-left: 1px solid #fff;
-                border-right: 1px solid #fff;
+
                 border-radius: 1rem 1rem 0 0;
                 cursor: pointer;
                 z-index: 1;
 
                 &.selected {
-                    border-bottom: 1px solid #004579;
                     transform: translateY(2px);
-                    background: #004579;
                 }
 
                 &.unselected {
-                    border-bottom: 1px solid #fff;
                     justify-content: flex-start;
-                    background: #555;
                     width: 4rem;
                     height: 3rem;
                     transition: all .3s ease-in-out;
@@ -132,21 +96,22 @@
                         padding: 0;
                     }
                 }
-            }
 
-            .linkname {
-                margin-left: 1rem;
-                font-size: 1.5rem;
-                font-weight: 700;
-                color: #fff;
-                text-align: center;
-                display: none;
-                transition: all .3s ease-in-out;
-
-                &.show {
-                    display: block;
+                .linkname {
+                    margin-left: 1rem;
+                    font-size: 1.5rem;
+                    font-weight: 700;
+                    color: #004579;
+                    text-align: center;
+                    display: none;
+                    transition: all .3s ease-in-out;
+    
+                    &.show {
+                        display: block;
+                    }
                 }
             }
+
         }
 
         .dashBodyContent {
@@ -156,12 +121,9 @@
             min-height: 15rem;
             gap: 1rem;
             padding: 1rem;
-            border: 4px solid #fff;
-            background: linear-gradient(to top right, #0166e1, #453ea1);
             border-radius: 0 .5rem .5rem .5rem;
-            color: #fff;
+            color: #004579;
             transition: all .3s ease-in-out;
-            box-shadow: $drop-shadow;
 
             .sectionName {
                 font-size: 1.45rem;
@@ -235,10 +197,9 @@
         justify-content: center;
         align-items: center;
         padding: 1rem;
-        background: #fff;
-        border-radius: .5rem;
         text-align: center;
-        box-shadow: $drop-shadow;
+        color:#004579;
+        border-top: 1px solid #004579;
     }
 
 }

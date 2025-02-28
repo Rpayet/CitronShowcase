@@ -25,7 +25,7 @@ export const DashboardProvider = ({ children }) => {
                 id: key, 
                 name: dashboard[key].name,
                 to: dashboard[key].to,
-                theme: currentCategory === "lemonify" ? dashboard[key].landing[appTheme] : dashboard[key].nav[appTheme],
+                theme: currentCategory === "lemonify" ? dashboard[key].landing[appTheme] : dashboard[key].nav.dark,
             })) || '',
             category: {
                 id: categoryData.id || '',

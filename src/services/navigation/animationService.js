@@ -36,7 +36,7 @@ export const usePageTransition = () => {
                 }
             }));
 
-        }, timeout);
+        }, (fromPage === 'lemonify' || toPage === 'lemonify') ? 0 : timeout);
     };
 
     const handleNavigation = (toPage) => {

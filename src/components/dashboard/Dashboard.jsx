@@ -51,9 +51,7 @@ export default function Dashboard() {
     }, [setAnimus, category]);
 
     return (
-        <div 
-            id="Dashboard"
-            className={dashboardComp ? 'dashSlideIn' : 'dashSlideOut'}>
+        <div id="Dashboard">
             <div 
                 className={`header`}
                 onClick={() => handleNavigation('lemonify')} >
