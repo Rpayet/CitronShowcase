@@ -1,0 +1,180 @@
+#Nb_content {
+    position: relative;
+    top: 0;
+    left: 0;
+    z-index: 100;
+
+    &.nb_ct-cl {
+        &::before {
+            width: 100%;
+            animation: PageTurn-closed 1s ease-in-out;
+        }
+    }
+
+    &.nb_ct-op {
+        &::before {
+            width: 200%;
+            animation: PageTurn-open 1s ease-in-out;
+        }
+    }
+
+    @keyframes PageTurn-closed {
+        0% {
+            width: 200%;
+        } 
+        50% {
+            width: 100%;
+        }
+        100% {
+            width: 100%;
+        }
+    }
+    
+    @keyframes PageTurn-open {
+        0% {
+            width: 100%;
+        } 
+        50% {
+            width: 100%;
+        }
+        100% {
+            width: 200%;
+        }
+    }    
+
+    &::before {
+        content: '';
+        position: absolute;
+        height: 102%;
+        top: 0;
+        left: 0;
+        transform-origin: right center;
+        background: radial-gradient(#583E2A, #281B12);
+        border-radius: 10px 40px 40px 10px;
+        z-index: 1;
+    }
+
+    .pages_bg-cl, .pages_bg-op {
+        position: absolute;
+        top: 10px;
+        left: 0;
+        height: 800px;
+        transition: all 1s ease-in-out;
+        z-index: 10;
+
+        .page-main {
+            z-index: 0;
+        }
+
+        .page-transition {
+            z-index: 2000;
+        }
+
+        .page-main-cl, .page-main-op {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 500px;
+            height: 790px;
+            background: #e6e5de;
+            border-top: 1px solid #000;
+            border-right: 1px solid #000;
+            border-bottom: 1px solid #000;
+            border-left: 2px dashed #00000055;
+            border-radius: 0px 40px 40px 0px;
+            transform-origin: center left;
+            box-shadow: inset 20px 0px 20px 0px #00000055;
+            
+            &.page-main-cl {
+                transform: translate(-50%, 0);
+                animation: page-main-anim-closed 1s ease-in-out;
+            }
+
+            &.page-main-op {
+                transform: translate(0%, 0);
+                animation: page-main-anim-open 1s ease-in-out;
+            }
+
+            @keyframes page-main-anim-closed {
+                0% {
+                    transform: translate(0%, 0);
+                }
+                50% {
+                    transform: translate(-50%, 0);
+                }
+                100% {
+                    transform: translate(-50%, 0);
+                }
+            }
+
+            @keyframes page-main-anim-open {
+                0% {
+                    transform: translate(-50%, 0);
+                }
+                50% {
+                    transform: translate(-50%, 0);
+                }
+                100% {
+                    transform: translate(0%, 0);
+                }
+            }
+        }
+
+        &.pages_bg-cl {
+            width: 500px;
+            animation: pages-anim-closed 1s ease-in-out;
+        }
+
+        &.pages_bg-op {
+            width: 1000px;
+            animation: pages-anim-open 1s ease-in-out;
+        }
+
+        @keyframes pages-anim-closed {
+            0% {
+                width: 1000px;
+            }
+            50% {
+                width: 500px;
+            }
+            100% {
+                width: 500px;
+            }
+        }
+
+        @keyframes pages-anim-open {
+            0% {
+                width: 500px;
+            }
+            50% {
+                width: 500px;
+            }
+            100% {
+                width: 1000px;
+            }
+        }
+
+        &::before, &::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #e6e5de;
+            border: 1px solid #000;
+            border-radius: 10px 40px 40px 10px;
+        }
+
+        &::before {
+            top: 0px;
+            z-index: -2;
+        }
+
+        &::after {
+            top: -5px;
+            z-index: -1;
+        }
+
+        
+    }
+}

@@ -1,0 +1,37 @@
+@import './nb-content';
+@import './nb-cover';
+@import './bookmark';
+
+#Notebook {
+    position: relative;
+    top: 35%;
+    width: 500px;
+    height: 800px;
+    transform-origin: center;
+    filter: drop-shadow(-10px 10px 2px #00000055);
+    transition: all 1s ease-in-out;
+
+    &.nb-cl {
+        transform: translate(-50%, -50%) rotate(-5deg);
+        left: 70%;
+    } 
+
+    &.nb-op {
+        transform: translate(-50%, -50%) rotate(0deg);
+        left: -250px;
+    }
+
+    #Nb_cover, #Nb_content {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+}
+
+
+
+
+
+

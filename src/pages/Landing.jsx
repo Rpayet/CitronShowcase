@@ -14,6 +14,7 @@ export default function Landing() {
     const { handleNavigation } = usePageTransition();
 
     const [test, setTest] = useState(false);
+    const [test2, setTest2] = useState(false);
 
     useEffect(() => {
         setAnimus(prevState => {
@@ -110,10 +111,27 @@ export default function Landing() {
 
     return (
         <section id='Landing'>
-            <button onClick={() => setTest(!test)}>Clique</button>
-            <div id="Notebook" className={`notebook-${!test ? 'closed' : 'open'}`}>
-                <div id="Notebook-cover" className={`notebook-cover-${!test ? 'closed' : 'open'}`}>	
-                    <nav id="Notebook_Nav">
+            <button className={`button-test-1`} onClick={() => setTest(!test)}>op/cl</button>
+            <button className={`button-test-2`} onClick={() => setTest2(!test2)}>switch</button>
+            {/** Notebook */}
+            <div id="Notebook" className={`nb-${!test ? 'cl' : 'op'}`}>
+                {/** Notebook content - filters & options */}
+                <div id="Nb_content" className={`nb_ct-${!test ? 'cl' : 'op'}`}>
+                    <div className={`pages_bg-${!test ? 'cl' : 'op' }`}>
+                        <div className={`page-main-${!test ? 'cl' : 'op'}`}>
+
+                        </div>
+                    </div>
+                </div>
+                {/** Bookmark - styles & category reminder */}
+                <div id="Bookmark" className={`bk-${!test ? 'cl' : 'op-'}${test2 ? 'sw' : ''}`}>
+                    <div className="main_cat"></div>
+                    <div className={`ribbon-${!test ? 'cl' : 'op'}`}></div>
+                    <div className={`page_trans-${!test ? 'cl' : 'op-'}${test2 ? 'sw' : '' }`}></div>
+                </div>
+                {/** Cover */}
+                <div id="Nb_cover" className={`nbc-${!test ? 'cl' : 'op'}`}>	
+                    <nav id="Nb_nav">
                         <ul>
                             {navigation.map((link, index) => {
                                 if (link.id === 'lemonify') return;
@@ -140,19 +158,12 @@ export default function Landing() {
                             })}
                         </ul>
                     </nav>
-                    <div id="Notebook_Frontpage" className={`notebook_frontpage-${!test ? 'closed' : 'open'}`}>
-                        <div className="header">
+                    <div id="Nb_Frontpage" className={`nbf-${!test ? 'cl' : 'op'}`}>
+                        <div className="nb_h1">
                             <h1>Design & code <br/><span>Robin Payet</span></h1>
-                            <div className="sewing"></div>
+                            <div className="seam"></div>
                         </div>
-
                     </div>
-                </div>
-                <div id="Bookmark" className={`bookmark-${!test ? 'closed' : 'open'}`}>
-
-                </div>
-                <div id="Notebook-content" className={`notebook-content-${!test ? 'closed' : 'open'}`}>
-
                 </div>
             </div>
         </section>

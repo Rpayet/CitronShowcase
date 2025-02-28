@@ -1,0 +1,48 @@
+#Nb_Frontpage {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transform-origin: left center;
+    width: 95%;
+    background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='25' ry='25' stroke='%23734E32' stroke-width='4' stroke-dasharray='6%2c 14' stroke-dashoffset='0' stroke-linecap='square'/%3e%3c/svg%3e");        
+    z-index: 110;
+    transition: all 1s ease-in-out;
+
+    &.nbf-cl {
+        height: 97%;
+    }
+
+    &.nbf-op {
+        height: 99%;
+    }
+
+    .nb_h1 {
+        position: relative;
+        top: 20px;
+        right: -45%;
+        width: 240px;
+        height: 150px;
+        border: 1px solid black;
+        border-radius: 10px;
+        background: #2C1B0D;
+        color: #A1724B;
+        text-transform: uppercase;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        filter: $ambiant-shadow;
+        
+        .seam {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 90%;
+            height: 90%;
+            background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='10' ry='10' stroke='%23734E32' stroke-width='2' stroke-dasharray='6%2c 14' stroke-dashoffset='0' stroke-linecap='square'/%3e%3c/svg%3e");        
+            z-index: 100;
+        }
+    }
+}
