@@ -6,10 +6,12 @@ import DashSubLinks from "./DashSubLinks";
 import { DashboardContext } from "../../context/DashboardContext";
 import { AppContext } from "../../context/AppProvider";
 import { isPageRefreshed } from "../../services/navigation/navigationService";
+import { useIcon } from "../../services/iconService";
 
 export default function Dashboard() {
 
     const { handleNavigation } = usePageTransition();
+    const { handleIconPosition } = useIcon();
     const { dashboardContent } = useContext(DashboardContext);
     const { navigation, category, subcategory, description } = dashboardContent;
     const { lemonifylogoset } = useContext(AppContext);
@@ -33,10 +35,10 @@ export default function Dashboard() {
         if (navigation.length === 0) return;
 
         setNavDynamicArray((prevArray) => {
-            const selectedLink = navigation.find(link => link.id === category.id);
+            const selectedLink = navigation.find(link => link.to === category.to);
             if (!selectedLink) return prevArray;
 
-            const filteredArray = prevArray.filter(link => link.id !== category.id);
+            const filteredArray = prevArray.filter(link => link.to !== category.to);
             return [selectedLink, ...filteredArray];
         })
     }, [navigation]);
@@ -51,7 +53,7 @@ export default function Dashboard() {
     }, [setAnimus, category]);
 
     return (
-        <div id="Dashboard">
+        <div id="Dashboard" className={`dashboard ${dashboardComp ? 'hide' : 'show'}`}>
             <div 
                 className={`header`}
                 onClick={() => handleNavigation('lemonify')} >
@@ -63,7 +65,7 @@ export default function Dashboard() {
                                 options={{backgroundAlpha: 0}}>
                                     <Sprite
                                         image={lemonifylogoset}
-                                        position={navigation[0].theme}
+                                        position={handleIconPosition(64, 0, 1)}
                                         anchor={[0, 0]}
                                         scale={1}
                                     />
@@ -75,11 +77,11 @@ export default function Dashboard() {
             <div className="dashBody">
                 <div className="nav">
                     {navDynamicArray.map((link) => {
-                        if (link.id === 'lemonify') return;
+                        if (link.to === '') return;
                         return (
                             <button
-                                key={link.id}
-                                id={link.id}
+                                key={link.to}
+                                id={link.to}
                                 className={`dashLink ${hovered === link.name ? 'focus' : 'unfocus' } ${category.name === link.name ? 'selected' : 'unselected'}`}
                                 onClick={() => handleNavigation(link.to) } 
                                 onMouseEnter={() => setHovered(link.id)}
@@ -91,7 +93,7 @@ export default function Dashboard() {
                                             options={{backgroundAlpha: 0}}>
                                                 <Sprite
                                                     image={lemonifylogoset}
-                                                    position={link.theme}
+                                                    position={handleIconPosition(64, link.id, 1)}
                                                     anchor={[0, 0]}
                                                     scale={1}                                   
                                                 />
@@ -102,7 +104,7 @@ export default function Dashboard() {
                     })}
                     <p className={`linkname ${hovered !== '' ? 'show' : ''}`}>
                         {Object.keys(navigation).map(key => {
-                            if (navigation[key].id === hovered && navigation[key].name !== category.name) {
+                            if (navigation[key].to === hovered && navigation[key].name !== category.name) {
                                 return navigation[key].name;
                             }
                         })}

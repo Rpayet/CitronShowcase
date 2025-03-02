@@ -19,7 +19,7 @@ export const usePageTransition = () => {
             ...prevState,
             [fromPage+'Comp']: false,
             [toPage+'Comp']: true,
-            dashboard: category.id === 'lemonify' ? false : true,
+            dashboard: category.to === 'lemonify' ? false : true,
             bgPattern: {
                 ...animus.bgPattern,
                 state: true,
@@ -40,7 +40,7 @@ export const usePageTransition = () => {
     };
 
     const handleNavigation = (toPage) => {
-        const fromPage = subcategory.id === '' ? category.id : subcategory.id;
+        const fromPage = subcategory.to === '' ? category.to : subcategory.to;
         navigateWithAnimation(fromPage, toPage, 500);
     };
 

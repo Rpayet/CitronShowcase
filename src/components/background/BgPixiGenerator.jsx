@@ -2,6 +2,8 @@ import { Stage, TilingSprite } from "@pixi/react";
 import { useContext, useEffect, useRef, useState } from "react";
 import { AnimationContext } from "../../context/AnimationContext";
 import { AppContext } from "../../context/AppProvider";
+import { useIcon } from "../../services/iconService";
+import { DashboardContext } from "../../context/DashboardContext";
 
 export default function BgPixiGenerator() {
     
@@ -13,19 +15,14 @@ export default function BgPixiGenerator() {
     const { animus } = useContext(AnimationContext);
     const { bgPattern } = animus;
     const { state, pattern } = bgPattern;
-    const { appTheme, lemonifylogoset } = useContext(AppContext);
+    const { lemonifylogoset } = useContext(AppContext);
+    const { dashboardContent } = useContext(DashboardContext);
 
-    const patternArray = {
-        lemonify: { light: [1792, 0], dark: [1792, 256] },
-        articles: { light: [256, 0], dark: [256, 256] },
-        portfolio: { light: [512, 0], dark: [512, 256] },
-        arcadepalace: { light: [768, 0], dark: [768, 256] },
-        mktrials: { light: [1024, 0], dark: [1024, 256] },
-        wheels: { light: [1280, 0], dark: [1280, 256] },
-        sonictactoe: { light: [1536, 0], dark: [1536, 256] },
-    };
+    const patternId = dashboardContent.navigation.find(link => link.to === pattern)?.id;
 
-    const [patternCoords, setPatternCoords] = useState(patternArray[pattern][appTheme]);
+    const { handleIconPosition } = useIcon();
+
+    const [patternCoords, setPatternCoords] = useState(handleIconPosition(256, patternId, 0));
 
     useEffect(() => {
         const createPattern = async () => {
@@ -118,8 +115,8 @@ export default function BgPixiGenerator() {
     }, [speed]);
 
     useEffect(() => {
-        setPatternCoords(patternArray[pattern][appTheme]);
-    }, [pattern, appTheme]);
+        setPatternCoords(handleIconPosition(256, patternId, 0));
+    }, [pattern, patternId]);
 
     return (
         <div id="BgPixiGenerator">

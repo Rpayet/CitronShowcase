@@ -36,7 +36,7 @@ export default function ArcadePalace() {
     useEffect(() => {
         setAnimus(prevState => ({
             ...prevState,
-            arcadepalaceComp: (category.id === 'arcadepalace' && subcategory.id === '') ? true : false,
+            arcadepalaceComp: (category.name === 'Arcade palace' && subcategory.name === '') ? true : false,
         }));
         return () => setAnimus(prevState => ({
                 ...prevState,

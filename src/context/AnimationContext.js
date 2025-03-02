@@ -8,7 +8,7 @@ export const AnimationProvider = ({children}) => {
     const { dashboardContent } = useContext(DashboardContext);
     const { category, subcategory } = dashboardContent;
 
-    const fromPage = subcategory.id === '' ? category.id : subcategory.id;
+    const fromPage = subcategory.to === '' ? category.to : subcategory.to;
 
     const [animus, setAnimus] = useState({
         dashboardComp: false,

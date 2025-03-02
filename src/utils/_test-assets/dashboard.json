@@ -1,88 +1,50 @@
 {
     "lemonify" : {
-        "id": "lemonify", 
+        "id": 0, 
         "to": "", 
-        "name": "Lemonify", 
-        "landing": {
-            "light": [0, 0], 
-            "dark":[-256, 0]
-            },
-        "nav": {
-            "light": [0, -640], 
-            "dark":[-64, -640]
-            }
+        "name": "Lemonify"
         },
     "articles" : {
-        "id": "articles", 
+        "id": 1, 
         "to":"articles", 
         "name": "Articles",
-        "description" : "A collection of articles that I have written over the years. Some of them are still in development, while others are fully functional. Feel free to try them out and let me know what you think.", 
-        "landing": {
-            "light": [-256, -512], 
-            "dark":[-320, -512]
-        },
-        "nav": {
-            "light": [-256, -640], 
-            "dark":[-320, -640]
-        },
+        "description" : "A collection of articles that I have written over the years. Some of them are still in development, while others are fully functional. Feel free to try them out and let me know what you think.",
         "sublink" : {
 
         }
     },
     "portfolio" : {
-        "id": "portfolio", 
+        "id": 2, 
         "to":"portfolio", 
         "name": "Portfolio",
-        "description" : "A collection of projects that I have worked on over the years. Some of them are still in development, while others are fully functional. Feel free to try them out and let me know what you think.", 
-        "landing": {
-            "light": [-512, -512], 
-            "dark":[-576, -512]
-        },
-        "nav": {
-            "light": [-512, -640], 
-            "dark":[-576, -640]
-        },
+        "description" : "A collection of projects that I have worked on over the years. Some of them are still in development, while others are fully functional. Feel free to try them out and let me know what you think.",
         "sublink" : {
 
         }
     },
     "arcadepalace" : {
-        "id": "arcadepalace", 
+        "id": 3, 
         "to":"arcadepalace", 
         "name": "Arcade Palace",
-        "description" : "A collection of games that I have created over the years. Some of them are still in development, while others are fully functional. Feel free to try them out and let me know what you think.", 
-        "landing": {
-            "light": [-768, -512], 
-            "dark":[-832, -512]
-        },
-        "nav": {
-            "light": [-768, -640], 
-            "dark":[-832, -640]
-        },
+        "description" : "A collection of games that I have created over the years. Some of them are still in development, while others are fully functional. Feel free to try them out and let me know what you think.",
         "sublink" : {
             "mktrials" : {
-                "id": "mktrials", 
+                "id": 4, 
                 "to":"mktrials", 
                 "name": "Mario Kart Trials",
-                "description" : "Contest friendly", 
-                "light": [-1024, -704], 
-                "dark":[-1056, -704]
+                "description" : "Contest friendly"
             },
             "wheels" : {
-                "id": "wheels", 
+                "id": 5, 
                 "to":"wheels", 
                 "name": "Wheels",
-                "description" : "Adapted from the classic game Sea of Stars", 
-                "light": [-1280, -704], 
-                "dark":[-1312, -704]
+                "description" : "Adapted from the classic game Sea of Stars"
             },
             "sonictactoe" : {
-                "id": "sonictactoe", 
+                "id": 6, 
                 "to":"sonictactoe", 
                 "name": "Sonic Tac Toe",
-                "description" : "That's right, Sonic is back and he's ready to play some Tic Tac Toe", 
-                "light": [-1536, -704], 
-                "dark":[-1568, -704]
+                "description" : "That's right, Sonic is back and he's ready to play some Tic Tac Toe"
             }
         }
     }

@@ -5,15 +5,18 @@ import { Sprite, Stage } from "@pixi/react";
 import { AppContext } from "../../context/AppProvider";
 import Bookmark from "./Bookmark";
 import Dashboard from "./Dashboard";
+import { useIcon } from "../../services/iconService";
 
 export default function Notebook() {
 
     const { dashboardContent } = useContext(DashboardContext);
     const { navigation, category, subcategory, description } = dashboardContent;
-
-    const [navArray, setNavArray] = useState(navigation.filter(link => link.id !== 'lemonify'));
     const { lemonifylogoset } = useContext(AppContext);
+
+    const [navArray, setNavArray] = useState(navigation.filter(link => link.id !== 0));
+
     const { handleNavigation } = usePageTransition();
+    const { handleIconPosition } = useIcon();
 
     const handleLinkName = (name) => {
         switch (name) {
@@ -37,7 +40,7 @@ export default function Notebook() {
                     </>
                 ));
         }
-    }
+    };
 
     useEffect(() => {
         // Circle radius
@@ -91,14 +94,14 @@ export default function Notebook() {
                 charElement.style.transform = `rotate(${((5 - i) * 30) - 60}deg)`;
             }
         }
-    },[])
+    },[]);
 
     return (
-        <div id="Notebook" className={`nb-${category.id === 'lemonify' ? 'cl' : 'op'}`}>
+        <div id="Notebook" className={`nb-${category.to === '' ? 'cl' : 'op'}`}>
             {/** Notebook content - navigation, filters & options */}
-            <div id="Nb_content" className={`nb_ct-${category.id === 'lemonify' ? 'cl' : 'op'}`}>
-                <div className={`pages_bg-${category.id === 'lemonify' ? 'cl' : 'op' }`}>
-                    <div className={`page-main-${category.id === 'lemonify' ? 'cl' : 'op'}`}>
+            <div id="Nb_content" className={`nb_ct-${category.to === '' ? 'cl' : 'op'}`}>
+                <div className={`pages_bg-${category.to === '' ? 'cl' : 'op' }`}>
+                    <div className={`page-main-${category.to === '' ? 'cl' : 'op'}`}>
                         <Dashboard />
                     </div>
                 </div>
@@ -106,26 +109,26 @@ export default function Notebook() {
             {/** Bookmark - styles & category reminder */}
             <Bookmark id={1} />
             {/** Cover */}
-            <div id="Nb_cover" className={`nbc-${category.id === 'lemonify' ? 'cl' : 'op'}`}>
+            <div id="Nb_cover" className={`nbc-${category.to === '' ? 'cl' : 'op'}`}>
                 {/** Landing Navigation */}	
                 <nav id="Nb_nav">
                     <ul>
                         {navArray.map((link) => {
                             return (
-                                <li key={link.id}>
+                                <li key={link.to}>
                                     <a 
-                                        onClick={() => handleNavigation(link.id)}
-                                        className={`navLink ${link.id}`}>
-                                            <div className={`${link.id}-icon`}>
+                                        onClick={() => handleNavigation(link.to)}
+                                        className={`navLink ${link.to}`}>
+                                            <div className={`${link.to}-icon`}>
                                                 <Stage width={128} height={128} options={{backgroundAlpha: 0}}>
                                                     <Sprite
                                                         image={lemonifylogoset}
-                                                        position={link.theme}
+                                                        position={handleIconPosition(128, link.id, 0)}
                                                         anchor={[0, 0]}
                                                         scale={1} />
                                                 </Stage>
                                             </div>
-                                            <p className={`${link.id}-name`}>
+                                            <p className={`${link.to}-name`}>
                                                 {handleLinkName(link.name)}
                                             </p>
                                     </a>
@@ -135,7 +138,7 @@ export default function Notebook() {
                     </ul>
                 </nav>
                 {/** Frontpage - Header use */}
-                <div id="Nb_frontpage" className={`nbf-${category.id === 'lemonify' ? 'cl' : 'op'}`}>
+                <div id="Nb_frontpage" className={`nbf-${category.to === 'lemonify' ? 'cl' : 'op'}`}>
                     <div className="nb_h1">
                         <h1>Design & code <br/><span>Robin Payet</span></h1>
                         <div className="seam"></div>

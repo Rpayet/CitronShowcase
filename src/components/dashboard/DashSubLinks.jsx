@@ -19,9 +19,9 @@ export default function DashSubLinks() {
                 onClick={() => handleNavigation('arcadepalace')}
                 onMouseEnter={() => setSubHover('arcadepalace')}
                 onMouseLeave={() => setSubHover('')}
-                className={`sublink ${subcategory.id !== '' ? 'popIn' : 'popOut'} ${subHover === category.id ? 'hovered' : ''}`}>
+                className={`sublink ${subcategory.id !== '' ? 'popIn' : 'popOut'} ${subHover === category.to ? 'hovered' : ''}`}>
                     <IoIosArrowBack className='sectionBack' />
-                    {subHover === category.id ? <span className='sectionbacktitle'>{category.name}</span> : ''}
+                    {subHover === category.to ? <span className='sectionbacktitle'>{category.name}</span> : ''}
             </button>
             {Object.keys(sublinks).map((sublink, index) => {
                 if (sublink === subcategory.id) return;

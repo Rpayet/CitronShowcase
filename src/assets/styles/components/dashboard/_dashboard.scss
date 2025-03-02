@@ -11,6 +11,14 @@
     gap: 1.5rem;
     z-index: 1100;
 
+    &.show {
+        animation: fadeIn .5s ease-in-out;
+    }
+
+    &.hide {
+        animation: fadeOut .5s ease-in-out;
+    }
+
     .header, .dashBody {
 
         .dashLink {
@@ -29,17 +37,7 @@
         justify-content: space-between;
         align-items: center;
         transition: all .3s ease-in-out;
-        border-bottom: 1px solid #ffffff00;
-        border-left: 1px solid #ffffff00;
-        border-right: 1px solid #ffffff00;
-        border-top: 1px solid #ffffff00;
-
-            &:hover {
-                border-bottom: 1px solid #004579;
-                &::before {
-                    opacity: 1;
-                }
-            }
+        border-bottom: 1px solid #004579;
 
         .dashLink {
             border-radius: .5rem;
@@ -194,34 +192,29 @@
 
     .footer {
         display: flex;
-        justify-content: center;
         align-items: center;
         padding: 1rem;
-        text-align: center;
         color:#004579;
         border-top: 1px solid #004579;
     }
 
 }
 
-@keyframes dashIn {
+@keyframes fadeIn {
     from {
-        transform: translateX(-200%);
+        opacity: 0;
     }
     to {
-        transform: translateX(0);
+        opacity: 1;
     }
 }
 
-@keyframes dashOut {
-    0% {
-        transform: translate(0,0);
-    } 
-    15% {
-        transform: translate(0, -15%) rotateZ(-15deg);
+@keyframes fadeOut {
+    from {
+        opacity: 1;
     }
-    100% {
-        transform: translate(0, 400%) rotateZ(2deg) scale(.5);
+    to {
+        opacity: 0;
     }
 }
 
