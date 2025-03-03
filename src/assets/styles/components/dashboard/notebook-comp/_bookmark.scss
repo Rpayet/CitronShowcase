@@ -4,8 +4,7 @@
     width: 100%;
     height: 800px;
     transform-origin: left center;
-    z-index: 120;
-    pointer-events: none;
+    z-index: 135;
 
     &.bk-1-cl {
         left: 0%;
@@ -57,6 +56,10 @@
         }
     }
 
+    .main_cat-1, .page_trans-1-op, .ribbon-1-op {
+        pointer-events: none;
+    }
+
     .main_cat-1 {
         position: absolute;
         top: -10px;
@@ -69,6 +72,14 @@
         border-left: 3px solid #fff;
         border-right: 3px solid #fff;
         z-index: 130;
+
+        .main_cat_icon {
+            position: absolute;
+            top: 100px;
+            left: 0px;
+            width: 64px;
+            height: 64px;
+        }
     }
 
     .page_trans-1-cl, .page_trans-1-op {

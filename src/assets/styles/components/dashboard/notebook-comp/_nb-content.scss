@@ -62,62 +62,8 @@
         transition: all 1s ease-in-out;
         z-index: 10;
 
-        .page-main {
-            z-index: 0;
-        }
-
         .page-transition {
             z-index: 2000;
-        }
-
-        .page-main-cl, .page-main-op {
-            position: absolute;
-            top: 0;
-            left: 50%;
-            width: 500px;
-            height: 790px;
-            background: #e6e5de;
-            border-top: 1px solid #000;
-            border-right: 1px solid #000;
-            border-bottom: 1px solid #000;
-            border-left: 2px dashed #00000055;
-            border-radius: 0px 40px 40px 0px;
-            transform-origin: center left;
-            box-shadow: inset 20px 0px 20px 0px #00000055;
-            
-            &.page-main-cl {
-                transform: translate(-50%, 0);
-                animation: page-main-anim-closed 1s ease-in-out;
-            }
-
-            &.page-main-op {
-                transform: translate(0%, 0);
-                animation: page-main-anim-open 1s ease-in-out;
-            }
-
-            @keyframes page-main-anim-closed {
-                0% {
-                    transform: translate(0%, 0);
-                }
-                50% {
-                    transform: translate(-50%, 0);
-                }
-                100% {
-                    transform: translate(-50%, 0);
-                }
-            }
-
-            @keyframes page-main-anim-open {
-                0% {
-                    transform: translate(-50%, 0);
-                }
-                50% {
-                    transform: translate(-50%, 0);
-                }
-                100% {
-                    transform: translate(0%, 0);
-                }
-            }
         }
 
         &.pages_bg-cl {

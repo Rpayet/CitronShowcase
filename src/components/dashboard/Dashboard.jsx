@@ -53,7 +53,8 @@ export default function Dashboard() {
     }, [setAnimus, category]);
 
     return (
-        <div id="Dashboard" className={`dashboard ${dashboardComp ? 'hide' : 'show'}`}>
+        <div id="Dashboard" className={`dashboard`}>
+            <div className="page_main"></div>
             <div 
                 className={`header`}
                 onClick={() => handleNavigation('lemonify')} >
@@ -75,25 +76,33 @@ export default function Dashboard() {
                     </a>
             </div>
             <div className="dashBody">
-                <div className="nav">
+                <div className={`nav${category.to === '' ? '-cl' : '-op'}`}>
+                    {/* <p className={`linkname ${hovered !== '' ? 'show' : 'hide'}`}>
+                        {Object.keys(navigation).map(key => {
+                            if (navigation[key].to === hovered && navigation[key].name !== category.name) {
+                                return navigation[key].name;
+                            }
+                        })}
+                    </p> */}
                     {navDynamicArray.map((link) => {
                         if (link.to === '') return;
                         return (
                             <button
                                 key={link.to}
                                 id={link.to}
-                                className={`dashLink ${hovered === link.name ? 'focus' : 'unfocus' } ${category.name === link.name ? 'selected' : 'unselected'}`}
+                                className={`dashLink-${link.id} 
+                                    ${link.to}${category.name === link.name ? '-sltd' : '-unsltd'}`}
                                 onClick={() => handleNavigation(link.to) } 
-                                onMouseEnter={() => setHovered(link.id)}
+                                onMouseEnter={() => setHovered(link.to)}
                                 onMouseLeave={() => setHovered('')}>
-                                    <div className={`navIcon ${category.name === link.name ? '' : 'reduce'}`}>
+                                    <div className="navIcon">
                                         <Stage                  
                                             width={64}
                                             height={64}
                                             options={{backgroundAlpha: 0}}>
                                                 <Sprite
                                                     image={lemonifylogoset}
-                                                    position={handleIconPosition(64, link.id, 1)}
+                                                    position={handleIconPosition(64, link.id, 0)}
                                                     anchor={[0, 0]}
                                                     scale={1}                                   
                                                 />
@@ -102,13 +111,6 @@ export default function Dashboard() {
                             </button>
                         );
                     })}
-                    <p className={`linkname ${hovered !== '' ? 'show' : ''}`}>
-                        {Object.keys(navigation).map(key => {
-                            if (navigation[key].to === hovered && navigation[key].name !== category.name) {
-                                return navigation[key].name;
-                            }
-                        })}
-                    </p>
                 </div>
                 <div className="dashBodyContent">
                     <h1 className="sectionName">

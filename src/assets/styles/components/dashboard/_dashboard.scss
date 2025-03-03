@@ -1,26 +1,17 @@
 #Dashboard {
-    width: 400px;
+    width: 480px;
     height: 800px;
     padding: 1rem;
     position: absolute;
     top: 0;
-    left: 70px;
+    left: 0;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     gap: 1.5rem;
-    z-index: 1100;
-
-    &.show {
-        animation: fadeIn .5s ease-in-out;
-    }
-
-    &.hide {
-        animation: fadeOut .5s ease-in-out;
-    }
+    z-index: 120;
 
     .header, .dashBody {
-
         .dashLink {
             font-size: 1rem;
             font-weight: 700;
@@ -29,6 +20,10 @@
             align-items: center;
             cursor: pointer;
         }
+    }
+
+    .header, .dashBody, .footer {
+        margin-left: 5rem;
     }
 
     .header {
@@ -56,58 +51,86 @@
     }
 
     .dashBody {
-        
-        .nav {
-            display: flex;
-            align-items: flex-end;
-            transition: all .5s ease-in-out;
+        .nav-op {
+            top: -35px;
+        }        
+        .nav-cl {
+            top: 35px;
+        }
+        .nav-op, .nav-cl {
+            position: absolute;
+            left: 0;
+            width: 480px;
+            z-index: -20;
+            transition: all .3s ease-in-out;
 
-            .dashLink {
-                border-radius: .5rem;
-
-                border-radius: 1rem 1rem 0 0;
-                cursor: pointer;
-                z-index: 1;
-
-                &.selected {
-                    transform: translateY(2px);
-                }
-
-                &.unselected {
+            @for $i from 1 through 3 {
+                .dashLink-#{$i} {
+                    margin: 0 .5rem;
+                    position: absolute;
+                    display: flex;
+                    align-items: flex-start;
+                    border-radius: 1rem 1rem 0 0;
+                    border: 3px solid #fff;
                     justify-content: flex-start;
-                    width: 4rem;
-                    height: 3rem;
-                    transition: all .3s ease-in-out;
-
-                    &:hover {
-                        height: 3.5rem;
+                    width: 70px;
+                    height: 70px;
+                    transform: translateY(0);
+                    transform-origin: bottom center;
+                    cursor: pointer;
+                    z-index: 1;
+                    transition: all .5s ease-in-out;
+                    
+                    &.articles-sltd, &.portfolio-sltd, &.arcadepalace-sltd {
+                        top: 30px;
+                        right: 385px;
+                        background: #076090;
+                        animation: dashlink-sltd .5s forwards;
                     }
-                }
-
-                .navIcon {
-                    padding: 0 1rem;
-                    transition: all .3s ease-in-out;
-                    transform: scale(1);
-
-                    &.reduce {
-                        transform: scale(.7);
-                        padding: 0;
-                    }
-                }
-
-                .linkname {
-                    margin-left: 1rem;
-                    font-size: 1.5rem;
-                    font-weight: 700;
-                    color: #004579;
-                    text-align: center;
-                    display: none;
-                    transition: all .3s ease-in-out;
     
-                    &.show {
-                        display: block;
+                    &.articles-unsltd, &.portfolio-unsltd, &.arcadepalace-unsltd {
+                        top: -10px;
+                        right: calc(10px + #{$i - 1} * 80px);
+                        background: #004579;
+                        transition: all .3s ease-in-out;
+                        animation: dashlink-unsltd .5s forwards;
+    
+                        &:hover {
+                            top: -20px;
+                        }
                     }
-                }
+
+                    @keyframes dashlink-sltd {
+                        0% {transform: translateY(0);}
+                        80% {transform: translateY(-50%); height: 100px;}
+                        100% {transform: translateY(0);}
+                    }
+
+                    @keyframes dashlink-unsltd {
+                        0% {transform: translateY(100%);}
+                        80% {transform: translateY(100%);}
+                        100% {transform: translateY(0);}
+                    }
+    
+                    .navIcon {
+                        padding: 0;
+                        transition: all .3s ease-in-out;
+                        transform: scale(.8);
+                    }
+    
+                    .linkname {
+                        margin-left: 1rem;
+                        font-size: 1.5rem;
+                        font-weight: 700;
+                        color: #004579;
+                        text-align: center;
+                        display: none;
+        
+                        &.show {
+                            display: block;
+                        }
+                    }
+                }    
             }
 
         }
@@ -196,6 +219,24 @@
         padding: 1rem;
         color:#004579;
         border-top: 1px solid #004579;
+    }
+
+    .page_main {
+        position: absolute;
+        top: 10px;
+        left: 0;
+        width: 500px;
+        height: 790px;
+        background: #e6e5de;
+        border-top: 1px solid #000;
+        border-right: 1px solid #000;
+        border-bottom: 1px solid #000;
+        border-left: 2px dashed #00000055;
+        border-radius: 0px 40px 40px 0px;
+        transform-origin: center left;
+        box-shadow: inset 20px 0px 20px 0px #00000055;
+        z-index: -10;
+        pointer-events: none;
     }
 
 }

@@ -8,7 +8,7 @@ export const DashboardProvider = ({ children }) => {
     const location = useLocation();
 
     const currentCategory = location.pathname.split('/')[1] === "" ? "lemonify" : location.pathname.split('/')[1];
-    const currentSubcategory = location.pathname.split('/')[2] || "";
+    const currentSubcategory = location.pathname.split('/')[2] || "";    
 
     // Optimisation avec useMemo pour éviter des recalculs inutiles
     const dashboardContent = useMemo(() => {

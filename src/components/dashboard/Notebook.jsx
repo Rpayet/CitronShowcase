@@ -101,9 +101,7 @@ export default function Notebook() {
             {/** Notebook content - navigation, filters & options */}
             <div id="Nb_content" className={`nb_ct-${category.to === '' ? 'cl' : 'op'}`}>
                 <div className={`pages_bg-${category.to === '' ? 'cl' : 'op' }`}>
-                    <div className={`page-main-${category.to === '' ? 'cl' : 'op'}`}>
-                        <Dashboard />
-                    </div>
+                    <div className={`page-main-${category.to === '' ? 'cl' : 'op'}`}></div>
                 </div>
             </div>
             {/** Bookmark - styles & category reminder */}
