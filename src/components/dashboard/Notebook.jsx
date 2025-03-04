@@ -6,12 +6,15 @@ import { AppContext } from "../../context/AppProvider";
 import Bookmark from "./Bookmark";
 import Dashboard from "./Dashboard";
 import { useIcon } from "../../services/iconService";
+import { AnimationContext } from "../../context/AnimationContext";
 
 export default function Notebook() {
 
     const { dashboardContent } = useContext(DashboardContext);
-    const { navigation, category, subcategory, description } = dashboardContent;
+    const { navigation, category } = dashboardContent;
     const { lemonifylogoset } = useContext(AppContext);
+    const { animus } = useContext(AnimationContext);
+    const { dashboardComp } = animus;
 
     const [navArray, setNavArray] = useState(navigation.filter(link => link.id !== 0));
 
@@ -97,17 +100,18 @@ export default function Notebook() {
     },[]);
 
     return (
-        <div id="Notebook" className={`nb-${category.to === '' ? 'cl' : 'op'}`}>
+        <div id="Notebook" className={`nb-${!dashboardComp.open ? 'cl' : 'op'}`}>
             {/** Notebook content - navigation, filters & options */}
-            <div id="Nb_content" className={`nb_ct-${category.to === '' ? 'cl' : 'op'}`}>
-                <div className={`pages_bg-${category.to === '' ? 'cl' : 'op' }`}>
-                    <div className={`page-main-${category.to === '' ? 'cl' : 'op'}`}></div>
+            <div id="Nb_content" className={`nb_ct-${!dashboardComp.open ? 'cl' : 'op'}`}>
+                <div className={`pages_bg-${!dashboardComp.open ? 'cl' : 'op' }`}>
+                    <div className={`page-main-${!dashboardComp.open ? 'cl' : 'op'}`}></div>
                 </div>
             </div>
             {/** Bookmark - styles & category reminder */}
             <Bookmark id={1} />
+            <Bookmark id={2} />
             {/** Cover */}
-            <div id="Nb_cover" className={`nbc-${category.to === '' ? 'cl' : 'op'}`}>
+            <div id="Nb_cover" className={`nbc-${!dashboardComp.open ? 'cl' : 'op'}`}>
                 {/** Landing Navigation */}	
                 <nav id="Nb_nav">
                     <ul>
@@ -136,7 +140,7 @@ export default function Notebook() {
                     </ul>
                 </nav>
                 {/** Frontpage - Header use */}
-                <div id="Nb_frontpage" className={`nbf-${category.to === 'lemonify' ? 'cl' : 'op'}`}>
+                <div id="Nb_frontpage" className={`nbf-${!dashboardComp.open ? 'cl' : 'op'}`}>
                     <div className="nb_h1">
                         <h1>Design & code <br/><span>Robin Payet</span></h1>
                         <div className="seam"></div>

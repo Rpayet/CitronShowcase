@@ -8,7 +8,7 @@ import { AppContext } from "../../context/AppProvider";
 import { isPageRefreshed } from "../../services/navigation/navigationService";
 import { useIcon } from "../../services/iconService";
 
-export default function Dashboard() {
+export default function Dashboard({bookmarkId}) {
 
     const { handleNavigation } = usePageTransition();
     const { handleIconPosition } = useIcon();
@@ -43,14 +43,16 @@ export default function Dashboard() {
         })
     }, [navigation]);
 
-    useEffect(() => {
-        setAnimus(prev => {
-            return {
-                ...prev,
-                dashboardComp: !category.to ? false : true
-            }
-        })
-    }, [setAnimus, category]);
+    // useEffect(() => {
+    //     setAnimus(prev => {
+    //         return {
+    //             ...prev,
+    //             dashboardComp: {
+    //                 open: 
+    //             }
+    //         }
+    //     })
+    // }, [setAnimus, category]);
 
     return (
         <div id="Dashboard" className={`dashboard`}>
@@ -76,7 +78,7 @@ export default function Dashboard() {
                     </a>
             </div>
             <div className="dashBody">
-                <div className={`nav${category.to === '' ? '-cl' : '-op'}`}>
+                <div className={`nav${!dashboardComp.open ? '-cl' : '-op'}`}>
                     {/* <p className={`linkname ${hovered !== '' ? 'show' : 'hide'}`}>
                         {Object.keys(navigation).map(key => {
                             if (navigation[key].to === hovered && navigation[key].name !== category.name) {
@@ -84,7 +86,7 @@ export default function Dashboard() {
                             }
                         })}
                     </p> */}
-                    {navDynamicArray.map((link) => {
+                    {bookmarkId === 2 && navDynamicArray.map((link) => {
                         if (link.to === '') return;
                         return (
                             <button

@@ -4,13 +4,11 @@
 #Nb_cover {
     position: absolute;
     top: 0;
-    left: 0;
     width: 100%;
     height: 100%;
     z-index: 150;
     transform-origin: left center;
     filter: drop-shadow(1px 2px 2px #00000055);
-    transition: all 1s ease-in-out;
 
     &::before { 
         content: '';
@@ -18,7 +16,7 @@
         top: 0;
         left: 0;
         width: 100%;
-        transition: all 1s ease-in-out;
+        height: 100%;
         background: radial-gradient(#684931, #382618);
         border-radius: 10px 40px 40px 0px;
         box-shadow: inset -5px 2px 6px 0px #93643f;
@@ -26,44 +24,37 @@
     }
 
     &.nbc-cl {
-        transform: rotate3d(1, 1, 1, 0deg) skewY(0deg);
+        left: 0%;
+        transform: rotate3d(1, 1, 1, 0deg);
         animation: CoverTurn-closed 1s ease-in-out;
 
-        &::before {
-            height: 100%;
-        }
     }
 
     &.nbc-op {
-        transform: rotate3d(0, 1, 0, 90deg) skewY(-15deg);
-        animation: CoverTurn-open 1s ease-in-out;
-
-        &::before {
-            height: 102%;
-        }
+        left: 100%;
+        transform: rotate3d(0, 1, 0, 90deg);
+        animation: CoverTurn-open 1.15s ease-in-out;
     }
 
     @keyframes CoverTurn-open {
         0% {
-            transform: rotate3d(1, 1, 1, 0deg) skewY(0deg);
-        }
-        50% {
-            transform: rotate3d(0, 1, 0, 90deg) skewY(5deg);
+            left: 0%;
+            transform: rotate3d(1, 1, 1, 0deg);
         }
         100% {
-            transform: rotate3d(0, 1, 0, 90deg) skewY(0deg);
+            left: 100%;
+            transform: rotate3d(0, 1, 0, 90deg);
         }
     }
 
     @keyframes CoverTurn-closed {
         0% {
-            transform: rotate3d(1, 1, 1, 90deg) skewY(0deg);
-        }
-        50% {
-            transform: rotate3d(0, 1, 0, 90deg) skewY(-15deg);
+            left: 100%;
+            transform: rotate3d(0, 1, 0, 90deg);
         }
         100% {
-            transform: rotate3d(0, 1, 0, 0deg) skewY(0deg);
+            left: 0%;
+            transform: rotate3d(1, 1, 1, 0deg);
         }
     }
 }

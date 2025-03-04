@@ -17,17 +17,17 @@ ul {
 }
 
 #Dashboard {
-  width: 400px;
+  width: 480px;
   height: 800px;
   padding: 1rem;
   position: absolute;
   top: 0;
-  left: 70px;
+  left: 0;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   gap: 1.5rem;
-  z-index: 1100;
+  z-index: 120;
 }
 #Dashboard .header .dashLink, #Dashboard .dashBody .dashLink {
   font-size: 1rem;
@@ -37,22 +37,16 @@ ul {
   align-items: center;
   cursor: pointer;
 }
+#Dashboard .header, #Dashboard .dashBody, #Dashboard .footer {
+  margin-left: 5rem;
+}
 #Dashboard .header {
   position: relative;
   display: flex;
   justify-content: space-between;
   align-items: center;
   transition: all 0.3s ease-in-out;
-  border-bottom: 1px solid rgba(255, 255, 255, 0);
-  border-left: 1px solid rgba(255, 255, 255, 0);
-  border-right: 1px solid rgba(255, 255, 255, 0);
-  border-top: 1px solid rgba(255, 255, 255, 0);
-}
-#Dashboard .header:hover {
   border-bottom: 1px solid #004579;
-}
-#Dashboard .header:hover::before {
-  opacity: 1;
 }
 #Dashboard .header .dashLink {
   border-radius: 0.5rem;
@@ -66,48 +60,191 @@ ul {
   font-size: 2rem;
   color: #004579;
 }
-#Dashboard .dashBody .nav {
-  display: flex;
-  align-items: flex-end;
-  transition: all 0.5s ease-in-out;
+#Dashboard .dashBody .nav-op {
+  top: -35px;
 }
-#Dashboard .dashBody .nav .dashLink {
-  border-radius: 0.5rem;
+#Dashboard .dashBody .nav-cl {
+  top: 35px;
+}
+#Dashboard .dashBody .nav-op, #Dashboard .dashBody .nav-cl {
+  position: absolute;
+  left: 0;
+  width: 480px;
+  z-index: -20;
+  transition: all 0.3s ease-in-out;
+}
+#Dashboard .dashBody .nav-op .dashLink-1, #Dashboard .dashBody .nav-cl .dashLink-1 {
+  margin: 0 0.5rem;
+  position: absolute;
+  display: flex;
+  align-items: flex-start;
   border-radius: 1rem 1rem 0 0;
+  border: 3px solid #fff;
+  justify-content: flex-start;
+  width: 70px;
+  height: 70px;
+  transform: translateY(0);
+  transform-origin: bottom center;
   cursor: pointer;
   z-index: 1;
+  transition: all 0.5s ease-in-out;
 }
-#Dashboard .dashBody .nav .dashLink.selected {
-  transform: translateY(2px);
+#Dashboard .dashBody .nav-op .dashLink-1.articles-sltd, #Dashboard .dashBody .nav-op .dashLink-1.portfolio-sltd, #Dashboard .dashBody .nav-op .dashLink-1.arcadepalace-sltd, #Dashboard .dashBody .nav-cl .dashLink-1.articles-sltd, #Dashboard .dashBody .nav-cl .dashLink-1.portfolio-sltd, #Dashboard .dashBody .nav-cl .dashLink-1.arcadepalace-sltd {
+  top: 30px;
+  right: 385px;
+  background: #076090;
 }
-#Dashboard .dashBody .nav .dashLink.unselected {
-  justify-content: flex-start;
-  width: 4rem;
-  height: 3rem;
+#Dashboard .dashBody .nav-op .dashLink-1.articles-unsltd, #Dashboard .dashBody .nav-op .dashLink-1.portfolio-unsltd, #Dashboard .dashBody .nav-op .dashLink-1.arcadepalace-unsltd, #Dashboard .dashBody .nav-cl .dashLink-1.articles-unsltd, #Dashboard .dashBody .nav-cl .dashLink-1.portfolio-unsltd, #Dashboard .dashBody .nav-cl .dashLink-1.arcadepalace-unsltd {
+  top: -10px;
+  right: calc(10px + 0 * 80px);
+  background: #004579;
   transition: all 0.3s ease-in-out;
+  animation: dashlink-unsltd 0.5s forwards;
 }
-#Dashboard .dashBody .nav .dashLink.unselected:hover {
-  height: 3.5rem;
+#Dashboard .dashBody .nav-op .dashLink-1.articles-unsltd:hover, #Dashboard .dashBody .nav-op .dashLink-1.portfolio-unsltd:hover, #Dashboard .dashBody .nav-op .dashLink-1.arcadepalace-unsltd:hover, #Dashboard .dashBody .nav-cl .dashLink-1.articles-unsltd:hover, #Dashboard .dashBody .nav-cl .dashLink-1.portfolio-unsltd:hover, #Dashboard .dashBody .nav-cl .dashLink-1.arcadepalace-unsltd:hover {
+  top: -20px;
 }
-#Dashboard .dashBody .nav .dashLink .navIcon {
-  padding: 0 1rem;
-  transition: all 0.3s ease-in-out;
-  transform: scale(1);
+@keyframes dashlink-unsltd {
+  0% {
+    transform: translateY(100%);
+  }
+  80% {
+    transform: translateY(100%);
+  }
+  100% {
+    transform: translateY(0);
+  }
 }
-#Dashboard .dashBody .nav .dashLink .navIcon.reduce {
-  transform: scale(0.7);
+#Dashboard .dashBody .nav-op .dashLink-1 .navIcon, #Dashboard .dashBody .nav-cl .dashLink-1 .navIcon {
   padding: 0;
+  transition: all 0.3s ease-in-out;
+  transform: scale(0.8);
 }
-#Dashboard .dashBody .nav .dashLink .linkname {
+#Dashboard .dashBody .nav-op .dashLink-1 .linkname, #Dashboard .dashBody .nav-cl .dashLink-1 .linkname {
   margin-left: 1rem;
   font-size: 1.5rem;
   font-weight: 700;
   color: #004579;
   text-align: center;
   display: none;
-  transition: all 0.3s ease-in-out;
 }
-#Dashboard .dashBody .nav .dashLink .linkname.show {
+#Dashboard .dashBody .nav-op .dashLink-1 .linkname.show, #Dashboard .dashBody .nav-cl .dashLink-1 .linkname.show {
+  display: block;
+}
+#Dashboard .dashBody .nav-op .dashLink-2, #Dashboard .dashBody .nav-cl .dashLink-2 {
+  margin: 0 0.5rem;
+  position: absolute;
+  display: flex;
+  align-items: flex-start;
+  border-radius: 1rem 1rem 0 0;
+  border: 3px solid #fff;
+  justify-content: flex-start;
+  width: 70px;
+  height: 70px;
+  transform: translateY(0);
+  transform-origin: bottom center;
+  cursor: pointer;
+  z-index: 1;
+  transition: all 0.5s ease-in-out;
+}
+#Dashboard .dashBody .nav-op .dashLink-2.articles-sltd, #Dashboard .dashBody .nav-op .dashLink-2.portfolio-sltd, #Dashboard .dashBody .nav-op .dashLink-2.arcadepalace-sltd, #Dashboard .dashBody .nav-cl .dashLink-2.articles-sltd, #Dashboard .dashBody .nav-cl .dashLink-2.portfolio-sltd, #Dashboard .dashBody .nav-cl .dashLink-2.arcadepalace-sltd {
+  top: 30px;
+  right: 385px;
+  background: #076090;
+}
+#Dashboard .dashBody .nav-op .dashLink-2.articles-unsltd, #Dashboard .dashBody .nav-op .dashLink-2.portfolio-unsltd, #Dashboard .dashBody .nav-op .dashLink-2.arcadepalace-unsltd, #Dashboard .dashBody .nav-cl .dashLink-2.articles-unsltd, #Dashboard .dashBody .nav-cl .dashLink-2.portfolio-unsltd, #Dashboard .dashBody .nav-cl .dashLink-2.arcadepalace-unsltd {
+  top: -10px;
+  right: calc(10px + 1 * 80px);
+  background: #004579;
+  transition: all 0.3s ease-in-out;
+  animation: dashlink-unsltd 0.5s forwards;
+}
+#Dashboard .dashBody .nav-op .dashLink-2.articles-unsltd:hover, #Dashboard .dashBody .nav-op .dashLink-2.portfolio-unsltd:hover, #Dashboard .dashBody .nav-op .dashLink-2.arcadepalace-unsltd:hover, #Dashboard .dashBody .nav-cl .dashLink-2.articles-unsltd:hover, #Dashboard .dashBody .nav-cl .dashLink-2.portfolio-unsltd:hover, #Dashboard .dashBody .nav-cl .dashLink-2.arcadepalace-unsltd:hover {
+  top: -20px;
+}
+@keyframes dashlink-unsltd {
+  0% {
+    transform: translateY(100%);
+  }
+  80% {
+    transform: translateY(100%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+#Dashboard .dashBody .nav-op .dashLink-2 .navIcon, #Dashboard .dashBody .nav-cl .dashLink-2 .navIcon {
+  padding: 0;
+  transition: all 0.3s ease-in-out;
+  transform: scale(0.8);
+}
+#Dashboard .dashBody .nav-op .dashLink-2 .linkname, #Dashboard .dashBody .nav-cl .dashLink-2 .linkname {
+  margin-left: 1rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #004579;
+  text-align: center;
+  display: none;
+}
+#Dashboard .dashBody .nav-op .dashLink-2 .linkname.show, #Dashboard .dashBody .nav-cl .dashLink-2 .linkname.show {
+  display: block;
+}
+#Dashboard .dashBody .nav-op .dashLink-3, #Dashboard .dashBody .nav-cl .dashLink-3 {
+  margin: 0 0.5rem;
+  position: absolute;
+  display: flex;
+  align-items: flex-start;
+  border-radius: 1rem 1rem 0 0;
+  border: 3px solid #fff;
+  justify-content: flex-start;
+  width: 70px;
+  height: 70px;
+  transform: translateY(0);
+  transform-origin: bottom center;
+  cursor: pointer;
+  z-index: 1;
+  transition: all 0.5s ease-in-out;
+}
+#Dashboard .dashBody .nav-op .dashLink-3.articles-sltd, #Dashboard .dashBody .nav-op .dashLink-3.portfolio-sltd, #Dashboard .dashBody .nav-op .dashLink-3.arcadepalace-sltd, #Dashboard .dashBody .nav-cl .dashLink-3.articles-sltd, #Dashboard .dashBody .nav-cl .dashLink-3.portfolio-sltd, #Dashboard .dashBody .nav-cl .dashLink-3.arcadepalace-sltd {
+  top: 30px;
+  right: 385px;
+  background: #076090;
+}
+#Dashboard .dashBody .nav-op .dashLink-3.articles-unsltd, #Dashboard .dashBody .nav-op .dashLink-3.portfolio-unsltd, #Dashboard .dashBody .nav-op .dashLink-3.arcadepalace-unsltd, #Dashboard .dashBody .nav-cl .dashLink-3.articles-unsltd, #Dashboard .dashBody .nav-cl .dashLink-3.portfolio-unsltd, #Dashboard .dashBody .nav-cl .dashLink-3.arcadepalace-unsltd {
+  top: -10px;
+  right: calc(10px + 2 * 80px);
+  background: #004579;
+  transition: all 0.3s ease-in-out;
+  animation: dashlink-unsltd 0.5s forwards;
+}
+#Dashboard .dashBody .nav-op .dashLink-3.articles-unsltd:hover, #Dashboard .dashBody .nav-op .dashLink-3.portfolio-unsltd:hover, #Dashboard .dashBody .nav-op .dashLink-3.arcadepalace-unsltd:hover, #Dashboard .dashBody .nav-cl .dashLink-3.articles-unsltd:hover, #Dashboard .dashBody .nav-cl .dashLink-3.portfolio-unsltd:hover, #Dashboard .dashBody .nav-cl .dashLink-3.arcadepalace-unsltd:hover {
+  top: -20px;
+}
+@keyframes dashlink-unsltd {
+  0% {
+    transform: translateY(100%);
+  }
+  80% {
+    transform: translateY(100%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+#Dashboard .dashBody .nav-op .dashLink-3 .navIcon, #Dashboard .dashBody .nav-cl .dashLink-3 .navIcon {
+  padding: 0;
+  transition: all 0.3s ease-in-out;
+  transform: scale(0.8);
+}
+#Dashboard .dashBody .nav-op .dashLink-3 .linkname, #Dashboard .dashBody .nav-cl .dashLink-3 .linkname {
+  margin-left: 1rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #004579;
+  text-align: center;
+  display: none;
+}
+#Dashboard .dashBody .nav-op .dashLink-3 .linkname.show, #Dashboard .dashBody .nav-cl .dashLink-3 .linkname.show {
   display: block;
 }
 #Dashboard .dashBody .dashBodyContent {
@@ -178,31 +315,43 @@ ul {
 }
 #Dashboard .footer {
   display: flex;
-  justify-content: center;
   align-items: center;
   padding: 1rem;
-  text-align: center;
   color: #004579;
   border-top: 1px solid #004579;
 }
+#Dashboard .page_main {
+  position: absolute;
+  top: 10px;
+  left: 0;
+  width: 500px;
+  height: 790px;
+  background: #e6e5de;
+  border-top: 1px solid #000;
+  border-right: 1px solid #000;
+  border-bottom: 1px solid #000;
+  border-left: 2px dashed rgba(0, 0, 0, 0.3333333333);
+  border-radius: 0px 40px 40px 0px;
+  transform-origin: center left;
+  box-shadow: inset 20px 0px 20px 0px rgba(0, 0, 0, 0.3333333333);
+  z-index: -10;
+  pointer-events: none;
+}
 
-@keyframes dashIn {
+@keyframes fadeIn {
   from {
-    transform: translateX(-200%);
+    opacity: 0;
   }
   to {
-    transform: translateX(0);
+    opacity: 1;
   }
 }
-@keyframes dashOut {
-  0% {
-    transform: translate(0, 0);
+@keyframes fadeOut {
+  from {
+    opacity: 1;
   }
-  15% {
-    transform: translate(0, -15%) rotateZ(-15deg);
-  }
-  100% {
-    transform: translate(0, 400%) rotateZ(2deg) scale(0.5);
+  to {
+    opacity: 0;
   }
 }
 @keyframes popIn {
@@ -778,138 +927,48 @@ ul {
 #Nb_content {
   position: relative;
   top: 0;
-  left: 0;
   z-index: 100;
+  transition: all 1s ease-in-out;
+  width: 500px;
+  height: 800px;
+}
+#Nb_content.nb_ct-cl {
+  left: 0%;
 }
 #Nb_content.nb_ct-cl::before {
-  width: 100%;
-  animation: PageTurn-closed 1s ease-in-out;
+  border-radius: 10px 40px 40px 10px;
+}
+#Nb_content.nb_ct-op {
+  left: 100%;
 }
 #Nb_content.nb_ct-op::before {
-  width: 200%;
-  animation: PageTurn-open 1s ease-in-out;
-}
-@keyframes PageTurn-closed {
-  0% {
-    width: 200%;
-  }
-  50% {
-    width: 100%;
-  }
-  100% {
-    width: 100%;
-  }
-}
-@keyframes PageTurn-open {
-  0% {
-    width: 100%;
-  }
-  50% {
-    width: 100%;
-  }
-  100% {
-    width: 200%;
-  }
+  border-radius: 0px 40px 40px 0px;
 }
 #Nb_content::before {
   content: "";
   position: absolute;
+  width: 100%;
   height: 102%;
   top: 0;
   left: 0;
   transform-origin: right center;
   background: radial-gradient(#583E2A, #281B12);
-  border-radius: 10px 40px 40px 10px;
   z-index: 1;
+}
+#Nb_content .pages_bg-cl::before, #Nb_content .pages_bg-cl::after {
+  border-radius: 10px 40px 40px 10px;
+}
+#Nb_content .pages_bg-op::before, #Nb_content .pages_bg-op::after {
+  border-radius: 0px 40px 40px 0px;
 }
 #Nb_content .pages_bg-cl, #Nb_content .pages_bg-op {
   position: absolute;
   top: 10px;
   left: 0;
+  width: 500px;
   height: 800px;
   transition: all 1s ease-in-out;
   z-index: 10;
-}
-#Nb_content .pages_bg-cl .page-main, #Nb_content .pages_bg-op .page-main {
-  z-index: 0;
-}
-#Nb_content .pages_bg-cl .page-transition, #Nb_content .pages_bg-op .page-transition {
-  z-index: 2000;
-}
-#Nb_content .pages_bg-cl .page-main-cl, #Nb_content .pages_bg-cl .page-main-op, #Nb_content .pages_bg-op .page-main-cl, #Nb_content .pages_bg-op .page-main-op {
-  position: absolute;
-  top: 0;
-  left: 50%;
-  width: 500px;
-  height: 790px;
-  background: #e6e5de;
-  border-top: 1px solid #000;
-  border-right: 1px solid #000;
-  border-bottom: 1px solid #000;
-  border-left: 2px dashed rgba(0, 0, 0, 0.3333333333);
-  border-radius: 0px 40px 40px 0px;
-  transform-origin: center left;
-  box-shadow: inset 20px 0px 20px 0px rgba(0, 0, 0, 0.3333333333);
-}
-#Nb_content .pages_bg-cl .page-main-cl.page-main-cl, #Nb_content .pages_bg-cl .page-main-op.page-main-cl, #Nb_content .pages_bg-op .page-main-cl.page-main-cl, #Nb_content .pages_bg-op .page-main-op.page-main-cl {
-  transform: translate(-50%, 0);
-  animation: page-main-anim-closed 1s ease-in-out;
-}
-#Nb_content .pages_bg-cl .page-main-cl.page-main-op, #Nb_content .pages_bg-cl .page-main-op.page-main-op, #Nb_content .pages_bg-op .page-main-cl.page-main-op, #Nb_content .pages_bg-op .page-main-op.page-main-op {
-  transform: translate(0%, 0);
-  animation: page-main-anim-open 1s ease-in-out;
-}
-@keyframes page-main-anim-closed {
-  0% {
-    transform: translate(0%, 0);
-  }
-  50% {
-    transform: translate(-50%, 0);
-  }
-  100% {
-    transform: translate(-50%, 0);
-  }
-}
-@keyframes page-main-anim-open {
-  0% {
-    transform: translate(-50%, 0);
-  }
-  50% {
-    transform: translate(-50%, 0);
-  }
-  100% {
-    transform: translate(0%, 0);
-  }
-}
-#Nb_content .pages_bg-cl.pages_bg-cl, #Nb_content .pages_bg-op.pages_bg-cl {
-  width: 500px;
-  animation: pages-anim-closed 1s ease-in-out;
-}
-#Nb_content .pages_bg-cl.pages_bg-op, #Nb_content .pages_bg-op.pages_bg-op {
-  width: 1000px;
-  animation: pages-anim-open 1s ease-in-out;
-}
-@keyframes pages-anim-closed {
-  0% {
-    width: 1000px;
-  }
-  50% {
-    width: 500px;
-  }
-  100% {
-    width: 500px;
-  }
-}
-@keyframes pages-anim-open {
-  0% {
-    width: 500px;
-  }
-  50% {
-    width: 500px;
-  }
-  100% {
-    width: 1000px;
-  }
 }
 #Nb_content .pages_bg-cl::before, #Nb_content .pages_bg-cl::after, #Nb_content .pages_bg-op::before, #Nb_content .pages_bg-op::after {
   content: "";
@@ -919,7 +978,6 @@ ul {
   height: 100%;
   background: #e6e5de;
   border: 1px solid #000;
-  border-radius: 10px 40px 40px 10px;
 }
 #Nb_content .pages_bg-cl::before, #Nb_content .pages_bg-op::before {
   top: 0px;
@@ -1039,6 +1097,7 @@ ul {
   border-bottom: 3px solid #fff;
   border-right: 3px solid #fff;
   border-radius: 0 1rem 1rem 0;
+  clip-path: circle(150% at 25% 125%);
 }
 #Nb_nav .navLink.articles .articles-name .articles_iteration-0 {
   position: absolute;
@@ -1071,6 +1130,9 @@ ul {
   z-index: 1;
   opacity: 0.4;
   text-shadow: -1px 0 #000, 0 1px #000, 1px 0 #000, 0 -1px #000;
+}
+#Nb_nav .navLink.articles .articles-name:hover {
+  clip-path: circle(100% at 25% 125%);
 }
 #Nb_nav .navLink.portfolio {
   position: relative;
@@ -1217,13 +1279,11 @@ ul {
 #Nb_cover {
   position: absolute;
   top: 0;
-  left: 0;
   width: 100%;
   height: 100%;
   z-index: 150;
   transform-origin: left center;
   filter: drop-shadow(1px 2px 2px rgba(0, 0, 0, 0.3333333333));
-  transition: all 1s ease-in-out;
 }
 #Nb_cover::before {
   content: "";
@@ -1231,102 +1291,90 @@ ul {
   top: 0;
   left: 0;
   width: 100%;
-  transition: all 1s ease-in-out;
+  height: 100%;
   background: radial-gradient(#684931, #382618);
   border-radius: 10px 40px 40px 0px;
   box-shadow: inset -5px 2px 6px 0px #93643f;
   z-index: 1;
 }
 #Nb_cover.nbc-cl {
-  transform: rotate3d(1, 1, 1, 0deg) skewY(0deg);
+  left: 0%;
+  transform: rotate3d(1, 1, 1, 0deg);
   animation: CoverTurn-closed 1s ease-in-out;
 }
-#Nb_cover.nbc-cl::before {
-  height: 100%;
-}
 #Nb_cover.nbc-op {
-  transform: rotate3d(0, 1, 0, 90deg) skewY(-15deg);
-  animation: CoverTurn-open 1s ease-in-out;
-}
-#Nb_cover.nbc-op::before {
-  height: 102%;
+  left: 100%;
+  transform: rotate3d(0, 1, 0, 90deg);
+  animation: CoverTurn-open 1.15s ease-in-out;
 }
 @keyframes CoverTurn-open {
   0% {
-    transform: rotate3d(1, 1, 1, 0deg) skewY(0deg);
-  }
-  50% {
-    transform: rotate3d(0, 1, 0, 90deg) skewY(5deg);
+    left: 0%;
+    transform: rotate3d(1, 1, 1, 0deg);
   }
   100% {
-    transform: rotate3d(0, 1, 0, 90deg) skewY(0deg);
+    left: 100%;
+    transform: rotate3d(0, 1, 0, 90deg);
   }
 }
 @keyframes CoverTurn-closed {
   0% {
-    transform: rotate3d(1, 1, 1, 90deg) skewY(0deg);
-  }
-  50% {
-    transform: rotate3d(0, 1, 0, 90deg) skewY(-15deg);
+    left: 100%;
+    transform: rotate3d(0, 1, 0, 90deg);
   }
   100% {
-    transform: rotate3d(0, 1, 0, 0deg) skewY(0deg);
+    left: 0%;
+    transform: rotate3d(1, 1, 1, 0deg);
   }
 }
 
 #Bookmark-1 {
-  position: relative;
+  z-index: 135;
+}
+
+#Bookmark-2 {
+  z-index: 100;
+}
+
+#Bookmark-1, #Bookmark-2 {
+  position: absolute;
   top: 0;
+  left: 100%;
   width: 100%;
   height: 800px;
   transform-origin: left center;
-  z-index: 120;
-  pointer-events: none;
+  transition: all 1s ease-in-out;
 }
-#Bookmark-1.bk-1-cl {
+#Bookmark-1.bk-cl, #Bookmark-2.bk-cl {
   left: 0%;
-  animation: bk-clsd-anim 1s ease-in-out;
 }
-#Bookmark-1.bk-1-op {
+#Bookmark-1.bk-op, #Bookmark-2.bk-op {
   left: 100%;
-  animation: bk-open-anim 1s ease-in-out;
 }
-#Bookmark-1.swon {
-  transform: rotate3d(1, 1, 1, 0deg);
+#Bookmark-1.bk-swon, #Bookmark-2.bk-swon {
+  left: 100%;
+  transform: rotate3d(1, 1, 1, 0deg) skewY(0deg);
   animation: bk-switch-anim 1s ease-in-out;
 }
-#Bookmark-1.swoff {
-  animation: none;
+#Bookmark-1.bk-swoff, #Bookmark-2.bk-swoff {
   left: 100%;
-}
-@keyframes bk-clsd-anim {
-  0% {
-    left: 100%;
-  }
-  50% {
-    left: 0%;
-  }
-}
-@keyframes bk-open-anim {
-  0% {
-    left: 0%;
-  }
-  50% {
-    left: 0%;
-  }
-  100% {
-    left: 100%;
-  }
+  animation: none;
 }
 @keyframes bk-switch-anim {
   0% {
-    transform: rotate3d(1, 1, 1, 0deg);
+    transform: rotate3d(1, 1, 1, 0deg) skewY(0deg);
+  }
+  50% {
+    transform: rotate3d(0, 1, 0, 45deg) skewY(-10deg);
   }
   100% {
-    transform: rotate3d(0, 1, 0, 90deg);
+    transform: rotate3d(0, 1, 0, 90deg) skewY(-10deg);
   }
 }
-#Bookmark-1 .main_cat-1 {
+#Bookmark-1 .main_cat, #Bookmark-1 .page_trans-op, #Bookmark-1 .ribbon-op, #Bookmark-2 .main_cat, #Bookmark-2 .page_trans-op, #Bookmark-2 .ribbon-op {
+  pointer-events: none;
+}
+#Bookmark-1 .main_cat, #Bookmark-2 .main_cat {
   position: absolute;
   top: -10px;
   left: 15px;
@@ -1339,7 +1387,14 @@ ul {
   border-right: 3px solid #fff;
   z-index: 130;
 }
-#Bookmark-1 .page_trans-1-cl, #Bookmark-1 .page_trans-1-op {
+#Bookmark-1 .main_cat .main_cat_icon, #Bookmark-2 .main_cat .main_cat_icon {
+  position: absolute;
+  top: 100px;
+  left: 0px;
+  width: 64px;
+  height: 64px;
+}
+#Bookmark-1 .page_trans-cl, #Bookmark-1 .page_trans-op, #Bookmark-2 .page_trans-cl, #Bookmark-2 .page_trans-op {
   position: absolute;
   top: 10px;
   left: 0;
@@ -1354,22 +1409,22 @@ ul {
   transform-origin: center left;
   box-shadow: inset 5px 0px 5px 5px rgba(0, 0, 0, 0.3333333333);
 }
-#Bookmark-1 .page_trans-1-cl {
+#Bookmark-1 .page_trans-cl, #Bookmark-2 .page_trans-cl {
   transform: rotate3d(1, 1, 1, 0deg);
-  animation: page-transition-anim-closed 0.9s ease-in-out;
+  animation: page-transition-anim-closed 0.5s ease-in-out;
   z-index: 140;
 }
-#Bookmark-1 .page_trans-1-op {
+#Bookmark-1 .page_trans-op, #Bookmark-2 .page_trans-op {
   transform: rotate3d(0, 1, 0, 90deg);
-  animation: page-transition-anim-open 1.1s ease-in-out;
+  animation: page-transition-anim-open 1.5s ease-in-out;
   z-index: 140;
 }
-#Bookmark-1 .swon {
+#Bookmark-1 .swon, #Bookmark-2 .swon {
   transform: rotate3d(1, 1, 1, 0deg);
   z-index: 110;
   animation: page-transition-anim-switch 1s ease-in-out;
 }
-#Bookmark-1 .swoff {
+#Bookmark-1 .swoff, #Bookmark-2 .swoff {
   transform: rotate3d(1, 1, 1, 0deg);
   z-index: 110;
   animation-play-state: paused;
@@ -1398,11 +1453,11 @@ ul {
     transform: rotate3d(0, 1, 0, 90deg);
   }
 }
-#Bookmark-1 .ribbon-1-op, #Bookmark-1 .ribbon-1-cl {
+#Bookmark-1 .ribbon-op, #Bookmark-1 .ribbon-cl, #Bookmark-2 .ribbon-op, #Bookmark-2 .ribbon-cl {
   width: 500px;
   height: 800px;
 }
-#Bookmark-1 .ribbon-1-op::before, #Bookmark-1 .ribbon-1-cl::before {
+#Bookmark-1 .ribbon-op::before, #Bookmark-1 .ribbon-cl::before, #Bookmark-2 .ribbon-op::before, #Bookmark-2 .ribbon-cl::before {
   content: "";
   position: absolute;
   width: 70px;
@@ -1416,7 +1471,7 @@ ul {
   transition: all 1s ease-in-out;
   z-index: 120;
 }
-#Bookmark-1 .ribbon-1-op::after, #Bookmark-1 .ribbon-1-cl::after {
+#Bookmark-1 .ribbon-op::after, #Bookmark-1 .ribbon-cl::after, #Bookmark-2 .ribbon-op::after, #Bookmark-2 .ribbon-cl::after {
   content: "";
   position: absolute;
   width: 35px;
@@ -1429,23 +1484,23 @@ ul {
   transition: all 1s ease-in-out;
   z-index: 120;
 }
-#Bookmark-1 .ribbon-1-cl::before {
+#Bookmark-1 .ribbon-cl::before, #Bookmark-2 .ribbon-cl::before {
   animation: bookmark-before-closed 1.5s ease-in-out;
   transform: skewY(-45deg) rotate(0deg);
   border-radius: 0 0 0 0;
 }
-#Bookmark-1 .ribbon-1-cl::after {
+#Bookmark-1 .ribbon-cl::after, #Bookmark-2 .ribbon-cl::after {
   transform: skewY(45deg) rotate(0deg);
   border-radius: 0 0 0 0;
   bottom: -50px;
   animation: bookmark-after-closed 1.5s ease-in-out;
 }
-#Bookmark-1 .ribbon-1-op::before {
+#Bookmark-1 .ribbon-op::before, #Bookmark-2 .ribbon-op::before {
   transform: skewY(-45deg) rotate(0deg);
   border-radius: 0 0 0 0;
   animation: bookmark-before-open 1.5s ease-in-out;
 }
-#Bookmark-1 .ribbon-1-op::after {
+#Bookmark-1 .ribbon-op::after, #Bookmark-2 .ribbon-op::after {
   transform: skewY(45deg) rotate(0deg);
   border-radius: 0 0 0 0;
   bottom: -50px;
@@ -1492,13 +1547,6 @@ ul {
 #Notebook.nb-op {
   transform: translate(-50%, -50%) rotate(0deg);
   left: -250px;
-}
-#Notebook #Nb_cover, #Notebook #Nb_content {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
 }
 
 #Landing {

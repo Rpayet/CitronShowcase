@@ -85,7 +85,6 @@
                         top: 30px;
                         right: 385px;
                         background: #076090;
-                        animation: dashlink-sltd .5s forwards;
                     }
     
                     &.articles-unsltd, &.portfolio-unsltd, &.arcadepalace-unsltd {
@@ -98,12 +97,6 @@
                         &:hover {
                             top: -20px;
                         }
-                    }
-
-                    @keyframes dashlink-sltd {
-                        0% {transform: translateY(0);}
-                        80% {transform: translateY(-50%); height: 100px;}
-                        100% {transform: translateY(0);}
                     }
 
                     @keyframes dashlink-unsltd {

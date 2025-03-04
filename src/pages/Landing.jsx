@@ -1,6 +1,5 @@
 import {useContext, useEffect, useState} from "react";
 import {AnimationContext} from "../context/AnimationContext";
-import Notebook from "../components/dashboard/Notebook";
 
 export default function Landing() {
 
@@ -10,12 +9,20 @@ export default function Landing() {
         setAnimus(prevState => {
             return {
                 ...prevState,
+                dashboardComp: {
+                    open: false,
+                    transition: false,
+                },
                 lemonifyComp: true,
             }
         })
         return () => setAnimus(prevState => {
             return {
                 ...prevState,
+                dashboardComp: {
+                    open: true,
+                    transition: false,
+                },
                 lemonifyComp: false,
             }
         });

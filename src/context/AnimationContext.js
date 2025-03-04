@@ -11,7 +11,10 @@ export const AnimationProvider = ({children}) => {
     const fromPage = subcategory.to === '' ? category.to : subcategory.to;
 
     const [animus, setAnimus] = useState({
-        dashboardComp: false,
+        dashboardComp: {
+            open: false,
+            transition: false,
+        },
         lemonifyComp: false,
         articlesComp: false,
         portfolioComp: false,

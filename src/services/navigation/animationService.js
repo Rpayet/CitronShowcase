@@ -15,11 +15,14 @@ export const usePageTransition = () => {
     const navigateWithAnimation = (fromPage, toPage, timeout=500) => {
         if (fromPage === toPage) return;
 
+        const isLanding = (page) => page === 'lemonify';
+        const isLeavingLanding = isLanding(fromPage) && !isLanding(toPage);
+        const isNavigatingBetweenPages = !isLanding(fromPage) && !isLanding(toPage);
+
         setAnimus(prevState => ({
             ...prevState,
             [fromPage+'Comp']: false,
             [toPage+'Comp']: true,
-            dashboard: category.to === 'lemonify' ? false : true,
             bgPattern: {
                 ...animus.bgPattern,
                 state: true,
@@ -36,7 +39,7 @@ export const usePageTransition = () => {
                 }
             }));
 
-        }, (fromPage === 'lemonify' || toPage === 'lemonify') ? 0 : timeout);
+        }, timeout);
     };
 
     const handleNavigation = (toPage) => {
