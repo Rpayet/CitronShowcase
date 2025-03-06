@@ -15,22 +15,19 @@ export default function Bookmark({ id }) {
     const { dashboardComp } = animus;
     const { category } = dashboardContent;
 
-    const [animClass, setAnimClass] = useState('');
+    const [ switchClass, setSwitchClass ] = useState('');
 
     useEffect(() => {
-        const getDashboardClass = () => {
-            if (!dashboardComp.open && !dashboardComp.transition) return 'bk-cl';  // Retour sur la landing
-            if (dashboardComp.open && !dashboardComp.transition) return 'bk-op';   // Quitter la landing
-            if (dashboardComp.open && dashboardComp.transition) return 'bk-swon';  // Switch entre pages
-            return 'bk-swoff'; // Valeur par défaut pour éviter les erreurs
-        };
-    
-        setAnimClass(getDashboardClass());
-
-    }, [dashboardComp]);
+        const getSwitchClass = () => {
+            if (dashboardComp.open && dashboardComp.transition) return 'swon';
+            if (dashboardComp.open && !dashboardComp.transition) return 'swoff';
+            return '';
+        }
+        setSwitchClass(getSwitchClass());
+    }, [dashboardComp])
 
     return (
-        <div id={`Bookmark-${id}`} className={animClass}>
+        <div id={`Bookmark-${id}`} className={(id === 1) ? switchClass : ''}>
             <Dashboard bookmarkId={id} />
             <div className={`ribbon-${!dashboardComp.open ? 'cl' : 'op'}`}></div>
             <div className={`main_cat`}>

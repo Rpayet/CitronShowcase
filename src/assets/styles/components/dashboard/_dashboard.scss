@@ -84,15 +84,14 @@
                     &.articles-sltd, &.portfolio-sltd, &.arcadepalace-sltd {
                         top: 30px;
                         right: 385px;
-                        background: #076090;
+                        background-color: #076090;
                     }
     
                     &.articles-unsltd, &.portfolio-unsltd, &.arcadepalace-unsltd {
                         top: -10px;
                         right: calc(10px + #{$i - 1} * 80px);
-                        background: #004579;
-                        transition: all .3s ease-in-out;
-                        animation: dashlink-unsltd .5s forwards;
+                        background-color: #004579;
+                        animation: dashlink-unsltd 1s forwards;
     
                         &:hover {
                             top: -20px;

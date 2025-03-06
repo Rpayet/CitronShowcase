@@ -23,6 +23,10 @@ export const usePageTransition = () => {
             ...prevState,
             [fromPage+'Comp']: false,
             [toPage+'Comp']: true,
+            dashboardComp: {
+                ...animus.dashboardComp,
+                transition: (isNavigatingBetweenPages || isLeavingLanding),
+            },
             bgPattern: {
                 ...animus.bgPattern,
                 state: true,
@@ -40,6 +44,16 @@ export const usePageTransition = () => {
             }));
 
         }, timeout);
+
+        setTimeout(() => {
+            setAnimus(prevState => ({
+                ...prevState,
+                dashboardComp: {
+                    ...prevState.dashboardComp,
+                    transition: false,
+                }
+            }));
+        }, 1000); 
     };
 
     const handleNavigation = (toPage) => {

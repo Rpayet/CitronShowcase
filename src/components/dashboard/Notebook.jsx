@@ -108,8 +108,10 @@ export default function Notebook() {
                 </div>
             </div>
             {/** Bookmark - styles & category reminder */}
-            <Bookmark id={1} />
-            <Bookmark id={2} />
+            <div id="Bookmark" className={`bk-${!dashboardComp.open ? 'cl' : 'op'}`}>
+                <Bookmark id={1} />
+                <Bookmark id={2} />
+            </div>
             {/** Cover */}
             <div id="Nb_cover" className={`nbc-${!dashboardComp.open ? 'cl' : 'op'}`}>
                 {/** Landing Navigation */}	

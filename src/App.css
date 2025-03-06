@@ -92,14 +92,13 @@ ul {
 #Dashboard .dashBody .nav-op .dashLink-1.articles-sltd, #Dashboard .dashBody .nav-op .dashLink-1.portfolio-sltd, #Dashboard .dashBody .nav-op .dashLink-1.arcadepalace-sltd, #Dashboard .dashBody .nav-cl .dashLink-1.articles-sltd, #Dashboard .dashBody .nav-cl .dashLink-1.portfolio-sltd, #Dashboard .dashBody .nav-cl .dashLink-1.arcadepalace-sltd {
   top: 30px;
   right: 385px;
-  background: #076090;
+  background-color: #076090;
 }
 #Dashboard .dashBody .nav-op .dashLink-1.articles-unsltd, #Dashboard .dashBody .nav-op .dashLink-1.portfolio-unsltd, #Dashboard .dashBody .nav-op .dashLink-1.arcadepalace-unsltd, #Dashboard .dashBody .nav-cl .dashLink-1.articles-unsltd, #Dashboard .dashBody .nav-cl .dashLink-1.portfolio-unsltd, #Dashboard .dashBody .nav-cl .dashLink-1.arcadepalace-unsltd {
   top: -10px;
   right: calc(10px + 0 * 80px);
-  background: #004579;
-  transition: all 0.3s ease-in-out;
-  animation: dashlink-unsltd 0.5s forwards;
+  background-color: #004579;
+  animation: dashlink-unsltd 1s forwards;
 }
 #Dashboard .dashBody .nav-op .dashLink-1.articles-unsltd:hover, #Dashboard .dashBody .nav-op .dashLink-1.portfolio-unsltd:hover, #Dashboard .dashBody .nav-op .dashLink-1.arcadepalace-unsltd:hover, #Dashboard .dashBody .nav-cl .dashLink-1.articles-unsltd:hover, #Dashboard .dashBody .nav-cl .dashLink-1.portfolio-unsltd:hover, #Dashboard .dashBody .nav-cl .dashLink-1.arcadepalace-unsltd:hover {
   top: -20px;
@@ -150,14 +149,13 @@ ul {
 #Dashboard .dashBody .nav-op .dashLink-2.articles-sltd, #Dashboard .dashBody .nav-op .dashLink-2.portfolio-sltd, #Dashboard .dashBody .nav-op .dashLink-2.arcadepalace-sltd, #Dashboard .dashBody .nav-cl .dashLink-2.articles-sltd, #Dashboard .dashBody .nav-cl .dashLink-2.portfolio-sltd, #Dashboard .dashBody .nav-cl .dashLink-2.arcadepalace-sltd {
   top: 30px;
   right: 385px;
-  background: #076090;
+  background-color: #076090;
 }
 #Dashboard .dashBody .nav-op .dashLink-2.articles-unsltd, #Dashboard .dashBody .nav-op .dashLink-2.portfolio-unsltd, #Dashboard .dashBody .nav-op .dashLink-2.arcadepalace-unsltd, #Dashboard .dashBody .nav-cl .dashLink-2.articles-unsltd, #Dashboard .dashBody .nav-cl .dashLink-2.portfolio-unsltd, #Dashboard .dashBody .nav-cl .dashLink-2.arcadepalace-unsltd {
   top: -10px;
   right: calc(10px + 1 * 80px);
-  background: #004579;
-  transition: all 0.3s ease-in-out;
-  animation: dashlink-unsltd 0.5s forwards;
+  background-color: #004579;
+  animation: dashlink-unsltd 1s forwards;
 }
 #Dashboard .dashBody .nav-op .dashLink-2.articles-unsltd:hover, #Dashboard .dashBody .nav-op .dashLink-2.portfolio-unsltd:hover, #Dashboard .dashBody .nav-op .dashLink-2.arcadepalace-unsltd:hover, #Dashboard .dashBody .nav-cl .dashLink-2.articles-unsltd:hover, #Dashboard .dashBody .nav-cl .dashLink-2.portfolio-unsltd:hover, #Dashboard .dashBody .nav-cl .dashLink-2.arcadepalace-unsltd:hover {
   top: -20px;
@@ -208,14 +206,13 @@ ul {
 #Dashboard .dashBody .nav-op .dashLink-3.articles-sltd, #Dashboard .dashBody .nav-op .dashLink-3.portfolio-sltd, #Dashboard .dashBody .nav-op .dashLink-3.arcadepalace-sltd, #Dashboard .dashBody .nav-cl .dashLink-3.articles-sltd, #Dashboard .dashBody .nav-cl .dashLink-3.portfolio-sltd, #Dashboard .dashBody .nav-cl .dashLink-3.arcadepalace-sltd {
   top: 30px;
   right: 385px;
-  background: #076090;
+  background-color: #076090;
 }
 #Dashboard .dashBody .nav-op .dashLink-3.articles-unsltd, #Dashboard .dashBody .nav-op .dashLink-3.portfolio-unsltd, #Dashboard .dashBody .nav-op .dashLink-3.arcadepalace-unsltd, #Dashboard .dashBody .nav-cl .dashLink-3.articles-unsltd, #Dashboard .dashBody .nav-cl .dashLink-3.portfolio-unsltd, #Dashboard .dashBody .nav-cl .dashLink-3.arcadepalace-unsltd {
   top: -10px;
   right: calc(10px + 2 * 80px);
-  background: #004579;
-  transition: all 0.3s ease-in-out;
-  animation: dashlink-unsltd 0.5s forwards;
+  background-color: #004579;
+  animation: dashlink-unsltd 1s forwards;
 }
 #Dashboard .dashBody .nav-op .dashLink-3.articles-unsltd:hover, #Dashboard .dashBody .nav-op .dashLink-3.portfolio-unsltd:hover, #Dashboard .dashBody .nav-op .dashLink-3.arcadepalace-unsltd:hover, #Dashboard .dashBody .nav-cl .dashLink-3.articles-unsltd:hover, #Dashboard .dashBody .nav-cl .dashLink-3.portfolio-unsltd:hover, #Dashboard .dashBody .nav-cl .dashLink-3.arcadepalace-unsltd:hover {
   top: -20px;
@@ -1328,53 +1325,70 @@ ul {
   }
 }
 
-#Bookmark-1 {
-  z-index: 135;
-}
-
-#Bookmark-2 {
-  z-index: 100;
-}
-
-#Bookmark-1, #Bookmark-2 {
+#Bookmark {
   position: absolute;
   top: 0;
+  left: 0;
+}
+#Bookmark.bk-cl {
+  left: 0%;
+  animation: bk-cl-anim 1s ease-in-out;
+}
+#Bookmark.bk-op {
   left: 100%;
+  animation: bk-op-anim 1s ease-in-out;
+}
+@keyframes bk-op-anim {
+  0% {
+    left: 0%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+@keyframes bk-cl-anim {
+  0% {
+    left: 100%;
+  }
+  100% {
+    left: 0%;
+  }
+}
+#Bookmark #Bookmark-1 {
+  z-index: 135;
+}
+#Bookmark #Bookmark-2 {
+  z-index: 100;
+}
+#Bookmark #Bookmark-1, #Bookmark #Bookmark-2 {
+  position: absolute;
+  top: 0;
   width: 100%;
   height: 800px;
   transform-origin: left center;
-  transition: all 1s ease-in-out;
+  transform: rotate3d(1, 1, 1, 0deg);
 }
-#Bookmark-1.bk-cl, #Bookmark-2.bk-cl {
-  left: 0%;
+#Bookmark #Bookmark-1.swon, #Bookmark #Bookmark-2.swon {
+  animation: bk-switch-anim 1s linear;
 }
-#Bookmark-1.bk-op, #Bookmark-2.bk-op {
-  left: 100%;
-}
-#Bookmark-1.bk-swon, #Bookmark-2.bk-swon {
-  left: 100%;
-  transform: rotate3d(1, 1, 1, 0deg) skewY(0deg);
-  animation: bk-switch-anim 1s ease-in-out;
-}
-#Bookmark-1.bk-swoff, #Bookmark-2.bk-swoff {
-  left: 100%;
+#Bookmark #Bookmark-1.swoff, #Bookmark #Bookmark-2.swoff {
   animation: none;
 }
 @keyframes bk-switch-anim {
   0% {
-    transform: rotate3d(1, 1, 1, 0deg) skewY(0deg);
+    transform: rotate3d(1, 1, 1, 0deg) skewy(0deg);
   }
-  50% {
-    transform: rotate3d(0, 1, 0, 45deg) skewY(-10deg);
+  99% {
+    transform: rotate3d(0, 1, 0, 90deg) skewy(-10deg);
   }
   100% {
-    transform: rotate3d(0, 1, 0, 90deg) skewY(-10deg);
+    transform: rotate3d(1, 1, 1, 0deg) skewy(0deg);
   }
 }
-#Bookmark-1 .main_cat, #Bookmark-1 .page_trans-op, #Bookmark-1 .ribbon-op, #Bookmark-2 .main_cat, #Bookmark-2 .page_trans-op, #Bookmark-2 .ribbon-op {
+#Bookmark #Bookmark-1 .main_cat, #Bookmark #Bookmark-1 .page_trans-op, #Bookmark #Bookmark-1 .ribbon-op, #Bookmark #Bookmark-2 .main_cat, #Bookmark #Bookmark-2 .page_trans-op, #Bookmark #Bookmark-2 .ribbon-op {
   pointer-events: none;
 }
-#Bookmark-1 .main_cat, #Bookmark-2 .main_cat {
+#Bookmark #Bookmark-1 .main_cat, #Bookmark #Bookmark-2 .main_cat {
   position: absolute;
   top: -10px;
   left: 15px;
@@ -1387,14 +1401,14 @@ ul {
   border-right: 3px solid #fff;
   z-index: 130;
 }
-#Bookmark-1 .main_cat .main_cat_icon, #Bookmark-2 .main_cat .main_cat_icon {
+#Bookmark #Bookmark-1 .main_cat .main_cat_icon, #Bookmark #Bookmark-2 .main_cat .main_cat_icon {
   position: absolute;
   top: 100px;
   left: 0px;
   width: 64px;
   height: 64px;
 }
-#Bookmark-1 .page_trans-cl, #Bookmark-1 .page_trans-op, #Bookmark-2 .page_trans-cl, #Bookmark-2 .page_trans-op {
+#Bookmark #Bookmark-1 .page_trans-cl, #Bookmark #Bookmark-1 .page_trans-op, #Bookmark #Bookmark-2 .page_trans-cl, #Bookmark #Bookmark-2 .page_trans-op {
   position: absolute;
   top: 10px;
   left: 0;
@@ -1409,22 +1423,22 @@ ul {
   transform-origin: center left;
   box-shadow: inset 5px 0px 5px 5px rgba(0, 0, 0, 0.3333333333);
 }
-#Bookmark-1 .page_trans-cl, #Bookmark-2 .page_trans-cl {
+#Bookmark #Bookmark-1 .page_trans-cl, #Bookmark #Bookmark-2 .page_trans-cl {
   transform: rotate3d(1, 1, 1, 0deg);
   animation: page-transition-anim-closed 0.5s ease-in-out;
   z-index: 140;
 }
-#Bookmark-1 .page_trans-op, #Bookmark-2 .page_trans-op {
+#Bookmark #Bookmark-1 .page_trans-op, #Bookmark #Bookmark-2 .page_trans-op {
   transform: rotate3d(0, 1, 0, 90deg);
   animation: page-transition-anim-open 1.5s ease-in-out;
   z-index: 140;
 }
-#Bookmark-1 .swon, #Bookmark-2 .swon {
+#Bookmark #Bookmark-1 .swon, #Bookmark #Bookmark-2 .swon {
   transform: rotate3d(1, 1, 1, 0deg);
   z-index: 110;
   animation: page-transition-anim-switch 1s ease-in-out;
 }
-#Bookmark-1 .swoff, #Bookmark-2 .swoff {
+#Bookmark #Bookmark-1 .swoff, #Bookmark #Bookmark-2 .swoff {
   transform: rotate3d(1, 1, 1, 0deg);
   z-index: 110;
   animation-play-state: paused;
@@ -1453,11 +1467,11 @@ ul {
     transform: rotate3d(0, 1, 0, 90deg);
   }
 }
-#Bookmark-1 .ribbon-op, #Bookmark-1 .ribbon-cl, #Bookmark-2 .ribbon-op, #Bookmark-2 .ribbon-cl {
+#Bookmark #Bookmark-1 .ribbon-op, #Bookmark #Bookmark-1 .ribbon-cl, #Bookmark #Bookmark-2 .ribbon-op, #Bookmark #Bookmark-2 .ribbon-cl {
   width: 500px;
   height: 800px;
 }
-#Bookmark-1 .ribbon-op::before, #Bookmark-1 .ribbon-cl::before, #Bookmark-2 .ribbon-op::before, #Bookmark-2 .ribbon-cl::before {
+#Bookmark #Bookmark-1 .ribbon-op::before, #Bookmark #Bookmark-1 .ribbon-cl::before, #Bookmark #Bookmark-2 .ribbon-op::before, #Bookmark #Bookmark-2 .ribbon-cl::before {
   content: "";
   position: absolute;
   width: 70px;
@@ -1471,7 +1485,7 @@ ul {
   transition: all 1s ease-in-out;
   z-index: 120;
 }
-#Bookmark-1 .ribbon-op::after, #Bookmark-1 .ribbon-cl::after, #Bookmark-2 .ribbon-op::after, #Bookmark-2 .ribbon-cl::after {
+#Bookmark #Bookmark-1 .ribbon-op::after, #Bookmark #Bookmark-1 .ribbon-cl::after, #Bookmark #Bookmark-2 .ribbon-op::after, #Bookmark #Bookmark-2 .ribbon-cl::after {
   content: "";
   position: absolute;
   width: 35px;
@@ -1484,23 +1498,23 @@ ul {
   transition: all 1s ease-in-out;
   z-index: 120;
 }
-#Bookmark-1 .ribbon-cl::before, #Bookmark-2 .ribbon-cl::before {
+#Bookmark #Bookmark-1 .ribbon-cl::before, #Bookmark #Bookmark-2 .ribbon-cl::before {
   animation: bookmark-before-closed 1.5s ease-in-out;
   transform: skewY(-45deg) rotate(0deg);
   border-radius: 0 0 0 0;
 }
-#Bookmark-1 .ribbon-cl::after, #Bookmark-2 .ribbon-cl::after {
+#Bookmark #Bookmark-1 .ribbon-cl::after, #Bookmark #Bookmark-2 .ribbon-cl::after {
   transform: skewY(45deg) rotate(0deg);
   border-radius: 0 0 0 0;
   bottom: -50px;
   animation: bookmark-after-closed 1.5s ease-in-out;
 }
-#Bookmark-1 .ribbon-op::before, #Bookmark-2 .ribbon-op::before {
+#Bookmark #Bookmark-1 .ribbon-op::before, #Bookmark #Bookmark-2 .ribbon-op::before {
   transform: skewY(-45deg) rotate(0deg);
   border-radius: 0 0 0 0;
   animation: bookmark-before-open 1.5s ease-in-out;
 }
-#Bookmark-1 .ribbon-op::after, #Bookmark-2 .ribbon-op::after {
+#Bookmark #Bookmark-1 .ribbon-op::after, #Bookmark #Bookmark-2 .ribbon-op::after {
   transform: skewY(45deg) rotate(0deg);
   border-radius: 0 0 0 0;
   bottom: -50px;
