@@ -33,13 +33,14 @@ export default function Dashboard({bookmarkId}) {
 
     useEffect(() => {
         if (navigation.length === 0) return;
-
         setNavDynamicArray((prevArray) => {
-            const selectedLink = navigation.find(link => link.to === category.to);
+            const selectedLink = navigation.find(link => link.id === category.id);
             if (!selectedLink) return prevArray;
 
-            const filteredArray = prevArray.filter(link => link.to !== category.to);
-            return [selectedLink, ...filteredArray];
+            const filteredArray = prevArray.filter(link => link.id !== category.id);
+            const newArray = [...filteredArray];
+            newArray.splice(category.id, 0, selectedLink);
+            return newArray;
         })
     }, [navigation]);
 

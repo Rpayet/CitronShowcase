@@ -70,7 +70,7 @@ export default function BgPixiGenerator() {
 
     useEffect(() => {
         let startTime = performance.now();
-        let duration = 500; // Durée de la transition en millisecondes
+        let duration = 1000; // Durée de la transition en millisecondes
         let initialSpeed = { ...speed }; // Sauvegarder la vitesse initiale
         let targetSpeed = state ? { x: 25, y: 50 } : { x: 0.5, y: 0.25 };
 
@@ -83,7 +83,7 @@ export default function BgPixiGenerator() {
 
             // Interpolation entre les vitesses initiales et finales
             setSpeed({
-                x: initialSpeed.x + (targetSpeed.x - initialSpeed.x) * easedProgress,
+                x: (initialSpeed.x + (targetSpeed.x - initialSpeed.x) * easedProgress) * 2,
                 y: initialSpeed.y + (targetSpeed.y - initialSpeed.y) * easedProgress,
             });
 
@@ -96,10 +96,11 @@ export default function BgPixiGenerator() {
     }, [state]);
 
     useEffect(() => {
+
         const animate = () => {
             setTilePosition((prevPosition) => ({
-                x: prevPosition.x + speed.x,
-                y: prevPosition.y + speed.y,
+                x: !animus.dashboardComp.open ? prevPosition.x + speed.x : prevPosition.x - speed.x,
+                y: prevPosition.y + ((speed.y) / 3),
             }));
 
             animationRef.current = requestAnimationFrame(animate);
@@ -112,7 +113,7 @@ export default function BgPixiGenerator() {
                 cancelAnimationFrame(animationRef.current);
             }
         };
-    }, [speed]);
+    }, [speed, animus]);
 
     useEffect(() => {
         setPatternCoords(handleIconPosition(256, patternId, 0));

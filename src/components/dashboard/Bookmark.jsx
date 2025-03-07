@@ -24,13 +24,12 @@ export default function Bookmark({ id }) {
             return '';
         }
         setSwitchClass(getSwitchClass());
-    }, [dashboardComp])
+    }, [dashboardComp]);
 
     return (
         <div id={`Bookmark-${id}`} className={(id === 1) ? switchClass : ''}>
             <Dashboard bookmarkId={id} />
-            <div className={`ribbon-${!dashboardComp.open ? 'cl' : 'op'}`}></div>
-            <div className={`main_cat`}>
+            <div className={`ribbon-${!dashboardComp.open ? 'cl' : 'op'}`}>
                 <div className="main_cat_icon">
                     <Stage
                         width={64}

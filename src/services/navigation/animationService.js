@@ -15,17 +15,19 @@ export const usePageTransition = () => {
     const navigateWithAnimation = (fromPage, toPage, timeout=500) => {
         if (fromPage === toPage) return;
 
-        const isLanding = (page) => page === 'lemonify';
+        const isLanding = (page) => (page === '' || page === 'lemonify');
+
         const isLeavingLanding = isLanding(fromPage) && !isLanding(toPage);
+        const isEnteringLanding = !isLanding(fromPage) && isLanding(toPage);
         const isNavigatingBetweenPages = !isLanding(fromPage) && !isLanding(toPage);
 
         setAnimus(prevState => ({
             ...prevState,
-            [fromPage+'Comp']: false,
-            [toPage+'Comp']: true,
+            [fromPage + 'Comp']: false,
+            [toPage + 'Comp']: true,
             dashboardComp: {
-                ...animus.dashboardComp,
-                transition: (isNavigatingBetweenPages || isLeavingLanding),
+                open: (isLeavingLanding || !isEnteringLanding),
+                transition: (isNavigatingBetweenPages || !isLeavingLanding),
             },
             bgPattern: {
                 ...animus.bgPattern,
@@ -57,7 +59,7 @@ export const usePageTransition = () => {
     };
 
     const handleNavigation = (toPage) => {
-        const fromPage = subcategory.to === '' ? category.to : subcategory.to;
+        const fromPage = (subcategory.to === '') ? category.to : subcategory.to;
         navigateWithAnimation(fromPage, toPage, 500);
     };
 

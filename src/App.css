@@ -79,29 +79,31 @@ ul {
   display: flex;
   align-items: flex-start;
   border-radius: 1rem 1rem 0 0;
-  border: 3px solid #fff;
+  border: 3px solid #888;
   justify-content: flex-start;
   width: 70px;
-  height: 70px;
+  height: 100px;
   transform: translateY(0);
   transform-origin: bottom center;
   cursor: pointer;
   z-index: 1;
-  transition: all 0.5s ease-in-out;
+  transition: all 0.4s ease-in-out;
 }
 #Dashboard .dashBody .nav-op .dashLink-1.articles-sltd, #Dashboard .dashBody .nav-op .dashLink-1.portfolio-sltd, #Dashboard .dashBody .nav-op .dashLink-1.arcadepalace-sltd, #Dashboard .dashBody .nav-cl .dashLink-1.articles-sltd, #Dashboard .dashBody .nav-cl .dashLink-1.portfolio-sltd, #Dashboard .dashBody .nav-cl .dashLink-1.arcadepalace-sltd {
-  top: 30px;
-  right: 385px;
-  background-color: #076090;
+  top: 25px;
+  right: 375px;
+  width: 82px;
+  background: linear-gradient(to left, #032e45, #076192 20%);
 }
 #Dashboard .dashBody .nav-op .dashLink-1.articles-unsltd, #Dashboard .dashBody .nav-op .dashLink-1.portfolio-unsltd, #Dashboard .dashBody .nav-op .dashLink-1.arcadepalace-unsltd, #Dashboard .dashBody .nav-cl .dashLink-1.articles-unsltd, #Dashboard .dashBody .nav-cl .dashLink-1.portfolio-unsltd, #Dashboard .dashBody .nav-cl .dashLink-1.arcadepalace-unsltd {
-  top: -10px;
+  top: -20px;
   right: calc(10px + 0 * 80px);
   background-color: #004579;
   animation: dashlink-unsltd 1s forwards;
+  background: linear-gradient(to left, #076192, #076192 20%);
 }
 #Dashboard .dashBody .nav-op .dashLink-1.articles-unsltd:hover, #Dashboard .dashBody .nav-op .dashLink-1.portfolio-unsltd:hover, #Dashboard .dashBody .nav-op .dashLink-1.arcadepalace-unsltd:hover, #Dashboard .dashBody .nav-cl .dashLink-1.articles-unsltd:hover, #Dashboard .dashBody .nav-cl .dashLink-1.portfolio-unsltd:hover, #Dashboard .dashBody .nav-cl .dashLink-1.arcadepalace-unsltd:hover {
-  top: -20px;
+  top: -30px;
 }
 @keyframes dashlink-unsltd {
   0% {
@@ -115,7 +117,7 @@ ul {
   }
 }
 #Dashboard .dashBody .nav-op .dashLink-1 .navIcon, #Dashboard .dashBody .nav-cl .dashLink-1 .navIcon {
-  padding: 0;
+  padding: 0.5rem 0 0 0;
   transition: all 0.3s ease-in-out;
   transform: scale(0.8);
 }
@@ -136,29 +138,31 @@ ul {
   display: flex;
   align-items: flex-start;
   border-radius: 1rem 1rem 0 0;
-  border: 3px solid #fff;
+  border: 3px solid #888;
   justify-content: flex-start;
   width: 70px;
-  height: 70px;
+  height: 100px;
   transform: translateY(0);
   transform-origin: bottom center;
   cursor: pointer;
   z-index: 1;
-  transition: all 0.5s ease-in-out;
+  transition: all 0.4s ease-in-out;
 }
 #Dashboard .dashBody .nav-op .dashLink-2.articles-sltd, #Dashboard .dashBody .nav-op .dashLink-2.portfolio-sltd, #Dashboard .dashBody .nav-op .dashLink-2.arcadepalace-sltd, #Dashboard .dashBody .nav-cl .dashLink-2.articles-sltd, #Dashboard .dashBody .nav-cl .dashLink-2.portfolio-sltd, #Dashboard .dashBody .nav-cl .dashLink-2.arcadepalace-sltd {
-  top: 30px;
-  right: 385px;
-  background-color: #076090;
+  top: 25px;
+  right: 375px;
+  width: 82px;
+  background: linear-gradient(to left, #032e45, #076192 20%);
 }
 #Dashboard .dashBody .nav-op .dashLink-2.articles-unsltd, #Dashboard .dashBody .nav-op .dashLink-2.portfolio-unsltd, #Dashboard .dashBody .nav-op .dashLink-2.arcadepalace-unsltd, #Dashboard .dashBody .nav-cl .dashLink-2.articles-unsltd, #Dashboard .dashBody .nav-cl .dashLink-2.portfolio-unsltd, #Dashboard .dashBody .nav-cl .dashLink-2.arcadepalace-unsltd {
-  top: -10px;
+  top: -20px;
   right: calc(10px + 1 * 80px);
   background-color: #004579;
   animation: dashlink-unsltd 1s forwards;
+  background: linear-gradient(to left, #076192, #076192 20%);
 }
 #Dashboard .dashBody .nav-op .dashLink-2.articles-unsltd:hover, #Dashboard .dashBody .nav-op .dashLink-2.portfolio-unsltd:hover, #Dashboard .dashBody .nav-op .dashLink-2.arcadepalace-unsltd:hover, #Dashboard .dashBody .nav-cl .dashLink-2.articles-unsltd:hover, #Dashboard .dashBody .nav-cl .dashLink-2.portfolio-unsltd:hover, #Dashboard .dashBody .nav-cl .dashLink-2.arcadepalace-unsltd:hover {
-  top: -20px;
+  top: -30px;
 }
 @keyframes dashlink-unsltd {
   0% {
@@ -172,7 +176,7 @@ ul {
   }
 }
 #Dashboard .dashBody .nav-op .dashLink-2 .navIcon, #Dashboard .dashBody .nav-cl .dashLink-2 .navIcon {
-  padding: 0;
+  padding: 0.5rem 0 0 0;
   transition: all 0.3s ease-in-out;
   transform: scale(0.8);
 }
@@ -193,29 +197,31 @@ ul {
   display: flex;
   align-items: flex-start;
   border-radius: 1rem 1rem 0 0;
-  border: 3px solid #fff;
+  border: 3px solid #888;
   justify-content: flex-start;
   width: 70px;
-  height: 70px;
+  height: 100px;
   transform: translateY(0);
   transform-origin: bottom center;
   cursor: pointer;
   z-index: 1;
-  transition: all 0.5s ease-in-out;
+  transition: all 0.4s ease-in-out;
 }
 #Dashboard .dashBody .nav-op .dashLink-3.articles-sltd, #Dashboard .dashBody .nav-op .dashLink-3.portfolio-sltd, #Dashboard .dashBody .nav-op .dashLink-3.arcadepalace-sltd, #Dashboard .dashBody .nav-cl .dashLink-3.articles-sltd, #Dashboard .dashBody .nav-cl .dashLink-3.portfolio-sltd, #Dashboard .dashBody .nav-cl .dashLink-3.arcadepalace-sltd {
-  top: 30px;
-  right: 385px;
-  background-color: #076090;
+  top: 25px;
+  right: 375px;
+  width: 82px;
+  background: linear-gradient(to left, #032e45, #076192 20%);
 }
 #Dashboard .dashBody .nav-op .dashLink-3.articles-unsltd, #Dashboard .dashBody .nav-op .dashLink-3.portfolio-unsltd, #Dashboard .dashBody .nav-op .dashLink-3.arcadepalace-unsltd, #Dashboard .dashBody .nav-cl .dashLink-3.articles-unsltd, #Dashboard .dashBody .nav-cl .dashLink-3.portfolio-unsltd, #Dashboard .dashBody .nav-cl .dashLink-3.arcadepalace-unsltd {
-  top: -10px;
+  top: -20px;
   right: calc(10px + 2 * 80px);
   background-color: #004579;
   animation: dashlink-unsltd 1s forwards;
+  background: linear-gradient(to left, #076192, #076192 20%);
 }
 #Dashboard .dashBody .nav-op .dashLink-3.articles-unsltd:hover, #Dashboard .dashBody .nav-op .dashLink-3.portfolio-unsltd:hover, #Dashboard .dashBody .nav-op .dashLink-3.arcadepalace-unsltd:hover, #Dashboard .dashBody .nav-cl .dashLink-3.articles-unsltd:hover, #Dashboard .dashBody .nav-cl .dashLink-3.portfolio-unsltd:hover, #Dashboard .dashBody .nav-cl .dashLink-3.arcadepalace-unsltd:hover {
-  top: -20px;
+  top: -30px;
 }
 @keyframes dashlink-unsltd {
   0% {
@@ -229,7 +235,7 @@ ul {
   }
 }
 #Dashboard .dashBody .nav-op .dashLink-3 .navIcon, #Dashboard .dashBody .nav-cl .dashLink-3 .navIcon {
-  padding: 0;
+  padding: 0.5rem 0 0 0;
   transition: all 0.3s ease-in-out;
   transform: scale(0.8);
 }
@@ -1357,56 +1363,61 @@ ul {
 #Bookmark #Bookmark-1 {
   z-index: 135;
 }
+#Bookmark #Bookmark-1::before {
+  content: "";
+  position: absolute;
+  top: -10px;
+  left: 15px;
+  width: 75px;
+  height: 20px;
+  border-top: 3px solid #888;
+  border-left: 3px solid #888;
+  border-right: 3px solid #888;
+  border-radius: 1rem 1rem 0 0;
+  background: linear-gradient(to left, #032e45, #076192 20%);
+  z-index: -1;
+}
 #Bookmark #Bookmark-2 {
   z-index: 100;
 }
 #Bookmark #Bookmark-1, #Bookmark #Bookmark-2 {
   position: absolute;
   top: 0;
+  left: 0;
   width: 100%;
   height: 800px;
   transform-origin: left center;
   transform: rotate3d(1, 1, 1, 0deg);
 }
 #Bookmark #Bookmark-1.swon, #Bookmark #Bookmark-2.swon {
-  animation: bk-switch-anim 1s linear;
+  animation: bk-switch-anim 1s ease-in-out;
 }
 #Bookmark #Bookmark-1.swoff, #Bookmark #Bookmark-2.swoff {
   animation: none;
 }
 @keyframes bk-switch-anim {
   0% {
-    transform: rotate3d(1, 1, 1, 0deg) skewy(0deg);
+    top: 0;
+    transform: rotate3d(1, 1, 1, 0deg) skewy(0deg) scale(1);
+    filter: blur(0px) contrast(100%);
+  }
+  50% {
+    top: -50px;
   }
   99% {
-    transform: rotate3d(0, 1, 0, 90deg) skewy(-10deg);
+    left: -100px;
+    transform: rotate3d(0, 1, 0, 90deg) skewy(-15deg) scale(1.1);
+    filter: blur(6px) contrast(20%);
   }
   100% {
-    transform: rotate3d(1, 1, 1, 0deg) skewy(0deg);
+    top: 0;
+    left: 0;
+    transform: rotate3d(1, 1, 1, 0deg) skewy(0deg) scale(1);
+    filter: blur(0px) contrast(100%);
   }
 }
-#Bookmark #Bookmark-1 .main_cat, #Bookmark #Bookmark-1 .page_trans-op, #Bookmark #Bookmark-1 .ribbon-op, #Bookmark #Bookmark-2 .main_cat, #Bookmark #Bookmark-2 .page_trans-op, #Bookmark #Bookmark-2 .ribbon-op {
+#Bookmark #Bookmark-1 .page_trans-op, #Bookmark #Bookmark-1 .ribbon-op, #Bookmark #Bookmark-2 .page_trans-op, #Bookmark #Bookmark-2 .ribbon-op {
   pointer-events: none;
-}
-#Bookmark #Bookmark-1 .main_cat, #Bookmark #Bookmark-2 .main_cat {
-  position: absolute;
-  top: -10px;
-  left: 15px;
-  width: 73px;
-  height: 125px;
-  background: #076090;
-  border-radius: 10px 10px 0 0;
-  border-top: 3px solid #fff;
-  border-left: 3px solid #fff;
-  border-right: 3px solid #fff;
-  z-index: 130;
-}
-#Bookmark #Bookmark-1 .main_cat .main_cat_icon, #Bookmark #Bookmark-2 .main_cat .main_cat_icon {
-  position: absolute;
-  top: 100px;
-  left: 0px;
-  width: 64px;
-  height: 64px;
 }
 #Bookmark #Bookmark-1 .page_trans-cl, #Bookmark #Bookmark-1 .page_trans-op, #Bookmark #Bookmark-2 .page_trans-cl, #Bookmark #Bookmark-2 .page_trans-op {
   position: absolute;
@@ -1468,57 +1479,27 @@ ul {
   }
 }
 #Bookmark #Bookmark-1 .ribbon-op, #Bookmark #Bookmark-1 .ribbon-cl, #Bookmark #Bookmark-2 .ribbon-op, #Bookmark #Bookmark-2 .ribbon-cl {
-  width: 500px;
-  height: 800px;
-}
-#Bookmark #Bookmark-1 .ribbon-op::before, #Bookmark #Bookmark-1 .ribbon-cl::before, #Bookmark #Bookmark-2 .ribbon-op::before, #Bookmark #Bookmark-2 .ribbon-cl::before {
-  content: "";
-  position: absolute;
   width: 70px;
-  height: 95%;
-  left: 15px;
-  bottom: -30px;
-  background: linear-gradient(to bottom, #076192 10%, #05486C);
-  border-left: 3px solid #FFFFFF;
-  border-bottom: 3px solid #FFFFFF;
-  transform-origin: top center;
-  transition: all 1s ease-in-out;
-  z-index: 120;
-}
-#Bookmark #Bookmark-1 .ribbon-op::after, #Bookmark #Bookmark-1 .ribbon-cl::after, #Bookmark #Bookmark-2 .ribbon-op::after, #Bookmark #Bookmark-2 .ribbon-cl::after {
-  content: "";
+  height: 840px;
   position: absolute;
-  width: 35px;
-  height: 95%;
-  left: 50px;
+  left: 15px;
+  top: 10px;
   background: linear-gradient(to bottom, #076192 10%, #05486C);
-  border-right: 3px solid #FFFFFF;
-  border-bottom: 3px solid #FFFFFF;
+  border-bottom: 3px solid #888;
+  border-left: 3px solid #888;
+  border-right: 3px solid #888;
   transform-origin: top center;
+  transform: rotate(0deg);
+  clip-path: polygon(0% 0%, 100% 0%, 100% 95%, 50% 99%, 0% 95%);
   transition: all 1s ease-in-out;
   z-index: 120;
 }
-#Bookmark #Bookmark-1 .ribbon-cl::before, #Bookmark #Bookmark-2 .ribbon-cl::before {
-  animation: bookmark-before-closed 1.5s ease-in-out;
-  transform: skewY(-45deg) rotate(0deg);
-  border-radius: 0 0 0 0;
-}
-#Bookmark #Bookmark-1 .ribbon-cl::after, #Bookmark #Bookmark-2 .ribbon-cl::after {
-  transform: skewY(45deg) rotate(0deg);
-  border-radius: 0 0 0 0;
-  bottom: -50px;
-  animation: bookmark-after-closed 1.5s ease-in-out;
-}
-#Bookmark #Bookmark-1 .ribbon-op::before, #Bookmark #Bookmark-2 .ribbon-op::before {
-  transform: skewY(-45deg) rotate(0deg);
-  border-radius: 0 0 0 0;
-  animation: bookmark-before-open 1.5s ease-in-out;
-}
-#Bookmark #Bookmark-1 .ribbon-op::after, #Bookmark #Bookmark-2 .ribbon-op::after {
-  transform: skewY(45deg) rotate(0deg);
-  border-radius: 0 0 0 0;
-  bottom: -50px;
-  animation: bookmark-after-open 1.5s ease-in-out;
+#Bookmark #Bookmark-1 .ribbon-op .main_cat_icon, #Bookmark #Bookmark-1 .ribbon-cl .main_cat_icon, #Bookmark #Bookmark-2 .ribbon-op .main_cat_icon, #Bookmark #Bookmark-2 .ribbon-cl .main_cat_icon {
+  position: absolute;
+  top: 20px;
+  left: 0px;
+  width: 64px;
+  height: 64px;
 }
 @keyframes bookmark-before-closed {
   50% {
