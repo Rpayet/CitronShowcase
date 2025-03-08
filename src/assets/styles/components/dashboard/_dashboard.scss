@@ -46,9 +46,11 @@
     .dashBody {
         .nav-op {
             top: -35px;
+            transform: scale(1);
         }        
         .nav-cl {
             top: 35px;
+            transform: scale(.5);
         }
         .nav-op, .nav-cl {
             position: absolute;
@@ -67,32 +69,35 @@
                     border: 3px solid #888;
                     justify-content: flex-start;
                     width: 70px;
-                    height: 100px;
                     transform: translateY(0);
                     transform-origin: bottom center;
+                    clip-path: polygon(0% 0%, 100% 0%, 100% 95%, 50% 99%, 0% 95%);
                     cursor: pointer;
                     z-index: 1;
                     transition: all .4s ease-in-out;
                     &.articles-sltd, &.portfolio-sltd, &.arcadepalace-sltd {
                         top: 25px;
-                        right: 375px;
+                        left: 5px;
                         width: 82px;
+                        height: 100px;
                         background: linear-gradient(to left, #032e45, #076192 20%);
+                        animation: dashlink-sltd .5s backwards;
                     }
                     &.articles-unsltd, &.portfolio-unsltd, &.arcadepalace-unsltd {
+                        height: 100px;
                         top: -20px;
-                        right: calc(10px + #{$i - 1} * 80px);
+                        left: calc(380px - (#{$i - 1} * 80px));
                         background-color: #004579;
-                        animation: dashlink-unsltd 1s forwards;
                         background: linear-gradient(to left, #076192, #076192 20%);
+                        animation: dashlink-sltd .5s forwards;
                         &:hover {
                             top: -30px;
                         }
                     }
-                    @keyframes dashlink-unsltd {
-                        0% {transform: translateY(100%);}
-                        80% {transform: translateY(100%);}
-                        100% {transform: translateY(0);}
+                    @keyframes dashlink-sltd {
+                        0% {top: 20px; height: 840px; }
+                        80% {top: 20px; height: 840px; }
+                        100% {top: -20px; height: 100px; }
                     }
                     .navIcon {
                         padding: .5rem 0 0 0;

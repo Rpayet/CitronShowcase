@@ -15,7 +15,8 @@ export default function Bookmark({ id }) {
     const { dashboardComp } = animus;
     const { category } = dashboardContent;
 
-    const [ switchClass, setSwitchClass ] = useState('');
+    const [ bkSwitchClass, setBkSwitchClass ] = useState('');
+    const [ ribbonSwitchClass, setRibbonSwitchClass ] = useState('');
 
     useEffect(() => {
         const getSwitchClass = () => {
@@ -23,13 +24,23 @@ export default function Bookmark({ id }) {
             if (dashboardComp.open && !dashboardComp.transition) return 'swoff';
             return '';
         }
-        setSwitchClass(getSwitchClass());
+        setBkSwitchClass(getSwitchClass());
     }, [dashboardComp]);
 
+    useEffect(() => {
+        if (id === 1) {
+            setRibbonSwitchClass('ribbon-swon');
+        } else if (id === 2) {
+            setRibbonSwitchClass(`ribbon-btn-${category.id}`);
+        } else {
+            setRibbonSwitchClass('');
+        }
+    }, [category]);
+
     return (
-        <div id={`Bookmark-${id}`} className={(id === 1) ? switchClass : ''}>
+        <div id={`Bookmark-${id}`} className={(id === 1) ? bkSwitchClass : ''}>
             <Dashboard bookmarkId={id} />
-            <div className={`ribbon-${!dashboardComp.open ? 'cl' : 'op'}`}>
+            <div className={`ribbon-${!dashboardComp.open ? 'cl' : 'op'} ${dashboardComp.transition ? ribbonSwitchClass : ''}`}>
                 <div className="main_cat_icon">
                     <Stage
                         width={64}
@@ -40,7 +51,6 @@ export default function Bookmark({ id }) {
                                 position={handleIconPosition(64, category.id, 0)}
                                 anchor={[0,0]}
                                 scale={1} />
-
                     </Stage>
                 </div>
             </div>
