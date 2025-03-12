@@ -6,7 +6,7 @@ import { useIcon } from "../../services/iconService";
 import { AppContext } from "../../context/AppProvider";
 import { AnimationContext } from "../../context/AnimationContext";
 
-export default function Bookmark({ id }) {
+export default function Bookmark() {
 
     const { handleIconPosition } = useIcon();
     const { dashboardContent } = useContext(DashboardContext);
@@ -27,19 +27,18 @@ export default function Bookmark({ id }) {
         setBkSwitchClass(getSwitchClass());
     }, [dashboardComp]);
 
-    useEffect(() => {
-        if (id === 1) {
-            setRibbonSwitchClass('ribbon-swon');
-        } else if (id === 2) {
-            setRibbonSwitchClass(`ribbon-btn-${category.id}`);
-        } else {
-            setRibbonSwitchClass('');
-        }
-    }, [category]);
+    // useEffect(() => {
+    //     if (id === 1) {
+    //         setRibbonSwitchClass('ribbon-swon');
+    //     } else if (id === 2) {
+    //         setRibbonSwitchClass(`ribbon-btn-${category.id}`);
+    //     } else {
+    //         setRibbonSwitchClass('');
+    //     }
+    // }, [category]);
 
     return (
-        <div id={`Bookmark-${id}`} className={(id === 1) ? bkSwitchClass : ''}>
-            <Dashboard bookmarkId={id} />
+        <div id="Bookmark" className={`bk-${!dashboardComp.open ? 'cl' : 'op'} ${bkSwitchClass}`}>
             <div className={`ribbon-${!dashboardComp.open ? 'cl' : 'op'} ${dashboardComp.transition ? ribbonSwitchClass : ''}`}>
                 <div className="main_cat_icon">
                     <Stage

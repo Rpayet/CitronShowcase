@@ -8,7 +8,7 @@ import { AppContext } from "../../context/AppProvider";
 import { isPageRefreshed } from "../../services/navigation/navigationService";
 import { useIcon } from "../../services/iconService";
 
-export default function Dashboard({bookmarkId}) {
+export default function Dashboard() {
 
     const { handleNavigation } = usePageTransition();
     const { handleIconPosition } = useIcon();
@@ -26,10 +26,19 @@ export default function Dashboard({bookmarkId}) {
         const duration = isPageRefreshed() ? "0s" : ".7s";
         document.documentElement.style.setProperty("--dash-animation-duration", duration);
     };
+
+    const dashboardPosition = () => {
+        const position = dashboardComp.open ? "100%" : "0%";
+        document.documentElement.style.setProperty("--dash-position", position);
+    }
     
     useEffect(() => {
-        updateAnimationDuration();
-    }, [isPageRefreshed()]);   
+        updateAnimationDuration();        
+    }, [isPageRefreshed()]);
+
+    useEffect(() => {
+        dashboardPosition();
+    }, [dashboardComp.open]);
 
     useEffect(() => {
         if (navigation.length === 0) return;
@@ -87,7 +96,7 @@ export default function Dashboard({bookmarkId}) {
                             }
                         })}
                     </p> */}
-                    {bookmarkId === 2 && navDynamicArray.map((link) => {
+                    {navDynamicArray.map((link) => {
                         if (link.to === '') return;
                         return (
                             <button

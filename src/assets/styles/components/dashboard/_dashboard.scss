@@ -4,12 +4,13 @@
     padding: 1rem;
     position: absolute;
     top: 0;
-    left: 0;
+    left: var(--dash-position);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     gap: 1.5rem;
     z-index: 120;
+    transition: all 1s ease-in-out;
     .header, .dashBody {
         .dashLink {
             font-size: 1rem;

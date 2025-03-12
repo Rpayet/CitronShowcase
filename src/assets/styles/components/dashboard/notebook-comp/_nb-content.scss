@@ -1,24 +1,11 @@
 #Nb_content {
     position: relative;
     top: 0;
-    z-index: 100;
-    transition: all 1s ease-in-out;
+    left: var(--nb-turn-left);
     width: 500px;
     height: 800px;
-
-    &.nb_ct-cl {
-        left: 0%;
-        &::before {
-            border-radius: 10px 40px 40px 10px;
-        }
-    }
-
-    &.nb_ct-op {
-        left: 100%;
-        &::before {
-            border-radius: 0px 40px 40px 0px;
-        }
-    }
+    transition: all 1s ease-in-out;
+    z-index: 100;
 
     &::before {
         content: '';
@@ -29,22 +16,12 @@
         left: 0;
         transform-origin: right center;
         background: radial-gradient(#583E2A, #281B12);
+        border-radius: var(--nb-ct-border-radius) 40px 40px var(--nb-ct-border-radius);
         z-index: 1;
+        transition: all 1s ease-in-out;
     }
 
-    .pages_bg-cl {
-        &::before, &::after {
-            border-radius: 10px 40px 40px 10px;
-        }
-    }
-
-    .pages_bg-op {
-        &::before, &::after {
-            border-radius: 0px 40px 40px 0px;
-        }
-    }
-
-    .pages_bg-cl, .pages_bg-op {
+    .pages_bg {
         position: absolute;
         top: 10px;
         left: 0;
@@ -66,11 +43,13 @@
         &::before {
             top: 0px;
             z-index: -2;
+            border-radius: var(--nb-ct-border-radius) 40px 40px var(--nb-ct-border-radius);
         }
 
         &::after {
             top: -5px;
             z-index: -1;
+            border-radius: var(--nb-ct-border-radius) 40px 40px var(--nb-ct-border-radius);
         }
 
         

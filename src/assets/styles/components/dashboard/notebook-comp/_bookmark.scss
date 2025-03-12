@@ -18,13 +18,10 @@
         0% { left: 100% }
         100% { left: 0%; }
     }
-    #Bookmark-1 {
+    #Bookmark {
         z-index: 135;
     }
-    #Bookmark-2 {
-        z-index: 100;
-    }
-    #Bookmark-1, #Bookmark-2 {
+    #Bookmark {
         position: absolute;
         top: 0;
         left: 0;
@@ -83,7 +80,7 @@
             z-index: 140;
         }
         .page_trans-op {
-            transform: rotate3d(0, 1, 0, 90deg);
+            transform: rotate3d(0, 1, 0, 45deg);
             animation: page-transition-anim-open 1.5s ease-in-out;
             z-index: 140;
         }

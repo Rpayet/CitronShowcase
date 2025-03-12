@@ -4,11 +4,14 @@
 #Nb_cover {
     position: absolute;
     top: 0;
+    left: var(--nb-turn-left);
     width: 100%;
     height: 100%;
     z-index: 150;
     transform-origin: left center;
+    transform: var(--nb-rotate-3d);
     filter: drop-shadow(1px 2px 2px #00000055);
+    transition: all 1s ease-in-out;
 
     &::before { 
         content: '';
@@ -21,40 +24,5 @@
         border-radius: 10px 40px 40px 0px;
         box-shadow: inset -5px 2px 6px 0px #93643f;
         z-index: 1;
-    }
-
-    &.nbc-cl {
-        left: 0%;
-        transform: rotate3d(1, 1, 1, 0deg);
-        animation: CoverTurn-closed 1s ease-in-out;
-
-    }
-
-    &.nbc-op {
-        left: 100%;
-        transform: rotate3d(0, 1, 0, 90deg);
-        animation: CoverTurn-open 1.15s ease-in-out;
-    }
-
-    @keyframes CoverTurn-open {
-        0% {
-            left: 0%;
-            transform: rotate3d(1, 1, 1, 0deg);
-        }
-        100% {
-            left: 100%;
-            transform: rotate3d(0, 1, 0, 90deg);
-        }
-    }
-
-    @keyframes CoverTurn-closed {
-        0% {
-            left: 100%;
-            transform: rotate3d(0, 1, 0, 90deg);
-        }
-        100% {
-            left: 0%;
-            transform: rotate3d(1, 1, 1, 0deg);
-        }
     }
 }

@@ -5,22 +5,13 @@
 #Notebook {
     position: relative;
     top: 50%;
+    left: var(--nb-left);
     width: 500px;
     height: 800px;
     transform-origin: center;
-    filter: drop-shadow(-10px 10px 2px #00000055);
+    filter: drop-shadow(-5px 5px 2px #00000055);
     transition: all 1s ease-in-out;
-
-    &.nb-cl {
-        transform: translate(-50%, -50%) rotate(-5deg);
-        left: 70%;
-    } 
-
-    &.nb-op {
-        transform: translate(-50%, -50%) rotate(0deg);
-        left: -250px;
-    }
-
+    transform: translate(-50%, -50%) rotate(var(--nb-rotate));
 }
 
 

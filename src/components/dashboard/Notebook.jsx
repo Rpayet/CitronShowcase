@@ -99,21 +99,34 @@ export default function Notebook() {
         }
     },[]);
 
+    const handleNotebookPosition = () => {
+        const nb_left = !dashboardComp.open ? "70%" : "-250px";
+        const rotation = !dashboardComp.open ? "-5deg" : "0deg";
+        const rotation3d = !dashboardComp.open ? "rotate3d(1, 1, 1, 0deg)" : "rotate3d(0, 1, 0, 90deg)";
+        const borderRadius = !dashboardComp.open ? "10px" : "0px";
+        const nb_turn_left = !dashboardComp.open ? "0%" : "100%";
+        document.documentElement.style.setProperty("--nb-left", nb_left);
+        document.documentElement.style.setProperty("--nb-rotate", rotation);
+        document.documentElement.style.setProperty("--nb-ct-border-radius", borderRadius);
+        document.documentElement.style.setProperty("--nb-turn-left", nb_turn_left);
+        document.documentElement.style.setProperty("--nb-rotate-3d", rotation3d);
+    }
+
+    useEffect(()=> {
+        handleNotebookPosition();
+    }, [dashboardComp.open]);
+
     return (
-        <div id="Notebook" className={`nb-${!dashboardComp.open ? 'cl' : 'op'}`}>
+        <div id="Notebook">
             {/** Notebook content - navigation, filters & options */}
-            <div id="Nb_content" className={`nb_ct-${!dashboardComp.open ? 'cl' : 'op'}`}>
-                <div className={`pages_bg-${!dashboardComp.open ? 'cl' : 'op' }`}>
-                    <div className={`page-main-${!dashboardComp.open ? 'cl' : 'op'}`}></div>
-                </div>
+            <div id="Nb_content">
+                <div className="pages_bg"></div>
             </div>
             {/** Bookmark - styles & category reminder */}
-            <div id="Bookmark" className={`bk-${!dashboardComp.open ? 'cl' : 'op'}`}>
-                <Bookmark id={1} />
-                <Bookmark id={2} />
-            </div>
+            <Bookmark />
+            <Dashboard />
             {/** Cover */}
-            <div id="Nb_cover" className={`nbc-${!dashboardComp.open ? 'cl' : 'op'}`}>
+            <div id="Nb_cover">
                 {/** Landing Navigation */}	
                 <nav id="Nb_nav">
                     <ul>
@@ -142,7 +155,7 @@ export default function Notebook() {
                     </ul>
                 </nav>
                 {/** Frontpage - Header use */}
-                <div id="Nb_frontpage" className={`nbf-${!dashboardComp.open ? 'cl' : 'op'}`}>
+                <div id="Nb_frontpage">
                     <div className="nb_h1">
                         <h1>Design & code <br/><span>Robin Payet</span></h1>
                         <div className="seam"></div>

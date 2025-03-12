@@ -22,12 +22,13 @@ ul {
   padding: 1rem;
   position: absolute;
   top: 0;
-  left: 0;
+  left: var(--dash-position);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   gap: 1.5rem;
   z-index: 120;
+  transition: all 1s ease-in-out;
 }
 #Dashboard .header .dashLink, #Dashboard .dashBody .dashLink {
   font-size: 1rem;
@@ -950,22 +951,11 @@ ul {
 #Nb_content {
   position: relative;
   top: 0;
-  z-index: 100;
-  transition: all 1s ease-in-out;
+  left: var(--nb-turn-left);
   width: 500px;
   height: 800px;
-}
-#Nb_content.nb_ct-cl {
-  left: 0%;
-}
-#Nb_content.nb_ct-cl::before {
-  border-radius: 10px 40px 40px 10px;
-}
-#Nb_content.nb_ct-op {
-  left: 100%;
-}
-#Nb_content.nb_ct-op::before {
-  border-radius: 0px 40px 40px 0px;
+  transition: all 1s ease-in-out;
+  z-index: 100;
 }
 #Nb_content::before {
   content: "";
@@ -976,15 +966,11 @@ ul {
   left: 0;
   transform-origin: right center;
   background: radial-gradient(#583E2A, #281B12);
+  border-radius: var(--nb-ct-border-radius) 40px 40px var(--nb-ct-border-radius);
   z-index: 1;
+  transition: all 1s ease-in-out;
 }
-#Nb_content .pages_bg-cl::before, #Nb_content .pages_bg-cl::after {
-  border-radius: 10px 40px 40px 10px;
-}
-#Nb_content .pages_bg-op::before, #Nb_content .pages_bg-op::after {
-  border-radius: 0px 40px 40px 0px;
-}
-#Nb_content .pages_bg-cl, #Nb_content .pages_bg-op {
+#Nb_content .pages_bg {
   position: absolute;
   top: 10px;
   left: 0;
@@ -993,7 +979,7 @@ ul {
   transition: all 1s ease-in-out;
   z-index: 10;
 }
-#Nb_content .pages_bg-cl::before, #Nb_content .pages_bg-cl::after, #Nb_content .pages_bg-op::before, #Nb_content .pages_bg-op::after {
+#Nb_content .pages_bg::before, #Nb_content .pages_bg::after {
   content: "";
   position: absolute;
   left: 0;
@@ -1002,13 +988,15 @@ ul {
   background: #e6e5de;
   border: 1px solid #000;
 }
-#Nb_content .pages_bg-cl::before, #Nb_content .pages_bg-op::before {
+#Nb_content .pages_bg::before {
   top: 0px;
   z-index: -2;
+  border-radius: var(--nb-ct-border-radius) 40px 40px var(--nb-ct-border-radius);
 }
-#Nb_content .pages_bg-cl::after, #Nb_content .pages_bg-op::after {
+#Nb_content .pages_bg::after {
   top: -5px;
   z-index: -1;
+  border-radius: var(--nb-ct-border-radius) 40px 40px var(--nb-ct-border-radius);
 }
 
 #Nb_frontpage {
@@ -1018,15 +1006,10 @@ ul {
   transform: translate(-50%, -50%);
   transform-origin: left center;
   width: 95%;
+  height: 97%;
   background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='25' ry='25' stroke='%23734E32' stroke-width='4' stroke-dasharray='6%2c 14' stroke-dashoffset='0' stroke-linecap='square'/%3e%3c/svg%3e");
   z-index: 110;
   transition: all 1s ease-in-out;
-}
-#Nb_frontpage.nbf-cl {
-  height: 97%;
-}
-#Nb_frontpage.nbf-op {
-  height: 99%;
 }
 #Nb_frontpage .nb_h1 {
   position: relative;
@@ -1302,11 +1285,14 @@ ul {
 #Nb_cover {
   position: absolute;
   top: 0;
+  left: var(--nb-turn-left);
   width: 100%;
   height: 100%;
   z-index: 150;
   transform-origin: left center;
+  transform: var(--nb-rotate-3d);
   filter: drop-shadow(1px 2px 2px rgba(0, 0, 0, 0.3333333333));
+  transition: all 1s ease-in-out;
 }
 #Nb_cover::before {
   content: "";
@@ -1319,36 +1305,6 @@ ul {
   border-radius: 10px 40px 40px 0px;
   box-shadow: inset -5px 2px 6px 0px #93643f;
   z-index: 1;
-}
-#Nb_cover.nbc-cl {
-  left: 0%;
-  transform: rotate3d(1, 1, 1, 0deg);
-  animation: CoverTurn-closed 1s ease-in-out;
-}
-#Nb_cover.nbc-op {
-  left: 100%;
-  transform: rotate3d(0, 1, 0, 90deg);
-  animation: CoverTurn-open 1.15s ease-in-out;
-}
-@keyframes CoverTurn-open {
-  0% {
-    left: 0%;
-    transform: rotate3d(1, 1, 1, 0deg);
-  }
-  100% {
-    left: 100%;
-    transform: rotate3d(0, 1, 0, 90deg);
-  }
-}
-@keyframes CoverTurn-closed {
-  0% {
-    left: 100%;
-    transform: rotate3d(0, 1, 0, 90deg);
-  }
-  100% {
-    left: 0%;
-    transform: rotate3d(1, 1, 1, 0deg);
-  }
 }
 
 #Bookmark {
@@ -1380,13 +1336,10 @@ ul {
     left: 0%;
   }
 }
-#Bookmark #Bookmark-1 {
+#Bookmark #Bookmark {
   z-index: 135;
 }
-#Bookmark #Bookmark-2 {
-  z-index: 100;
-}
-#Bookmark #Bookmark-1, #Bookmark #Bookmark-2 {
+#Bookmark #Bookmark {
   position: absolute;
   top: 0;
   left: 0;
@@ -1395,10 +1348,10 @@ ul {
   transform-origin: left center;
   transform: rotate3d(1, 1, 1, 0deg);
 }
-#Bookmark #Bookmark-1.swon, #Bookmark #Bookmark-2.swon {
+#Bookmark #Bookmark.swon {
   animation: bk-switch-anim 0.7s ease-in-out 0.3s;
 }
-#Bookmark #Bookmark-1.swoff, #Bookmark #Bookmark-2.swoff {
+#Bookmark #Bookmark.swoff {
   animation: none;
 }
 @keyframes bk-switch-anim {
@@ -1422,10 +1375,10 @@ ul {
     filter: blur(0px) contrast(100%);
   }
 }
-#Bookmark #Bookmark-1 .page_trans-op, #Bookmark #Bookmark-1 .ribbon-op, #Bookmark #Bookmark-2 .page_trans-op, #Bookmark #Bookmark-2 .ribbon-op {
+#Bookmark #Bookmark .page_trans-op, #Bookmark #Bookmark .ribbon-op {
   pointer-events: none;
 }
-#Bookmark #Bookmark-1 .page_trans-cl, #Bookmark #Bookmark-1 .page_trans-op, #Bookmark #Bookmark-2 .page_trans-cl, #Bookmark #Bookmark-2 .page_trans-op {
+#Bookmark #Bookmark .page_trans-cl, #Bookmark #Bookmark .page_trans-op {
   position: absolute;
   top: 10px;
   left: 0;
@@ -1440,22 +1393,22 @@ ul {
   transform-origin: center left;
   box-shadow: inset 5px 0px 5px 5px rgba(0, 0, 0, 0.3333333333);
 }
-#Bookmark #Bookmark-1 .page_trans-cl, #Bookmark #Bookmark-2 .page_trans-cl {
+#Bookmark #Bookmark .page_trans-cl {
   transform: rotate3d(1, 1, 1, 0deg);
   animation: page-transition-anim-closed 0.5s ease-in-out;
   z-index: 140;
 }
-#Bookmark #Bookmark-1 .page_trans-op, #Bookmark #Bookmark-2 .page_trans-op {
-  transform: rotate3d(0, 1, 0, 90deg);
+#Bookmark #Bookmark .page_trans-op {
+  transform: rotate3d(0, 1, 0, 45deg);
   animation: page-transition-anim-open 1.5s ease-in-out;
   z-index: 140;
 }
-#Bookmark #Bookmark-1 .swon, #Bookmark #Bookmark-2 .swon {
+#Bookmark #Bookmark .swon {
   transform: rotate3d(1, 1, 1, 0deg);
   z-index: 110;
   animation: page-transition-anim-switch 1s ease-in-out;
 }
-#Bookmark #Bookmark-1 .swoff, #Bookmark #Bookmark-2 .swoff {
+#Bookmark #Bookmark .swoff {
   transform: rotate3d(1, 1, 1, 0deg);
   z-index: 110;
   animation-play-state: paused;
@@ -1484,7 +1437,7 @@ ul {
     transform: rotate3d(0, 1, 0, 90deg);
   }
 }
-#Bookmark #Bookmark-1 .ribbon-op, #Bookmark #Bookmark-1 .ribbon-cl, #Bookmark #Bookmark-2 .ribbon-op, #Bookmark #Bookmark-2 .ribbon-cl {
+#Bookmark #Bookmark .ribbon-op, #Bookmark #Bookmark .ribbon-cl {
   width: 70px;
   height: 840px;
   position: absolute;
@@ -1499,7 +1452,7 @@ ul {
   transition: all 1s ease-in-out;
   z-index: 120;
 }
-#Bookmark #Bookmark-1 .ribbon-op::before, #Bookmark #Bookmark-1 .ribbon-cl::before, #Bookmark #Bookmark-2 .ribbon-op::before, #Bookmark #Bookmark-2 .ribbon-cl::before {
+#Bookmark #Bookmark .ribbon-op::before, #Bookmark #Bookmark .ribbon-cl::before {
   content: "";
   position: absolute;
   top: -10px;
@@ -1513,19 +1466,19 @@ ul {
   background: linear-gradient(to left, #032e45, #076192 20%);
   z-index: -1;
 }
-#Bookmark #Bookmark-1 .ribbon-op.ribbon-swon-1, #Bookmark #Bookmark-1 .ribbon-cl.ribbon-swon-1, #Bookmark #Bookmark-2 .ribbon-op.ribbon-swon-1, #Bookmark #Bookmark-2 .ribbon-cl.ribbon-swon-1 {
+#Bookmark #Bookmark .ribbon-op.ribbon-swon-1, #Bookmark #Bookmark .ribbon-cl.ribbon-swon-1 {
   animation: ribbon-anim-switch-1 0.6s ease-in-out 0.4s;
 }
-#Bookmark #Bookmark-1 .ribbon-op.ribbon-btn-1, #Bookmark #Bookmark-1 .ribbon-cl.ribbon-btn-1, #Bookmark #Bookmark-2 .ribbon-op.ribbon-btn-1, #Bookmark #Bookmark-2 .ribbon-cl.ribbon-btn-1 {
+#Bookmark #Bookmark .ribbon-op.ribbon-btn-1, #Bookmark #Bookmark .ribbon-cl.ribbon-btn-1 {
   animation: ribbon-anim-switch-btn-1 0.5s ease-in-out;
 }
-#Bookmark #Bookmark-1 .ribbon-op.ribbon-btn-2, #Bookmark #Bookmark-1 .ribbon-cl.ribbon-btn-2, #Bookmark #Bookmark-2 .ribbon-op.ribbon-btn-2, #Bookmark #Bookmark-2 .ribbon-cl.ribbon-btn-2 {
+#Bookmark #Bookmark .ribbon-op.ribbon-btn-2, #Bookmark #Bookmark .ribbon-cl.ribbon-btn-2 {
   animation: ribbon-anim-switch-btn-2 0.5s ease-in-out;
 }
-#Bookmark #Bookmark-1 .ribbon-op.ribbon-btn-3, #Bookmark #Bookmark-1 .ribbon-cl.ribbon-btn-3, #Bookmark #Bookmark-2 .ribbon-op.ribbon-btn-3, #Bookmark #Bookmark-2 .ribbon-cl.ribbon-btn-3 {
+#Bookmark #Bookmark .ribbon-op.ribbon-btn-3, #Bookmark #Bookmark .ribbon-cl.ribbon-btn-3 {
   animation: ribbon-anim-switch-btn-3 0.5s ease-in-out;
 }
-#Bookmark #Bookmark-1 .ribbon-op .main_cat_icon, #Bookmark #Bookmark-1 .ribbon-cl .main_cat_icon, #Bookmark #Bookmark-2 .ribbon-op .main_cat_icon, #Bookmark #Bookmark-2 .ribbon-cl .main_cat_icon {
+#Bookmark #Bookmark .ribbon-op .main_cat_icon, #Bookmark #Bookmark .ribbon-cl .main_cat_icon {
   position: absolute;
   top: 20px;
   left: 0px;
@@ -1574,19 +1527,13 @@ ul {
 #Notebook {
   position: relative;
   top: 50%;
+  left: var(--nb-left);
   width: 500px;
   height: 800px;
   transform-origin: center;
-  filter: drop-shadow(-10px 10px 2px rgba(0, 0, 0, 0.3333333333));
+  filter: drop-shadow(-5px 5px 2px rgba(0, 0, 0, 0.3333333333));
   transition: all 1s ease-in-out;
-}
-#Notebook.nb-cl {
-  transform: translate(-50%, -50%) rotate(-5deg);
-  left: 70%;
-}
-#Notebook.nb-op {
-  transform: translate(-50%, -50%) rotate(0deg);
-  left: -250px;
+  transform: translate(-50%, -50%) rotate(var(--nb-rotate));
 }
 
 #Landing {
