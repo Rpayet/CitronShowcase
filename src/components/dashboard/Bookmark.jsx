@@ -6,6 +6,14 @@ import { useIcon } from "../../services/iconService";
 import { AppContext } from "../../context/AppProvider";
 import { AnimationContext } from "../../context/AnimationContext";
 
+const PageTransition = () => {
+
+    const [zIndex, setZIndex] = useState();
+    return (
+        <div className="page_trans"></div>
+    )
+}
+
 export default function Bookmark() {
 
     const { handleIconPosition } = useIcon();
@@ -15,34 +23,25 @@ export default function Bookmark() {
     const { dashboardComp } = animus;
     const { category } = dashboardContent;
 
-    const [ bkSwitchClass, setBkSwitchClass ] = useState('');
-    const [ ribbonSwitchClass, setRibbonSwitchClass ] = useState('');
+    const getSwitchAnimation = () => {
+        const switchRotate = dashboardComp.transition ? 'bk-switch-anim .7s ease-in-out .3s' : 'none';
+        const ribbonHeight = dashboardComp.transition ? '0px' : '840px';
+        document.documentElement.style.setProperty('--bk-switch-anim', switchRotate);
+        document.documentElement.style.setProperty('--ribbon-height', ribbonHeight);
+    }
 
     useEffect(() => {
-        const getSwitchClass = () => {
-            if (dashboardComp.open && dashboardComp.transition) return 'swon';
-            if (dashboardComp.open && !dashboardComp.transition) return 'swoff';
-            return '';
-        }
-        setBkSwitchClass(getSwitchClass());
+        getSwitchAnimation();
     }, [dashboardComp]);
 
-    // useEffect(() => {
-    //     if (id === 1) {
-    //         setRibbonSwitchClass('ribbon-swon');
-    //     } else if (id === 2) {
-    //         setRibbonSwitchClass(`ribbon-btn-${category.id}`);
-    //     } else {
-    //         setRibbonSwitchClass('');
-    //     }
-    // }, [category]);
-
     return (
-        <div id="Bookmark" className={`bk-${!dashboardComp.open ? 'cl' : 'op'} ${bkSwitchClass}`}>
-            <div className={`ribbon-${!dashboardComp.open ? 'cl' : 'op'} ${dashboardComp.transition ? ribbonSwitchClass : ''}`}>
+        <div id="Bookmark">
+            {dashboardComp.transition && <PageTransition />}
+            <Dashboard />
+            <div className="ribbon"> 
                 <div className="main_cat_icon">
                     <Stage
-                        width={64}
+                        width={64}f
                         height={64}
                         options={{backgroundAlpha: 0}}>
                             <Sprite
@@ -53,7 +52,7 @@ export default function Bookmark() {
                     </Stage>
                 </div>
             </div>
-            <div className={`page_trans-${!dashboardComp.open ? 'cl' : 'op'}`}></div>
+            {dashboardComp.open && <PageTransition />}
         </div>
     )
 }

@@ -124,7 +124,6 @@ export default function Notebook() {
             </div>
             {/** Bookmark - styles & category reminder */}
             <Bookmark />
-            <Dashboard />
             {/** Cover */}
             <div id="Nb_cover">
                 {/** Landing Navigation */}	

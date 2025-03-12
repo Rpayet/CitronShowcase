@@ -26,19 +26,10 @@ export default function Dashboard() {
         const duration = isPageRefreshed() ? "0s" : ".7s";
         document.documentElement.style.setProperty("--dash-animation-duration", duration);
     };
-
-    const dashboardPosition = () => {
-        const position = dashboardComp.open ? "100%" : "0%";
-        document.documentElement.style.setProperty("--dash-position", position);
-    }
     
     useEffect(() => {
         updateAnimationDuration();        
     }, [isPageRefreshed()]);
-
-    useEffect(() => {
-        dashboardPosition();
-    }, [dashboardComp.open]);
 
     useEffect(() => {
         if (navigation.length === 0) return;

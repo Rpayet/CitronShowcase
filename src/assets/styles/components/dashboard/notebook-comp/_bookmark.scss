@@ -1,209 +1,89 @@
 #Bookmark {
     position: absolute;
     top: 0;
-    left: 0;
-    &.bk-cl {
-        left: 0%;
-        animation: bk-cl-anim 1s ease-in-out;
-    }
-    &.bk-op {
-        left: 100%;
-        animation: bk-op-anim 1s ease-in-out;
-    }
-    @keyframes bk-op-anim {
-        0% { left: 0% }
-        100% { left: 100%; }
-    }
-    @keyframes bk-cl-anim {
-        0% { left: 100% }
-        100% { left: 0%; }
-    }
-    #Bookmark {
-        z-index: 135;
-    }
-    #Bookmark {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 800px;
-        transform-origin: left center;
-        transform: rotate3d(1, 1, 1, 0deg);
-        &.swon {
-            animation: bk-switch-anim .7s ease-in-out .3s;
-        }
-        &.swoff {
-            animation: none;
-        }
-        @keyframes bk-switch-anim {
-            0% {
-                top: 0;
-                transform: rotate3d(1, 1, 1, 0deg) skewy(0deg) scale(1);
-                filter: blur(0px) contrast(100%);
-            }
-            50% {
-                top: -50px;
-            }
-            99% {
-                left: -100px;
-                transform: rotate3d(0, 1, 0, 90deg) skewy(-15deg) scale(1.1);
-                filter: blur(6px) contrast(20%);
-            }
-            100% {
-                top: 0;
-                left: 0;
-                transform: rotate3d(1, 1, 1, 0deg) skewy(0deg) scale(1);
-                filter: blur(0px) contrast(100%);
-            }
-        }
-        .page_trans-op, .ribbon-op {
-            pointer-events: none;
-        }
-        .page_trans-cl, .page_trans-op {
-            position: absolute;
-            top: 10px;
-            left: 0;
-            width: 500px;
-            height: 790px;
-            background: #e6e5de;
-            border-top: 1px solid #000;
-            border-right: 1px solid #000;
-            border-bottom: 1px solid #000;
-            border-left: 2px dashed #00000055;
-            border-radius: 0px 40px 40px 0px;
-            transform-origin: center left;
-            box-shadow: inset 5px 0px 5px 5px #00000055;
-        }
-        .page_trans-cl {
-            transform: rotate3d(1, 1, 1, 0deg);
-            animation: page-transition-anim-closed .5s ease-in-out;
-            z-index: 140;
-        }
-        .page_trans-op {
-            transform: rotate3d(0, 1, 0, 45deg);
-            animation: page-transition-anim-open 1.5s ease-in-out;
-            z-index: 140;
-        }
-        .swon {
-            transform: rotate3d(1, 1, 1, 0deg);
-            z-index: 110;
-            animation: page-transition-anim-switch 1s ease-in-out;
-        }
-        .swoff {
-            transform: rotate3d(1, 1, 1, 0deg);
-            z-index: 110;
-            animation-play-state: paused;
-        }
-        @keyframes page-transition-anim-closed {
-            0% {
-                transform: rotate3d(0, 1, 0, 90deg);
-            }
-            100% {
-                transform: rotate3d(1, 1, 1, 0deg);
-            }
-        }
-        @keyframes page-transition-anim-open {
-            0% {
-                transform: rotate3d(1, 1, 1, 0deg);
-            }
-            100% {
-                transform: rotate3d(0, 1, 0, 90deg);
-            }
-        }
-        @keyframes page-transition-anim-switch {
-            0% {
-                transform: rotate3d(1, 1, 1, 0deg);
-            }
-            100% {
-                transform: rotate3d(0, 1, 0, 90deg);
-            }
-        }
-        .ribbon-op, .ribbon-cl {
-            &::before {
-                content: '';
-                position: absolute;
-                top: -10px;
-                left: 15px;
-                width: 75px;
-                height: 20px;
-                border-top: 3px solid #888;
-                border-left: 3px solid #888;
-                border-right: 3px solid #888;
-                border-radius: 1rem 1rem 0 0;
-                background: linear-gradient(to left, #032e45, #076192 20%); 
-                z-index: -1;
-            }
+    left: var(--nb-turn-left);
+    width: 100%;
+    height: 800px;
+    z-index: 135;
+    transform-origin: left center;
+    transform: rotate3d(1, 1, 1, 0deg);
+    animation: var(--bk-switch-anim);
+    transition: all 1s ease-in-out;
 
-            width: 70px;
-            height: 840px;
+    @keyframes bk-switch-anim {
+        0% {
+            top: 0;
+            transform: rotate3d(1, 1, 1, 0deg) skewy(0deg) scale(1);
+            filter: blur(0px) contrast(100%);
+        }
+        50% {
+            top: -50px;
+        }
+        99% {
+            left: -100px;
+            transform: rotate3d(0, 1, 0, 90deg) skewy(-15deg) scale(1.1);
+            filter: blur(6px) contrast(20%);
+        }
+        100% {
+            top: 0;
+            left: 0;
+            transform: rotate3d(1, 1, 1, 0deg) skewy(0deg) scale(1);
+            filter: blur(0px) contrast(100%);
+        }
+    }
+    .page_trans, .ribbon {
+        pointer-events: none;
+    }
+    .page_trans {
+        position: absolute;
+        top: 10px;
+        left: 0;
+        width: 500px;
+        height: 790px;
+        background: #e6e5de;
+        border-top: 1px solid #000;
+        border-right: 1px solid #000;
+        border-bottom: 1px solid #000;
+        border-left: 2px dashed #00000055;
+        border-radius: 0px 40px 40px 0px;
+        transform-origin: center left;
+        box-shadow: inset 5px 0px 5px 5px #00000055;
+        animation: page-transition-anim-switch 1s ease-in-out .3s;
+    }
+    @keyframes page-transition-anim-switch {
+        0% {
+            transform: rotate3d(1, 1, 1, 0deg);
+        }
+        100% {
+            transform: rotate3d(0, 1, 0, 90deg);
+        }
+    }
+    .ribbon {
+        &::before {
+            content: '';
+            width: 80px;
+            height: var(--ribbon-height);
             position: absolute;
-            left: 15px;
-            top: 10px;
+            left: -5px;
+            top: 15px;
             background: linear-gradient(to bottom, #076192 10%, #05486C);
-            border-bottom: 3px solid #888;
-            border-left: 3px solid #888;
-            border-right: 3px solid #888;
+            border-bottom: 5px solid #888;
+            border-left: 5px solid #888;
+            border-right: 5px solid #888;
             transform-origin: top center;
             clip-path: polygon(0% 0%, 100% 0%, 100% 95%, 50% 99%, 0% 95%);
-            transition: all 1s ease-in-out;
-            z-index: 120;
-            &.ribbon-swon-1 {
-                animation: ribbon-anim-switch-1 .6s ease-in-out .4s;
-            }
-            &.ribbon-btn-1 {
-                animation: ribbon-anim-switch-btn-1 .5s ease-in-out;
-            }
-            &.ribbon-btn-2 {
-                animation: ribbon-anim-switch-btn-2 .5s ease-in-out;
-            }
-            &.ribbon-btn-3 {
-                animation: ribbon-anim-switch-btn-3 .5s ease-in-out;
-            }
-            .main_cat_icon {
-                position: absolute;
-                top: 20px;
-                left: 0px;
-                width: 64px;
-                height: 64px;
-            }
+            transition: all .5s ease-in-out;
+            z-index: 120;    
         }
-        @keyframes ribbon-anim-switch-1 {
-            60% {
-                height: 600px;
-            }
-            100% {
-                height: 840px;
-            }
-        }
-        @keyframes ribbon-anim-switch-btn-1 {
-            0% {
-                height: 100px;
-                left: 380px;
-            }
-            100% {
-                height: 840px;
-                left: 15px;
-            }
-        }
-        @keyframes ribbon-anim-switch-btn-2 {
-            0% {
-                height: 100px;
-                left: 300px;
-            }
-            100% {
-                height: 840px;
-                left: 15px;
-            }
-        }
-        @keyframes ribbon-anim-switch-btn-3 {
-            0% {
-                height: 100px;
-                left: 220px;
-            }
-            100% {
-                height: 840px;
-                left: 15px;
-            }
-        }
+        position: absolute;
+        top: -10px;
+        left: 15px;
+        width: 100px;
+        height: 20px;
+        border-top: 3px solid #888;
+        border-left: 3px solid #888;
+        border-right: 3px solid #888;
+        border-radius: 1rem 1rem 0 0;
+        background: linear-gradient(to left, #032e45, #076192 20%); 
     }
 }

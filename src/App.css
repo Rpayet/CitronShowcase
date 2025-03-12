@@ -22,7 +22,7 @@ ul {
   padding: 1rem;
   position: absolute;
   top: 0;
-  left: var(--dash-position);
+  left: 0;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -1310,49 +1310,14 @@ ul {
 #Bookmark {
   position: absolute;
   top: 0;
-  left: 0;
-}
-#Bookmark.bk-cl {
-  left: 0%;
-  animation: bk-cl-anim 1s ease-in-out;
-}
-#Bookmark.bk-op {
-  left: 100%;
-  animation: bk-op-anim 1s ease-in-out;
-}
-@keyframes bk-op-anim {
-  0% {
-    left: 0%;
-  }
-  100% {
-    left: 100%;
-  }
-}
-@keyframes bk-cl-anim {
-  0% {
-    left: 100%;
-  }
-  100% {
-    left: 0%;
-  }
-}
-#Bookmark #Bookmark {
-  z-index: 135;
-}
-#Bookmark #Bookmark {
-  position: absolute;
-  top: 0;
-  left: 0;
+  left: var(--nb-turn-left);
   width: 100%;
   height: 800px;
+  z-index: 135;
   transform-origin: left center;
   transform: rotate3d(1, 1, 1, 0deg);
-}
-#Bookmark #Bookmark.swon {
-  animation: bk-switch-anim 0.7s ease-in-out 0.3s;
-}
-#Bookmark #Bookmark.swoff {
-  animation: none;
+  animation: var(--bk-switch-anim);
+  transition: all 1s ease-in-out;
 }
 @keyframes bk-switch-anim {
   0% {
@@ -1375,10 +1340,10 @@ ul {
     filter: blur(0px) contrast(100%);
   }
 }
-#Bookmark #Bookmark .page_trans-op, #Bookmark #Bookmark .ribbon-op {
+#Bookmark .page_trans, #Bookmark .ribbon {
   pointer-events: none;
 }
-#Bookmark #Bookmark .page_trans-cl, #Bookmark #Bookmark .page_trans-op {
+#Bookmark .page_trans {
   position: absolute;
   top: 10px;
   left: 0;
@@ -1392,42 +1357,7 @@ ul {
   border-radius: 0px 40px 40px 0px;
   transform-origin: center left;
   box-shadow: inset 5px 0px 5px 5px rgba(0, 0, 0, 0.3333333333);
-}
-#Bookmark #Bookmark .page_trans-cl {
-  transform: rotate3d(1, 1, 1, 0deg);
-  animation: page-transition-anim-closed 0.5s ease-in-out;
-  z-index: 140;
-}
-#Bookmark #Bookmark .page_trans-op {
-  transform: rotate3d(0, 1, 0, 45deg);
-  animation: page-transition-anim-open 1.5s ease-in-out;
-  z-index: 140;
-}
-#Bookmark #Bookmark .swon {
-  transform: rotate3d(1, 1, 1, 0deg);
-  z-index: 110;
-  animation: page-transition-anim-switch 1s ease-in-out;
-}
-#Bookmark #Bookmark .swoff {
-  transform: rotate3d(1, 1, 1, 0deg);
-  z-index: 110;
-  animation-play-state: paused;
-}
-@keyframes page-transition-anim-closed {
-  0% {
-    transform: rotate3d(0, 1, 0, 90deg);
-  }
-  100% {
-    transform: rotate3d(1, 1, 1, 0deg);
-  }
-}
-@keyframes page-transition-anim-open {
-  0% {
-    transform: rotate3d(1, 1, 1, 0deg);
-  }
-  100% {
-    transform: rotate3d(0, 1, 0, 90deg);
-  }
+  animation: page-transition-anim-switch 1s ease-in-out 0.3s;
 }
 @keyframes page-transition-anim-switch {
   0% {
@@ -1437,91 +1367,33 @@ ul {
     transform: rotate3d(0, 1, 0, 90deg);
   }
 }
-#Bookmark #Bookmark .ribbon-op, #Bookmark #Bookmark .ribbon-cl {
-  width: 70px;
-  height: 840px;
-  position: absolute;
-  left: 15px;
-  top: 10px;
-  background: linear-gradient(to bottom, #076192 10%, #05486C);
-  border-bottom: 3px solid #888;
-  border-left: 3px solid #888;
-  border-right: 3px solid #888;
-  transform-origin: top center;
-  clip-path: polygon(0% 0%, 100% 0%, 100% 95%, 50% 99%, 0% 95%);
-  transition: all 1s ease-in-out;
-  z-index: 120;
-}
-#Bookmark #Bookmark .ribbon-op::before, #Bookmark #Bookmark .ribbon-cl::before {
-  content: "";
+#Bookmark .ribbon {
   position: absolute;
   top: -10px;
   left: 15px;
-  width: 75px;
+  width: 100px;
   height: 20px;
   border-top: 3px solid #888;
   border-left: 3px solid #888;
   border-right: 3px solid #888;
   border-radius: 1rem 1rem 0 0;
   background: linear-gradient(to left, #032e45, #076192 20%);
-  z-index: -1;
 }
-#Bookmark #Bookmark .ribbon-op.ribbon-swon-1, #Bookmark #Bookmark .ribbon-cl.ribbon-swon-1 {
-  animation: ribbon-anim-switch-1 0.6s ease-in-out 0.4s;
-}
-#Bookmark #Bookmark .ribbon-op.ribbon-btn-1, #Bookmark #Bookmark .ribbon-cl.ribbon-btn-1 {
-  animation: ribbon-anim-switch-btn-1 0.5s ease-in-out;
-}
-#Bookmark #Bookmark .ribbon-op.ribbon-btn-2, #Bookmark #Bookmark .ribbon-cl.ribbon-btn-2 {
-  animation: ribbon-anim-switch-btn-2 0.5s ease-in-out;
-}
-#Bookmark #Bookmark .ribbon-op.ribbon-btn-3, #Bookmark #Bookmark .ribbon-cl.ribbon-btn-3 {
-  animation: ribbon-anim-switch-btn-3 0.5s ease-in-out;
-}
-#Bookmark #Bookmark .ribbon-op .main_cat_icon, #Bookmark #Bookmark .ribbon-cl .main_cat_icon {
+#Bookmark .ribbon::before {
+  content: "";
+  width: 80px;
+  height: var(--ribbon-height);
   position: absolute;
-  top: 20px;
-  left: 0px;
-  width: 64px;
-  height: 64px;
-}
-@keyframes ribbon-anim-switch-1 {
-  60% {
-    height: 600px;
-  }
-  100% {
-    height: 840px;
-  }
-}
-@keyframes ribbon-anim-switch-btn-1 {
-  0% {
-    height: 100px;
-    left: 380px;
-  }
-  100% {
-    height: 840px;
-    left: 15px;
-  }
-}
-@keyframes ribbon-anim-switch-btn-2 {
-  0% {
-    height: 100px;
-    left: 300px;
-  }
-  100% {
-    height: 840px;
-    left: 15px;
-  }
-}
-@keyframes ribbon-anim-switch-btn-3 {
-  0% {
-    height: 100px;
-    left: 220px;
-  }
-  100% {
-    height: 840px;
-    left: 15px;
-  }
+  left: -5px;
+  top: 15px;
+  background: linear-gradient(to bottom, #076192 10%, #05486C);
+  border-bottom: 5px solid #888;
+  border-left: 5px solid #888;
+  border-right: 5px solid #888;
+  transform-origin: top center;
+  clip-path: polygon(0% 0%, 100% 0%, 100% 95%, 50% 99%, 0% 95%);
+  transition: all 0.5s ease-in-out;
+  z-index: 120;
 }
 
 #Notebook {

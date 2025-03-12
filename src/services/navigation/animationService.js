@@ -27,7 +27,7 @@ export const usePageTransition = () => {
             [toPage + 'Comp']: true,
             dashboardComp: {
                 open: (isLeavingLanding || !isEnteringLanding),
-                transition: (isNavigatingBetweenPages || !isLeavingLanding),
+                transition: isNavigatingBetweenPages,
             },
             bgPattern: {
                 ...animus.bgPattern,
