@@ -27,7 +27,7 @@ ul {
   flex-direction: column;
   justify-content: space-between;
   gap: 1.5rem;
-  z-index: 120;
+  z-index: 110;
   transition: all 1s ease-in-out;
 }
 #Dashboard .header .dashLink, #Dashboard .dashBody .dashLink {
@@ -77,56 +77,41 @@ ul {
   transition: all 0.3s ease-in-out;
 }
 #Dashboard .dashBody .nav-op .dashLink-1, #Dashboard .dashBody .nav-cl .dashLink-1 {
+  top: -25px;
   margin: 0 0.5rem;
   position: absolute;
   display: flex;
   align-items: flex-start;
   border-radius: 1rem 1rem 0 0;
-  border: 3px solid #888;
+  border-left: 3px solid #888;
+  border-top: 3px solid #888;
+  border-right: 3px solid #888;
   justify-content: flex-start;
   width: 70px;
   transform: translateY(0);
   transform-origin: bottom center;
-  clip-path: polygon(0% 0%, 100% 0%, 100% 95%, 50% 99%, 0% 95%);
   cursor: pointer;
-  z-index: 1;
-  transition: all 0.4s ease-in-out;
+  transition: all 0.5s ease-in-out;
 }
 #Dashboard .dashBody .nav-op .dashLink-1.articles-sltd, #Dashboard .dashBody .nav-op .dashLink-1.portfolio-sltd, #Dashboard .dashBody .nav-op .dashLink-1.arcadepalace-sltd, #Dashboard .dashBody .nav-cl .dashLink-1.articles-sltd, #Dashboard .dashBody .nav-cl .dashLink-1.portfolio-sltd, #Dashboard .dashBody .nav-cl .dashLink-1.arcadepalace-sltd {
-  top: 25px;
   left: 5px;
-  width: 82px;
-  height: 100px;
+  width: 100px;
+  height: 0px;
   background: linear-gradient(to left, #032e45, #076192 20%);
-  animation: dashlink-sltd 0.5s backwards;
+}
+#Dashboard .dashBody .nav-op .dashLink-1.articles-sltd .navIcon, #Dashboard .dashBody .nav-op .dashLink-1.portfolio-sltd .navIcon, #Dashboard .dashBody .nav-op .dashLink-1.arcadepalace-sltd .navIcon, #Dashboard .dashBody .nav-cl .dashLink-1.articles-sltd .navIcon, #Dashboard .dashBody .nav-cl .dashLink-1.portfolio-sltd .navIcon, #Dashboard .dashBody .nav-cl .dashLink-1.arcadepalace-sltd .navIcon {
+  transition: all 0.3s ease-in-out;
+  transform: scale(1) translateY(70px);
 }
 #Dashboard .dashBody .nav-op .dashLink-1.articles-unsltd, #Dashboard .dashBody .nav-op .dashLink-1.portfolio-unsltd, #Dashboard .dashBody .nav-op .dashLink-1.arcadepalace-unsltd, #Dashboard .dashBody .nav-cl .dashLink-1.articles-unsltd, #Dashboard .dashBody .nav-cl .dashLink-1.portfolio-unsltd, #Dashboard .dashBody .nav-cl .dashLink-1.arcadepalace-unsltd {
-  height: 100px;
-  top: -20px;
+  height: 70px;
   left: calc(380px - (0 * 80px));
-  background-color: #004579;
   background: linear-gradient(to left, #076192, #076192 20%);
-  animation: dashlink-sltd 0.5s forwards;
 }
 #Dashboard .dashBody .nav-op .dashLink-1.articles-unsltd:hover, #Dashboard .dashBody .nav-op .dashLink-1.portfolio-unsltd:hover, #Dashboard .dashBody .nav-op .dashLink-1.arcadepalace-unsltd:hover, #Dashboard .dashBody .nav-cl .dashLink-1.articles-unsltd:hover, #Dashboard .dashBody .nav-cl .dashLink-1.portfolio-unsltd:hover, #Dashboard .dashBody .nav-cl .dashLink-1.arcadepalace-unsltd:hover {
   top: -30px;
 }
-@keyframes dashlink-sltd {
-  0% {
-    top: 20px;
-    height: 840px;
-  }
-  80% {
-    top: 20px;
-    height: 840px;
-  }
-  100% {
-    top: -20px;
-    height: 100px;
-  }
-}
-#Dashboard .dashBody .nav-op .dashLink-1 .navIcon, #Dashboard .dashBody .nav-cl .dashLink-1 .navIcon {
-  padding: 0.5rem 0 0 0;
+#Dashboard .dashBody .nav-op .dashLink-1.articles-unsltd .navIcon, #Dashboard .dashBody .nav-op .dashLink-1.portfolio-unsltd .navIcon, #Dashboard .dashBody .nav-op .dashLink-1.arcadepalace-unsltd .navIcon, #Dashboard .dashBody .nav-cl .dashLink-1.articles-unsltd .navIcon, #Dashboard .dashBody .nav-cl .dashLink-1.portfolio-unsltd .navIcon, #Dashboard .dashBody .nav-cl .dashLink-1.arcadepalace-unsltd .navIcon {
   transition: all 0.3s ease-in-out;
   transform: scale(0.8);
 }
@@ -142,56 +127,41 @@ ul {
   display: block;
 }
 #Dashboard .dashBody .nav-op .dashLink-2, #Dashboard .dashBody .nav-cl .dashLink-2 {
+  top: -25px;
   margin: 0 0.5rem;
   position: absolute;
   display: flex;
   align-items: flex-start;
   border-radius: 1rem 1rem 0 0;
-  border: 3px solid #888;
+  border-left: 3px solid #888;
+  border-top: 3px solid #888;
+  border-right: 3px solid #888;
   justify-content: flex-start;
   width: 70px;
   transform: translateY(0);
   transform-origin: bottom center;
-  clip-path: polygon(0% 0%, 100% 0%, 100% 95%, 50% 99%, 0% 95%);
   cursor: pointer;
-  z-index: 1;
-  transition: all 0.4s ease-in-out;
+  transition: all 0.5s ease-in-out;
 }
 #Dashboard .dashBody .nav-op .dashLink-2.articles-sltd, #Dashboard .dashBody .nav-op .dashLink-2.portfolio-sltd, #Dashboard .dashBody .nav-op .dashLink-2.arcadepalace-sltd, #Dashboard .dashBody .nav-cl .dashLink-2.articles-sltd, #Dashboard .dashBody .nav-cl .dashLink-2.portfolio-sltd, #Dashboard .dashBody .nav-cl .dashLink-2.arcadepalace-sltd {
-  top: 25px;
   left: 5px;
-  width: 82px;
-  height: 100px;
+  width: 100px;
+  height: 0px;
   background: linear-gradient(to left, #032e45, #076192 20%);
-  animation: dashlink-sltd 0.5s backwards;
+}
+#Dashboard .dashBody .nav-op .dashLink-2.articles-sltd .navIcon, #Dashboard .dashBody .nav-op .dashLink-2.portfolio-sltd .navIcon, #Dashboard .dashBody .nav-op .dashLink-2.arcadepalace-sltd .navIcon, #Dashboard .dashBody .nav-cl .dashLink-2.articles-sltd .navIcon, #Dashboard .dashBody .nav-cl .dashLink-2.portfolio-sltd .navIcon, #Dashboard .dashBody .nav-cl .dashLink-2.arcadepalace-sltd .navIcon {
+  transition: all 0.3s ease-in-out;
+  transform: scale(1) translateY(70px);
 }
 #Dashboard .dashBody .nav-op .dashLink-2.articles-unsltd, #Dashboard .dashBody .nav-op .dashLink-2.portfolio-unsltd, #Dashboard .dashBody .nav-op .dashLink-2.arcadepalace-unsltd, #Dashboard .dashBody .nav-cl .dashLink-2.articles-unsltd, #Dashboard .dashBody .nav-cl .dashLink-2.portfolio-unsltd, #Dashboard .dashBody .nav-cl .dashLink-2.arcadepalace-unsltd {
-  height: 100px;
-  top: -20px;
+  height: 70px;
   left: calc(380px - (1 * 80px));
-  background-color: #004579;
   background: linear-gradient(to left, #076192, #076192 20%);
-  animation: dashlink-sltd 0.5s forwards;
 }
 #Dashboard .dashBody .nav-op .dashLink-2.articles-unsltd:hover, #Dashboard .dashBody .nav-op .dashLink-2.portfolio-unsltd:hover, #Dashboard .dashBody .nav-op .dashLink-2.arcadepalace-unsltd:hover, #Dashboard .dashBody .nav-cl .dashLink-2.articles-unsltd:hover, #Dashboard .dashBody .nav-cl .dashLink-2.portfolio-unsltd:hover, #Dashboard .dashBody .nav-cl .dashLink-2.arcadepalace-unsltd:hover {
   top: -30px;
 }
-@keyframes dashlink-sltd {
-  0% {
-    top: 20px;
-    height: 840px;
-  }
-  80% {
-    top: 20px;
-    height: 840px;
-  }
-  100% {
-    top: -20px;
-    height: 100px;
-  }
-}
-#Dashboard .dashBody .nav-op .dashLink-2 .navIcon, #Dashboard .dashBody .nav-cl .dashLink-2 .navIcon {
-  padding: 0.5rem 0 0 0;
+#Dashboard .dashBody .nav-op .dashLink-2.articles-unsltd .navIcon, #Dashboard .dashBody .nav-op .dashLink-2.portfolio-unsltd .navIcon, #Dashboard .dashBody .nav-op .dashLink-2.arcadepalace-unsltd .navIcon, #Dashboard .dashBody .nav-cl .dashLink-2.articles-unsltd .navIcon, #Dashboard .dashBody .nav-cl .dashLink-2.portfolio-unsltd .navIcon, #Dashboard .dashBody .nav-cl .dashLink-2.arcadepalace-unsltd .navIcon {
   transition: all 0.3s ease-in-out;
   transform: scale(0.8);
 }
@@ -207,56 +177,41 @@ ul {
   display: block;
 }
 #Dashboard .dashBody .nav-op .dashLink-3, #Dashboard .dashBody .nav-cl .dashLink-3 {
+  top: -25px;
   margin: 0 0.5rem;
   position: absolute;
   display: flex;
   align-items: flex-start;
   border-radius: 1rem 1rem 0 0;
-  border: 3px solid #888;
+  border-left: 3px solid #888;
+  border-top: 3px solid #888;
+  border-right: 3px solid #888;
   justify-content: flex-start;
   width: 70px;
   transform: translateY(0);
   transform-origin: bottom center;
-  clip-path: polygon(0% 0%, 100% 0%, 100% 95%, 50% 99%, 0% 95%);
   cursor: pointer;
-  z-index: 1;
-  transition: all 0.4s ease-in-out;
+  transition: all 0.5s ease-in-out;
 }
 #Dashboard .dashBody .nav-op .dashLink-3.articles-sltd, #Dashboard .dashBody .nav-op .dashLink-3.portfolio-sltd, #Dashboard .dashBody .nav-op .dashLink-3.arcadepalace-sltd, #Dashboard .dashBody .nav-cl .dashLink-3.articles-sltd, #Dashboard .dashBody .nav-cl .dashLink-3.portfolio-sltd, #Dashboard .dashBody .nav-cl .dashLink-3.arcadepalace-sltd {
-  top: 25px;
   left: 5px;
-  width: 82px;
-  height: 100px;
+  width: 100px;
+  height: 0px;
   background: linear-gradient(to left, #032e45, #076192 20%);
-  animation: dashlink-sltd 0.5s backwards;
+}
+#Dashboard .dashBody .nav-op .dashLink-3.articles-sltd .navIcon, #Dashboard .dashBody .nav-op .dashLink-3.portfolio-sltd .navIcon, #Dashboard .dashBody .nav-op .dashLink-3.arcadepalace-sltd .navIcon, #Dashboard .dashBody .nav-cl .dashLink-3.articles-sltd .navIcon, #Dashboard .dashBody .nav-cl .dashLink-3.portfolio-sltd .navIcon, #Dashboard .dashBody .nav-cl .dashLink-3.arcadepalace-sltd .navIcon {
+  transition: all 0.3s ease-in-out;
+  transform: scale(1) translateY(70px);
 }
 #Dashboard .dashBody .nav-op .dashLink-3.articles-unsltd, #Dashboard .dashBody .nav-op .dashLink-3.portfolio-unsltd, #Dashboard .dashBody .nav-op .dashLink-3.arcadepalace-unsltd, #Dashboard .dashBody .nav-cl .dashLink-3.articles-unsltd, #Dashboard .dashBody .nav-cl .dashLink-3.portfolio-unsltd, #Dashboard .dashBody .nav-cl .dashLink-3.arcadepalace-unsltd {
-  height: 100px;
-  top: -20px;
+  height: 70px;
   left: calc(380px - (2 * 80px));
-  background-color: #004579;
   background: linear-gradient(to left, #076192, #076192 20%);
-  animation: dashlink-sltd 0.5s forwards;
 }
 #Dashboard .dashBody .nav-op .dashLink-3.articles-unsltd:hover, #Dashboard .dashBody .nav-op .dashLink-3.portfolio-unsltd:hover, #Dashboard .dashBody .nav-op .dashLink-3.arcadepalace-unsltd:hover, #Dashboard .dashBody .nav-cl .dashLink-3.articles-unsltd:hover, #Dashboard .dashBody .nav-cl .dashLink-3.portfolio-unsltd:hover, #Dashboard .dashBody .nav-cl .dashLink-3.arcadepalace-unsltd:hover {
   top: -30px;
 }
-@keyframes dashlink-sltd {
-  0% {
-    top: 20px;
-    height: 840px;
-  }
-  80% {
-    top: 20px;
-    height: 840px;
-  }
-  100% {
-    top: -20px;
-    height: 100px;
-  }
-}
-#Dashboard .dashBody .nav-op .dashLink-3 .navIcon, #Dashboard .dashBody .nav-cl .dashLink-3 .navIcon {
-  padding: 0.5rem 0 0 0;
+#Dashboard .dashBody .nav-op .dashLink-3.articles-unsltd .navIcon, #Dashboard .dashBody .nav-op .dashLink-3.portfolio-unsltd .navIcon, #Dashboard .dashBody .nav-op .dashLink-3.arcadepalace-unsltd .navIcon, #Dashboard .dashBody .nav-cl .dashLink-3.articles-unsltd .navIcon, #Dashboard .dashBody .nav-cl .dashLink-3.portfolio-unsltd .navIcon, #Dashboard .dashBody .nav-cl .dashLink-3.arcadepalace-unsltd .navIcon {
   transition: all 0.3s ease-in-out;
   transform: scale(0.8);
 }
@@ -343,23 +298,6 @@ ul {
   padding: 1rem;
   color: #004579;
   border-top: 1px solid #004579;
-}
-#Dashboard .page_main {
-  position: absolute;
-  top: 10px;
-  left: 0;
-  width: 500px;
-  height: 790px;
-  background: #e6e5de;
-  border-top: 1px solid #000;
-  border-right: 1px solid #000;
-  border-bottom: 1px solid #000;
-  border-left: 2px dashed rgba(0, 0, 0, 0.3333333333);
-  border-radius: 0px 40px 40px 0px;
-  transform-origin: center left;
-  box-shadow: inset 20px 0px 20px 0px rgba(0, 0, 0, 0.3333333333);
-  z-index: -10;
-  pointer-events: none;
 }
 
 @keyframes fadeIn {
@@ -1313,11 +1251,89 @@ ul {
   left: var(--nb-turn-left);
   width: 100%;
   height: 800px;
-  z-index: 135;
   transform-origin: left center;
-  transform: rotate3d(1, 1, 1, 0deg);
-  animation: var(--bk-switch-anim);
   transition: all 1s ease-in-out;
+  z-index: 135;
+}
+#Bookmark .page_trans, #Bookmark .ribbon {
+  pointer-events: none;
+  animation: var(--bk-switch-anim);
+}
+#Bookmark .page_main {
+  position: absolute;
+  top: 10px;
+  left: 0;
+  width: 500px;
+  height: 790px;
+  background: #e6e5de;
+  border-top: 1px solid #000;
+  border-right: 1px solid #000;
+  border-bottom: 1px solid #000;
+  border-left: 2px dashed rgba(0, 0, 0, 0.3333333333);
+  border-radius: 0px 40px 40px 0px;
+  transform-origin: center left;
+  box-shadow: inset 20px 0px 20px 0px rgba(0, 0, 0, 0.3333333333);
+  pointer-events: none;
+}
+#Bookmark .page_trans {
+  position: absolute;
+  top: 10px;
+  left: 0;
+  width: 500px;
+  height: 790px;
+  background: #e6e5de;
+  border-top: 1px solid #000;
+  border-right: 1px solid #000;
+  border-bottom: 1px solid #000;
+  border-left: 2px dashed rgba(0, 0, 0, 0.3333333333);
+  border-radius: 0px 40px 40px 0px;
+  transform-origin: center left;
+  box-shadow: inset 5px 0px 5px 5px rgba(0, 0, 0, 0.3333333333);
+  z-index: 1;
+}
+@keyframes page-transition-anim-switch {
+  0% {
+    transform: rotate3d(1, 1, 1, 0deg);
+  }
+  100% {
+    transform: rotate3d(0, 1, 0, 90deg);
+  }
+}
+#Bookmark .ribbon {
+  position: absolute;
+  top: -10px;
+  left: 15px;
+  width: 100px;
+  height: 20px;
+  border-top: 3px solid #888;
+  border-left: 3px solid #888;
+  border-right: 3px solid #888;
+  border-radius: 1rem 1rem 0 0;
+  background: linear-gradient(to left, #032e45, #076192 20%);
+  z-index: 110;
+}
+#Bookmark .ribbon::before {
+  content: "";
+  width: 80px;
+  height: var(--ribbon-height);
+  position: absolute;
+  left: -5px;
+  top: 15px;
+  background: linear-gradient(to bottom, #076192 10%, #05486C);
+  border-bottom: 5px solid #888;
+  border-left: 5px solid #888;
+  border-right: 5px solid #888;
+  transform-origin: top center;
+  clip-path: polygon(0% 0%, 100% 0%, 100% 95%, 50% 99%, 0% 95%);
+  transition: all 0.5s ease-in-out;
+}
+#Bookmark .ribbon .main_cat_icon {
+  position: absolute;
+  top: 0%;
+  left: 50%;
+  transform: translate(-50%, 25%);
+  width: 70px;
+  height: 70px;
 }
 @keyframes bk-switch-anim {
   0% {
@@ -1339,61 +1355,6 @@ ul {
     transform: rotate3d(1, 1, 1, 0deg) skewy(0deg) scale(1);
     filter: blur(0px) contrast(100%);
   }
-}
-#Bookmark .page_trans, #Bookmark .ribbon {
-  pointer-events: none;
-}
-#Bookmark .page_trans {
-  position: absolute;
-  top: 10px;
-  left: 0;
-  width: 500px;
-  height: 790px;
-  background: #e6e5de;
-  border-top: 1px solid #000;
-  border-right: 1px solid #000;
-  border-bottom: 1px solid #000;
-  border-left: 2px dashed rgba(0, 0, 0, 0.3333333333);
-  border-radius: 0px 40px 40px 0px;
-  transform-origin: center left;
-  box-shadow: inset 5px 0px 5px 5px rgba(0, 0, 0, 0.3333333333);
-  animation: page-transition-anim-switch 1s ease-in-out 0.3s;
-}
-@keyframes page-transition-anim-switch {
-  0% {
-    transform: rotate3d(1, 1, 1, 0deg);
-  }
-  100% {
-    transform: rotate3d(0, 1, 0, 90deg);
-  }
-}
-#Bookmark .ribbon {
-  position: absolute;
-  top: -10px;
-  left: 15px;
-  width: 100px;
-  height: 20px;
-  border-top: 3px solid #888;
-  border-left: 3px solid #888;
-  border-right: 3px solid #888;
-  border-radius: 1rem 1rem 0 0;
-  background: linear-gradient(to left, #032e45, #076192 20%);
-}
-#Bookmark .ribbon::before {
-  content: "";
-  width: 80px;
-  height: var(--ribbon-height);
-  position: absolute;
-  left: -5px;
-  top: 15px;
-  background: linear-gradient(to bottom, #076192 10%, #05486C);
-  border-bottom: 5px solid #888;
-  border-left: 5px solid #888;
-  border-right: 5px solid #888;
-  transform-origin: top center;
-  clip-path: polygon(0% 0%, 100% 0%, 100% 95%, 50% 99%, 0% 95%);
-  transition: all 0.5s ease-in-out;
-  z-index: 120;
 }
 
 #Notebook {

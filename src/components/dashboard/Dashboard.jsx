@@ -57,7 +57,6 @@ export default function Dashboard() {
 
     return (
         <div id="Dashboard" className={`dashboard`}>
-            <div className="page_main"></div>
             <div 
                 className={`header`}
                 onClick={() => handleNavigation('lemonify')} >

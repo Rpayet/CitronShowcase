@@ -24,11 +24,11 @@ export default function Bookmark() {
     const { category } = dashboardContent;
 
     const getSwitchAnimation = () => {
-        const switchRotate = dashboardComp.transition ? 'bk-switch-anim .7s ease-in-out .3s' : 'none';
+        const switchRotate = dashboardComp.transition ? 'bk-switch-anim 1s ease-in-out' : 'none';
         const ribbonHeight = dashboardComp.transition ? '0px' : '840px';
         document.documentElement.style.setProperty('--bk-switch-anim', switchRotate);
         document.documentElement.style.setProperty('--ribbon-height', ribbonHeight);
-    }
+    };
 
     useEffect(() => {
         getSwitchAnimation();
@@ -36,12 +36,13 @@ export default function Bookmark() {
 
     return (
         <div id="Bookmark">
-            {dashboardComp.transition && <PageTransition />}
+            <div className="page_main"></div>
             <Dashboard />
+            {dashboardComp.transition && <PageTransition />}
             <div className="ribbon"> 
                 <div className="main_cat_icon">
                     <Stage
-                        width={64}f
+                        width={64}
                         height={64}
                         options={{backgroundAlpha: 0}}>
                             <Sprite
@@ -52,7 +53,7 @@ export default function Bookmark() {
                     </Stage>
                 </div>
             </div>
-            {dashboardComp.open && <PageTransition />}
+            {/** {dashboardComp.open && <PageTransition />} */}
         </div>
     )
 }
