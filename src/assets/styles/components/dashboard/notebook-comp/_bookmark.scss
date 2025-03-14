@@ -1,15 +1,16 @@
 #Bookmark {
     position: absolute;
     top: 0;
-    left: var(--nb-turn-left);
     width: 100%;
     height: 800px;
     transform-origin: left center;
     transition: all 1s ease-in-out;
     z-index: 135;
-    .page_trans, .ribbon {
-        pointer-events: none;
-        animation: var(--bk-switch-anim);
+    &.bk-op {
+        left: 100%;
+    }
+    &.bk-cls {
+        left: 0%;
     }
     .page_main {
         position: absolute;
@@ -26,6 +27,7 @@
         transform-origin: center left;
         box-shadow: inset 20px 0px 20px 0px #00000055;
         pointer-events: none;
+        z-index: -1;
     }
     .page_trans {
         position: absolute;
@@ -42,70 +44,21 @@
         transform-origin: center left;
         box-shadow: inset 5px 0px 5px 5px #00000055;
         z-index: 1;
-    }
-    @keyframes page-transition-anim-switch {
-        0% {
-            transform: rotate3d(1, 1, 1, 0deg);
-        }
-        100% {
-            transform: rotate3d(0, 1, 0, 90deg);
-        }
-    }
-    .ribbon {
-        &::before {
-            content: '';
-            width: 80px;
-            height: var(--ribbon-height);
-            position: absolute;
-            left: -5px;
-            top: 15px;
-            background: linear-gradient(to bottom, #076192 10%, #05486C);
-            border-bottom: 5px solid #888;
-            border-left: 5px solid #888;
-            border-right: 5px solid #888;
-            transform-origin: top center;
-            clip-path: polygon(0% 0%, 100% 0%, 100% 95%, 50% 99%, 0% 95%);
-            transition: all .5s ease-in-out;
-        }
-        position: absolute;
-        top: -10px;
-        left: 15px;
-        width: 100px;
-        height: 20px;
-        border-top: 3px solid #888;
-        border-left: 3px solid #888;
-        border-right: 3px solid #888;
-        border-radius: 1rem 1rem 0 0;
-        background: linear-gradient(to left, #032e45, #076192 20%);
-        z-index: 110;    
-        .main_cat_icon {
-            position: absolute;
-            top: 0%;
-            left: 50%;
-            transform: translate(-50%, 25%);
-            width: 70px;
-            height: 70px;
-        }
+        pointer-events: none;
+        animation: bk-switch-anim 1s ease-in-out;
     }
     @keyframes bk-switch-anim {
         0% {
             top: 0;
-            transform: rotate3d(1, 1, 1, 0deg) skewy(0deg) scale(1);
+            transform: translateX(0) rotate3d(1, 1, 1, 0deg) skewy(0deg) scale(1);
             filter: blur(0px) contrast(100%);
         }
         50% {
             top: -50px;
         }
-        99% {
-            left: -100px;
-            transform: rotate3d(0, 1, 0, 90deg) skewy(-15deg) scale(1.1);
-            filter: blur(6px) contrast(20%);
-        }
         100% {
-            top: 0;
-            left: 0;
-            transform: rotate3d(1, 1, 1, 0deg) skewy(0deg) scale(1);
-            filter: blur(0px) contrast(100%);
+            transform: translateX(-50px) rotate3d(0, 1, 0, 90deg) skewy(-15deg) scale(1.1);
+            filter: blur(6px) contrast(20%);
         }
     }
 }

@@ -5,13 +5,19 @@
 #Notebook {
     position: relative;
     top: 50%;
-    left: var(--nb-left);
     width: 500px;
     height: 800px;
     transform-origin: center;
     filter: drop-shadow(-5px 5px 2px #00000055);
     transition: all 1s ease-in-out;
-    transform: translate(-50%, -50%) rotate(var(--nb-rotate));
+    &.nb-op {
+        left: -250px;
+            transform: translate(-50%, -50%) rotate(0deg);
+    }
+    &.nb-cls {
+        left: 70%;
+            transform: translate(-50%, -50%) rotate(-5deg);
+    }
 }
 
 

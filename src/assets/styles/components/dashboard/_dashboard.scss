@@ -9,120 +9,167 @@
     flex-direction: column;
     justify-content: space-between;
     gap: 1.5rem;
-    z-index: 110;
     transition: all 1s ease-in-out;
-    .header, .dashBody {
-        .dashLink {
-            font-size: 1rem;
-            font-weight: 700;
-            text-align: center;
-            display: flex;
-            align-items: center;
-            cursor: pointer;
-        }
+    .nav-op {
+        top: 0px;
+    }        
+    .nav-cl {
+        top: 100px;
     }
-    .header, .dashBody, .footer {
-        margin-left: 5rem;
-    }
-    .header {
-        position: relative;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        transition: all .3s ease-in-out;
-        border-bottom: 1px solid #004579;
-        .dashLink {
-            border-radius: .5rem;
-            z-index: 1;
-            .headerIcon {
-                padding: 0 1rem;
-            }
-            .linkname {
-                font-family: $caveat;
-                font-size: 2rem;
-                color: #004579;
-            }
-        }
-    }
-    .dashBody {
-        .nav-op {
-            top: -35px;
-            transform: scale(1);
-        }        
-        .nav-cl {
-            top: 35px;
-            transform: scale(.5);
-        }
-        .nav-op, .nav-cl {
-            position: absolute;
-            left: 0;
-            width: 480px;
-            z-index: -20;
-            transition: all .3s ease-in-out;
-
-            @for $i from 1 through 3 {
-                .dashLink-#{$i} {
-                    top: -25px;
-                    margin: 0 .5rem;
+    .nav-op, .nav-cl {
+        position: absolute;
+        left: 0;
+        width: 480px;
+        transition: all .5s ease-in-out;
+        @for $i from 1 through 3 {
+            .dashLink-#{$i} {
+                margin: 0 .5rem;
+                position: absolute;
+                display: flex;
+                justify-content: center;
+                border-radius: 1rem 1rem 0 0;
+                border-left: 3px solid #888;
+                border-top: 3px solid #888;
+                border-right: 3px solid #888;
+                width: 70px;
+                transform-origin: bottom center;
+                cursor: pointer;
+                // transition: all .5s ease-in-out;
+                z-index: 1;
+                &::before {
+                    content: '';
+                    width: 80px;;
                     position: absolute;
-                    display: flex;
-                    align-items: flex-start;
-                    border-radius: 1rem 1rem 0 0;
+                    left: -5px;
+                    top: 15px;
+                    background: linear-gradient(to bottom, #076192 10%, #05486C);
                     border-left: 3px solid #888;
-                    border-top: 3px solid #888;
                     border-right: 3px solid #888;
-                    justify-content: flex-start;
-                    width: 70px;
-                    transform: translateY(0);
-                    transform-origin: bottom center;
-                    cursor: pointer;
-                    transition: all .5s ease-in-out;
-                    &.articles-sltd, &.portfolio-sltd, &.arcadepalace-sltd {
-                        left: 5px;
-                        width: 100px;
+                    transform-origin: top center;
+                    clip-path: polygon(0% 0%, 100% 0%, 100% 95%, 50% 99%, 0% 95%);
+                    z-index: -1;
+                }
+                &.articles-sw, &.portfolio-sw, &.arcadepalace-sw {
+                    z-index: 10;
+                    animation: bk-switch-anim 1s ease-in-out;
+                }
+                &.articles-sltd, &.portfolio-sltd, &.arcadepalace-sltd{
+                    bottom: -10px; 
+                    left: 5px;
+                    width: 100px;
+                    height: 20px;
+                    background: linear-gradient(to left, #032e45, #076192 20%);
+                    &::before {
+                        transform: skewX(0deg);
+                        border-bottom: 3px solid #888;
+                        height: 840px;
+                        animation: beforeLinkIn 1s ease-in-out;
+                        @keyframes beforeLinkIn {
+                            from {transform: skewX(3deg); height: 0px; border-bottom: 0px solid #888;}
+                            to {transform: skewX(0deg); height: 840px; border-bottom: 3px solid #888;}
+                        }
+                    }
+                    .navIcon {
+                        padding: 1rem 10px 0 0;
+                        transition: all .5s ease-in-out;
+                        transform: scale(1);
+                    }
+                }
+                &.articles-unsltd, &.portfolio-unsltd, &.arcadepalace-unsltd {
+                    bottom: -10px;
+                    left: calc(380px - (#{$i - 1} * 90px));
+                    width: 80px;
+                    height: 60px;
+                    background: linear-gradient(to left, #076192, #076192 20%);
+                    // clip-path: polygon(0% 50%, 50% 1%, 100% 50%, 100% 100%, 0% 100%);
+                    animation: linkIn 1s ease-in-out;
+                    @keyframes linkIn {
+                        from {
+                            transform: translateY(100px);
+                            z-index: -10;
+                        }
+                        to {
+                            transform: translateY(0px);
+                            z-index: -10;
+                        }
+                    }
+                    &::before {
+                        border-bottom: 0px solid #888;
                         height: 0px;
-                        background: linear-gradient(to left, #032e45, #076192 20%);
-                        .navIcon {
-                            transition: all .3s ease-in-out;
-                            transform: scale(1) translateY(70px);
+                        transition: all .5s ease-in-out;
+                        animation: beforeLinkOut .5s ease-in-out;
+                        @keyframes beforeLinkOut {
+                            from {height: 0px;}
+                            to {height: 0px;}
                         }
                     }
-                    &.articles-unsltd, &.portfolio-unsltd, &.arcadepalace-unsltd {
+                    &:hover {
                         height: 70px;
-                        left: calc(380px - (#{$i - 1} * 80px));
-                        background: linear-gradient(to left, #076192, #076192 20%);
-                        &:hover {
-                            top: -30px;
-                        }
-                        .navIcon {
-                            transition: all .3s ease-in-out;
-                            transform: scale(.8);
-                        }
                     }
-                    .linkname {
-                        margin-left: 1rem;
-                        font-size: 1.5rem;
-                        font-weight: 700;
-                        color: #004579;
-                        text-align: center;
-                        display: none;
-                        &.show {
-                            display: block;
-                        }
+                    .navIcon {
+                        // padding: .5rem 0 0 0;
+                        transition: all .5s ease-in-out;
+                        transform: scale(.8);
                     }
-                }    
+                }
+                .linkname {
+                    margin-left: 1rem;
+                    font-size: 1.5rem;
+                    font-weight: 700;
+                    color: #004579;
+                    text-align: center;
+                    display: none;
+                    &.show {
+                        display: block;
+                    }
+                }
+            }    
+        }
+    }
+    #Dash-body {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        z-index: 2;
+        transform-origin: left center;
+        &.db-switch {
+            animation: bk-switch-anim 1s ease-in-out;
+        }
+        .db-header, .db-content, .db-footer {
+            padding: 1.5rem 0;
+            margin-left: 7rem;
+            &.db-fade {
+                animation: fadein 1s ease-in-out;
+            }
+            @keyframes fadein {
+                from {opacity: 0;}
+                to {opacity: 1;}
             }
         }
-        .dashBodyContent {
+        .db-header {
+            position: relative;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all .3s ease-in-out;
+            border-bottom: 1px solid #004579;
+            font-family: $caveat;
+            font-size: 2rem;
+            color: #004579;
+        }
+        .db-content {
             position: relative;
             display: flex;
             flex-direction: column;
             min-height: 15rem;
             gap: 1rem;
-            padding: 1rem;
             border-radius: 0 .5rem .5rem .5rem;
             color: #004579;
-            transition: all .3s ease-in-out;
             .sectionName {
                 font-size: 1.45rem;
                 font-weight: 700;
@@ -180,45 +227,11 @@
             }
         }
     }
-
-    .footer {
+    .db-footer {
         display: flex;
         align-items: center;
-        padding: 1rem;
         color:#004579;
         border-top: 1px solid #004579;
-    }
-}
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
-}
-@keyframes fadeOut {
-    from {
-        opacity: 1;
-    }
-    to {
-        opacity: 0;
-    }
-}
-@keyframes popIn {
-    from {
-        transform: scale(0);
-    }
-    to {
-        transform: scale(1);
-    }
-}
-@keyframes popOut {
-    from {
-        transform: scale(1);
-    }
-    to {
-        transform: tscale(0);
     }
 }
 

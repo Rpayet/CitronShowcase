@@ -15,22 +15,11 @@ export default function Dashboard() {
     const { dashboardContent } = useContext(DashboardContext);
     const { navigation, category, subcategory, description } = dashboardContent;
     const { lemonifylogoset } = useContext(AppContext);
-
-    const { animus, setAnimus } = useContext(AnimationContext);
+    const { animus } = useContext(AnimationContext);
     const { dashboardComp } = animus;
-
-    const [hovered, setHovered] = useState('');
     const [navDynamicArray, setNavDynamicArray] = useState(navigation || []);
-
-    const updateAnimationDuration = () => {
-        const duration = isPageRefreshed() ? "0s" : ".7s";
-        document.documentElement.style.setProperty("--dash-animation-duration", duration);
-    };
+    const [ switchClass, setSwitchClass ] = useState('');
     
-    useEffect(() => {
-        updateAnimationDuration();        
-    }, [isPageRefreshed()]);
-
     useEffect(() => {
         if (navigation.length === 0) return;
         setNavDynamicArray((prevArray) => {
@@ -44,88 +33,56 @@ export default function Dashboard() {
         })
     }, [navigation]);
 
-    // useEffect(() => {
-    //     setAnimus(prev => {
-    //         return {
-    //             ...prev,
-    //             dashboardComp: {
-    //                 open: 
-    //             }
-    //         }
-    //     })
-    // }, [setAnimus, category]);
+    const handleNavEvent = (link) => {
+        setSwitchClass(category.name.toLowerCase()+'-sw');
+        setTimeout(() => {
+            setSwitchClass('');
+        }, 500);
+        handleNavigation(link.to);
+    }
 
+    console.log((category?.name === 'Portfolio') ? switchClass : '')
     return (
-        <div id="Dashboard" className={`dashboard`}>
-            <div 
-                className={`header`}
-                onClick={() => handleNavigation('lemonify')} >
-                    <a className="dashLink">
-                        <div className="headerIcon">
-                            <Stage
-                                width={64}
-                                height={64}
-                                options={{backgroundAlpha: 0}}>
-                                    <Sprite
-                                        image={lemonifylogoset}
-                                        position={handleIconPosition(64, 0, 1)}
-                                        anchor={[0, 0]}
-                                        scale={1}
-                                    />
-                            </Stage>
-                        </div>
-                        <p className="linkname">{navigation[0].name}</p>
-                    </a>
+        <div id="Dashboard">
+            <div className={`nav${!dashboardComp.open ? '-cl' : '-op'}`}>
+                {navDynamicArray.map((link) => {
+                    if (link.to === '') return;
+                    return (
+                        <button
+                            key={link.to}
+                            id={link.to}
+                            className={`dashLink-${link.id} 
+                                ${link.to}${(category?.name === link.name)? '-sltd' : '-unsltd'} ${switchClass}`}
+                            onClick={() => handleNavEvent(link) }>
+                                <div className="navIcon">
+                                    <Stage                  
+                                        width={64}
+                                        height={64}
+                                        options={{backgroundAlpha: 0}}>
+                                            <Sprite
+                                                image={lemonifylogoset}
+                                                position={handleIconPosition(64, link.id, 0)}
+                                                anchor={[0, 0]}
+                                                scale={1}                                   
+                                            />
+                                    </Stage>
+                                </div>
+                        </button>
+                    );
+                })}
             </div>
-            <div className="dashBody">
-                <div className={`nav${!dashboardComp.open ? '-cl' : '-op'}`}>
-                    {/* <p className={`linkname ${hovered !== '' ? 'show' : 'hide'}`}>
-                        {Object.keys(navigation).map(key => {
-                            if (navigation[key].to === hovered && navigation[key].name !== category.name) {
-                                return navigation[key].name;
-                            }
-                        })}
-                    </p> */}
-                    {navDynamicArray.map((link) => {
-                        if (link.to === '') return;
-                        return (
-                            <button
-                                key={link.to}
-                                id={link.to}
-                                className={`dashLink-${link.id} 
-                                    ${link.to}${category.name === link.name ? '-sltd' : '-unsltd'}`}
-                                onClick={() => handleNavigation(link.to) } 
-                                onMouseEnter={() => setHovered(link.to)}
-                                onMouseLeave={() => setHovered('')}>
-                                    <div className="navIcon">
-                                        <Stage                  
-                                            width={64}
-                                            height={64}
-                                            options={{backgroundAlpha: 0}}>
-                                                <Sprite
-                                                    image={lemonifylogoset}
-                                                    position={handleIconPosition(64, link.id, 0)}
-                                                    anchor={[0, 0]}
-                                                    scale={1}                                   
-                                                />
-                                        </Stage>
-                                    </div>
-                            </button>
-                        );
-                    })}
+            <div id="Dash-body" className={dashboardComp.transition ? "db-switch" : ""}>
+                <div className={`db-header ${!dashboardComp.transition ? "db-fade" : ""}`}>
+                    <h1>{category.name}</h1>
                 </div>
-                <div className="dashBodyContent">
-                    <h1 className="sectionName">
-                        {category.name !== 'Lemonify' ? category.name : ''}
-                        {subcategory.name !== '' ? (' - ' + subcategory.name)  : ''}
-                    </h1>
+                <div className={`db-content ${!dashboardComp.transition ? "db-fade" : ""}`}>
                     <p className="description">{description}</p>
                     { subcategory.id && <DashSubLinks /> }
                     {/** Espace pour les options liés au sous-catégories */}
                 </div>
-            </div>
-            <div className="footer">
-                <p>Copyright</p>
+                <div className={`db-footer ${!dashboardComp.transition ? "db-fade" : ""}`}>
+                    <p>Copyright</p>
+                </div>
             </div>
         </div>
     );

@@ -13,6 +13,7 @@ export const usePageTransition = () => {
     const navigate = useNavigate();
 
     const navigateWithAnimation = (fromPage, toPage, timeout=500) => {
+        //**Use this to reload page */
         if (fromPage === toPage) return;
 
         const isLanding = (page) => (page === '' || page === 'lemonify');

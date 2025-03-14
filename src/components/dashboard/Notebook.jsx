@@ -11,13 +11,11 @@ import { AnimationContext } from "../../context/AnimationContext";
 export default function Notebook() {
 
     const { dashboardContent } = useContext(DashboardContext);
-    const { navigation, category } = dashboardContent;
+    const { navigation } = dashboardContent;
     const { lemonifylogoset } = useContext(AppContext);
     const { animus } = useContext(AnimationContext);
     const { dashboardComp } = animus;
-
     const [navArray, setNavArray] = useState(navigation.filter(link => link.id !== 0));
-
     const { handleNavigation } = usePageTransition();
     const { handleIconPosition } = useIcon();
 
@@ -51,13 +49,11 @@ export default function Notebook() {
         // Circle center
         const centerX = 50;
         const centerY = 50;
-
         // First 4 characters positioning
         for (let i = 3; i >= 0; i--) {
             const angle = i * 30 * (Math.PI / 180);
             const x = centerX + radius * Math.cos(angle);
             const y = centerY - radius * Math.sin(angle);
-
             const charElement = document.querySelector(`.portfolio_char-${3 - i}`);
             if (charElement) {
                 charElement.style.left = `${x}%`;
@@ -70,7 +66,6 @@ export default function Notebook() {
             const angle = (i - 4) * 30 * (Math.PI / 180);
             const x = centerX - radius * Math.cos(angle);
             const y = centerY + radius * Math.sin(angle);
-
             const charElement = document.querySelector(`.portfolio_char-${i}`);
             if (charElement) {
                 charElement.style.left = `${x}%`;
@@ -84,7 +79,6 @@ export default function Notebook() {
         const radius = 18;
         const centerX = 50;
         const centerY = 0;
-
         for (let i = 5; i >= 0; i--) {
             const angle = i * 30 * (Math.PI / 180);
             const x = centerX + radius * Math.cos(angle);
@@ -99,33 +93,16 @@ export default function Notebook() {
         }
     },[]);
 
-    const handleNotebookPosition = () => {
-        const nb_left = !dashboardComp.open ? "70%" : "-250px";
-        const rotation = !dashboardComp.open ? "-5deg" : "0deg";
-        const rotation3d = !dashboardComp.open ? "rotate3d(1, 1, 1, 0deg)" : "rotate3d(0, 1, 0, 90deg)";
-        const borderRadius = !dashboardComp.open ? "10px" : "0px";
-        const nb_turn_left = !dashboardComp.open ? "0%" : "100%";
-        document.documentElement.style.setProperty("--nb-left", nb_left);
-        document.documentElement.style.setProperty("--nb-rotate", rotation);
-        document.documentElement.style.setProperty("--nb-ct-border-radius", borderRadius);
-        document.documentElement.style.setProperty("--nb-turn-left", nb_turn_left);
-        document.documentElement.style.setProperty("--nb-rotate-3d", rotation3d);
-    }
-
-    useEffect(()=> {
-        handleNotebookPosition();
-    }, [dashboardComp.open]);
-
     return (
-        <div id="Notebook">
+        <div id="Notebook" className={dashboardComp.open ? "nb-op" : "nb-cls"}>
             {/** Notebook content - navigation, filters & options */}
-            <div id="Nb_content">
-                <div className="pages_bg"></div>
+            <div id="Nb_content" className={dashboardComp.open ? "nbc-op" : "nbc-cls"}>
+                <div className={dashboardComp.open ? "pages_bg-op" : "pages_bg-cls"}></div>
             </div>
             {/** Bookmark - styles & category reminder */}
             <Bookmark />
             {/** Cover */}
-            <div id="Nb_cover">
+            <div id="Nb_cover" className={dashboardComp.open ? "nbcover-op" : "nbcover-cls"}>
                 {/** Landing Navigation */}	
                 <nav id="Nb_nav">
                     <ul>
