@@ -44,6 +44,7 @@ ul {
 #Dashboard .nav-op .dashLink-1, #Dashboard .nav-cl .dashLink-1 {
   margin: 0 0.5rem;
   position: absolute;
+  bottom: -10px;
   display: flex;
   justify-content: center;
   border-radius: 1rem 1rem 0 0;
@@ -53,6 +54,7 @@ ul {
   width: 70px;
   transform-origin: bottom center;
   cursor: pointer;
+  transition: all 0.5s ease-in-out;
   z-index: 1;
 }
 #Dashboard .nav-op .dashLink-1::before, #Dashboard .nav-cl .dashLink-1::before {
@@ -68,16 +70,54 @@ ul {
   clip-path: polygon(0% 0%, 100% 0%, 100% 95%, 50% 99%, 0% 95%);
   z-index: -1;
 }
-#Dashboard .nav-op .dashLink-1.articles-sw, #Dashboard .nav-op .dashLink-1.portfolio-sw, #Dashboard .nav-op .dashLink-1.arcadepalace-sw, #Dashboard .nav-cl .dashLink-1.articles-sw, #Dashboard .nav-cl .dashLink-1.portfolio-sw, #Dashboard .nav-cl .dashLink-1.arcadepalace-sw {
-  z-index: 10;
-  animation: bk-switch-anim 1s ease-in-out;
-}
 #Dashboard .nav-op .dashLink-1.articles-sltd, #Dashboard .nav-op .dashLink-1.portfolio-sltd, #Dashboard .nav-op .dashLink-1.arcadepalace-sltd, #Dashboard .nav-cl .dashLink-1.articles-sltd, #Dashboard .nav-cl .dashLink-1.portfolio-sltd, #Dashboard .nav-cl .dashLink-1.arcadepalace-sltd {
-  bottom: -10px;
   left: 5px;
   width: 100px;
   height: 20px;
   background: linear-gradient(to left, #032e45, #076192 20%);
+  clip-path: none;
+  animation: clip-anim 0.5s ease-in-out;
+}
+@keyframes clip-anim {
+  0% {
+    clip-path: polygon(0% 50%, 50% 1%, 100% 50%, 100% 100%, 0% 100%);
+  }
+  99% {
+    clip-path: polygon(0% 0%, 0% 0%, 100% 0%, 100% 100%, 0% 100%);
+  }
+  100% {
+    clip-path: none;
+  }
+}
+#Dashboard .nav-op .dashLink-1.articles-sltd.articles-sw, #Dashboard .nav-op .dashLink-1.articles-sltd.portfolio-sw, #Dashboard .nav-op .dashLink-1.articles-sltd.arcadepalace-sw, #Dashboard .nav-op .dashLink-1.portfolio-sltd.articles-sw, #Dashboard .nav-op .dashLink-1.portfolio-sltd.portfolio-sw, #Dashboard .nav-op .dashLink-1.portfolio-sltd.arcadepalace-sw, #Dashboard .nav-op .dashLink-1.arcadepalace-sltd.articles-sw, #Dashboard .nav-op .dashLink-1.arcadepalace-sltd.portfolio-sw, #Dashboard .nav-op .dashLink-1.arcadepalace-sltd.arcadepalace-sw, #Dashboard .nav-cl .dashLink-1.articles-sltd.articles-sw, #Dashboard .nav-cl .dashLink-1.articles-sltd.portfolio-sw, #Dashboard .nav-cl .dashLink-1.articles-sltd.arcadepalace-sw, #Dashboard .nav-cl .dashLink-1.portfolio-sltd.articles-sw, #Dashboard .nav-cl .dashLink-1.portfolio-sltd.portfolio-sw, #Dashboard .nav-cl .dashLink-1.portfolio-sltd.arcadepalace-sw, #Dashboard .nav-cl .dashLink-1.arcadepalace-sltd.articles-sw, #Dashboard .nav-cl .dashLink-1.arcadepalace-sltd.portfolio-sw, #Dashboard .nav-cl .dashLink-1.arcadepalace-sltd.arcadepalace-sw {
+  z-index: 10;
+  animation: bk-ribbon-switch-anim 1s ease-in-out;
+  transition: all 0s ease-in-out;
+}
+#Dashboard .nav-op .dashLink-1.articles-sltd.articles-sw::before, #Dashboard .nav-op .dashLink-1.articles-sltd.portfolio-sw::before, #Dashboard .nav-op .dashLink-1.articles-sltd.arcadepalace-sw::before, #Dashboard .nav-op .dashLink-1.portfolio-sltd.articles-sw::before, #Dashboard .nav-op .dashLink-1.portfolio-sltd.portfolio-sw::before, #Dashboard .nav-op .dashLink-1.portfolio-sltd.arcadepalace-sw::before, #Dashboard .nav-op .dashLink-1.arcadepalace-sltd.articles-sw::before, #Dashboard .nav-op .dashLink-1.arcadepalace-sltd.portfolio-sw::before, #Dashboard .nav-op .dashLink-1.arcadepalace-sltd.arcadepalace-sw::before, #Dashboard .nav-cl .dashLink-1.articles-sltd.articles-sw::before, #Dashboard .nav-cl .dashLink-1.articles-sltd.portfolio-sw::before, #Dashboard .nav-cl .dashLink-1.articles-sltd.arcadepalace-sw::before, #Dashboard .nav-cl .dashLink-1.portfolio-sltd.articles-sw::before, #Dashboard .nav-cl .dashLink-1.portfolio-sltd.portfolio-sw::before, #Dashboard .nav-cl .dashLink-1.portfolio-sltd.arcadepalace-sw::before, #Dashboard .nav-cl .dashLink-1.arcadepalace-sltd.articles-sw::before, #Dashboard .nav-cl .dashLink-1.arcadepalace-sltd.portfolio-sw::before, #Dashboard .nav-cl .dashLink-1.arcadepalace-sltd.arcadepalace-sw::before {
+  animation: bk-sltd-anim 0.5s ease-in-out;
+}
+@keyframes bk-ribbon-switch-anim {
+  0% {
+    bottom: -10px;
+    transform: translateX(0) rotate3d(1, 1, 1, 0deg) skewy(0deg) scale(1);
+    filter: blur(0px) contrast(100%);
+  }
+  50% {
+    bottom: 75px;
+  }
+  100% {
+    transform: translateX(-50px) rotate3d(0, 1, 0, 90deg) skewy(-15deg) scale(1.1);
+    filter: blur(6px) contrast(20%);
+  }
+}
+@keyframes bk-sltd-anim {
+  from {
+    height: 840px;
+  }
+  to {
+    height: 0px;
+  }
 }
 #Dashboard .nav-op .dashLink-1.articles-sltd::before, #Dashboard .nav-op .dashLink-1.portfolio-sltd::before, #Dashboard .nav-op .dashLink-1.arcadepalace-sltd::before, #Dashboard .nav-cl .dashLink-1.articles-sltd::before, #Dashboard .nav-cl .dashLink-1.portfolio-sltd::before, #Dashboard .nav-cl .dashLink-1.arcadepalace-sltd::before {
   transform: skewX(0deg);
@@ -86,12 +126,16 @@ ul {
   animation: beforeLinkIn 1s ease-in-out;
 }
 @keyframes beforeLinkIn {
-  from {
+  0% {
     transform: skewX(3deg);
     height: 0px;
-    border-bottom: 0px solid #888;
+    top: 50px;
   }
-  to {
+  50% {
+    border-bottom: 0px solid #888;
+    top: 15px;
+  }
+  100% {
     transform: skewX(0deg);
     height: 840px;
     border-bottom: 3px solid #888;
@@ -99,15 +143,14 @@ ul {
 }
 #Dashboard .nav-op .dashLink-1.articles-sltd .navIcon, #Dashboard .nav-op .dashLink-1.portfolio-sltd .navIcon, #Dashboard .nav-op .dashLink-1.arcadepalace-sltd .navIcon, #Dashboard .nav-cl .dashLink-1.articles-sltd .navIcon, #Dashboard .nav-cl .dashLink-1.portfolio-sltd .navIcon, #Dashboard .nav-cl .dashLink-1.arcadepalace-sltd .navIcon {
   padding: 1rem 10px 0 0;
-  transition: all 0.5s ease-in-out;
   transform: scale(1);
 }
 #Dashboard .nav-op .dashLink-1.articles-unsltd, #Dashboard .nav-op .dashLink-1.portfolio-unsltd, #Dashboard .nav-op .dashLink-1.arcadepalace-unsltd, #Dashboard .nav-cl .dashLink-1.articles-unsltd, #Dashboard .nav-cl .dashLink-1.portfolio-unsltd, #Dashboard .nav-cl .dashLink-1.arcadepalace-unsltd {
-  bottom: -10px;
   left: calc(380px - (0 * 90px));
   width: 80px;
   height: 60px;
   background: linear-gradient(to left, #076192, #076192 20%);
+  clip-path: polygon(0% 50%, 50% 1%, 100% 50%, 100% 100%, 0% 100%);
   animation: linkIn 1s ease-in-out;
 }
 @keyframes linkIn {
@@ -138,7 +181,6 @@ ul {
   height: 70px;
 }
 #Dashboard .nav-op .dashLink-1.articles-unsltd .navIcon, #Dashboard .nav-op .dashLink-1.portfolio-unsltd .navIcon, #Dashboard .nav-op .dashLink-1.arcadepalace-unsltd .navIcon, #Dashboard .nav-cl .dashLink-1.articles-unsltd .navIcon, #Dashboard .nav-cl .dashLink-1.portfolio-unsltd .navIcon, #Dashboard .nav-cl .dashLink-1.arcadepalace-unsltd .navIcon {
-  transition: all 0.5s ease-in-out;
   transform: scale(0.8);
 }
 #Dashboard .nav-op .dashLink-1 .linkname, #Dashboard .nav-cl .dashLink-1 .linkname {
@@ -155,6 +197,7 @@ ul {
 #Dashboard .nav-op .dashLink-2, #Dashboard .nav-cl .dashLink-2 {
   margin: 0 0.5rem;
   position: absolute;
+  bottom: -10px;
   display: flex;
   justify-content: center;
   border-radius: 1rem 1rem 0 0;
@@ -164,6 +207,7 @@ ul {
   width: 70px;
   transform-origin: bottom center;
   cursor: pointer;
+  transition: all 0.5s ease-in-out;
   z-index: 1;
 }
 #Dashboard .nav-op .dashLink-2::before, #Dashboard .nav-cl .dashLink-2::before {
@@ -179,16 +223,54 @@ ul {
   clip-path: polygon(0% 0%, 100% 0%, 100% 95%, 50% 99%, 0% 95%);
   z-index: -1;
 }
-#Dashboard .nav-op .dashLink-2.articles-sw, #Dashboard .nav-op .dashLink-2.portfolio-sw, #Dashboard .nav-op .dashLink-2.arcadepalace-sw, #Dashboard .nav-cl .dashLink-2.articles-sw, #Dashboard .nav-cl .dashLink-2.portfolio-sw, #Dashboard .nav-cl .dashLink-2.arcadepalace-sw {
-  z-index: 10;
-  animation: bk-switch-anim 1s ease-in-out;
-}
 #Dashboard .nav-op .dashLink-2.articles-sltd, #Dashboard .nav-op .dashLink-2.portfolio-sltd, #Dashboard .nav-op .dashLink-2.arcadepalace-sltd, #Dashboard .nav-cl .dashLink-2.articles-sltd, #Dashboard .nav-cl .dashLink-2.portfolio-sltd, #Dashboard .nav-cl .dashLink-2.arcadepalace-sltd {
-  bottom: -10px;
   left: 5px;
   width: 100px;
   height: 20px;
   background: linear-gradient(to left, #032e45, #076192 20%);
+  clip-path: none;
+  animation: clip-anim 0.5s ease-in-out;
+}
+@keyframes clip-anim {
+  0% {
+    clip-path: polygon(0% 50%, 50% 1%, 100% 50%, 100% 100%, 0% 100%);
+  }
+  99% {
+    clip-path: polygon(0% 0%, 0% 0%, 100% 0%, 100% 100%, 0% 100%);
+  }
+  100% {
+    clip-path: none;
+  }
+}
+#Dashboard .nav-op .dashLink-2.articles-sltd.articles-sw, #Dashboard .nav-op .dashLink-2.articles-sltd.portfolio-sw, #Dashboard .nav-op .dashLink-2.articles-sltd.arcadepalace-sw, #Dashboard .nav-op .dashLink-2.portfolio-sltd.articles-sw, #Dashboard .nav-op .dashLink-2.portfolio-sltd.portfolio-sw, #Dashboard .nav-op .dashLink-2.portfolio-sltd.arcadepalace-sw, #Dashboard .nav-op .dashLink-2.arcadepalace-sltd.articles-sw, #Dashboard .nav-op .dashLink-2.arcadepalace-sltd.portfolio-sw, #Dashboard .nav-op .dashLink-2.arcadepalace-sltd.arcadepalace-sw, #Dashboard .nav-cl .dashLink-2.articles-sltd.articles-sw, #Dashboard .nav-cl .dashLink-2.articles-sltd.portfolio-sw, #Dashboard .nav-cl .dashLink-2.articles-sltd.arcadepalace-sw, #Dashboard .nav-cl .dashLink-2.portfolio-sltd.articles-sw, #Dashboard .nav-cl .dashLink-2.portfolio-sltd.portfolio-sw, #Dashboard .nav-cl .dashLink-2.portfolio-sltd.arcadepalace-sw, #Dashboard .nav-cl .dashLink-2.arcadepalace-sltd.articles-sw, #Dashboard .nav-cl .dashLink-2.arcadepalace-sltd.portfolio-sw, #Dashboard .nav-cl .dashLink-2.arcadepalace-sltd.arcadepalace-sw {
+  z-index: 10;
+  animation: bk-ribbon-switch-anim 1s ease-in-out;
+  transition: all 0s ease-in-out;
+}
+#Dashboard .nav-op .dashLink-2.articles-sltd.articles-sw::before, #Dashboard .nav-op .dashLink-2.articles-sltd.portfolio-sw::before, #Dashboard .nav-op .dashLink-2.articles-sltd.arcadepalace-sw::before, #Dashboard .nav-op .dashLink-2.portfolio-sltd.articles-sw::before, #Dashboard .nav-op .dashLink-2.portfolio-sltd.portfolio-sw::before, #Dashboard .nav-op .dashLink-2.portfolio-sltd.arcadepalace-sw::before, #Dashboard .nav-op .dashLink-2.arcadepalace-sltd.articles-sw::before, #Dashboard .nav-op .dashLink-2.arcadepalace-sltd.portfolio-sw::before, #Dashboard .nav-op .dashLink-2.arcadepalace-sltd.arcadepalace-sw::before, #Dashboard .nav-cl .dashLink-2.articles-sltd.articles-sw::before, #Dashboard .nav-cl .dashLink-2.articles-sltd.portfolio-sw::before, #Dashboard .nav-cl .dashLink-2.articles-sltd.arcadepalace-sw::before, #Dashboard .nav-cl .dashLink-2.portfolio-sltd.articles-sw::before, #Dashboard .nav-cl .dashLink-2.portfolio-sltd.portfolio-sw::before, #Dashboard .nav-cl .dashLink-2.portfolio-sltd.arcadepalace-sw::before, #Dashboard .nav-cl .dashLink-2.arcadepalace-sltd.articles-sw::before, #Dashboard .nav-cl .dashLink-2.arcadepalace-sltd.portfolio-sw::before, #Dashboard .nav-cl .dashLink-2.arcadepalace-sltd.arcadepalace-sw::before {
+  animation: bk-sltd-anim 0.5s ease-in-out;
+}
+@keyframes bk-ribbon-switch-anim {
+  0% {
+    bottom: -10px;
+    transform: translateX(0) rotate3d(1, 1, 1, 0deg) skewy(0deg) scale(1);
+    filter: blur(0px) contrast(100%);
+  }
+  50% {
+    bottom: 75px;
+  }
+  100% {
+    transform: translateX(-50px) rotate3d(0, 1, 0, 90deg) skewy(-15deg) scale(1.1);
+    filter: blur(6px) contrast(20%);
+  }
+}
+@keyframes bk-sltd-anim {
+  from {
+    height: 840px;
+  }
+  to {
+    height: 0px;
+  }
 }
 #Dashboard .nav-op .dashLink-2.articles-sltd::before, #Dashboard .nav-op .dashLink-2.portfolio-sltd::before, #Dashboard .nav-op .dashLink-2.arcadepalace-sltd::before, #Dashboard .nav-cl .dashLink-2.articles-sltd::before, #Dashboard .nav-cl .dashLink-2.portfolio-sltd::before, #Dashboard .nav-cl .dashLink-2.arcadepalace-sltd::before {
   transform: skewX(0deg);
@@ -197,12 +279,16 @@ ul {
   animation: beforeLinkIn 1s ease-in-out;
 }
 @keyframes beforeLinkIn {
-  from {
+  0% {
     transform: skewX(3deg);
     height: 0px;
-    border-bottom: 0px solid #888;
+    top: 50px;
   }
-  to {
+  50% {
+    border-bottom: 0px solid #888;
+    top: 15px;
+  }
+  100% {
     transform: skewX(0deg);
     height: 840px;
     border-bottom: 3px solid #888;
@@ -210,15 +296,14 @@ ul {
 }
 #Dashboard .nav-op .dashLink-2.articles-sltd .navIcon, #Dashboard .nav-op .dashLink-2.portfolio-sltd .navIcon, #Dashboard .nav-op .dashLink-2.arcadepalace-sltd .navIcon, #Dashboard .nav-cl .dashLink-2.articles-sltd .navIcon, #Dashboard .nav-cl .dashLink-2.portfolio-sltd .navIcon, #Dashboard .nav-cl .dashLink-2.arcadepalace-sltd .navIcon {
   padding: 1rem 10px 0 0;
-  transition: all 0.5s ease-in-out;
   transform: scale(1);
 }
 #Dashboard .nav-op .dashLink-2.articles-unsltd, #Dashboard .nav-op .dashLink-2.portfolio-unsltd, #Dashboard .nav-op .dashLink-2.arcadepalace-unsltd, #Dashboard .nav-cl .dashLink-2.articles-unsltd, #Dashboard .nav-cl .dashLink-2.portfolio-unsltd, #Dashboard .nav-cl .dashLink-2.arcadepalace-unsltd {
-  bottom: -10px;
   left: calc(380px - (1 * 90px));
   width: 80px;
   height: 60px;
   background: linear-gradient(to left, #076192, #076192 20%);
+  clip-path: polygon(0% 50%, 50% 1%, 100% 50%, 100% 100%, 0% 100%);
   animation: linkIn 1s ease-in-out;
 }
 @keyframes linkIn {
@@ -249,7 +334,6 @@ ul {
   height: 70px;
 }
 #Dashboard .nav-op .dashLink-2.articles-unsltd .navIcon, #Dashboard .nav-op .dashLink-2.portfolio-unsltd .navIcon, #Dashboard .nav-op .dashLink-2.arcadepalace-unsltd .navIcon, #Dashboard .nav-cl .dashLink-2.articles-unsltd .navIcon, #Dashboard .nav-cl .dashLink-2.portfolio-unsltd .navIcon, #Dashboard .nav-cl .dashLink-2.arcadepalace-unsltd .navIcon {
-  transition: all 0.5s ease-in-out;
   transform: scale(0.8);
 }
 #Dashboard .nav-op .dashLink-2 .linkname, #Dashboard .nav-cl .dashLink-2 .linkname {
@@ -266,6 +350,7 @@ ul {
 #Dashboard .nav-op .dashLink-3, #Dashboard .nav-cl .dashLink-3 {
   margin: 0 0.5rem;
   position: absolute;
+  bottom: -10px;
   display: flex;
   justify-content: center;
   border-radius: 1rem 1rem 0 0;
@@ -275,6 +360,7 @@ ul {
   width: 70px;
   transform-origin: bottom center;
   cursor: pointer;
+  transition: all 0.5s ease-in-out;
   z-index: 1;
 }
 #Dashboard .nav-op .dashLink-3::before, #Dashboard .nav-cl .dashLink-3::before {
@@ -290,16 +376,54 @@ ul {
   clip-path: polygon(0% 0%, 100% 0%, 100% 95%, 50% 99%, 0% 95%);
   z-index: -1;
 }
-#Dashboard .nav-op .dashLink-3.articles-sw, #Dashboard .nav-op .dashLink-3.portfolio-sw, #Dashboard .nav-op .dashLink-3.arcadepalace-sw, #Dashboard .nav-cl .dashLink-3.articles-sw, #Dashboard .nav-cl .dashLink-3.portfolio-sw, #Dashboard .nav-cl .dashLink-3.arcadepalace-sw {
-  z-index: 10;
-  animation: bk-switch-anim 1s ease-in-out;
-}
 #Dashboard .nav-op .dashLink-3.articles-sltd, #Dashboard .nav-op .dashLink-3.portfolio-sltd, #Dashboard .nav-op .dashLink-3.arcadepalace-sltd, #Dashboard .nav-cl .dashLink-3.articles-sltd, #Dashboard .nav-cl .dashLink-3.portfolio-sltd, #Dashboard .nav-cl .dashLink-3.arcadepalace-sltd {
-  bottom: -10px;
   left: 5px;
   width: 100px;
   height: 20px;
   background: linear-gradient(to left, #032e45, #076192 20%);
+  clip-path: none;
+  animation: clip-anim 0.5s ease-in-out;
+}
+@keyframes clip-anim {
+  0% {
+    clip-path: polygon(0% 50%, 50% 1%, 100% 50%, 100% 100%, 0% 100%);
+  }
+  99% {
+    clip-path: polygon(0% 0%, 0% 0%, 100% 0%, 100% 100%, 0% 100%);
+  }
+  100% {
+    clip-path: none;
+  }
+}
+#Dashboard .nav-op .dashLink-3.articles-sltd.articles-sw, #Dashboard .nav-op .dashLink-3.articles-sltd.portfolio-sw, #Dashboard .nav-op .dashLink-3.articles-sltd.arcadepalace-sw, #Dashboard .nav-op .dashLink-3.portfolio-sltd.articles-sw, #Dashboard .nav-op .dashLink-3.portfolio-sltd.portfolio-sw, #Dashboard .nav-op .dashLink-3.portfolio-sltd.arcadepalace-sw, #Dashboard .nav-op .dashLink-3.arcadepalace-sltd.articles-sw, #Dashboard .nav-op .dashLink-3.arcadepalace-sltd.portfolio-sw, #Dashboard .nav-op .dashLink-3.arcadepalace-sltd.arcadepalace-sw, #Dashboard .nav-cl .dashLink-3.articles-sltd.articles-sw, #Dashboard .nav-cl .dashLink-3.articles-sltd.portfolio-sw, #Dashboard .nav-cl .dashLink-3.articles-sltd.arcadepalace-sw, #Dashboard .nav-cl .dashLink-3.portfolio-sltd.articles-sw, #Dashboard .nav-cl .dashLink-3.portfolio-sltd.portfolio-sw, #Dashboard .nav-cl .dashLink-3.portfolio-sltd.arcadepalace-sw, #Dashboard .nav-cl .dashLink-3.arcadepalace-sltd.articles-sw, #Dashboard .nav-cl .dashLink-3.arcadepalace-sltd.portfolio-sw, #Dashboard .nav-cl .dashLink-3.arcadepalace-sltd.arcadepalace-sw {
+  z-index: 10;
+  animation: bk-ribbon-switch-anim 1s ease-in-out;
+  transition: all 0s ease-in-out;
+}
+#Dashboard .nav-op .dashLink-3.articles-sltd.articles-sw::before, #Dashboard .nav-op .dashLink-3.articles-sltd.portfolio-sw::before, #Dashboard .nav-op .dashLink-3.articles-sltd.arcadepalace-sw::before, #Dashboard .nav-op .dashLink-3.portfolio-sltd.articles-sw::before, #Dashboard .nav-op .dashLink-3.portfolio-sltd.portfolio-sw::before, #Dashboard .nav-op .dashLink-3.portfolio-sltd.arcadepalace-sw::before, #Dashboard .nav-op .dashLink-3.arcadepalace-sltd.articles-sw::before, #Dashboard .nav-op .dashLink-3.arcadepalace-sltd.portfolio-sw::before, #Dashboard .nav-op .dashLink-3.arcadepalace-sltd.arcadepalace-sw::before, #Dashboard .nav-cl .dashLink-3.articles-sltd.articles-sw::before, #Dashboard .nav-cl .dashLink-3.articles-sltd.portfolio-sw::before, #Dashboard .nav-cl .dashLink-3.articles-sltd.arcadepalace-sw::before, #Dashboard .nav-cl .dashLink-3.portfolio-sltd.articles-sw::before, #Dashboard .nav-cl .dashLink-3.portfolio-sltd.portfolio-sw::before, #Dashboard .nav-cl .dashLink-3.portfolio-sltd.arcadepalace-sw::before, #Dashboard .nav-cl .dashLink-3.arcadepalace-sltd.articles-sw::before, #Dashboard .nav-cl .dashLink-3.arcadepalace-sltd.portfolio-sw::before, #Dashboard .nav-cl .dashLink-3.arcadepalace-sltd.arcadepalace-sw::before {
+  animation: bk-sltd-anim 0.5s ease-in-out;
+}
+@keyframes bk-ribbon-switch-anim {
+  0% {
+    bottom: -10px;
+    transform: translateX(0) rotate3d(1, 1, 1, 0deg) skewy(0deg) scale(1);
+    filter: blur(0px) contrast(100%);
+  }
+  50% {
+    bottom: 75px;
+  }
+  100% {
+    transform: translateX(-50px) rotate3d(0, 1, 0, 90deg) skewy(-15deg) scale(1.1);
+    filter: blur(6px) contrast(20%);
+  }
+}
+@keyframes bk-sltd-anim {
+  from {
+    height: 840px;
+  }
+  to {
+    height: 0px;
+  }
 }
 #Dashboard .nav-op .dashLink-3.articles-sltd::before, #Dashboard .nav-op .dashLink-3.portfolio-sltd::before, #Dashboard .nav-op .dashLink-3.arcadepalace-sltd::before, #Dashboard .nav-cl .dashLink-3.articles-sltd::before, #Dashboard .nav-cl .dashLink-3.portfolio-sltd::before, #Dashboard .nav-cl .dashLink-3.arcadepalace-sltd::before {
   transform: skewX(0deg);
@@ -308,12 +432,16 @@ ul {
   animation: beforeLinkIn 1s ease-in-out;
 }
 @keyframes beforeLinkIn {
-  from {
+  0% {
     transform: skewX(3deg);
     height: 0px;
-    border-bottom: 0px solid #888;
+    top: 50px;
   }
-  to {
+  50% {
+    border-bottom: 0px solid #888;
+    top: 15px;
+  }
+  100% {
     transform: skewX(0deg);
     height: 840px;
     border-bottom: 3px solid #888;
@@ -321,15 +449,14 @@ ul {
 }
 #Dashboard .nav-op .dashLink-3.articles-sltd .navIcon, #Dashboard .nav-op .dashLink-3.portfolio-sltd .navIcon, #Dashboard .nav-op .dashLink-3.arcadepalace-sltd .navIcon, #Dashboard .nav-cl .dashLink-3.articles-sltd .navIcon, #Dashboard .nav-cl .dashLink-3.portfolio-sltd .navIcon, #Dashboard .nav-cl .dashLink-3.arcadepalace-sltd .navIcon {
   padding: 1rem 10px 0 0;
-  transition: all 0.5s ease-in-out;
   transform: scale(1);
 }
 #Dashboard .nav-op .dashLink-3.articles-unsltd, #Dashboard .nav-op .dashLink-3.portfolio-unsltd, #Dashboard .nav-op .dashLink-3.arcadepalace-unsltd, #Dashboard .nav-cl .dashLink-3.articles-unsltd, #Dashboard .nav-cl .dashLink-3.portfolio-unsltd, #Dashboard .nav-cl .dashLink-3.arcadepalace-unsltd {
-  bottom: -10px;
   left: calc(380px - (2 * 90px));
   width: 80px;
   height: 60px;
   background: linear-gradient(to left, #076192, #076192 20%);
+  clip-path: polygon(0% 50%, 50% 1%, 100% 50%, 100% 100%, 0% 100%);
   animation: linkIn 1s ease-in-out;
 }
 @keyframes linkIn {
@@ -360,7 +487,6 @@ ul {
   height: 70px;
 }
 #Dashboard .nav-op .dashLink-3.articles-unsltd .navIcon, #Dashboard .nav-op .dashLink-3.portfolio-unsltd .navIcon, #Dashboard .nav-op .dashLink-3.arcadepalace-unsltd .navIcon, #Dashboard .nav-cl .dashLink-3.articles-unsltd .navIcon, #Dashboard .nav-cl .dashLink-3.portfolio-unsltd .navIcon, #Dashboard .nav-cl .dashLink-3.arcadepalace-unsltd .navIcon {
-  transition: all 0.5s ease-in-out;
   transform: scale(0.8);
 }
 #Dashboard .nav-op .dashLink-3 .linkname, #Dashboard .nav-cl .dashLink-3 .linkname {

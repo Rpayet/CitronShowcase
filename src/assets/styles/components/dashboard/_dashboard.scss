@@ -25,6 +25,7 @@
             .dashLink-#{$i} {
                 margin: 0 .5rem;
                 position: absolute;
+                bottom: -10px;
                 display: flex;
                 justify-content: center;
                 border-radius: 1rem 1rem 0 0;
@@ -34,7 +35,7 @@
                 width: 70px;
                 transform-origin: bottom center;
                 cursor: pointer;
-                // transition: all .5s ease-in-out;
+                transition: all .5s ease-in-out;
                 z-index: 1;
                 &::before {
                     content: '';
@@ -49,39 +50,69 @@
                     clip-path: polygon(0% 0%, 100% 0%, 100% 95%, 50% 99%, 0% 95%);
                     z-index: -1;
                 }
-                &.articles-sw, &.portfolio-sw, &.arcadepalace-sw {
-                    z-index: 10;
-                    animation: bk-switch-anim 1s ease-in-out;
-                }
                 &.articles-sltd, &.portfolio-sltd, &.arcadepalace-sltd{
-                    bottom: -10px; 
                     left: 5px;
                     width: 100px;
                     height: 20px;
                     background: linear-gradient(to left, #032e45, #076192 20%);
+                    clip-path: none;
+                    animation: clip-anim .5s ease-in-out;
+                    @keyframes clip-anim {
+                        0% {clip-path: polygon(0% 50%, 50% 1%, 100% 50%, 100% 100%, 0% 100%);}
+                        99% {clip-path: polygon(0% 0%, 0% 0%, 100% 0%, 100% 100%, 0% 100%);}
+                        100% {clip-path: none;}
+                    }
+                    &.articles-sw, &.portfolio-sw, &.arcadepalace-sw {
+                        z-index: 10;
+                        animation: bk-ribbon-switch-anim 1s ease-in-out;
+                        transition: all 0s ease-in-out;
+                        &::before {
+                            animation: bk-sltd-anim .5s ease-in-out;
+                        }
+                        @keyframes bk-ribbon-switch-anim {
+                            0% {
+                                bottom: -10px;
+                                transform: translateX(0) rotate3d(1, 1, 1, 0deg) skewy(0deg) scale(1);
+                                filter: blur(0px) contrast(100%);
+                            }
+                            50% {
+                                bottom: 75px;
+                            }
+                            100% {
+                                transform: translateX(-50px) rotate3d(0, 1, 0, 90deg) skewy(-15deg) scale(1.1);
+                                filter: blur(6px) contrast(20%);
+                            }
+                        }
+                        @keyframes bk-sltd-anim {
+                            from {
+                                height: 840px;
+                            } to {
+                                height: 0px;
+                            }
+                        }
+                    }
                     &::before {
                         transform: skewX(0deg);
                         border-bottom: 3px solid #888;
                         height: 840px;
                         animation: beforeLinkIn 1s ease-in-out;
                         @keyframes beforeLinkIn {
-                            from {transform: skewX(3deg); height: 0px; border-bottom: 0px solid #888;}
-                            to {transform: skewX(0deg); height: 840px; border-bottom: 3px solid #888;}
+                            0% {transform: skewX(3deg); height: 0px; top: 50px;}
+                            50% {border-bottom: 0px solid #888; top: 15px;}
+                            100% {transform: skewX(0deg); height: 840px; border-bottom: 3px solid #888;}
                         }
                     }
                     .navIcon {
                         padding: 1rem 10px 0 0;
-                        transition: all .5s ease-in-out;
                         transform: scale(1);
                     }
                 }
                 &.articles-unsltd, &.portfolio-unsltd, &.arcadepalace-unsltd {
-                    bottom: -10px;
                     left: calc(380px - (#{$i - 1} * 90px));
                     width: 80px;
                     height: 60px;
                     background: linear-gradient(to left, #076192, #076192 20%);
-                    // clip-path: polygon(0% 50%, 50% 1%, 100% 50%, 100% 100%, 0% 100%);
+                    clip-path: polygon(0% 50%, 50% 1%, 100% 50%, 100% 100%, 0% 100%);
                     animation: linkIn 1s ease-in-out;
                     @keyframes linkIn {
                         from {
@@ -107,8 +138,6 @@
                         height: 70px;
                     }
                     .navIcon {
-                        // padding: .5rem 0 0 0;
-                        transition: all .5s ease-in-out;
                         transform: scale(.8);
                     }
                 }

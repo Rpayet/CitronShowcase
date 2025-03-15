@@ -34,7 +34,7 @@ export default function Dashboard() {
     }, [navigation]);
 
     const handleNavEvent = (link) => {
-        setSwitchClass(category.name.toLowerCase()+'-sw');
+        setSwitchClass(category.name.toLowerCase().replace(/\s+/g, '') + '-sw');
         setTimeout(() => {
             setSwitchClass('');
         }, 500);
