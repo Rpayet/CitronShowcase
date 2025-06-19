@@ -8,7 +8,7 @@ export const useIcon = () => {
         // Special handling for 256px icons
         if (type === 256) {
             // Returns X and Y positions for 256px icons
-            return [(256 * (id  ? 0 : 7 )), (!theme ? 0 : 256)]; // Ignore id "0" for 256px icons, replace with 7 for empty icon
+            return [(256 * (id === 0 ? 7 : id )), (!theme ? 0 : 256)]; // Ignore id "0" for 256px icons, replace with 7 for empty icon
         };
         
         // Returns X and Y positions for other icon sizes
