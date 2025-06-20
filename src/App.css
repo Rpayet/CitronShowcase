@@ -146,7 +146,7 @@ ul {
   transform: scale(1);
 }
 #Dashboard .nav-op .dashLink-1.articles-unsltd, #Dashboard .nav-op .dashLink-1.portfolio-unsltd, #Dashboard .nav-op .dashLink-1.arcadepalace-unsltd, #Dashboard .nav-cl .dashLink-1.articles-unsltd, #Dashboard .nav-cl .dashLink-1.portfolio-unsltd, #Dashboard .nav-cl .dashLink-1.arcadepalace-unsltd {
-  left: calc(380px - (0 * 90px));
+  left: calc(380px - 0 * 90px);
   width: 80px;
   height: 60px;
   background: linear-gradient(to left, #076192, #076192 20%);
@@ -299,7 +299,7 @@ ul {
   transform: scale(1);
 }
 #Dashboard .nav-op .dashLink-2.articles-unsltd, #Dashboard .nav-op .dashLink-2.portfolio-unsltd, #Dashboard .nav-op .dashLink-2.arcadepalace-unsltd, #Dashboard .nav-cl .dashLink-2.articles-unsltd, #Dashboard .nav-cl .dashLink-2.portfolio-unsltd, #Dashboard .nav-cl .dashLink-2.arcadepalace-unsltd {
-  left: calc(380px - (1 * 90px));
+  left: calc(380px - 1 * 90px);
   width: 80px;
   height: 60px;
   background: linear-gradient(to left, #076192, #076192 20%);
@@ -452,7 +452,7 @@ ul {
   transform: scale(1);
 }
 #Dashboard .nav-op .dashLink-3.articles-unsltd, #Dashboard .nav-op .dashLink-3.portfolio-unsltd, #Dashboard .nav-op .dashLink-3.arcadepalace-unsltd, #Dashboard .nav-cl .dashLink-3.articles-unsltd, #Dashboard .nav-cl .dashLink-3.portfolio-unsltd, #Dashboard .nav-cl .dashLink-3.arcadepalace-unsltd {
-  left: calc(380px - (2 * 90px));
+  left: calc(380px - 2 * 90px);
   width: 80px;
   height: 60px;
   background: linear-gradient(to left, #076192, #076192 20%);
@@ -1337,7 +1337,9 @@ ul {
   border-bottom: 3px solid #fff;
   border-right: 3px solid #fff;
   border-radius: 0 1rem 1rem 0;
+  overflow: hidden;
   clip-path: circle(150% at 25% 125%);
+  transition: 0.5s ease-in-out;
 }
 #Nb_nav .navLink.articles .articles-name .articles_iteration-0 {
   position: absolute;
@@ -1371,8 +1373,24 @@ ul {
   opacity: 0.4;
   text-shadow: -1px 0 #000, 0 1px #000, 1px 0 #000, 0 -1px #000;
 }
-#Nb_nav .navLink.articles .articles-name:hover {
+#Nb_nav .navLink.articles .articles-name .articles-sticker {
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform: translate(250px, -110px);
+  width: 190px;
+  height: 190px;
+  background: radial-gradient(circle, #555 0%, #fff 100%);
+  border-radius: 50%;
+  z-index: 10;
+  filter: drop-shadow(-10px 2px 10px rgba(0, 0, 0, 0.8));
+  transition: transform 0.5s ease-in-out;
+}
+#Nb_nav .navLink.articles:hover .articles-name {
   clip-path: circle(100% at 25% 125%);
+}
+#Nb_nav .navLink.articles:hover .articles-name .articles-sticker {
+  transform: translate(160px, -100px);
 }
 #Nb_nav .navLink.portfolio {
   position: relative;
@@ -1387,7 +1405,9 @@ ul {
   background: #C6324D;
   transform: rotate(-30deg);
   filter: drop-shadow(-5px 5px 2px rgba(0, 0, 0, 0.3333333333));
-  transition: all 1s ease-in-out;
+  overflow: hidden;
+  transition: all 0.5s ease-in-out;
+  clip-path: circle(130% at 25% 125%);
 }
 #Nb_nav .navLink.portfolio .portfolio-icon {
   transform: scale(0.8) rotate(30deg);
@@ -1427,6 +1447,19 @@ ul {
 #Nb_nav .navLink.portfolio .portfolio-name .portfolio_char-9 {
   position: absolute;
 }
+#Nb_nav .navLink.portfolio .portfolio-name .portfolio-sticker {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translate(15px, -185px);
+  width: 210px;
+  height: 180px;
+  background: radial-gradient(circle, #555 0%, #fff 70%);
+  filter: drop-shadow(0px 10px 5px rgba(0, 0, 0, 0.5333333333));
+  transition: all 0.5s ease-in-out;
+  border-radius: 50%;
+  z-index: 1;
+}
 #Nb_nav .navLink.portfolio::after {
   content: "";
   position: absolute;
@@ -1437,6 +1470,12 @@ ul {
   height: 90%;
   border: 2px solid #fff;
   border-radius: 50%;
+}
+#Nb_nav .navLink.portfolio:hover {
+  clip-path: circle(118% at 25% 125%);
+}
+#Nb_nav .navLink.portfolio:hover .portfolio-name .portfolio-sticker {
+  transform: translate(15px, -140px);
 }
 #Nb_nav .navLink.arcadepalace {
   position: relative;
@@ -1628,33 +1667,103 @@ ul {
 #Notebook.nb-cls {
   left: 70%;
   transform: translate(-50%, -50%) rotate(-5deg);
+  animation: notebookin 1.5s ease-in-out;
 }
 
+@keyframes notebookin {
+  0% {
+    left: 150%;
+    transform: translate(-50%, -50%) rotate(15deg) scale(2);
+    filter: drop-shadow(-100px 200px 20px rgba(0, 0, 0, 0.3333333333)) blur(12px);
+  }
+  100% {
+    left: 70%;
+    transform: translate(-50%, -50%) rotate(-5deg) scale(1);
+    filter: drop-shadow(-5px 5px 2px rgba(0, 0, 0, 0.3333333333)) blur(0px);
+  }
+}
 #Landing {
-  position: relative;
-  display: flex;
-  align-items: flex-end;
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
+  display: flex;
+  z-index: -1;
 }
-#Landing .button-test-1, #Landing .button-test-2 {
+#Landing .computer, #Landing .mouse, #Landing .tablet {
   position: absolute;
-  right: 0;
-  z-index: 100;
+  left: 0;
+  filter: blur(3px) drop-shadow(5px 5px 0px rgba(0, 0, 0, 0.5));
 }
-#Landing .button-test-1 {
-  top: 50%;
+#Landing .computer {
+  top: 0;
+  transform: translate(-30%, -2%);
+  width: 50%;
+  height: 50%;
+  animation: computerin 1s ease-in-out;
 }
-#Landing .button-test-2 {
-  top: 60%;
+#Landing .mouse {
+  top: 0;
+  transform: translate(70%, -2%);
+  width: 25%;
+  height: 25%;
+  animation: mousein 1s ease-in-out;
 }
-#Landing #Resume {
-  height: 100%;
+#Landing .tablet {
+  bottom: 0;
+  transform: translate(-2%, 0%);
+  width: 30%;
+  height: 30%;
+  animation: tabletin 1s ease-in-out;
 }
-#Landing #Menu {
-  height: 90%;
+#Landing .lemon-logo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  translate: 50% 50%;
+  width: 35%;
+  animation: logofadein 2s ease-in-out;
 }
 
+@keyframes logofadein {
+  0% {
+    opacity: 0;
+    transform: scale(1.2);
+  }
+  50% {
+    opacity: 0;
+    transform: scale(1.2);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+@keyframes computerin {
+  0% {
+    transform: translate(-100%, -2%);
+  }
+  100% {
+    transform: translate(-30%, -2%);
+  }
+}
+@keyframes mousein {
+  0% {
+    transform: translate(70%, -100%);
+  }
+  100% {
+    transform: translate(70%, -2%);
+  }
+}
+@keyframes tabletin {
+  0% {
+    transform: translate(-2%, 100%);
+  }
+  100% {
+    transform: translate(-2%, 0%);
+  }
+}
 #MkCard {
   display: flex;
   align-items: flex-end;

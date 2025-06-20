@@ -1,0 +1,12 @@
+<svg width="312" height="417" viewBox="0 0 312 417" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M-626 25C-626 11.1929 -614.807 0 -601 0H234C247.807 0 259 11.1929 259 25V618C259 631.807 247.807 643 234 643H-601C-614.807 643 -626 631.807 -626 618V25Z" fill="#1F2630"/>
+<path d="M-453 47C-453 33.1929 -441.807 22 -428 22H206C219.807 22 239 33.1929 239 47V596C239 609.807 219.807 621 206 621H-428C-441.807 621 -453 609.807 -453 596V47Z" fill="#373F4C"/>
+<path d="M259 229H291.5C302.546 229 311.5 237.954 311.5 249V394C311.5 405.046 302.546 414 291.5 414H259V229Z" fill="url(#paint0_linear_149_749)"/>
+<defs>
+<linearGradient id="paint0_linear_149_749" x1="332" y1="321.5" x2="259" y2="321.5" gradientUnits="userSpaceOnUse">
+<stop stop-color="#FFD079"/>
+<stop offset="1" stop-color="#DB9E43"/>
+</linearGradient>
+</defs>
+</svg>
+<!-- This SVG represents a tablet icon with various paths and a linear gradient applied for visual effects. -->

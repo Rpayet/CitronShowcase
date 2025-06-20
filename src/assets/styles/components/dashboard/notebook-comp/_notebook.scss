@@ -12,16 +12,24 @@
     transition: all 1s ease-in-out;
     &.nb-op {
         left: -250px;
-            transform: translate(-50%, -50%) rotate(0deg);
+        transform: translate(-50%, -50%) rotate(0deg);
     }
     &.nb-cls {
         left: 70%;
-            transform: translate(-50%, -50%) rotate(-5deg);
+        transform: translate(-50%, -50%) rotate(-5deg);
+        animation: notebookin 1.5s ease-in-out;
     }
 }
 
-
-
-
-
-
+@keyframes notebookin {
+    0% {
+        left: 150%;
+        transform: translate(-50%, -50%) rotate(15deg) scale(2);
+        filter: drop-shadow(-100px 200px 20px #00000055) blur(12px);
+    }
+    100% {
+        left: 70%;
+        transform: translate(-50%, -50%) rotate(-5deg) scale(1);
+        filter: drop-shadow(-5px 5px 2px #00000055) blur(0px);
+    }
+}

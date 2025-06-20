@@ -123,6 +123,7 @@ export default function Notebook() {
                                             </div>
                                             <p className={`${link.to}-name`}>
                                                 {handleLinkName(link.name)}
+                                                <span className={`${link.to}-sticker`}></span>
                                             </p>
                                     </a>
                                 </li>
