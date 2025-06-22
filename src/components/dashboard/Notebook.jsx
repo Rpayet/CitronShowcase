@@ -76,19 +76,19 @@ export default function Notebook() {
     }, []);
 
     useEffect(() => {
-        const radius = 18;
+        const radius = 30;
         const centerX = 50;
         const centerY = 0;
         for (let i = 5; i >= 0; i--) {
-            const angle = i * 30 * (Math.PI / 180);
+            const angle = i * 16 * (Math.PI / 90);
             const x = centerX + radius * Math.cos(angle);
             const y = centerY - radius * Math.sin(angle);
 
             const charElement = document.querySelector(`.arcade_char-${5 - i}`);
             if (charElement) {
                 charElement.style.left = `${x - 2.5}%`;
-                charElement.style.top = `${y + 5}%`;
-                charElement.style.transform = `rotate(${((5 - i) * 30) - 60}deg)`;
+                charElement.style.top = `${y + (-20)}%`;
+                charElement.style.transform = `rotate(${((6 - i) * 20) - 60}deg)`;
             }
         }
     },[]);

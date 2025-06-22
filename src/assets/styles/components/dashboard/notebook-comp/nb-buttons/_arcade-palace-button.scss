@@ -1,0 +1,74 @@
+.arcadepalace {
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    top: 330px;
+    left: 50px;
+    width: 245px;
+    height: 113px;           
+    background: linear-gradient(to top, #0D5A6E, #095867);
+    border: 5px solid white;
+    border-radius: 10px;
+    transform: rotate(5deg);
+    clip-path: circle(100% at 20% 30%);
+    transition: all .5s ease-in-out;
+    filter: $ambiant-shadow;
+    .arcadepalace-icon {
+        transform: translateY(-25px);
+    }
+    .arcadepalace-name {
+        text-transform: uppercase;
+        @for $i from 0 through 5 {
+            .arcade_char-#{$i} {
+                position: absolute;
+                font-weight: 700;
+            }
+        }
+        .arcadepalace-sticker {
+            position: absolute;
+            top: -50px;
+            right: 0;
+            transform: translate(220px, -20px);
+            width: 250px;
+            height: 250px;
+            background: radial-gradient(circle, #555 0%, #fff 70%);
+            filter: drop-shadow(-10px 0px 5px #00000088);
+            transition: all .5s ease-in-out;
+            border-radius: 50%;
+            z-index: 1;
+        }
+        .palace_word {
+            position: absolute;
+            top: 60%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: $notable;
+            font-size: 2.5rem;
+            letter-spacing: 5px;
+            text-align: center;
+            color: #fff;
+            text-shadow: -2px 0 #095867, 0 2px #095867, 2px 0 #095867, 0 -2px #095867;
+        }
+    }
+    &::after {
+        content:'';
+        position: absolute;
+        top: -60px;
+        right: 30px;
+        width: 170px;
+        height: 56px;
+        background: #0D5A6E;
+        border: 5px solid white;
+        border-bottom: 0;
+        border-radius: 61.6px 61.6px 0 0;
+        z-index: -1;
+    }
+    &:hover {
+        // clip-path: circle(100% at 15% 30%);
+        .arcadepalace-name {
+            .arcadepalace-sticker {
+                // transform: translate(75px, 50px);
+            }
+        }
+    }
+}
