@@ -9,91 +9,12 @@ import { useIcon } from "../../services/iconService";
 import { AnimationContext } from "../../context/AnimationContext";
 import ArticlesStickerBtn from "./landing-btn/ArticlesStickerBtn";
 import PortfolioStickerBtn from "./landing-btn/PortfolioStickerBtn";
+import ArcadeStickerBtn from "./landing-btn/ArcadeStickerBtn";
 
 export default function Notebook() {
 
-    const { dashboardContent } = useContext(DashboardContext);
-    const { navigation } = dashboardContent;
-    const { lemonifylogoset } = useContext(AppContext);
     const { animus } = useContext(AnimationContext);
     const { dashboardComp } = animus;
-    const [navArray, setNavArray] = useState(navigation.filter(link => link.id !== 0));
-    const { handleNavigation } = usePageTransition();
-    const { handleIconPosition } = useIcon();
-
-    const handleLinkName = (name) => {
-        switch (name) {
-            case 'Portfolio': 
-                return name.split('').map((char, i) => (
-                    <span key={i} className={`portfolio_char-${i}`}>{char}</span>
-                ));
-            case 'Articles': 
-                return Array(4).fill().map((_, i) => (
-                    <span key={i} className={`articles_iteration-${i}`}>{name}</span>
-                ));
-            case 'Arcade Palace': 
-                return name.split(' ').map((word, i) => (
-                    <>
-                        {(word === 'Arcade') && (
-                            word.split('').map((char, j) => (
-                                <span key={j} className={`arcade_char-${j}`}>{char}</span>
-                            ))
-                        )}
-                        {(word === 'Palace') && ( <span className='palace_word'>Palace</span> )}
-                    </>
-                ));
-        }
-    };
-
-    useEffect(() => {
-        // Circle radius
-        const radius = 35;
-        // Circle center
-        const centerX = 50;
-        const centerY = 50;
-        // First 4 characters positioning
-        for (let i = 3; i >= 0; i--) {
-            const angle = i * 30 * (Math.PI / 180);
-            const x = centerX + radius * Math.cos(angle);
-            const y = centerY - radius * Math.sin(angle);
-            const charElement = document.querySelector(`.portfolio_char-${3 - i}`);
-            if (charElement) {
-                charElement.style.left = `${x}%`;
-                charElement.style.top = `${y}%`;
-                charElement.style.transform = `translate(-50%, -50%) rotate(${(3 - i) * 30}deg)`;
-            }
-        }
-        // Last 5 characters positioning
-        for (let i = 4; i < 9; i++) {
-            const angle = (i - 4) * 30 * (Math.PI / 180);
-            const x = centerX - radius * Math.cos(angle);
-            const y = centerY + radius * Math.sin(angle);
-            const charElement = document.querySelector(`.portfolio_char-${i}`);
-            if (charElement) {
-                charElement.style.left = `${x}%`;
-                charElement.style.top = `${y}%`;
-                charElement.style.transform = `translate(-50%, -50%) rotate(-${((i - 4) * 30) + 270}deg)`;
-            }
-        }
-    }, []);
-
-    useEffect(() => {
-        const radius = 30;
-        const centerX = 50;
-        const centerY = 0;
-        for (let i = 5; i >= 0; i--) {
-            const angle = i * 16 * (Math.PI / 90);
-            const x = centerX + radius * Math.cos(angle);
-            const y = centerY - radius * Math.sin(angle);
-
-            const charElement = document.querySelector(`.arcade_char-${5 - i}`);
-            if (charElement) {
-                charElement.style.left = `${x - 2.5}%`;
-                charElement.style.top = `${y + (-20)}%`;
-                charElement.style.transform = `rotate(${((6 - i) * 20) - 60}deg)`;
-            }
-        }
-    },[]);
 
     return (
         <div id="Notebook" className={dashboardComp.open ? "nb-op" : "nb-cls"}>
@@ -109,25 +30,9 @@ export default function Notebook() {
                 <nav id="Nb_nav">
                     <ul>
                         <li>
-                            {/* <a 
-                                onClick={() => handleNavigation(link.to)}
-                                className={`navLink ${link.to}`}>
-                                    <div className={`${link.to}-icon`}>
-                                        <Stage width={128} height={128} options={{backgroundAlpha: 0}}>
-                                            <Sprite
-                                                image={lemonifylogoset}
-                                                position={handleIconPosition(128, link.id, 0)}
-                                                anchor={[0, 0]}
-                                                scale={1} />
-                                        </Stage>
-                                    </div>
-                                    <p className={`${link.to}-name`}>
-                                        {handleLinkName(link.name)}
-                                        <span className={`${link.to}-sticker`}></span>
-                                    </p>
-                            </a> */}
                             <ArticlesStickerBtn />
                             <PortfolioStickerBtn />
+                            <ArcadeStickerBtn />
                         </li>
                     </ul>
                 </nav>

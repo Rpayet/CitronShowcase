@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { usePageTransition } from "../../../services/navigation/animationService";
 import { AppContext } from "../../../context/AppProvider";
 import { useIcon } from "../../../services/iconService";
@@ -18,6 +18,38 @@ export default function PortfolioStickerBtn() {
             ))
         );
     };
+
+    useEffect(() => {
+            // Circle radius
+            const radius = 35;
+            // Circle center
+            const centerX = 50;
+            const centerY = 50;
+            // First 4 characters positioning
+            for (let i = 3; i >= 0; i--) {
+                const angle = i * 30 * (Math.PI / 180);
+                const x = centerX + radius * Math.cos(angle);
+                const y = centerY - radius * Math.sin(angle);
+                const charElement = document.querySelector(`.portfolio_char-${3 - i}`);
+                if (charElement) {
+                    charElement.style.left = `${x}%`;
+                    charElement.style.top = `${y}%`;
+                    charElement.style.transform = `translate(-50%, -50%) rotate(${(3 - i) * 30}deg)`;
+                }
+            }
+            // Last 5 characters positioning
+            for (let i = 4; i < 9; i++) {
+                const angle = (i - 4) * 30 * (Math.PI / 180);
+                const x = centerX - radius * Math.cos(angle);
+                const y = centerY + radius * Math.sin(angle);
+                const charElement = document.querySelector(`.portfolio_char-${i}`);
+                if (charElement) {
+                    charElement.style.left = `${x}%`;
+                    charElement.style.top = `${y}%`;
+                    charElement.style.transform = `translate(-50%, -50%) rotate(-${((i - 4) * 30) + 270}deg)`;
+                }
+            }
+        }, []);
 
     return (
         <a className="navLink portfolio" onClick={() => handleNavigation('portfolio')}>
