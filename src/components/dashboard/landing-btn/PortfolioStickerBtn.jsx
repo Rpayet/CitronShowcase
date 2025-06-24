@@ -17,22 +17,25 @@ export default function PortfolioStickerBtn() {
                 <span key={i} className={`portfolio_char-${i}`}>{char}</span>
             ))
         );
-    }
+    };
 
     return (
         <a className="navLink portfolio" onClick={() => handleNavigation('portfolio')}>
-            <div className="portfolio-icon">
-                <Stage width={128} height={128} options={{ backgroundAlpha: 0 }}>
-                    <Sprite
-                        image={lemonifylogoset}
-                        position={handleIconPosition(128, 2, 0)}
-                        scale={1} />
-                </Stage>
+            <span className="portfolio-sticker-ghost"></span>
+            <div className="portfolio-sticker-container">
+                <div className="portfolio-icon">
+                    <Stage width={128} height={128} options={{ backgroundAlpha: 0 }}>
+                        <Sprite
+                            image={lemonifylogoset}
+                            position={handleIconPosition(128, 2, 0)}
+                            scale={1} />
+                    </Stage>
+                </div>
+                <p className="portfolio-name">
+                    {portfolioCharStyle()}
+                    <span className="portfolio-sticker"></span>
+                </p>
             </div>
-            <p className="portfolio-name">
-                {portfolioCharStyle()}
-                <span className="portfolio-sticker"></span>
-            </p>
         </a>
     )
 }

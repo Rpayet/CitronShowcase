@@ -6,56 +6,82 @@
     left: 280px;
     width: 150px;
     height: 150px;
-    border-radius: 50%;
-    border: 5px solid #fff;
-    background: #C6324D;
-    transform: rotate(-30deg);
-    filter: $ambiant-shadow;
-    overflow: hidden;
-    transition: all .5s ease-in-out;
-    clip-path: circle(130% at 25% 125%);
-    .portfolio-icon {
-        transform: scale(.8) rotate(30deg);
+    .portfolio-sticker-ghost{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        background: radial-gradient(circle, #00000088 0%, #00000033 70%);
+        border: #00000055 3px solid;
+        filter: blur(3px);
     }
-    .portfolio-name {
-        font-size: 1.5rem;
-        text-transform: uppercase;
-        font-weight: 700;
-        @for $i from 0 through 9 {
-            .portfolio_char-#{$i} {
+    .portfolio-sticker-container{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        border: 5px solid #fff;
+        background: #C6324D;
+        transform: rotate(-30deg);
+        filter: $ambiant-shadow;
+        overflow: hidden;
+        transition: all .5s ease-in-out;
+        clip-path: circle(130% at 25% 125%);
+        .portfolio-icon {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0%;
+            left: 0%;
+            transform: scale(.7) rotate(30deg);
+        }
+        .portfolio-name {
+            font-size: 1.5rem;
+            text-transform: uppercase;
+            font-weight: 700;
+            @for $i from 0 through 9 {
+                .portfolio_char-#{$i} {
+                    position: absolute;
+                }
+            }
+            .portfolio-sticker {
                 position: absolute;
+                top: 0;
+                left: 0;
+                transform: translate(15px, -185px);
+                width: 210px;
+                height: 180px;
+                background: radial-gradient(circle, #555 0%, #fff 70%);
+                filter: drop-shadow(0px 10px 5px #00000088);
+                transition: all .5s ease-in-out;
+                border-radius: 50%;
+                z-index: 1;
             }
         }
-        .portfolio-sticker {
+        &::after {
+            content:'';
             position: absolute;
-            top: 0;
-            left: 0;
-            transform: translate(15px, -185px);
-            width: 210px;
-            height: 180px;
-            background: radial-gradient(circle, #555 0%, #fff 70%);
-            filter: drop-shadow(0px 10px 5px #00000088);
-            transition: all .5s ease-in-out;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 90%;
+            height: 90%;
+            border: 2px solid #fff;
             border-radius: 50%;
-            z-index: 1;
         }
     }
-    &::after {
-        content:'';
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        width: 90%;
-        height: 90%;
-        border: 2px solid #fff;
-        border-radius: 50%;
-    }
+
     &:hover {
-        clip-path: circle(118% at 25% 125%);
-        .portfolio-name {
-            .portfolio-sticker {
-                transform: translate(15px, -140px);
+        .portfolio-sticker-container {
+            clip-path: circle(118% at 25% 125%);
+            .portfolio-name {
+                .portfolio-sticker {
+                    transform: translate(15px, -140px);
+                }
             }
         }
     }
