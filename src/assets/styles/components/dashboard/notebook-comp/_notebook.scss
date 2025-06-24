@@ -17,7 +17,7 @@
     &.nb-cls {
         left: 70%;
         transform: translate(-50%, -50%) rotate(-5deg);
-        animation: notebookin 1.5s ease-in-out;
+        animation: notebookin 1.5s ease-in;
     }
 }
 
@@ -26,6 +26,16 @@
         left: 150%;
         transform: translate(-50%, -50%) rotate(15deg) scale(2);
         filter: drop-shadow(-100px 200px 20px #00000055) blur(12px);
+    }
+    80% {
+        left: 72%;
+        transform: translate(-50%, -50%) rotate(-2.5deg) scale(1);
+        filter: drop-shadow(-5px 5px 2px #00000055) blur(0px);
+    }
+    90% {
+        left: 71%;
+        transform: translate(-50%, -50%) rotate(-4deg) scale(1.02);
+        filter: drop-shadow(-5px 5px 2px #00000055) blur(0px);
     }
     100% {
         left: 70%;

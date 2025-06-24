@@ -1,7 +1,6 @@
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import WheelGame from './pages/WheelGame';
-import Dashboard from './components/dashboard/Dashboard';
 import Landing from './pages/Landing';
 import ArcadePalace from './pages/ArcadePalace';
 import GameProvider from './context/GameContext';
@@ -12,8 +11,7 @@ import Modal from './components/modals/Modal';
 import PrivateRoute from './routes/authorizations/PrivateRoute';
 import { useAuth } from './context/AuthContext';
 import BgPixiGenerator from './components/background/BgPixiGenerator';
-import { useContext, useEffect, useState } from 'react';
-import { AnimationContext } from './context/AnimationContext';
+import { useEffect, useState } from 'react';
 import Notebook from './components/dashboard/Notebook';
 
 export default function App() {

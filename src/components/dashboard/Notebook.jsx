@@ -7,6 +7,8 @@ import Bookmark from "./Bookmark";
 import Dashboard from "./Dashboard";
 import { useIcon } from "../../services/iconService";
 import { AnimationContext } from "../../context/AnimationContext";
+import ArticlesStickerBtn from "./landing-btn/ArticlesStickerBtn";
+import PortfolioStickerBtn from "./landing-btn/PortfolioStickerBtn";
 
 export default function Notebook() {
 
@@ -106,29 +108,27 @@ export default function Notebook() {
                 {/** Landing Navigation */}	
                 <nav id="Nb_nav">
                     <ul>
-                        {navArray.map((link) => {
-                            return (
-                                <li key={link.to}>
-                                    <a 
-                                        onClick={() => handleNavigation(link.to)}
-                                        className={`navLink ${link.to}`}>
-                                            <div className={`${link.to}-icon`}>
-                                                <Stage width={128} height={128} options={{backgroundAlpha: 0}}>
-                                                    <Sprite
-                                                        image={lemonifylogoset}
-                                                        position={handleIconPosition(128, link.id, 0)}
-                                                        anchor={[0, 0]}
-                                                        scale={1} />
-                                                </Stage>
-                                            </div>
-                                            <p className={`${link.to}-name`}>
-                                                {handleLinkName(link.name)}
-                                                <span className={`${link.to}-sticker`}></span>
-                                            </p>
-                                    </a>
-                                </li>
-                            )
-                        })}
+                        <li>
+                            {/* <a 
+                                onClick={() => handleNavigation(link.to)}
+                                className={`navLink ${link.to}`}>
+                                    <div className={`${link.to}-icon`}>
+                                        <Stage width={128} height={128} options={{backgroundAlpha: 0}}>
+                                            <Sprite
+                                                image={lemonifylogoset}
+                                                position={handleIconPosition(128, link.id, 0)}
+                                                anchor={[0, 0]}
+                                                scale={1} />
+                                        </Stage>
+                                    </div>
+                                    <p className={`${link.to}-name`}>
+                                        {handleLinkName(link.name)}
+                                        <span className={`${link.to}-sticker`}></span>
+                                    </p>
+                            </a> */}
+                            <ArticlesStickerBtn />
+                            <PortfolioStickerBtn />
+                        </li>
                     </ul>
                 </nav>
                 {/** Frontpage - Header use */}
