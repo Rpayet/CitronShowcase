@@ -29,8 +29,8 @@ export default function ArticlesStickerBtn() {
                         scale={1} />
                 </Stage>
             </div>
-            <div className="sticker-container">
-                <span className="sticker-ghost"></span>
+            <span className="articles-sticker-ghost"></span>
+            <div className="articles-title-container">
                 <p className="articles-name">Articles
                     {articlesIterationStyle()}
                     <span className="articles-sticker"></span>

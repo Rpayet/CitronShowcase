@@ -8,6 +8,19 @@
     font-size: 2.5rem;
     font-style: normal;
     transform: rotate(-2deg);
+    .articles-sticker-ghost {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-60%, -50%) skewX(-25deg);
+        width: 225px;
+        height: 75px;
+        background: radial-gradient(circle, #00000088 0%, #00000033 70%);
+        border-radius: .75rem;
+        border: #00000055 3px solid;
+        filter: blur(3px);
+        z-index: -1;
+    }
     .articles-icon {
         position: relative;
         display: flex;
@@ -29,7 +42,7 @@
             z-index: -1;
         }
     }
-    .sticker-container {
+    .articles-title-container {
         position: relative;
         width: 225px;
         height: 75px;
@@ -40,16 +53,6 @@
         clip-path: circle(125% at 25% 125%);
         transition: .5s ease-in-out;
         z-index: -1;
-        .sticker-ghost {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 200px;
-            height: 75px;
-            background: linear-gradient(135deg, #00000055 0%, #00000022 100%);
-            filter: blur(2px);
-            z-index: -2;
-        }
         .articles-name {
             position: absolute;
             top: 0;
@@ -90,7 +93,7 @@
         }
     }
     &:hover {
-        .sticker-container {
+        .articles-title-container {
             clip-path: circle(100% at 20% 85%);
             .articles-name {
                     .articles-sticker {
