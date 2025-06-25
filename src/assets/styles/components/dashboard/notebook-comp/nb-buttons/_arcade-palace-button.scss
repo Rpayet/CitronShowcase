@@ -8,6 +8,19 @@
     height: 113px;           
     transform: rotate(5deg);
     filter: $ambiant-shadow;
+    .arcadepalace-sticker-ghost {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(circle, #00000088 0%, #00000033 70%);
+        border-radius: .75rem;
+        border: #00000055 3px solid;
+        transform: translateX(5px); 
+        filter: blur(3px);
+        z-index: -1;
+    }
     .arcade-word-svg {
         position: absolute;
         top: -70px;

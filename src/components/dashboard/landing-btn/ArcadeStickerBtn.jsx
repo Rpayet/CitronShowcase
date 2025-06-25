@@ -35,6 +35,7 @@ export default function ArcadeStickerBtn() {
                 </div>
                 <span className="arcadepalace-sticker"></span>
             </div>
+            <span className="arcadepalace-sticker-ghost"></span>
         </a>
     )
 }
