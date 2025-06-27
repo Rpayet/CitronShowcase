@@ -1,6 +1,7 @@
 .articles {
     align-items: center;
     width: fit-content;
+    height: 125px;
     top: 250px;
     left: 50px;
     font-family: $poetsen;
@@ -8,11 +9,12 @@
     font-size: 2.5rem;
     font-style: normal;
     transform: rotate(-2deg);
+    filter: drop-shadow(-3px 3px 0px #000);
     .articles-sticker-ghost {
         position: absolute;
         top: 50%;
         left: 50%;
-        transform: translate(-58%, -50%) skewX(-25deg);
+        transform: translate(-49%, -50%) skewX(-25deg);
         width: 225px;
         height: 75px;
         background: radial-gradient(circle, #00000088 0%, #00000033 70%);
@@ -28,7 +30,19 @@
         justify-content: center;
         width: 125px;
         height: 125px;
-        filter: drop-shadow(-2px 0px 0px #000);
+        z-index: 5;
+        &::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-52.5%, -50%) scale(1.2);
+            width: 100%;
+            height: 100%;
+            background: #fff;
+            clip-path: polygon(29% 88%, 34% 78%, 35% 69%, 41% 61%, 42% 56%, 53% 35%, 66% 7%, 71% 22%, 71% 32%, 68% 41%, 68% 45%, 62% 62%, 49% 75%, 40% 79%, 35% 87%);
+            z-index: -2;
+        }
         &::before {
             content: '';
             position: absolute;
@@ -38,7 +52,7 @@
             width: 100%;
             height: 100%;
             background: #000;
-            clip-path: polygon(65% 11%, 66% 16%, 68% 21%, 68% 27%, 68% 33%, 66% 38%, 64% 41%, 66% 44%, 59% 61%, 47% 73%, 41% 77%, 36% 83%, 38% 72%, 40% 72%, 40% 67%, 42% 64%, 48% 51%, 50% 50%, 51% 48%, 56% 38%, 62% 23%);
+            clip-path: polygon(29% 88%, 34% 78%, 35% 69%, 41% 61%, 42% 56%, 53% 35%, 66% 7%, 71% 22%, 71% 32%, 68% 41%, 68% 45%, 62% 62%, 49% 75%, 40% 79%, 35% 87%);            z-index: -1;
             z-index: -1;
         }
     }
@@ -48,9 +62,9 @@
         height: 75px;
         background: #000;
         border: 3px solid #fff;
-        transform: translateX(-80px) skewX(-25deg);
+        transform: translateX(-60px) skewX(-25deg);
         border-radius: 1rem;
-        clip-path: circle(125% at 25% 125%);
+        clip-path: circle(115% at 25% 125%);
         transition: .5s ease-in-out;
         z-index: -1;
         .articles-name {
@@ -61,8 +75,8 @@
             height: 75px;
             padding: .5rem;
             z-index: -1;
-            transform: skewX(25deg) translateX(40px);
-            // text-transform: uppercase;
+            transform: skewX(25deg) translateX(22.5px);
+            text-transform: uppercase;
             transition: .5s ease-in-out;
             // Articles Iteration positioning 
             $topvalue: 2px;
@@ -87,6 +101,7 @@
                 height: 75px;
                 background: radial-gradient(circle, #333 50%, #ddd 100%);
                 border-radius: .75rem;
+                border: #797979 2px solid;
                 z-index: 10;
                 filter: drop-shadow(0px 2px 0px #000000cc);
                 transition: .5s ease-in-out;
@@ -99,7 +114,7 @@
             .articles-name {
                     .articles-sticker {
                         filter: drop-shadow(-5px 0px 5px #000000cc);
-                        transform: translate(105px, 0px) skewX(2.5deg);
+                        transform: translate(120px, 0px) skewX(2.5deg);
                     }
             }
         }

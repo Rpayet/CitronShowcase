@@ -7,7 +7,7 @@
     width: 245px;
     height: 113px;           
     transform: rotate(5deg);
-    filter: $ambiant-shadow;
+    filter: drop-shadow(-3px 3px 0px #000);
     .arcadepalace-sticker-ghost {
         position: absolute;
         top: 0;
@@ -92,6 +92,7 @@
             filter: drop-shadow(-10px 0px 5px #00000088);
             transition: all .5s ease-in-out;
             border-radius: 10px;
+            border: #797979 2px solid;
             z-index: 9;
         }
     }
