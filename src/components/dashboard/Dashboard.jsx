@@ -41,7 +41,6 @@ export default function Dashboard() {
         handleNavigation(link.to);
     }
 
-    console.log((category?.name === 'Portfolio') ? switchClass : '')
     return (
         <div id="Dashboard">
             <div className={`nav${!dashboardComp.open ? '-cl' : '-op'}`}>

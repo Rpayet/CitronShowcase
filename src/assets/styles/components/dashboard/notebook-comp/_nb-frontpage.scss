@@ -19,12 +19,18 @@
         border-radius: 10px;
         background: #2C1B0D;
         color: #A1724B;
+        font-family: $libre;
         text-transform: uppercase;
         text-align: center;
         display: flex;
         justify-content: center;
         align-items: center;
-        filter: $ambiant-shadow;
+        filter: drop-shadow(1px 2px 0px #00000055);
+        .dev-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-shadow: inset 2px 2px 0px #00000055;
+        }
         .seam {
             position: absolute;
             top: 50%;

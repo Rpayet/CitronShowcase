@@ -1,20 +1,18 @@
-import { useContext, useEffect, useState } from "react";
-import { usePageTransition } from "../../services/navigation/animationService";
-import { DashboardContext } from "../../context/DashboardContext";
-import { Sprite, Stage } from "@pixi/react";
-import { AppContext } from "../../context/AppProvider";
+import { useContext } from "react";
 import Bookmark from "./Bookmark";
-import Dashboard from "./Dashboard";
-import { useIcon } from "../../services/iconService";
 import { AnimationContext } from "../../context/AnimationContext";
 import ArticlesStickerBtn from "./landing-btn/ArticlesStickerBtn";
 import PortfolioStickerBtn from "./landing-btn/PortfolioStickerBtn";
 import ArcadeStickerBtn from "./landing-btn/ArcadeStickerBtn";
+import IconHandler from "../_utils/IconHandler";
 
 export default function Notebook() {
 
     const { animus } = useContext(AnimationContext);
     const { dashboardComp } = animus;
+
+    const spriteSheet = 'landing-sprites.svg';
+    const iconDict = ['header', 'articles', 'dev', 'arcade'];
 
     return (
         <div id="Notebook" className={dashboardComp.open ? "nb-op" : "nb-cls"}>
@@ -26,6 +24,10 @@ export default function Notebook() {
             <Bookmark />
             {/** Cover */}
             <div id="Nb_cover" className={dashboardComp.open ? "nbcover-op" : "nbcover-cls"}>
+                {/** Cover - IconHandler */}
+                {iconDict.map(icon=> (
+                    <IconHandler key={icon} file={spriteSheet} name={`${icon}-props`} className={`${icon}-props`} />
+                ))}
                 {/** Landing Navigation */}	
                 <nav id="Nb_nav">
                     <ul>
@@ -39,7 +41,7 @@ export default function Notebook() {
                 {/** Frontpage - Header use */}
                 <div id="Nb_frontpage">
                     <div className="nb_h1">
-                        <h1>Design & code <br/><span>Robin Payet</span></h1>
+                        <h1>Design & code <br/><span className="dev-name">Robin Payet</span></h1>
                         <div className="seam"></div>
                     </div>
                 </div>

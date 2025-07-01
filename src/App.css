@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Poetsen+One&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Notable&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Libre+Caslon+Display&display=swap");
 * {
   margin: 0;
   padding: 0;
@@ -1221,12 +1222,18 @@ ul {
   border-radius: 10px;
   background: #2C1B0D;
   color: #A1724B;
+  font-family: "Libre Caslon Display", serif;
   text-transform: uppercase;
   text-align: center;
   display: flex;
   justify-content: center;
   align-items: center;
-  filter: drop-shadow(-5px 5px 2px rgba(0, 0, 0, 0.3333333333));
+  filter: drop-shadow(1px 2px 0px rgba(0, 0, 0, 0.3333333333));
+}
+#Nb_frontpage .nb_h1 .dev-name {
+  font-size: 1.5rem;
+  font-weight: 700;
+  text-shadow: inset 2px 2px 0px rgba(0, 0, 0, 0.3333333333);
 }
 #Nb_frontpage .nb_h1 .seam {
   position: absolute;
@@ -1242,19 +1249,21 @@ ul {
 .articles {
   align-items: center;
   width: fit-content;
+  height: 125px;
   top: 250px;
-  left: 50px;
+  left: 20px;
   font-family: "Poetsen One", serif;
   font-weight: 400;
   font-size: 2.5rem;
   font-style: normal;
   transform: rotate(-2deg);
+  filter: drop-shadow(-3px 3px 0px #000);
 }
 .articles .articles-sticker-ghost {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-58%, -50%) skewX(-25deg);
+  transform: translate(-49%, -50%) skewX(-25deg);
   width: 225px;
   height: 75px;
   background: radial-gradient(circle, rgba(0, 0, 0, 0.5333333333) 0%, rgba(0, 0, 0, 0.2) 70%);
@@ -1270,7 +1279,19 @@ ul {
   justify-content: center;
   width: 125px;
   height: 125px;
-  filter: drop-shadow(-2px 0px 0px #000);
+  z-index: 5;
+}
+.articles .articles-icon::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-52.5%, -50%) scale(1.2);
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  clip-path: polygon(29% 88%, 34% 78%, 35% 69%, 41% 61%, 42% 56%, 53% 35%, 66% 7%, 71% 22%, 71% 32%, 68% 41%, 68% 45%, 62% 62%, 49% 75%, 40% 79%, 35% 87%);
+  z-index: -2;
 }
 .articles .articles-icon::before {
   content: "";
@@ -1281,7 +1302,8 @@ ul {
   width: 100%;
   height: 100%;
   background: #000;
-  clip-path: polygon(65% 11%, 66% 16%, 68% 21%, 68% 27%, 68% 33%, 66% 38%, 64% 41%, 66% 44%, 59% 61%, 47% 73%, 41% 77%, 36% 83%, 38% 72%, 40% 72%, 40% 67%, 42% 64%, 48% 51%, 50% 50%, 51% 48%, 56% 38%, 62% 23%);
+  clip-path: polygon(29% 88%, 34% 78%, 35% 69%, 41% 61%, 42% 56%, 53% 35%, 66% 7%, 71% 22%, 71% 32%, 68% 41%, 68% 45%, 62% 62%, 49% 75%, 40% 79%, 35% 87%);
+  z-index: -1;
   z-index: -1;
 }
 .articles .articles-title-container {
@@ -1290,9 +1312,9 @@ ul {
   height: 75px;
   background: #000;
   border: 3px solid #fff;
-  transform: translateX(-80px) skewX(-25deg);
+  transform: translateX(-60px) skewX(-25deg);
   border-radius: 1rem;
-  clip-path: circle(125% at 25% 125%);
+  clip-path: circle(115% at 25% 125%);
   transition: 0.5s ease-in-out;
   z-index: -1;
 }
@@ -1304,7 +1326,8 @@ ul {
   height: 75px;
   padding: 0.5rem;
   z-index: -1;
-  transform: skewX(25deg) translateX(40px);
+  transform: skewX(25deg) translateX(22.5px);
+  text-transform: uppercase;
   transition: 0.5s ease-in-out;
 }
 .articles .articles-title-container .articles-name .articles_iteration-0 {
@@ -1348,6 +1371,7 @@ ul {
   height: 75px;
   background: radial-gradient(circle, #333 50%, #ddd 100%);
   border-radius: 0.75rem;
+  border: #797979 2px solid;
   z-index: 10;
   filter: drop-shadow(0px 2px 0px rgba(0, 0, 0, 0.8));
   transition: 0.5s ease-in-out;
@@ -1357,7 +1381,7 @@ ul {
 }
 .articles:hover .articles-title-container .articles-name .articles-sticker {
   filter: drop-shadow(-5px 0px 5px rgba(0, 0, 0, 0.8));
-  transform: translate(105px, 0px) skewX(2.5deg);
+  transform: translate(120px, 0px) skewX(2.5deg);
 }
 
 .portfolio {
@@ -1368,6 +1392,7 @@ ul {
   left: 280px;
   width: 150px;
   height: 150px;
+  filter: drop-shadow(-2px 2px 0px #000);
 }
 .portfolio .portfolio-sticker-ghost {
   position: absolute;
@@ -1390,7 +1415,6 @@ ul {
   border: 5px solid #fff;
   background: #C6324D;
   transform: rotate(-30deg);
-  filter: drop-shadow(-5px 5px 2px rgba(0, 0, 0, 0.3333333333));
   overflow: hidden;
   transition: all 0.5s ease-in-out;
   clip-path: circle(130% at 25% 125%);
@@ -1449,6 +1473,7 @@ ul {
   filter: drop-shadow(0px 10px 5px rgba(0, 0, 0, 0.5333333333));
   transition: all 0.5s ease-in-out;
   border-radius: 50%;
+  border: #797979 2px solid;
   z-index: 1;
 }
 .portfolio .portfolio-sticker-container::after {
@@ -1478,7 +1503,7 @@ ul {
   width: 245px;
   height: 113px;
   transform: rotate(5deg);
-  filter: drop-shadow(-5px 5px 2px rgba(0, 0, 0, 0.3333333333));
+  filter: drop-shadow(-3px 3px 0px #000);
 }
 .arcadepalace .arcadepalace-sticker-ghost {
   position: absolute;
@@ -1565,6 +1590,7 @@ ul {
   filter: drop-shadow(-10px 0px 5px rgba(0, 0, 0, 0.5333333333));
   transition: all 0.5s ease-in-out;
   border-radius: 10px;
+  border: #797979 2px solid;
   z-index: 9;
 }
 .arcadepalace:hover .arcadepalace-sticker-container {
@@ -1623,6 +1649,33 @@ ul {
   border-radius: 10px 40px 40px 0px;
   box-shadow: inset -5px 2px 6px 0px #93643f;
   z-index: 1;
+}
+#Nb_cover .icon {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  filter: drop-shadow(-5px 5px 0px #000);
+}
+#Nb_cover .icon.header-props {
+  top: -150px;
+  left: -50px;
+  transform: scale(0.5);
+}
+#Nb_cover .icon.articles-props {
+  top: -35px;
+  left: 200px;
+  transform: scale(0.35) rotateZ(-15deg);
+}
+#Nb_cover .icon.dev-props {
+  top: 150px;
+  left: -50px;
+  transform: scale(0.35);
+}
+#Nb_cover .icon.arcade-props {
+  top: 400px;
+  left: 200px;
+  transform: scale(0.45);
 }
 
 #Bookmark {
@@ -1738,33 +1791,34 @@ ul {
   width: 100%;
   height: 100%;
   display: flex;
-  z-index: -1;
+  z-index: 1;
 }
-#Landing .computer, #Landing .mouse, #Landing .tablet {
+#Landing .icon {
   position: absolute;
   left: 0;
-  filter: blur(3px) drop-shadow(5px 5px 0px rgba(0, 0, 0, 0.5));
+  filter: blur(1.5px) drop-shadow(5px 5px 0px rgba(0, 0, 0, 0.5));
+  z-index: 10;
 }
 #Landing .computer {
   top: 0;
-  transform: translate(-30%, -2%);
+  transform: translate(65%, 50%) rotateZ(0deg) scale(3);
   width: 50%;
   height: 50%;
-  animation: computerin 1s ease-in-out;
+  animation: computerin 1.5s ease-in-out;
 }
 #Landing .mouse {
   top: 0;
-  transform: translate(70%, -2%);
+  transform: translate(100%, -40%) rotateZ(0deg) scale(1.5);
   width: 25%;
   height: 25%;
-  animation: mousein 1s ease-in-out;
+  animation: mousein 1.5s ease-in-out;
 }
 #Landing .tablet {
   bottom: 0;
-  transform: translate(-2%, 0%);
+  transform: translate(20%, 20%) rotateZ(0deg) scale(2.5);
   width: 30%;
   height: 30%;
-  animation: tabletin 1s ease-in-out;
+  animation: tabletin 1.5s ease-in-out;
 }
 #Landing .lemon-logo {
   position: absolute;
@@ -1791,26 +1845,26 @@ ul {
 }
 @keyframes computerin {
   0% {
-    transform: translate(-100%, -2%);
+    transform: translate(0%, -2%) rotateZ(25deg) scale(3);
   }
   100% {
-    transform: translate(-30%, -2%);
+    transform: translate(65%, 50%) rotateZ(0deg) scale(3);
   }
 }
 @keyframes mousein {
   0% {
-    transform: translate(70%, -100%);
+    transform: translate(70%, -110%) rotateZ(25deg) scale(1.5);
   }
   100% {
-    transform: translate(70%, -2%);
+    transform: translate(100%, -40%) rotateZ(0deg) scale(1.5);
   }
 }
 @keyframes tabletin {
   0% {
-    transform: translate(-2%, 100%);
+    transform: translate(-50%, 120%) rotateZ(25deg) scale(2.5);
   }
   100% {
-    transform: translate(-2%, 0%);
+    transform: translate(20%, 20%) rotateZ(0deg) scale(2.5);
   }
 }
 #MkCard {
