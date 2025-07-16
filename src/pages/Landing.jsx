@@ -1,8 +1,3 @@
-import {useContext, useEffect, useState} from "react";
-import computer from '../assets/images/statics/brand/landing/computer.svg';
-import mouse from '../assets/images/statics/brand/landing/mouse.svg';
-import tablet from '../assets/images/statics/brand/landing/tablet.svg';
-import logo from '../assets/images/statics/brand/landing/Lemonify_Logo_Alpha 1.png';
 import IconHandler from "../components/_utils/IconHandler";
 
 export default function Landing() {
@@ -13,13 +8,15 @@ export default function Landing() {
 
     return (
         <section id='Landing'>
-            {iconDict.map(icon => (
-                <IconHandler key={icon} file={spriteSheet} name={`${icon}-props`} className={`${icon}`} />
-            ))}
-            <img 
-                src={logo} 
-                alt=""
-                className="lemon-logo" />
+            <div className="bg-props">
+                {iconDict.map(icon => (
+                    <IconHandler key={icon} file={spriteSheet} name={`${icon}-props`} className={`${icon}`} />
+                ))}
+            </div>
+            <div className="logo-content">
+                <IconHandler file='brand-sprites.svg' name='lemonify-colour-icon' className='lemon-logo' />
+                <h1 className="lemonify">Lemonify</h1>
+            </div>
 
         </section>
     )

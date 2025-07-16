@@ -9,41 +9,59 @@
     width: 100%;
     height: 100%;
     display: flex;
-    z-index: 1;
-    .icon {
+    z-index: -1;
+    .bg-props {
+        .icon {
+            position: absolute;
+            left: 0;
+            filter: blur(1.5px) drop-shadow(5px 5px 0px rgba(0, 0, 0, 0.5));
+        }
+        .computer {
+            top: 0;
+            transform: translate(80%, 75%) rotateZ(0deg) scale(3);
+            width: 100%;
+            height: 100%;
+            animation: computerin 1.5s ease-in-out;
+        }
+        .mouse {
+            top: 0;
+            transform: translate(40%, 5%) rotateZ(0deg) scale(1.5);
+            width: 100%;
+            height: 100%;
+            animation: mousein 1.5s ease-in-out;
+        }
+        .tablet {
+            bottom: 0;
+            transform: translate(60%, 130%) rotateZ(0deg) scale(2.5);
+            width: 100%;
+            height: 100%;
+            animation: tabletin 1.5s ease-in-out;
+        }
+    }
+    .logo-content {
         position: absolute;
-        left: 0;
-        filter: blur(1.5px) drop-shadow(5px 5px 0px rgba(0, 0, 0, 0.5));
-        z-index: 10;
-    }
-    .computer {
-        top: 0;
-        transform: translate(65%, 50%) rotateZ(0deg) scale(3);
-        width: 50%;
-        height: 50%;
-        animation: computerin 1.5s ease-in-out;
-    }
-    .mouse {
-        top: 0;
-        transform: translate(100%, -40%) rotateZ(0deg) scale(1.5);
-        width: 25%;
-        height: 25%;
-        animation: mousein 1.5s ease-in-out;
-    }
-    .tablet {
-        bottom: 0;
-        transform: translate(20%, 20%) rotateZ(0deg) scale(2.5);
-        width: 30%;
-        height: 30%;
-        animation: tabletin 1.5s ease-in-out;
-    }
-    .lemon-logo {
-        position: absolute;
-        top: 0;
-        left: 0;
-        translate: 50% 50%;
-        width: 35%;
-        animation: logofadein 2s ease-in-out;
+        width: 450px;
+        height: 450px;
+        top: 25%;
+        left: 25%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        animation: logofadein 1.5s ease-in-out;
+        .icon {
+            width: 256px;
+            height: 256px;
+            transform: scale(2);
+        }
+        .lemonify {
+            width: fit-content;
+            height: fit-content;
+            font-family: $caveat;
+            font-size: 6rem;
+            text-align: center;
+            color: #1C4951;
+        }
     }
 }
 
@@ -67,24 +85,24 @@
         transform: translate(0%, -2%) rotateZ(25deg) scale(3);
     }
     100% {
-        transform: translate(65%, 50%) rotateZ(0deg) scale(3);
+        transform: translate(80%, 75%) rotateZ(0deg) scale(3);
     }
 }
 
 @keyframes mousein {
     0% {
-        transform: translate(70%, -110%) rotateZ(25deg) scale(1.5);
+        transform: translate(70%, -50%) rotateZ(25deg) scale(1.5);
     }
     100% {
-        transform: translate(100%, -40%) rotateZ(0deg) scale(1.5);
+        transform: translate(40%, 5%) rotateZ(0deg) scale(1.5);
     }
 }
 
 @keyframes tabletin {
     0% {
-        transform: translate(-50%, 120%) rotateZ(25deg) scale(2.5);
+        transform: translate(30%, 280%) rotateZ(25deg) scale(2.5);
     }
     100% {
-        transform: translate(20%, 20%) rotateZ(0deg) scale(2.5);
+        transform: translate(60%, 130%) rotateZ(0deg) scale(2.5);
     }
 }
